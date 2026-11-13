@@ -1,0 +1,39 @@
+{
+  "id": "TASK-3",
+  "title": "Build Sticky Header with India Circus-Inspired Mega-Menu and Announcement Bar",
+  "category": "ui-navigation",
+  "description": "Create the top announcement banner, sticky parchment header, multi-column mega-menu with visual category previews (Custom Framing, Ready-Made, Gallery Walls), and mobile navigation drawer.",
+  "acceptanceCriteria": [
+    "Top announcement bar displays shipping and craftsmanship guarantees with dismiss action",
+    "Sticky header features responsive blur, wordmark, search, account, and cart drawer triggers",
+    "Hovering over navigation items reveals a multi-column mega-menu with featured moulding thumbnails",
+    "Mobile drawer navigation is fully accessible and responsive",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Build AnnouncementBar component",
+      "details": "Create components/navigation/announcement-bar.tsx with rotating or highlighted delivery promise.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build SiteHeader and MegaMenu",
+      "details": "Create components/navigation/site-header.tsx and mega-menu.tsx with accessible hover interactions.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Build MobileNav sheet",
+      "details": "Create components/navigation/mobile-nav.tsx supporting smooth sliding transition on touch devices.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Verify navigation and mega-menu in browser",
+      "details": "Run Playwright test and capture screenshot of expanded mega-menu.",
+      "pass": true
+    }
+  ]
+}

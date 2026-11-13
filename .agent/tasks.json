@@ -18,7 +18,7 @@
     "title": "Build Sticky Header with India Circus-Inspired Mega-Menu and Announcement Bar",
     "category": "ui-navigation",
     "specFilePath": ".agent/tasks/TASK-3.json",
-    "passes": false
+    "passes": true
   },
   {
     "id": "TASK-4",
