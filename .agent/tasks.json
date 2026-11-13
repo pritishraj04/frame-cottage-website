@@ -25,7 +25,7 @@
     "title": "Build Hero Section with Interactive Live Frame Switcher Island",
     "category": "ui-hero",
     "specFilePath": ".agent/tasks/TASK-4.json",
-    "passes": false
+    "passes": true
   },
   {
     "id": "TASK-5",

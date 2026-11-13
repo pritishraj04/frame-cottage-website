@@ -1,0 +1,40 @@
+{
+  "id": "TASK-4",
+  "title": "Build Hero Section with Interactive Live Frame Switcher Island",
+  "category": "ui-hero",
+  "description": "Create the flagship Hero Section featuring editorial typography, dual CTAs, and a high-fidelity interactive Client Component that allows instant switching between frame finishes, mat widths, and room contexts.",
+  "acceptanceCriteria": [
+    "Hero layout features high-impact editorial headline, subheadline, and primary/secondary CTAs",
+    "Interactive Live Frame Switcher Client Component allows instant toggling between 5 frame materials (American Walnut, Antique Brass, Matte Black, White Oak, Florentine Gold)",
+    "Users can toggle mat margins (No Mat, 2-inch Classic, 3-inch Gallery) with real-time inner bevel shadow recalculation",
+    "Context switcher toggles between Neutral Studio Wall and Styled Living Room Backdrop",
+    "Frame selection state is preserved and ready to pass into customizer checkout flow",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Define frame mock data and moulding types",
+      "details": "Create lib/constants/frames.ts with rich moulding specs, wood textures, and color mappings.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build LiveFrameSwitcher interactive island",
+      "details": "Create components/hero/live-frame-switcher.tsx with smooth CSS transitions, bevel shadows, and active state pills.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Assemble HeroContainer component",
+      "details": "Create components/hero/hero-container.tsx combining copy, trust triggers, and the switcher island.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Verify live switcher interaction in browser",
+      "details": "Execute Playwright interaction test toggling each frame finish and capture screenshots.",
+      "pass": true
+    }
+  ]
+}
