@@ -32,7 +32,7 @@
     "title": "Implement Visual Category Discovery Pills and Craftsmanship Trust Bar",
     "category": "ui-merchandising",
     "specFilePath": ".agent/tasks/TASK-5.json",
-    "passes": false
+    "passes": true
   },
   {
     "id": "TASK-6",

@@ -1,0 +1,32 @@
+{
+  "id": "TASK-5",
+  "title": "Implement Visual Category Discovery Pills and Craftsmanship Trust Bar",
+  "category": "ui-merchandising",
+  "description": "Build the circular category filter carousel inspired by India Circus (Wood, Metal, Ornate, Gallery, Minis) and the 4-column museum-grade trust assurance bar.",
+  "acceptanceCriteria": [
+    "Visual filter pills carousel showcases circular timber/style thumbnails with smooth horizontal scroll",
+    "Clicking a category pill filters active featured frames or navigates to dedicated collections",
+    "Trust bar displays 4 core commitments: 100% Solid Hardwood, 4-Ply Archival Cotton, UV Conservation Acrylic, Hardware Included",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Build CategoryPills component",
+      "details": "Create components/home/category-pills.tsx with touch-friendly carousel and active indicator.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build TrustBar component",
+      "details": "Create components/home/trust-bar.tsx with refined iconography and hairline dividers.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Verify layout and responsive reflow",
+      "details": "Run Playwright test across mobile and desktop viewports.",
+      "pass": true
+    }
+  ]
+}
