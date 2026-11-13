@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF7F2;
+  --foreground: #191614;
+
+  --color-canvas-base: #FAF7F2;
+  --color-canvas-subtle: #F3ECE2;
+  --color-canvas-surface: #FFFFFF;
+  --color-ink-primary: #191614;
+  --color-ink-secondary: #5C554E;
+  --color-ink-muted: #8F877E;
+  --color-border-subtle: #E8E1D5;
+  --color-terracotta: #B45309;
+  --color-terracotta-hover: #92400E;
+  --color-brass: #C5A059;
+
+  --shadow-frame-resting: 0 18px 36px -10px rgba(25, 22, 20, 0.22), 0 6px 14px -3px rgba(25, 22, 20, 0.1);
+  --shadow-frame-room: 0 26px 54px -12px rgba(15, 10, 5, 0.38), 0 8px 20px -4px rgba(15, 10, 5, 0.2);
+  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.18), inset 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-canvas-base: var(--color-canvas-base);
+  --color-canvas-subtle: var(--color-canvas-subtle);
+  --color-canvas-surface: var(--color-canvas-surface);
+  --color-ink-primary: var(--color-ink-primary);
+  --color-ink-secondary: var(--color-ink-secondary);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-hover: var(--color-terracotta-hover);
+  --color-brass: var(--color-brass);
+
+  --shadow-frame-resting: var(--shadow-frame-resting);
+  --shadow-frame-room: var(--shadow-frame-room);
+  --shadow-frame-inner-mat: var(--shadow-frame-inner-mat);
+
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-playfair-display);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }

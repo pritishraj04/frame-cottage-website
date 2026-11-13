@@ -1,0 +1,32 @@
+{
+  "id": "TASK-2",
+  "title": "Implement Artisanal Design Tokens and Typography Hierarchy",
+  "category": "design-system",
+  "description": "Establish the warm parchment and espresso ink design token system in globals.css, configure Playfair Display and Geist fonts in app/layout.tsx, and define realistic frame shadow variables.",
+  "acceptanceCriteria": [
+    "globals.css defines --color-canvas-base (#FAF7F2), --color-ink-primary (#191614), and accent colors",
+    "Realistic frame bevel and drop shadow tokens (--shadow-frame-resting, --shadow-frame-inner-mat) are configured",
+    "app/layout.tsx configures Google Fonts (Playfair Display for editorial headings and Geist Sans for UI)",
+    "Verify styling in browser with Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Update globals.css tokens",
+      "details": "Add CSS variables for the warm luxury palette and frame depth shadows under Tailwind v4 @theme.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Configure Google Fonts in app/layout.tsx",
+      "details": "Import and configure next/font/google for Playfair Display and Geist Sans with appropriate CSS variables.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Visual smoke check",
+      "details": "Verify font loading and root background colors in browser via Playwright screenshot.",
+      "pass": true
+    }
+  ]
+}
