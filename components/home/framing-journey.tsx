@@ -82,12 +82,12 @@ export function FramingJourney() {
       id="framing-journey"
       data-testid="framing-journey"
       aria-label="How Custom Framing Works - 3-Step Journey"
-      className="w-full bg-[#1A1A1A] py-16 sm:py-24 border-b border-[#333333] relative overflow-hidden text-[#F4F1EA]"
+      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] relative overflow-hidden text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       {/* Decorative subtle background pattern */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#F4F1EA_1px,transparent_1px)] [background-size:24px_24px]"
+        className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(var(--color-ink-primary)_1px,transparent_1px)] [background-size:24px_24px]"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -98,16 +98,16 @@ export function FramingJourney() {
           data-testid="framing-journey-header"
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>The Bespoke Framing Process</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
             How Custom Framing Works
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#E0E0E0] leading-relaxed font-normal max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
             From digital memory to handcrafted heirloom in three seamless steps.
           </p>
         </div>
@@ -133,7 +133,7 @@ export function FramingJourney() {
                 <div
                   key={step.stepNumber}
                   data-testid={`framing-step-${idx + 1}`}
-                  className="group relative flex flex-col justify-between bg-[#242424] rounded-2xl border border-[#333333] p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-[#C5A059] transition-all duration-300 hover:-translate-y-1.5"
+                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)] transition-all duration-300 hover:-translate-y-1.5"
                 >
                   {/* Card Header & Badge row */}
                   <div>
@@ -141,24 +141,24 @@ export function FramingJourney() {
                       {/* Numbered Badge */}
                       <div
                         data-testid={`framing-step-number-${idx + 1}`}
-                        className="w-12 h-12 rounded-xl bg-[#C5A059] text-[#1A1A1A] font-serif text-xl font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
+                        className="w-12 h-12 rounded-xl bg-[var(--color-accent-gold)] text-[var(--background)] font-serif text-xl font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
                       >
                         {step.stepNumber}
                       </div>
 
                       {/* Pill & Icon Tag */}
                       <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full bg-[#1A1A1A] text-[#E0E0E0] border border-[#333333] text-[11px] font-semibold uppercase tracking-wider">
+                        <span className="px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-[var(--color-border-subtle)] text-[11px] font-semibold uppercase tracking-wider">
                           {step.pillTitle}
                         </span>
-                        <div className="w-8 h-8 rounded-full bg-[#2A2A2A] text-[#C5A059] flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
                           <StepIcon className="w-4 h-4" />
                         </div>
                       </div>
                     </div>
 
                     {/* Step Visual Miniature Illustration */}
-                    <div className="mb-6 h-36 rounded-xl bg-[#1A1A1A] border border-[#333333] overflow-hidden flex items-center justify-center relative p-4 group-hover:border-[#C5A059]/40 transition-colors">
+                    <div className="mb-6 h-36 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] overflow-hidden flex items-center justify-center relative p-4 group-hover:border-[var(--color-accent-gold)]/40 transition-colors">
                       {idx === 0 && (
                         /* Step 1 Visual: Art upload & mailer box */
                         <div className="relative w-full h-full flex items-center justify-around select-none">
@@ -256,20 +256,20 @@ export function FramingJourney() {
                       </p>
                       <h3
                         data-testid={`framing-step-title-${idx + 1}`}
-                        className="font-serif text-2xl font-semibold text-[#F4F1EA] tracking-tight"
+                        className="font-serif text-2xl font-semibold text-[var(--color-ink-primary)] tracking-tight"
                       >
                         {step.title}
                       </h3>
                       <p
                         data-testid={`framing-step-desc-${idx + 1}`}
-                        className="text-sm text-[#E0E0E0] leading-relaxed pt-1"
+                        className="text-sm text-[var(--color-ink-secondary)] leading-relaxed pt-1"
                       >
                         {step.description}
                       </p>
                     </div>
 
                     {/* Step Feature Checklist */}
-                    <ul className="space-y-2.5 pt-2 border-t border-[#333333] text-xs text-[#E0E0E0] mb-6">
+                    <ul className="space-y-2.5 pt-2 border-t border-[var(--color-border-subtle)] text-xs text-[var(--color-ink-secondary)] mb-6">
                       {step.bullets.map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
@@ -283,7 +283,7 @@ export function FramingJourney() {
                   <div className="pt-2">
                     <a
                       href="#curated-collections"
-                      className="inline-flex items-center gap-2 text-xs font-semibold text-[#C5A059] hover:text-[#D4AF37] transition-colors"
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-gold)] hover:text-[#D4AF37] transition-colors"
                     >
                       <span>{step.ctaLabel}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -298,16 +298,16 @@ export function FramingJourney() {
         {/* =========================================================================
             BOTTOM TRUST BANNER
            ========================================================================= */}
-        <div className="mt-12 sm:mt-16 bg-[#242424] rounded-2xl border border-[#333333] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="mt-12 sm:mt-16 bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-full bg-[#2A2A2A] border border-[#333333] flex items-center justify-center text-[#C5A059] shrink-0">
+            <div className="w-12 h-12 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0">
               <Award className="w-6 h-6 stroke-[1.75]" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-semibold text-[#F4F1EA]">
+              <h4 className="font-serif text-lg font-semibold text-[var(--color-ink-primary)]">
                 The Frame Cottage Lifetime Craft Guarantee
               </h4>
-              <p className="text-xs sm:text-sm text-[#E0E0E0]">
+              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)]">
                 If your bespoke frame ever loosens, warps, or fails under normal room conditions, we rebuild it for free.
               </p>
             </div>
@@ -316,7 +316,7 @@ export function FramingJourney() {
           <div className="flex items-center gap-4 shrink-0">
             <a
               href="#atelier-materials"
-              className="px-5 py-2.5 rounded-full bg-[#C5A059] text-[#1A1A1A] text-xs sm:text-sm font-semibold hover:bg-[#B38F48] transition-all shadow-xs"
+              className="px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-[var(--background)] text-xs sm:text-sm font-semibold hover:bg-[#B38F48] transition-all shadow-xs"
             >
               Explore The Atelier Story
             </a>

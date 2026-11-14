@@ -350,7 +350,7 @@ export function HeroCarousel() {
       aria-label="Frame Cottage Bespoke Framing Hero Carousel"
       aria-roledescription="carousel"
       data-testid="hero-carousel"
-      className="relative w-full overflow-hidden bg-[#1A1A1A] border-b border-[#333333] h-[520px] sm:h-[600px] lg:h-[700px] flex items-center"
+      className="relative w-full overflow-hidden bg-[var(--background)] border-b border-[var(--color-border-subtle)] h-[520px] sm:h-[600px] lg:h-[700px] flex items-center transition-colors duration-250"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ export function HeroCarousel() {
           {/* Left Column: Editorial Headline, Subtitle, Dual CTAs & Trust Badge */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
             {/* Museum-style Frosted Pill Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424]/90 border border-[#333333] text-xs font-semibold uppercase tracking-[0.18em] text-[#F4F1EA] shadow-2xs backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)]/90 border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs backdrop-blur-md">
               <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
               <span>{activeSlide.eyebrow}</span>
             </div>
@@ -382,7 +382,7 @@ export function HeroCarousel() {
             {/* Museum Serif Elegant Headline */}
             <h1
               data-testid="hero-headline"
-              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#F4F1EA] leading-[1.08]"
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
             >
               {activeSlide.title}
             </h1>
@@ -390,7 +390,7 @@ export function HeroCarousel() {
             {/* Subheadline */}
             <p
               data-testid="hero-subheadline"
-              className="text-sm sm:text-base lg:text-lg text-[#E0E0E0] leading-relaxed max-w-xl font-normal"
+              className="text-sm sm:text-base lg:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-xl font-normal"
             >
               {activeSlide.subtitle}
             </p>
@@ -400,7 +400,7 @@ export function HeroCarousel() {
               <Link
                 href={activeSlide.primaryCtaLink}
                 data-testid="cta-customise-frame"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md hover:shadow-lg group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md hover:shadow-lg group cursor-pointer"
               >
                 <span>{activeSlide.primaryCtaText}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -409,16 +409,16 @@ export function HeroCarousel() {
               <Link
                 href={activeSlide.secondaryCtaLink}
                 data-testid="cta-explore-collections"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#6B1C23] hover:border-[#C5A059] bg-[#6B1C23]/25 hover:bg-[#6B1C23]/40 text-[#F4F1EA] text-xs sm:text-sm font-medium backdrop-blur-md transition-all shadow-2xs cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#6B1C23] hover:border-[var(--color-accent-gold)] bg-[#6B1C23]/25 hover:bg-[#6B1C23]/40 text-[var(--color-ink-primary)] text-xs sm:text-sm font-medium backdrop-blur-md transition-all shadow-2xs cursor-pointer"
               >
                 <span>{activeSlide.secondaryCtaText}</span>
               </Link>
             </div>
 
             {/* Slide Sub-Badge Trust Signal */}
-            <div className="inline-flex items-center gap-2 pt-2 text-xs text-[#E0E0E0]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span className="font-medium text-[#F4F1EA]">{activeSlide.badgeText}</span>
+            <div className="inline-flex items-center gap-2 pt-2 text-xs text-[var(--color-ink-secondary)]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+              <span className="font-medium text-[var(--color-ink-primary)]">{activeSlide.badgeText}</span>
               <span>• Handcrafted in 5–7 Days</span>
             </div>
           </div>
@@ -436,7 +436,7 @@ export function HeroCarousel() {
         onClick={prevSlide}
         aria-label="Previous slide"
         data-testid="hero-carousel-prev"
-        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#242424]/80 hover:bg-[#2A2A2A] text-[#F4F1EA] border border-[#333333] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-canvas-surface)]/80 hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
@@ -446,7 +446,7 @@ export function HeroCarousel() {
         onClick={nextSlide}
         aria-label="Next slide"
         data-testid="hero-carousel-next"
-        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#242424]/80 hover:bg-[#2A2A2A] text-[#F4F1EA] border border-[#333333] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-canvas-surface)]/80 hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
@@ -456,7 +456,7 @@ export function HeroCarousel() {
         data-testid="hero-carousel-indicators"
         role="tablist"
         aria-label="Carousel slide pagination"
-        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-y-0 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424]/80 backdrop-blur-md border border-[#333333] shadow-xs"
+        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-y-0 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)]/80 backdrop-blur-md border border-[var(--color-border-subtle)] shadow-xs"
       >
         {slides.map((slide, index) => {
           const isActive = index === currentSlide;

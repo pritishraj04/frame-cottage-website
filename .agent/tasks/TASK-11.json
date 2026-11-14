@@ -1,0 +1,40 @@
+{
+  "id": "TASK-11",
+  "title": "Implement Light Mode and Theme Toggle Switcher with State Persistence",
+  "category": "theme-system",
+  "description": "Design and implement a museum-grade Light Mode version of Frame Cottage (warm gallery canvas #FAF8F5, pristine white surfaces, deep charcoal typography, burgundy & gold accents) alongside the existing Dark Mode (#1A1A1A). Add an accessible Theme Toggle button in the header with local storage persistence and zero-flicker hydration.",
+  "acceptanceCriteria": [
+    "globals.css defines responsive theme variables for both Light Mode (:root with #FAF8F5 canvas, #1A1A1A text) and Dark Mode (.dark with #1A1A1A canvas, #F4F1EA text)",
+    "ThemeToggle button with Sun/Moon icons implemented and integrated into SiteHeader and MobileNav",
+    "Theme preference persists across page reloads via localStorage without hydration mismatch flicker",
+    "All page sections (Header, Hero Carousel, Custom Frame Studio, Pills, Trust Bar, Collections, Journey, Atelier, Lookbook, FAQ, Footer) render gracefully in both Light and Dark modes",
+    "Playwright test suite updated to test theme toggling between Light and Dark modes with 100% pass rate",
+    "Screenshots captured in both modes: task-11-light-mode.png and task-11-dark-mode.png"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Configure Light Mode and Dark Mode CSS custom properties in globals.css and layout.tsx",
+      "details": "Set :root to Light Mode (#FAF8F5 base, #FFFFFF surfaces, #1A1A1A text, #E5DFD5 borders) and .dark to Dark Mode (#1A1A1A base, #242424 surfaces, #F4F1EA text). Add anti-flicker inline script in layout.tsx.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build ThemeToggle component and mount in SiteHeader and MobileNav",
+      "details": "Create components/theme/theme-toggle.tsx with Sun/Moon animated transition, localStorage sync, and mount in SiteHeader and MobileNav.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Harmonize all page components for dual Light and Dark mode rendering",
+      "details": "Ensure headers, cards, carousels, frame visualizer, sliders, lookbook pins, and footer render with high contrast and polish in both modes.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Write Playwright tests for theme switching and capture verification screenshots",
+      "details": "Create tests/theme-toggle.spec.ts, run all Playwright tests, and capture task-11-light-mode.png and task-11-dark-mode.png.",
+      "pass": true
+    }
+  ]
+}

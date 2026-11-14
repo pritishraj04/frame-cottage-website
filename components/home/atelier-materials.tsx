@@ -148,18 +148,18 @@ export function GlassComparisonSlider() {
   };
 
   return (
-    <div className="w-full bg-[#242424] rounded-2xl border border-[#333333] p-6 sm:p-8 shadow-sm text-[#F4F1EA]">
+    <div className="w-full bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 shadow-sm text-[var(--color-ink-primary)]">
       {/* Slider Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pb-6 border-b border-[#333333]">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pb-6 border-b border-[var(--color-border-subtle)]">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2A2A2A] border border-[#333333] text-[#C5A059] text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[#C5A059] text-xs font-semibold uppercase tracking-wider mb-2">
             <Eye className="w-3.5 h-3.5" />
             <span>Interactive Glare & UV Simulation</span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#F4F1EA] tracking-tight">
+          <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
             Standard Glare-Prone Glass vs. TruVue® Conservation Acrylic
           </h3>
-          <p className="mt-1 text-xs sm:text-sm text-[#E0E0E0] max-w-2xl">
+          <p className="mt-1 text-xs sm:text-sm text-[var(--color-ink-secondary)] max-w-2xl">
             Drag the handle horizontally to witness how ordinary reflective glass creates milky glare washes and permits fading UV penetration, versus TruVue® museum-grade clarity.
           </p>
         </div>
@@ -174,7 +174,7 @@ export function GlassComparisonSlider() {
               "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
               sliderPosition >= 90
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
-                : "bg-[#2A2A2A] text-[#9E9E9E] border-[#333333] hover:bg-[#333333] hover:text-[#F4F1EA]"
+                : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >
             Standard Glass
@@ -187,7 +187,7 @@ export function GlassComparisonSlider() {
               "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
               sliderPosition > 20 && sliderPosition < 80
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
-                : "bg-[#2A2A2A] text-[#9E9E9E] border-[#333333] hover:bg-[#333333] hover:text-[#F4F1EA]"
+                : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >
             Split 50/50
@@ -200,7 +200,7 @@ export function GlassComparisonSlider() {
               "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
               sliderPosition <= 10
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
-                : "bg-[#2A2A2A] text-[#9E9E9E] border-[#333333] hover:bg-[#333333] hover:text-[#F4F1EA]"
+                : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >
             TruVue® Clarity
@@ -416,7 +416,7 @@ export function AtelierMaterials() {
       id="atelier-materials"
       data-testid="atelier-materials"
       aria-label="The Atelier: Material Transparency & Sustainability"
-      className="w-full bg-[#1A1A1A] py-16 sm:py-24 border-b border-[#333333] text-[#F4F1EA]"
+      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
@@ -426,16 +426,16 @@ export function AtelierMaterials() {
           data-testid="atelier-header"
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Master Guild Workshop Standards</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
             The Atelier: Material Transparency & Sustainability
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#E0E0E0] leading-relaxed font-normal max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
             Deep dive into craft standards: FSC-certified Appalachian hardwoods, corner spline joinery, 4-ply cotton rag mats, and conservation acrylic.
           </p>
         </div>
@@ -451,39 +451,39 @@ export function AtelierMaterials() {
               <div
                 key={pillar.id}
                 data-testid={pillar.testId}
-                className="bg-[#242424] rounded-2xl border border-[#333333] p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[#C5A059] transition-all duration-200 group"
+                className="bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md hover:border-[var(--color-accent-gold)] transition-all duration-200 group"
               >
                 <div>
                   {/* Badge & Icon Row */}
                   <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-[#1A1A1A] text-[#C5A059] border border-[#333333] text-xs font-semibold uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-wider">
                       {pillar.badge}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-[#2A2A2A] text-[#C5A059] border border-[#333333] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)] flex items-center justify-center group-hover:scale-105 transition-transform">
                       <PillarIcon className="w-5 h-5 stroke-[1.75]" />
                     </div>
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#F4F1EA] tracking-tight mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--color-ink-primary)] tracking-tight mb-1">
                     {pillar.title}
                   </h3>
-                  <p className="text-xs uppercase tracking-[0.15em] text-[#C5A059] font-medium mb-3">
+                  <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-accent-gold)] font-medium mb-3">
                     {pillar.tagline}
                   </p>
-                  <p className="text-sm text-[#E0E0E0] leading-relaxed mb-6">
+                  <p className="text-sm text-[var(--color-ink-secondary)] leading-relaxed mb-6">
                     {pillar.description}
                   </p>
 
                   {/* Technical Specifications */}
-                  <div className="bg-[#1A1A1A] rounded-xl border border-[#333333] p-4 space-y-2 mb-4">
+                  <div className="bg-[var(--color-canvas-subtle)] rounded-xl border border-[var(--color-border-subtle)] p-4 space-y-2 mb-4">
                     {pillar.specs.map((spec, sIdx) => (
                       <div
                         key={sIdx}
                         className="flex items-center justify-between text-xs gap-2"
                       >
-                        <span className="text-[#9E9E9E] font-medium">{spec.label}</span>
-                        <span className="text-[#F4F1EA] font-semibold text-right">
+                        <span className="text-[var(--color-ink-muted)] font-medium">{spec.label}</span>
+                        <span className="text-[var(--color-ink-primary)] font-semibold text-right">
                           {spec.value}
                         </span>
                       </div>
@@ -492,8 +492,8 @@ export function AtelierMaterials() {
                 </div>
 
                 {/* Craft Highlight Pill */}
-                <div className="pt-2 border-t border-[#333333] flex items-center gap-2 text-xs text-[#E0E0E0]">
-                  <CheckCircle2 className="w-4 h-4 shrink-0 text-[#C5A059]" />
+                <div className="pt-2 border-t border-[var(--color-border-subtle)] flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
+                  <CheckCircle2 className="w-4 h-4 shrink-0 text-[var(--color-accent-gold)]" />
                   <span className="font-medium">{pillar.highlight}</span>
                 </div>
               </div>

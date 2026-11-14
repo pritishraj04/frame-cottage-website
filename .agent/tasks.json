@@ -68,5 +68,12 @@
     "category": "design-system-overhaul",
     "specFilePath": ".agent/tasks/TASK-10.json",
     "passes": true
+  },
+  {
+    "id": "TASK-11",
+    "title": "Implement Light Mode and Theme Toggle Switcher with State Persistence",
+    "category": "theme-system",
+    "specFilePath": ".agent/tasks/TASK-11.json",
+    "passes": true
   }
 ]

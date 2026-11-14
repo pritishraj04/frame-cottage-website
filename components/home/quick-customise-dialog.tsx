@@ -64,21 +64,21 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
     <Dialog.Content
       data-testid="quick-customise-dialog"
       className={cn(
-        "relative w-full max-w-3xl rounded-2xl bg-[#242424] border border-[#333333] shadow-2xl p-6 sm:p-8 md:p-10",
-        "text-[#F4F1EA] overflow-hidden my-auto",
+        "relative w-full max-w-3xl rounded-2xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-2xl p-6 sm:p-8 md:p-10",
+        "text-[var(--color-ink-primary)] overflow-hidden my-auto",
         "transition-all duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
       )}
     >
       {/* Top decorative badge & close button */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#333333]">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2A2A2A] border border-[#333333] text-xs font-semibold text-[#F4F1EA] shadow-2xs">
+      <div className="flex items-center justify-between pb-4 border-b border-[var(--color-border-subtle)]">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-xs font-semibold text-[var(--color-ink-primary)] shadow-2xs">
           <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
           <span>Quick Atelier Customiser</span>
         </div>
         <Dialog.Close
           data-testid="dialog-close-button"
           aria-label="Close dialog"
-          className="rounded-full p-2 text-[#9E9E9E] hover:text-[#F4F1EA] hover:bg-[#333333] transition-colors cursor-pointer"
+          className="rounded-full p-2 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </Dialog.Close>
@@ -88,13 +88,13 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
       <div className="mt-4">
         <Dialog.Title
           data-testid="dialog-title"
-          className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[#F4F1EA]"
+          className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--color-ink-primary)]"
         >
           {product.name}
         </Dialog.Title>
         <Dialog.Description
           data-testid="dialog-description"
-          className="text-xs sm:text-sm text-[#9E9E9E] mt-1"
+          className="text-xs sm:text-sm text-[var(--color-ink-muted)] mt-1"
         >
           {product.material} • Custom-milled to the millimeter with 99% UV conservation glazing.
         </Dialog.Description>
@@ -105,7 +105,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
         {/* Left Column: Live Frame Mockup Stage */}
         <div
           data-testid="dialog-frame-preview"
-          className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[#1A1A1A] border border-[#333333] relative overflow-hidden"
+          className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[var(--color-canvas-base)] border border-[var(--color-border-subtle)] relative overflow-hidden"
         >
           {/* Frame Outer Moulding */}
           <div
@@ -203,15 +203,15 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex items-center justify-between p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[#C5A059] bg-[#2A2A2A] ring-2 ring-[#C5A059]/40 shadow-xs text-[#F4F1EA]"
-                        : "border-[#333333] bg-[#2A2A2A] hover:bg-[#333333] hover:border-[#C5A059]/50 text-[#E0E0E0]"
+                        ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
+                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50 text-[var(--color-ink-secondary)]"
                     )}
                   >
                     <div>
-                      <p className="text-xs font-semibold text-[#F4F1EA]">
+                      <p className="text-xs font-semibold text-[var(--color-ink-primary)]">
                         {size.label}
                       </p>
-                      <p className="text-[11px] text-[#9E9E9E]">
+                      <p className="text-[11px] text-[var(--color-ink-muted)]">
                         {size.id === "8x10" ? "Standard" : `+$${size.priceDelta}`}
                       </p>
                     </div>
@@ -231,11 +231,11 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
             <div className="flex items-center justify-between mb-2">
               <label
                 id="mat-selector-label"
-                className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]"
+                className="text-xs font-semibold uppercase tracking-wider text-[var(--color-ink-primary)]"
               >
                 2. Archival Mat Style
               </label>
-              <span className="text-xs text-[#9E9E9E]">
+              <span className="text-xs text-[var(--color-ink-muted)]">
                 {currentMat.widthInches}
               </span>
             </div>
@@ -258,14 +258,14 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[#C5A059] bg-[#2A2A2A] ring-2 ring-[#C5A059]/40 shadow-xs text-[#F4F1EA]"
-                        : "border-[#333333] bg-[#2A2A2A] hover:bg-[#333333] hover:border-[#C5A059]/50 text-[#E0E0E0]"
+                        ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
+                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50 text-[var(--color-ink-secondary)]"
                     )}
                   >
-                    <span className="text-xs font-semibold text-[#F4F1EA]">
+                    <span className="text-xs font-semibold text-[var(--color-ink-primary)]">
                       {mat.name.split(" ")[0]} {mat.name.split(" ")[1] || ""}
                     </span>
-                    <span className="text-[11px] text-[#9E9E9E] mt-0.5">
+                    <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
                       {mat.price === 0 ? "Included" : `+$${mat.price}`}
                     </span>
                   </button>
@@ -275,15 +275,15 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
           </div>
 
           {/* Pricing & CTA Summary */}
-          <div className="mt-6 pt-4 border-t border-[#333333] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-6 pt-4 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#9E9E9E] block">
+              <span className="text-[11px] uppercase tracking-wider text-[var(--color-ink-muted)] block">
                 Calculated Atelier Total
               </span>
               <div className="flex items-baseline gap-2">
                 <span
                   data-testid="dialog-total-price"
-                  className="font-serif text-3xl font-bold text-[#C5A059]"
+                  className="font-serif text-3xl font-bold text-[var(--color-accent-gold)]"
                 >
                   ${calculatedPrice}
                 </span>

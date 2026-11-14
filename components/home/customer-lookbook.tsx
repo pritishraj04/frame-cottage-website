@@ -227,7 +227,7 @@ export function CustomerLookbook() {
       id="customer-lookbook"
       data-testid="customer-lookbook"
       aria-label="Customer Homes & Gallery Wall Lookbook"
-      className="w-full bg-[#1A1A1A] py-16 sm:py-24 border-b border-[#333333] text-[#F4F1EA]"
+      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
@@ -237,16 +237,16 @@ export function CustomerLookbook() {
           data-testid="lookbook-header"
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Living with Craft • Real Homes</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
             Customer Homes & Gallery Wall Lookbook
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#E0E0E0] leading-relaxed font-normal max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
             Step inside real collector spaces and curated sanctuaries. Tap the interactive brass pins to discover the frame profiles, archival mats, and customer reviews.
           </p>
         </div>
@@ -268,7 +268,7 @@ export function CustomerLookbook() {
                   "px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2",
                   isSelected
                     ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-md"
-                    : "bg-[#242424] text-[#9E9E9E] border-[#333333] hover:bg-[#2A2A2A] hover:text-[#F4F1EA]"
+                    : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink-primary)]"
                 )}
               >
                 <span>{room.name}</span>
@@ -455,13 +455,13 @@ export function CustomerLookbook() {
                   left: `${Math.min(78, Math.max(22, activeHotspot.x))}%`,
                   top: `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
                 }}
-                className="absolute z-40 -translate-x-1/2 w-[280px] sm:w-[320px] max-w-[90vw] bg-[#242424] rounded-2xl p-4 sm:p-5 shadow-2xl border border-[#333333] transition-all duration-300 animate-in fade-in zoom-in-95 text-[#F4F1EA]"
+                className="absolute z-40 -translate-x-1/2 w-[280px] sm:w-[320px] max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-4 sm:p-5 shadow-2xl border border-[var(--color-border-subtle)] transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
               >
                 {/* Close Button */}
                 <button
                   type="button"
                   onClick={() => setActivePinId(null)}
-                  className="absolute top-3 right-3 p-1 rounded-full text-[#9E9E9E] hover:text-[#F4F1EA] hover:bg-[#333333] transition-colors"
+                  className="absolute top-3 right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors"
                   aria-label="Close card"
                 >
                   <X className="w-4 h-4" />
@@ -471,7 +471,7 @@ export function CustomerLookbook() {
                 <div className="flex items-center gap-2 mb-2 pr-6">
                   <div
                     data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#2A2A2A] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
                   >
                     <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
                     <span>Verified Collector</span>
@@ -484,33 +484,33 @@ export function CustomerLookbook() {
                 </div>
 
                 {/* Customer Review Quote */}
-                <p className="text-xs italic text-[#F4F1EA] leading-relaxed mb-3 font-serif">
+                <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-3 font-serif">
                   {activeHotspot.review}
                 </p>
 
                 {/* Reviewer Name and Location */}
-                <div className="flex items-center gap-1.5 text-[11px] text-[#E0E0E0] mb-3 pb-3 border-b border-[#333333]">
+                <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-ink-secondary)] mb-3 pb-3 border-b border-[var(--color-border-subtle)]">
                   <MapPin className="w-3 h-3 text-[#C5A059]" />
-                  <span className="font-semibold text-[#F4F1EA]">{activeHotspot.customerName}</span>
-                  <span className="text-[#9E9E9E]">•</span>
+                  <span className="font-semibold text-[var(--color-ink-primary)]">{activeHotspot.customerName}</span>
+                  <span className="text-[var(--color-ink-muted)]">•</span>
                   <span>{activeHotspot.location}</span>
                 </div>
 
                 {/* Frame Title & Specs */}
                 <div className="mb-3">
-                  <h4 className="font-serif text-sm font-semibold text-[#F4F1EA]">
+                  <h4 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)]">
                     {activeHotspot.frameTitle}
                   </h4>
-                  <p className="text-[11px] text-[#9E9E9E] mt-0.5">{activeHotspot.specs}</p>
+                  <p className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">{activeHotspot.specs}</p>
                 </div>
 
                 {/* Price and Action Button */}
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <div>
-                    <span className="text-[10px] text-[#9E9E9E] uppercase tracking-wider block">
+                    <span className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
                       From
                     </span>
-                    <span className="font-serif text-base font-bold text-[#C5A059]">
+                    <span className="font-serif text-base font-bold text-[var(--color-accent-gold)]">
                       {activeHotspot.price}
                     </span>
                   </div>
@@ -518,7 +518,7 @@ export function CustomerLookbook() {
                   <Link
                     href={activeHotspot.shopUrl}
                     data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-semibold tracking-wide shadow-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs font-semibold tracking-wide shadow-sm transition-colors"
                   >
                     <span>Shop Frame</span>
                     <ArrowRight className="w-3 h-3" />
@@ -529,10 +529,10 @@ export function CustomerLookbook() {
           </div>
 
           {/* Lookbook Stage Footer Toolbar */}
-          <div className="bg-[#1A1A1A] px-4 sm:px-6 py-3 border-t border-[#333333] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#E0E0E0]">
+          <div className="bg-[var(--color-canvas-subtle)] px-4 sm:px-6 py-3 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[var(--color-ink-secondary)]">
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-[#10B981]" />
-              <span className="font-medium text-[#F4F1EA]">
+              <span className="font-medium text-[var(--color-ink-primary)]">
                 Interactive Hotspots Active:
               </span>
               <span>

@@ -9,17 +9,21 @@
   --color-canvas-surface: #242424;
   --color-canvas-card: #242424;
   --color-canvas-card-elevated: #2A2A2A;
+  --color-canvas-elevated: #323232;
 
   --color-border-subtle: #333333;
+  --color-border-strong: #444444;
   --color-border-prominent: #444444;
 
   --color-burgundy: #6B1C23;
   --color-burgundy-hover: #54161C;
   --color-burgundy-subtle: rgba(107, 28, 35, 0.2);
+  --color-accent-burgundy: #6B1C23;
 
   --color-gold: #C5A059;
   --color-gold-bright: #D4AF37;
   --color-gold-hover: #B38F48;
+  --color-accent-gold: #C5A059;
 
   --color-cream: #F4F1EA;
   --color-ink-primary: #F4F1EA;
@@ -39,6 +43,84 @@
   --font-mono: monospace;
 }
 
+.dark {
+  --background: #1A1A1A;
+  --foreground: #F4F1EA;
+
+  --color-canvas-base: #1A1A1A;
+  --color-canvas-subtle: #2A2A2A;
+  --color-canvas-surface: #242424;
+  --color-canvas-card: #242424;
+  --color-canvas-card-elevated: #2A2A2A;
+  --color-canvas-elevated: #323232;
+
+  --color-border-subtle: #333333;
+  --color-border-strong: #444444;
+  --color-border-prominent: #444444;
+
+  --color-burgundy: #6B1C23;
+  --color-burgundy-hover: #54161C;
+  --color-burgundy-subtle: rgba(107, 28, 35, 0.2);
+  --color-accent-burgundy: #6B1C23;
+
+  --color-gold: #C5A059;
+  --color-gold-bright: #D4AF37;
+  --color-gold-hover: #B38F48;
+  --color-accent-gold: #C5A059;
+
+  --color-cream: #F4F1EA;
+  --color-ink-primary: #F4F1EA;
+  --color-ink-secondary: #E0E0E0;
+  --color-ink-muted: #9E9E9E;
+
+  --color-terracotta: #6B1C23;
+  --color-terracotta-hover: #54161C;
+  --color-brass: #C5A059;
+
+  --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.45), 0 6px 14px -3px rgba(0, 0, 0, 0.35);
+  --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.7), 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.light {
+  --background: #FAF8F5;
+  --foreground: #1A1A1A;
+
+  --color-canvas-base: #FAF8F5;
+  --color-canvas-subtle: #F0ECE1;
+  --color-canvas-surface: #FFFFFF;
+  --color-canvas-card: #FFFFFF;
+  --color-canvas-card-elevated: #F7F4EE;
+  --color-canvas-elevated: #FFFFFF;
+
+  --color-border-subtle: #E8E1D5;
+  --color-border-strong: #D5CCC0;
+  --color-border-prominent: #D5CCC0;
+
+  --color-burgundy: #6B1C23;
+  --color-burgundy-hover: #54161C;
+  --color-burgundy-subtle: rgba(107, 28, 35, 0.1);
+  --color-accent-burgundy: #6B1C23;
+
+  --color-gold: #B38F48;
+  --color-gold-bright: #C5A059;
+  --color-gold-hover: #9E7D3B;
+  --color-accent-gold: #B38F48;
+
+  --color-cream: #FAF8F5;
+  --color-ink-primary: #1A1A1A;
+  --color-ink-secondary: #5C554E;
+  --color-ink-muted: #8F877E;
+
+  --color-terracotta: #6B1C23;
+  --color-terracotta-hover: #54161C;
+  --color-brass: #B38F48;
+
+  --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.12), 0 6px 14px -3px rgba(0, 0, 0, 0.08);
+  --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.18), 0 8px 20px -4px rgba(0, 0, 0, 0.12);
+  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -48,17 +130,21 @@
   --color-canvas-surface: var(--color-canvas-surface);
   --color-canvas-card: var(--color-canvas-card);
   --color-canvas-card-elevated: var(--color-canvas-card-elevated);
+  --color-canvas-elevated: var(--color-canvas-elevated);
 
   --color-border-subtle: var(--color-border-subtle);
+  --color-border-strong: var(--color-border-strong);
   --color-border-prominent: var(--color-border-prominent);
 
   --color-burgundy: var(--color-burgundy);
   --color-burgundy-hover: var(--color-burgundy-hover);
   --color-burgundy-subtle: var(--color-burgundy-subtle);
+  --color-accent-burgundy: var(--color-accent-burgundy);
 
   --color-gold: var(--color-gold);
   --color-gold-bright: var(--color-gold-bright);
   --color-gold-hover: var(--color-gold-hover);
+  --color-accent-gold: var(--color-accent-gold);
 
   --color-cream: var(--color-cream);
   --color-ink-primary: var(--color-ink-primary);
@@ -76,6 +162,10 @@
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
+}
+
+html {
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 body {

@@ -33,7 +33,7 @@ export function CuratedCollections() {
       id="curated-collections"
       data-testid="curated-collections"
       aria-label="Curated Framing Collections"
-      className="w-full bg-[#1A1A1A] py-14 sm:py-20 border-b border-[#333333] text-[#F4F1EA]"
+      className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
@@ -43,14 +43,14 @@ export function CuratedCollections() {
           data-testid="curated-collections-header"
           className="max-w-3xl mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#F4F1EA] mb-3">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-ink-primary)] mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Artisan Milling & Conservation Glazing</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
             Curated Framing Collections
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#E0E0E0] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-[var(--color-ink-secondary)] leading-relaxed">
             Each silhouette is custom-milled to the millimeter from sustainably sourced
             American hardwoods, hand-finished with organic oils or genuine gold leaf,
             and glazed with museum-grade Tru Vue® UV-shield acrylic.
@@ -60,7 +60,7 @@ export function CuratedCollections() {
         {/* =========================================================================
             FILTER TABS: All, Natural Timber, Heritage Gilded, Modern Metal, Gallery Sets
            ========================================================================= */}
-        <div className="flex items-center justify-between gap-4 border-b border-[#333333] pb-4 mb-8 overflow-x-auto scrollbar-none">
+        <div className="flex items-center justify-between gap-4 border-b border-[var(--color-border-subtle)] pb-4 mb-8 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
             aria-label="Collection categories"
@@ -80,7 +80,7 @@ export function CuratedCollections() {
                     "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer",
                     isActive
                       ? "bg-[#6B1C23] text-[#F4F1EA] border border-[#6B1C23] shadow-sm"
-                      : "bg-[#242424] text-[#9E9E9E] hover:text-[#F4F1EA] hover:bg-[#2A2A2A] border border-[#333333]"
+                      : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)]"
                   )}
                 >
                   <span>{tab.label}</span>
@@ -89,7 +89,7 @@ export function CuratedCollections() {
                       "px-1.5 py-0.2 rounded-full text-[10px] font-semibold",
                       isActive
                         ? "bg-[#54161C] text-[#F4F1EA]"
-                        : "bg-[#1A1A1A] text-[#9E9E9E]"
+                        : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)]"
                     )}
                   >
                     {tab.count}
@@ -100,7 +100,7 @@ export function CuratedCollections() {
           </div>
 
           {/* Quick Stats Pill */}
-          <div className="hidden md:flex items-center gap-1.5 text-xs text-[#9E9E9E]">
+          <div className="hidden md:flex items-center gap-1.5 text-xs text-[var(--color-ink-muted)]">
             <Layers className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>{filteredProducts.length} Atelier Silhouettes</span>
           </div>

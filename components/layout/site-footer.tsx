@@ -42,24 +42,24 @@ export function SiteFooter() {
       id="site-footer"
       data-testid="site-footer"
       aria-label="Site Footer"
-      className="w-full bg-[#141414] text-[#F4F1EA] border-t border-[#333333] relative z-10"
+      className="w-full bg-[var(--color-canvas-base)] text-[var(--color-ink-primary)] border-t border-[var(--color-border-subtle)] relative z-10 transition-colors duration-250"
     >
       {/* =====================================================================
           TOP NEWSLETTER & ATELIER PROMISE BANNER
          ===================================================================== */}
-      <div className="border-b border-[#333333] py-12 sm:py-16">
+      <div className="border-b border-[var(--color-border-subtle)] py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Newsletter Hook */}
             <div className="lg:col-span-6 space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-[11px] font-semibold uppercase tracking-widest shadow-2xs">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-[11px] font-semibold uppercase tracking-widest shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>The Atelier Circle</span>
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#F4F1EA] tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
                 Receive 10% Off Your Inaugural Bespoke Frame
               </h3>
-              <p className="text-xs sm:text-sm text-[#E0E0E0] max-w-lg leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] max-w-lg leading-relaxed">
                 Join our private collector society for archival framing advice, seasonal hardwood profile drops, and curated gallery wall editorial stories.
               </p>
             </div>
@@ -74,7 +74,7 @@ export function SiteFooter() {
               >
                 <div className="flex flex-col sm:flex-row gap-2">
                   <div className="relative flex-1">
-                    <Mail className="w-4 h-4 text-[#9E9E9E] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <Mail className="w-4 h-4 text-[var(--color-ink-muted)] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                     <input
                       type="email"
                       value={email}
@@ -85,14 +85,14 @@ export function SiteFooter() {
                       placeholder="Enter your email address..."
                       data-testid="footer-newsletter-input"
                       aria-label="Email address for newsletter"
-                      className="w-full pl-10 pr-4 py-3 rounded-full bg-[#1F1F1F] border border-[#333333] text-sm text-[#F4F1EA] placeholder-[#9E9E9E] focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] transition-colors shadow-2xs"
+                      className="w-full pl-10 pr-4 py-3 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:border-[var(--color-accent-gold)] focus:ring-1 focus:ring-[var(--color-accent-gold)] transition-colors shadow-2xs"
                     />
                   </div>
 
                   <button
                     type="submit"
                     data-testid="footer-newsletter-submit"
-                    className="px-6 py-3 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
+                    className="px-6 py-3 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -335,41 +335,41 @@ export function SiteFooter() {
       {/* =====================================================================
           BOTTOM TRUST BAR, FSC CERTIFICATION & LEGAL
          ===================================================================== */}
-      <div className="border-t border-[#333333] bg-[#0F0F0F] py-8">
+      <div className="border-t border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             {/* FSC Certification Badge */}
             <div
               data-testid="footer-fsc-badge"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#1A1A1A] border border-[#333333] text-[#9E9E9E] shadow-2xs"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-muted)] shadow-2xs"
             >
               <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
               <span>
-                <strong className="text-[#F4F1EA]">FSC® C104829 Certified:</strong> Responsibly Managed Appalachian Forests
+                <strong className="text-[var(--color-ink-primary)]">FSC® C104829 Certified:</strong> Responsibly Managed Appalachian Forests
               </span>
             </div>
 
             {/* Payment Trust Badges */}
             <div
               data-testid="footer-payment-badges"
-              className="flex flex-wrap items-center gap-2 text-[11px] text-[#9E9E9E]"
+              className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--color-ink-muted)]"
             >
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#1A1A1A] border border-[#333333]">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)]">
                 <CreditCard className="w-3.5 h-3.5 text-[#C5A059]" />
-                <span className="font-medium text-[#F4F1EA]">Visa • Mastercard • Amex</span>
+                <span className="font-medium text-[var(--color-ink-primary)]">Visa • Mastercard • Amex</span>
               </div>
-              <div className="px-2.5 py-1 rounded-md bg-[#1A1A1A] border border-[#333333] font-medium text-[#F4F1EA]">
+              <div className="px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] font-medium text-[var(--color-ink-primary)]">
                 Apple Pay
               </div>
-              <div className="px-2.5 py-1 rounded-md bg-[#1A1A1A] border border-[#333333] font-medium text-[#F4F1EA]">
+              <div className="px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] font-medium text-[var(--color-ink-primary)]">
                 Google Pay
               </div>
-              <div className="px-2.5 py-1 rounded-md bg-[#1A1A1A] border border-[#333333] font-medium text-[#F4F1EA]">
+              <div className="px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] font-medium text-[var(--color-ink-primary)]">
                 Klarna / Affirm
               </div>
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#1A1A1A] border border-[#333333] text-[#C5A059]">
+              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[#C5A059]">
                 <Lock className="w-3 h-3" />
-                <span className="text-[10px] font-semibold text-[#F4F1EA]">256-Bit SSL Encrypted</span>
+                <span className="text-[10px] font-semibold text-[var(--color-ink-primary)]">256-Bit SSL Encrypted</span>
               </div>
             </div>
           </div>

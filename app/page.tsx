@@ -12,7 +12,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#1A1A1A] text-[#F4F1EA]">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)]">
       <SiteHeader />
       <main className="flex-1 w-full flex flex-col">
         <HeroCarousel />

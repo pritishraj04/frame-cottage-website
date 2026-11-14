@@ -85,20 +85,20 @@ export function CategoryPills({
     <section
       aria-label="Visual Category Discovery"
       data-testid="category-pills"
-      className="w-full bg-[#1A1A1A] py-10 lg:py-14 border-b border-[#333333] text-[#F4F1EA]"
+      className="w-full bg-[var(--background)] py-10 lg:py-14 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Title and Scroll Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#F4F1EA] mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
               <span>Curated by Silhouette & Craft</span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#F4F1EA] tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
               Visual Category Discovery
             </h2>
-            <p className="mt-1.5 text-xs sm:text-sm text-[#E0E0E0] max-w-xl">
+            <p className="mt-1.5 text-xs sm:text-sm text-[var(--color-ink-secondary)] max-w-xl">
               Explore bespoke mouldings across authentic North American hardwoods, spun metals, and heirloom arrangements.
             </p>
           </div>
@@ -110,7 +110,7 @@ export function CategoryPills({
               onClick={() => scroll("left")}
               data-testid="category-scroll-prev"
               aria-label="Scroll categories left"
-              className="w-9 h-9 rounded-full border border-[#333333] hover:border-[#C5A059] bg-[#242424] hover:bg-[#2A2A2A] flex items-center justify-center text-[#F4F1EA] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -119,7 +119,7 @@ export function CategoryPills({
               onClick={() => scroll("right")}
               data-testid="category-scroll-next"
               aria-label="Scroll categories right"
-              className="w-9 h-9 rounded-full border border-[#333333] hover:border-[#C5A059] bg-[#242424] hover:bg-[#2A2A2A] flex items-center justify-center text-[#F4F1EA] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -152,11 +152,11 @@ export function CategoryPills({
                 <div
                   className={`relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full p-1 transition-all duration-300 ${
                     isSelected
-                      ? "ring-2 ring-[#C5A059] ring-offset-2 ring-offset-[#1A1A1A] scale-105 shadow-md"
-                      : "ring-1 ring-[#333333] hover:ring-[#C5A059]/60 hover:scale-105 shadow-2xs"
+                      ? "ring-2 ring-[var(--color-accent-gold)] ring-offset-2 ring-offset-[var(--background)] scale-105 shadow-md"
+                      : "ring-1 ring-[var(--color-border-subtle)] hover:ring-[var(--color-accent-gold)]/60 hover:scale-105 shadow-2xs"
                   }`}
                 >
-                  <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[#242424]">
+                  <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[var(--color-canvas-surface)]">
                     <CategorySwatch id={category.id} />
                   </div>
                 </div>
@@ -166,8 +166,8 @@ export function CategoryPills({
                   data-testid={`category-pill-label-${category.id}`}
                   className={`mt-3 text-xs sm:text-sm tracking-tight text-center transition-colors max-w-[110px] sm:max-w-[130px] line-clamp-1 ${
                     isSelected
-                      ? "text-[#F4F1EA] font-bold"
-                      : "text-[#E0E0E0] font-medium group-hover:text-[#F4F1EA]"
+                      ? "text-[var(--color-ink-primary)] font-bold"
+                      : "text-[var(--color-ink-secondary)] font-medium group-hover:text-[var(--color-ink-primary)]"
                   }`}
                 >
                   {category.name}

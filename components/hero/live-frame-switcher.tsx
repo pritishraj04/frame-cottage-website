@@ -39,13 +39,13 @@ export function LiveFrameSwitcher() {
   return (
     <div
       data-testid="live-frame-switcher"
-      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border border-[#333333] bg-[#242424] shadow-2xl overflow-hidden"
+      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden transition-colors duration-250"
     >
       {/* Top Bar: Room Context Toggle & Live Spec Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-[#333333] bg-[#1F1F1F]">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[#C5A059] animate-pulse" />
-          <span className="text-xs font-semibold tracking-wider uppercase text-[#9E9E9E]">
+          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
+          <span className="text-xs font-semibold tracking-wider uppercase text-[var(--color-ink-muted)]">
             Interactive Atelier Island
           </span>
         </div>
@@ -54,7 +54,7 @@ export function LiveFrameSwitcher() {
         <div
           role="radiogroup"
           aria-label="Room context preview"
-          className="inline-flex p-1 rounded-full bg-[#141414] border border-[#333333]"
+          className="inline-flex p-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)]"
         >
           <button
             type="button"
@@ -65,8 +65,8 @@ export function LiveFrameSwitcher() {
             className={cn(
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
               !isRoom
-                ? "bg-[#2A2A2A] text-[#F4F1EA] shadow-xs"
-                : "text-[#9E9E9E] hover:text-[#F4F1EA]"
+                ? "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] shadow-xs"
+                : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
             )}
           >
             <Sun className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -82,7 +82,7 @@ export function LiveFrameSwitcher() {
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
               isRoom
                 ? "bg-[#2A332B] text-[#F5F5F7] shadow-xs"
-                : "text-[#9E9E9E] hover:text-[#F4F1EA]"
+                : "text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
             )}
           >
             <Lamp className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -97,7 +97,7 @@ export function LiveFrameSwitcher() {
         className={cn(
           "relative min-h-[380px] sm:min-h-[440px] flex items-center justify-center p-6 sm:p-10 transition-colors duration-500 overflow-hidden",
           !isRoom
-            ? "bg-[#1A1A1A] text-[#F4F1EA]"
+            ? "bg-[var(--color-canvas-base)] text-[var(--color-ink-primary)]"
             : "bg-gradient-to-b from-[#1E241F] via-[#161B17] to-[#111412] text-[#FAF7F2]"
         )}
       >
@@ -130,7 +130,7 @@ export function LiveFrameSwitcher() {
           className={cn(
             "absolute top-4 left-4 sm:top-5 sm:left-5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all backdrop-blur-sm",
             !isRoom
-              ? "bg-[#242424]/90 text-[#E0E0E0] border border-[#333333]"
+              ? "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-secondary)] border border-[var(--color-border-subtle)]"
               : "bg-[#2A332B]/90 text-[#D8CFBF] border border-[#3E4A3F]"
           )}
         >
@@ -282,30 +282,30 @@ export function LiveFrameSwitcher() {
           className={cn(
             "absolute bottom-3 sm:bottom-4 px-3.5 py-1.5 rounded-full text-xs font-medium backdrop-blur-md transition-all flex items-center gap-2",
             !isRoom
-              ? "bg-[#242424]/90 text-[#F4F1EA] border border-[#333333] shadow-md"
+              ? "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] shadow-md"
               : "bg-[#1E241F]/90 text-[#FAF7F2] border border-[#3E4A3F] shadow-md"
           )}
         >
           <span className="font-semibold">{currentMoulding.name}</span>
           <span className="text-[#C5A059]">•</span>
-          <span className="text-[#E0E0E0] dark:text-[#D8CFBF]">
+          <span className="text-[var(--color-ink-secondary)]">
             {currentMat.name}
           </span>
         </div>
       </div>
 
       {/* Interactive Controls Island */}
-      <div className="p-5 sm:p-6 space-y-5 bg-[#242424] text-[#F4F1EA]">
+      <div className="p-5 sm:p-6 space-y-5 bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]">
         {/* Row 1: Moulding Selection */}
         <div className="space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               id="moulding-picker-label"
-              className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]"
+              className="text-xs font-semibold uppercase tracking-wider text-[var(--color-ink-primary)]"
             >
               1. Choose Solid Hardwood Moulding
             </label>
-            <span className="text-xs text-[#9E9E9E]">
+            <span className="text-xs text-[var(--color-ink-muted)]">
               {currentMoulding.dimensions}
             </span>
           </div>
@@ -329,8 +329,8 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 group text-left cursor-pointer",
                     isSelected
-                      ? "border-[#C5A059] bg-[#2A2A2A] ring-2 ring-[#C5A059]/40 shadow-xs text-[#F4F1EA]"
-                      : "border-[#333333] hover:border-[#C5A059]/60 bg-[#1F1F1F] text-[#E0E0E0] hover:bg-[#2A2A2A]"
+                      ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
+                      : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/50 text-[var(--color-ink-secondary)] hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
                   {/* Swatch Pill with Realistic Gradient */}
@@ -339,7 +339,7 @@ export function LiveFrameSwitcher() {
                       style={{ background: m.swatchGradient }}
                       className={cn(
                         "block w-7 h-7 rounded-full shadow-xs border border-black/15 transition-transform group-hover:scale-105",
-                        isSelected && "ring-2 ring-offset-1 ring-offset-[#242424] ring-[#C5A059]"
+                        isSelected && "ring-2 ring-offset-1 ring-offset-[var(--color-canvas-surface)] ring-[#C5A059]"
                       )}
                     />
                     {isSelected && (
@@ -348,10 +348,10 @@ export function LiveFrameSwitcher() {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs font-medium text-[#F4F1EA] leading-tight line-clamp-1">
+                  <span className="text-xs font-medium text-[var(--color-ink-primary)] leading-tight line-clamp-1">
                     {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
                   </span>
-                  <span className="text-[11px] text-[#9E9E9E] mt-0.5 font-normal">
+                  <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5 font-normal">
                     ${m.basePrice}
                   </span>
                 </button>
@@ -365,11 +365,11 @@ export function LiveFrameSwitcher() {
           <div className="flex items-center justify-between">
             <label
               id="mat-picker-label"
-              className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]"
+              className="text-xs font-semibold uppercase tracking-wider text-[var(--color-ink-primary)]"
             >
               2. Select Archival Matting Margin
             </label>
-            <span className="text-xs text-[#9E9E9E]">4-Ply Cotton Rag</span>
+            <span className="text-xs text-[var(--color-ink-muted)]">4-Ply Cotton Rag</span>
           </div>
 
           <div
@@ -391,12 +391,12 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border transition-all duration-200 cursor-pointer",
                     isSelected
-                      ? "border-[#C5A059] bg-[#2A2A2A] text-[#F4F1EA] ring-2 ring-[#C5A059]/40 font-medium"
-                      : "border-[#333333] hover:border-[#C5A059]/60 bg-[#1F1F1F] text-[#9E9E9E] hover:text-[#F4F1EA]"
+                      ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] ring-2 ring-[var(--color-accent-gold)]/40 font-medium"
+                      : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/50 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
                   )}
                 >
                   <span className="text-xs font-medium">{mat.name}</span>
-                  <span className="text-[11px] text-[#9E9E9E] mt-0.5">
+                  <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
                     {mat.price === 0 ? "Included" : `+$${mat.price}`}
                   </span>
                 </button>
@@ -406,20 +406,20 @@ export function LiveFrameSwitcher() {
         </div>
 
         {/* Row 3: Price Display & Action CTAs */}
-        <div className="pt-4 border-t border-[#333333] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="pt-4 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div data-testid="frame-price-display" className="space-y-0.5">
             <div className="flex items-baseline gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#9E9E9E]">
+              <span className="text-xs uppercase tracking-wider text-[var(--color-ink-muted)]">
                 Total Price:
               </span>
               <span
                 data-testid="frame-price-amount"
-                className="font-serif text-2xl sm:text-3xl font-bold text-[#C5A059]"
+                className="font-serif text-2xl sm:text-3xl font-bold text-[var(--color-accent-gold)]"
               >
                 ${totalPrice}
               </span>
             </div>
-            <p className="text-[11px] text-[#9E9E9E]">
+            <p className="text-[11px] text-[var(--color-ink-muted)]">
               Includes {currentMoulding.name} (${currentMoulding.basePrice})
               {currentMat.price > 0 && ` + Mat ($${currentMat.price})`} + UV
               Acrylic
@@ -431,7 +431,7 @@ export function LiveFrameSwitcher() {
             <Link
               href={`/customizer?moulding=${mouldingId}&mat=${matId}`}
               data-testid="cta-customize"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-xs"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-xs"
             >
               <Sliders className="w-4 h-4" />
               <span>Customize This Frame</span>
@@ -440,7 +440,7 @@ export function LiveFrameSwitcher() {
             <Link
               href="/upload"
               data-testid="cta-upload"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#444444] hover:border-[#C5A059] bg-[#2A2A2A] hover:bg-[#333333] text-[#F4F1EA] text-xs sm:text-sm font-medium transition-colors"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[var(--color-border-strong)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] hover:bg-[var(--color-canvas-card-elevated)] text-[var(--color-ink-primary)] text-xs sm:text-sm font-medium transition-colors"
             >
               <Upload className="w-4 h-4 text-[#C5A059]" />
               <span>Upload Your Photo</span>
@@ -449,7 +449,7 @@ export function LiveFrameSwitcher() {
         </div>
 
         {/* Trust Note */}
-        <div className="flex items-center justify-between pt-1 text-[11px] text-[#9E9E9E]">
+        <div className="flex items-center justify-between pt-1 text-[11px] text-[var(--color-ink-muted)]">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>99% UV-Shielding Museum Glass Included</span>
