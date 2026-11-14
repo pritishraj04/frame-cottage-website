@@ -163,33 +163,33 @@ export function FramingJourney() {
                         /* Step 1 Visual: Art upload & mailer box */
                         <div className="relative w-full h-full flex items-center justify-around select-none">
                           {/* Digital Upload Phone/Tablet preview */}
-                          <div className="w-20 h-28 rounded-lg bg-[#242424] border border-[#333333] shadow-xs p-1.5 flex flex-col items-center justify-between">
-                            <div className="w-full h-16 rounded bg-[#1A1A1A] border border-dashed border-[#333333] flex flex-col items-center justify-center gap-1">
-                              <UploadCloud className="w-5 h-5 text-[#C5A059]" />
-                              <span className="text-[8px] font-medium text-[#9E9E9E]">300+ DPI</span>
+                          <div className="w-20 h-28 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-1.5 flex flex-col items-center justify-between">
+                            <div className="w-full h-16 rounded bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-subtle)] flex flex-col items-center justify-center gap-1">
+                              <UploadCloud className="w-5 h-5 text-[var(--color-accent-gold)]" />
+                              <span className="text-[8px] font-medium text-[var(--color-ink-muted)]">300+ DPI</span>
                             </div>
-                            <div className="w-full flex items-center justify-between text-[7px] text-[#9E9E9E] font-medium pt-1 border-t border-[#333333]">
+                            <div className="w-full flex items-center justify-between text-[7px] text-[var(--color-ink-muted)] font-medium pt-1 border-t border-[var(--color-border-subtle)]">
                               <span>Digital</span>
-                              <span className="text-[#C5A059] font-bold">12-Color</span>
+                              <span className="text-[var(--color-accent-gold)] font-bold">12-Color</span>
                             </div>
                           </div>
 
-                          <div className="flex flex-col items-center justify-center text-[#9E9E9E]">
-                            <span className="text-[10px] italic text-[#9E9E9E]">or</span>
-                            <div className="w-6 h-[1px] bg-[#333333] my-1" />
+                          <div className="flex flex-col items-center justify-center text-[var(--color-ink-muted)]">
+                            <span className="text-[10px] italic text-[var(--color-ink-muted)]">or</span>
+                            <div className="w-6 h-[1px] bg-[var(--color-border-subtle)] my-1" />
                           </div>
 
                           {/* Physical Mailer Envelope / Box */}
-                          <div className="w-24 h-24 rounded-lg bg-[#242424] border border-[#333333] shadow-xs p-2 flex flex-col justify-between relative">
-                            <div className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[#C5A059]/20 border border-[#C5A059] flex items-center justify-center">
-                              <ShieldCheck className="w-2 h-2 text-[#C5A059]" />
+                          <div className="w-24 h-24 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between relative">
+                            <div className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[var(--color-accent-gold)]/20 border border-[var(--color-accent-gold)] flex items-center justify-center">
+                              <ShieldCheck className="w-2 h-2 text-[var(--color-accent-gold)]" />
                             </div>
-                            <Mail className="w-5 h-5 text-[#C5A059]" />
+                            <Mail className="w-5 h-5 text-[var(--color-accent-gold)]" />
                             <div className="space-y-0.5">
-                              <p className="text-[8px] font-bold text-[#F4F1EA] uppercase tracking-wider">
+                              <p className="text-[8px] font-bold text-[var(--color-ink-primary)] uppercase tracking-wider">
                                 Pre-Paid Mailer
                               </p>
-                              <p className="text-[7px] text-[#9E9E9E]">Insured up to $5,000</p>
+                              <p className="text-[7px] text-[var(--color-ink-muted)]">Insured up to $5,000</p>
                             </div>
                           </div>
                         </div>
@@ -198,15 +198,15 @@ export function FramingJourney() {
                       {idx === 1 && (
                         /* Step 2 Visual: Bespoke Customiser with frame moulding & mat beveled cut */
                         <div className="relative w-full h-full flex items-center justify-center select-none">
-                          <div className="w-44 h-28 rounded-lg bg-[#242424] border-4 border-[#3D2817] shadow-md p-2 flex items-center justify-center relative">
+                          <div className="w-44 h-28 rounded-lg bg-[var(--color-canvas-surface)] border-4 border-[#3D2817] shadow-md p-2 flex items-center justify-center relative">
                             {/* Beveled Mat border */}
                             <div className="w-full h-full bg-[#F4F1EA] border-2 border-[#E0DCD3] p-2 flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]">
-                              <div className="w-full h-full bg-[#1A1A1A] rounded flex flex-col items-center justify-center text-center p-1">
-                                <Sparkles className="w-4 h-4 text-[#C5A059] mb-1" />
-                                <span className="text-[8px] italic text-[#F4F1EA]">
+                              <div className="w-full h-full bg-[var(--color-canvas-subtle)] rounded flex flex-col items-center justify-center text-center p-1">
+                                <Sparkles className="w-4 h-4 text-[var(--color-accent-gold)] mb-1" />
+                                <span className="text-[8px] italic text-[var(--color-ink-primary)]">
                                   TruVue® Glazing
                                 </span>
-                                <span className="text-[6.5px] uppercase tracking-wider text-[#C5A059]">
+                                <span className="text-[6.5px] uppercase tracking-wider text-[var(--color-accent-gold)]">
                                   4-Ply Cotton Core
                                 </span>
                               </div>
@@ -229,20 +229,20 @@ export function FramingJourney() {
                             <div className="w-16 h-3 border-t border-l border-r border-[#C5A059] -mt-1" />
                           </div>
                           {/* Framed Artwork Ready to Hang */}
-                          <div className="w-36 h-20 bg-[#242424] rounded p-1 shadow-lg border border-[#333333] flex items-center justify-center">
-                            <div className="w-full h-full bg-[#1A1A1A] rounded-xs flex items-center justify-between px-2.5">
+                          <div className="w-36 h-20 bg-[var(--color-canvas-surface)] rounded p-1 shadow-lg border border-[var(--color-border-subtle)] flex items-center justify-center">
+                            <div className="w-full h-full bg-[var(--color-canvas-subtle)] rounded-xs flex items-center justify-between px-2.5">
                               <div className="text-left">
-                                <p className="text-[8px] font-sans font-bold text-[#F4F1EA]">
+                                <p className="text-[8px] font-sans font-bold text-[var(--color-ink-primary)]">
                                   Ready to Hang
                                 </p>
-                                <p className="text-[6.5px] text-[#9E9E9E]">
+                                <p className="text-[6.5px] text-[var(--color-ink-muted)]">
                                   Brass Hardware Included
                                 </p>
                               </div>
-                              <CheckCircle2 className="w-4 h-4 text-[#C5A059]" />
+                              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-gold)]" />
                             </div>
                           </div>
-                          <span className="mt-1 text-[8px] font-medium text-[#C5A059]">
+                          <span className="mt-1 text-[8px] font-medium text-[var(--color-accent-gold)]">
                             5–7 Days Workshop Dispatch
                           </span>
                         </div>

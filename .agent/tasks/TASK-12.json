@@ -1,0 +1,40 @@
+{
+  "id": "TASK-12",
+  "title": "Fix Light Theme Adaptations for Atelier 50/50 Glass Slider, Lookbook Cards, and Hardcoded Surfaces",
+  "category": "theme-refinement",
+  "description": "Fix sections that were not properly adapting to Light Theme: (1) Replace hardcoded dark background and border in Atelier Glass Comparison Slider (50/50 view) with adaptive gallery wall gradient and border tokens. (2) Replace hardcoded #242424 and #F4F1EA in Customer Lookbook's 'Featured in this Room' cards with semantic canvas and ink variables. (3) Audit and replace remaining hardcoded dark surfaces in frame cards, curated collections, framing journey, and footer.",
+  "acceptanceCriteria": [
+    "AtelierMaterials 50/50 slider stage adapts cleanly to Light Mode with warm gallery wall tones (#F4EFE6 to #DFD5C2) and border-[var(--color-border-subtle)]",
+    "Customer Lookbook 'Featured in this Room' cards adapt cleanly to Light Mode with white surface background (#FFFFFF), dark ink text (#1A1A1A), and subtle taupe borders (#E8E1D5)",
+    "FrameCard image stage uses bg-[var(--color-canvas-subtle)] instead of hardcoded bg-[#1A1A1A]",
+    "FramingJourney step illustrations, CuratedCollections footer divider, and SiteFooter use semantic tokens",
+    "All Playwright tests pass (32/32)",
+    "Light mode screenshots updated and verified at .agent/screenshots/task-12-light-mode-fixed.png"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Fix AtelierMaterials Glass Comparison Slider background and borders for Light Mode",
+      "details": "Update slider stage in components/home/atelier-materials.tsx to use adaptive gradient and border-[var(--color-border-subtle)].",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Fix CustomerLookbook 'Featured in this Room' cards and stage border for Light Mode",
+      "details": "Update components/home/customer-lookbook.tsx cards to use bg-[var(--color-canvas-surface)], text-[var(--color-ink-primary)], and border-[var(--color-border-subtle)].",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Audit and fix FrameCard, CuratedCollections, and FramingJourney hardcoded classes",
+      "details": "Replace any remaining hardcoded dark classes with semantic canvas and ink CSS variables.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Run Playwright test suite and capture verification screenshots",
+      "details": "Run npx playwright test and capture task-12-light-mode-fixed.png.",
+      "pass": true
+    }
+  ]
+}

@@ -75,5 +75,12 @@
     "category": "theme-system",
     "specFilePath": ".agent/tasks/TASK-11.json",
     "passes": true
+  },
+  {
+    "id": "TASK-12",
+    "title": "Fix Light Theme Adaptations for Atelier 50/50 Glass Slider, Lookbook Cards, and Hardcoded Surfaces",
+    "category": "theme-refinement",
+    "specFilePath": ".agent/tasks/TASK-12.json",
+    "passes": true
   }
 ]

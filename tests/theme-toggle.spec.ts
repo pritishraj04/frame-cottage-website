@@ -49,6 +49,14 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     expect(fs.existsSync(".agent/screenshots/task-11-light-mode.png")).toBe(true);
     expect(fs.statSync(".agent/screenshots/task-11-light-mode.png").size).toBeGreaterThan(40000);
 
+    // Capture Task-12 Light Mode Fixed Screenshot
+    await page.screenshot({
+      path: ".agent/screenshots/task-12-light-mode-fixed.png",
+      fullPage: true,
+    });
+    expect(fs.existsSync(".agent/screenshots/task-12-light-mode-fixed.png")).toBe(true);
+    expect(fs.statSync(".agent/screenshots/task-12-light-mode-fixed.png").size).toBeGreaterThan(40000);
+
     // 4. Verify LocalStorage Persistence across Page Reload (Light Mode)
     await page.reload();
     await expect(page.locator("html")).toHaveClass(/light/);
@@ -104,5 +112,30 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
       localStorage.getItem("frame-cottage-theme")
     );
     expect(isLightInStorage).toBe("light");
+  });
+
+  test("adapts Atelier 50/50 slider and Customer Lookbook cards cleanly to light mode", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    // Switch to light mode
+    await page.getByTestId("header-theme-toggle").click();
+    await expect(page.locator("html")).toHaveClass(/light/);
+
+    // Lookbook room cards - verify card title color is dark ink #1A1A1A (rgb(26, 26, 26))
+    const lookbook = page.getByTestId("customer-lookbook");
+    await lookbook.scrollIntoViewIfNeeded();
+    await expect(lookbook).toBeVisible();
+
+    const lookbookCardTitle = lookbook.locator("h5").first();
+    await expect(lookbookCardTitle).toHaveCSS("color", "rgb(26, 26, 26)");
+
+    // Atelier Materials slider stage
+    const atelier = page.getByTestId("atelier-materials");
+    await atelier.scrollIntoViewIfNeeded();
+    await expect(atelier).toBeVisible();
+    const standardPanel = page.getByTestId("standard-glass-panel");
+    await expect(standardPanel).toBeVisible();
+    await expect(standardPanel).toHaveCSS("background-color", "rgb(240, 236, 225)"); // #F0ECE1 (canvas-subtle)
   });
 });

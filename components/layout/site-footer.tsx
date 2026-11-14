@@ -42,7 +42,7 @@ export function SiteFooter() {
       id="site-footer"
       data-testid="site-footer"
       aria-label="Site Footer"
-      className="w-full bg-[var(--color-canvas-base)] text-[var(--color-ink-primary)] border-t border-[var(--color-border-subtle)] relative z-10 transition-colors duration-250"
+      className="w-full dark:bg-[#141414] bg-[#F0ECE1] text-[var(--color-ink-primary)] border-t border-[var(--color-border-subtle)] relative z-10 transition-colors duration-250"
     >
       {/* =====================================================================
           TOP NEWSLETTER & ATELIER PROMISE BANNER
@@ -122,7 +122,7 @@ export function SiteFooter() {
                   </div>
                 )}
 
-                <p className="text-[11px] text-[#9E9E9E]">
+                <p className="text-[11px] text-[var(--color-ink-muted)]">
                   By subscribing, you agree to our Privacy Policy. Zero spam, ever.
                 </p>
               </form>
@@ -140,22 +140,22 @@ export function SiteFooter() {
           <div data-testid="footer-brand-story" className="lg:col-span-4 space-y-4">
             <Link
               href="/"
-              className="font-serif tracking-[0.2em] text-xl font-semibold text-[#F4F1EA] hover:text-[#C5A059] transition-colors inline-block"
+              className="font-serif tracking-[0.2em] text-xl font-semibold text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors inline-block"
             >
               FRAME COTTAGE
             </Link>
 
-            <p className="text-xs sm:text-sm text-[#E0E0E0] leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed max-w-sm">
               Handcrafting museum-grade bespoke frames, multi-aperture gallery walls, and archival art preservation. Every profile is shaped from sustainably harvested Appalachian solid hardwoods, joined with hardwood splines, and glazed with 99% UV-protective TruVue® conservation acrylic.
             </p>
 
             {/* Guild Accreditations */}
             <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-2 text-xs text-[#E0E0E0]">
+              <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
                 <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
                 <span>100% Solid Appalachian Hardwoods • No MDF or Faux Veneers</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#E0E0E0]">
+              <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
                 <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
                 <span>100-Year Lifetime Archival Craftsmanship Guarantee</span>
               </div>
@@ -166,11 +166,11 @@ export function SiteFooter() {
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-custom-framing"
-              className="text-xs uppercase tracking-[0.16em] font-semibold text-[#F4F1EA]"
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
               Custom Framing
             </h4>
-            <ul className="space-y-2 text-xs text-[#9E9E9E]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
               <li>
                 <Link href="/custom-framing" className="hover:text-[#C5A059] transition-colors">
                   Digital Upload & Giclée
@@ -208,11 +208,11 @@ export function SiteFooter() {
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-curated-styles"
-              className="text-xs uppercase tracking-[0.16em] font-semibold text-[#F4F1EA]"
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
               Curated Styles
             </h4>
-            <ul className="space-y-2 text-xs text-[#9E9E9E]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
               <li>
                 <Link href="/styles/walnut" className="hover:text-[#C5A059] transition-colors">
                   American Black Walnut
@@ -250,11 +250,11 @@ export function SiteFooter() {
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-the-atelier"
-              className="text-xs uppercase tracking-[0.16em] font-semibold text-[#F4F1EA]"
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
               The Atelier
             </h4>
-            <ul className="space-y-2 text-xs text-[#9E9E9E]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
               <li>
                 <Link href="/atelier/timber" className="hover:text-[#C5A059] transition-colors">
                   FSC® Timber Stewardship
@@ -292,11 +292,11 @@ export function SiteFooter() {
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-client-services"
-              className="text-xs uppercase tracking-[0.16em] font-semibold text-[#F4F1EA]"
+              className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
               Client Services
             </h4>
-            <ul className="space-y-2 text-xs text-[#9E9E9E]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
               <li>
                 <Link href="/trade" className="hover:text-[#C5A059] transition-colors">
                   Interior Trade Program
@@ -375,7 +375,7 @@ export function SiteFooter() {
           </div>
 
           {/* Copyright & Legal Links */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#333333] text-[11px] text-[#9E9E9E]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-muted)]">
             <p>© 2026 Frame Cottage Atelier Ltd. All rights reserved. Handcrafted in the USA.</p>
 
             <div className="flex flex-wrap items-center gap-4">

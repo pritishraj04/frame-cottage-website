@@ -125,16 +125,16 @@ export function CuratedCollections() {
         {/* =========================================================================
             BOTTOM CATALOG VALUE PROPOSITION FOOTER
            ========================================================================= */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-[#333333] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-14 sm:mt-18 pt-8 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#242424] border border-[#333333] flex items-center justify-center text-[#C5A059]">
+            <div className="w-9 h-9 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-ink-primary)]">
                 100-Year Archival Guarantee
               </p>
-              <p className="text-xs text-[#9E9E9E]">
+              <p className="text-xs text-[var(--color-ink-muted)]">
                 Acid-free 4-ply cotton rag mats and Tru Vue® conservation glazing on all builds.
               </p>
             </div>

@@ -22,7 +22,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
       className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[var(--color-accent-gold)]/60"
     >
       {/* Visual Presentation Container (Dual-State Swapper: Studio Rest -> In-Situ Room) */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1A1A1A] select-none">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-canvas-subtle)] select-none">
         {/* =========================================================================
             STATE 1: DEFAULT REST STATE (Crisp studio frame cutout on museum canvas)
            ========================================================================= */}

@@ -285,10 +285,10 @@ export function CustomerLookbook() {
 
         {/* Room Description Strip */}
         <div className="text-center max-w-xl mx-auto mb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A059]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-gold)]">
             {currentRoom.subtitle}
           </p>
-          <p className="text-xs sm:text-sm text-[#E0E0E0] mt-1 font-normal">
+          <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] mt-1 font-normal">
             {currentRoom.description}
           </p>
         </div>
@@ -296,7 +296,7 @@ export function CustomerLookbook() {
         {/* =====================================================================
             THE LOOKBOOK ROOM STAGE WITH INTERACTIVE HOTSPOT PINS
            ===================================================================== */}
-        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-[#333333] bg-[#141414] shadow-xl">
+        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)] shadow-xl">
           {/* Room Ambient Background */}
           <div
             className={cn(
@@ -560,34 +560,34 @@ export function CustomerLookbook() {
                 className={cn(
                   "p-4 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isCardActive
-                    ? "bg-[#242424] border-[#C5A059] shadow-md ring-1 ring-[#C5A059]"
-                    : "bg-[#242424]/80 border-[#333333] hover:bg-[#242424] hover:border-[#C5A059]/60"
+                    ? "bg-[var(--color-canvas-surface)] border-[var(--color-accent-gold)] shadow-md ring-1 ring-[var(--color-accent-gold)]"
+                    : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 text-[var(--color-ink-primary)]"
                 )}
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#C5A059]">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[var(--color-accent-gold)]">
                       {pin.frameStyle.replace("-", " ")}
                     </span>
-                    <span className="font-serif font-bold text-sm text-[#C5A059]">
+                    <span className="font-serif font-bold text-sm text-[var(--color-accent-gold)]">
                       {pin.price}
                     </span>
                   </div>
-                  <h5 className="font-serif text-sm font-semibold text-[#F4F1EA] mb-1">
+                  <h5 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)] mb-1">
                     {pin.frameTitle}
                   </h5>
-                  <p className="text-xs text-[#E0E0E0] line-clamp-2 italic font-normal">
+                  <p className="text-xs text-[var(--color-ink-secondary)] line-clamp-2 italic font-normal">
                     {pin.review}
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-[#333333] flex items-center justify-between text-xs">
-                  <span className="text-[#9E9E9E] text-[11px]">
+                <div className="mt-3 pt-2 border-t border-[var(--color-border-subtle)] flex items-center justify-between text-xs">
+                  <span className="text-[var(--color-ink-muted)] text-[11px]">
                     {pin.customerName} • {pin.location}
                   </span>
                   <Link
                     href={pin.shopUrl}
-                    className="text-[#C5A059] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
+                    className="text-[var(--color-accent-gold)] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
                   >
                     Shop <ArrowRight className="w-3 h-3" />
                   </Link>
