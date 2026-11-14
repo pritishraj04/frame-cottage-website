@@ -2,21 +2,27 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 12:20
-**Tasks Completed:** 10 / 10
-**Current Task:** TASK-10 Complete (Museum Dark Charcoal, Burgundy & Gold Design System)
+**Last Updated:** 2026-11-14 12:44
+**Tasks Completed:** 11 / 11
+**Current Task:** TASK-11 Complete (Light Mode & Theme Toggle System)
 
 ----------------------------------------------
 
 ## Session Log
 
+### 2026-11-14 - TASK-11: Implement Light Mode and Theme Toggle Switcher with State Persistence
+- Defined dual-mode museum theme system:
+  - `.dark` (default): Deep Charcoal `#1A1A1A` canvas, `#242424` surfaces, `#F4F1EA` soft cream text, burgundy & gold accents.
+  - `.light`: Warm Museum Gallery Light `#FAF8F5` canvas, `#FFFFFF` surfaces, `#1A1A1A` deep charcoal text, `#E8E1D5` borders.
+- Built accessible `ThemeToggle` component with animated Sun/Moon transitions and mounted in `SiteHeader` and `MobileNav`.
+- Implemented anti-flicker inline script in `app/layout.tsx` with `localStorage` state persistence.
+- Playwright verified: 32/32 tests passing across all suites. Screenshots captured: `task-11-light-mode.png` and `task-11-dark-mode.png`.
+
 ### 2026-11-14 - TASK-10: Implement Museum Dark Charcoal, Rich Burgundy & Muted Gold Design System with Serif/Sans Typography
 - Inverted visual weight: Foundation in Deep Charcoal (`#1A1A1A` to `#2A2A2A`) acting as an exhibition wall canvas.
-- Primary Accent in Rich Burgundy (`#6B1C23`) for announcement bar, active mega-menu link states, and collection filters.
-- Highlights & CTAs in Muted Gold (`#C5A059` / `#D4AF37`) for high-priority interactive buttons, active rings, slider handles, and star ratings.
-- Soft Ivory/Cream (`#F4F1EA`) for primary headings, brand wordmark, and Light Gray (`#E0E0E0`) for body copy to prevent harsh contrast.
-- Typography: `Playfair Display` serif for titles and wordmark; `Geist Sans` for body copy, dimensions, and controls.
-- Playwright verified: 30/30 tests passing. Full-page screenshot captured at `.agent/screenshots/task-10-museum-dark-gold.png`.
+- Primary Accent in Rich Burgundy (`#6B1C23`) and Highlights in Muted Gold (`#C5A059` / `#D4AF37`).
+- Playfair Display serif for titles and wordmark; Geist Sans for body copy.
+- 30/30 Playwright tests passing.
 
 ### 2026-11-14 - TASK-9: Redesign with Apple Ecosystem Typography, Premium Palette, Responsive Hero Carousel, and Frame Studio Reordering
 - Applied responsive HeroCarousel with lifestyle framing slides and repositioned CustomFrameStudio.
