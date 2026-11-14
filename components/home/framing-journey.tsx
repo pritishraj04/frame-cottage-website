@@ -1,16 +1,17 @@
 "use client";
 
 import {
-  UploadCloud,
-  Mail,
-  Palette,
-  Sparkles,
-  PackageCheck,
+  Compass,
+  Cpu,
   ShieldCheck,
+  PackageCheck,
+  Sparkles,
   CheckCircle2,
   ArrowRight,
-  SlidersHorizontal,
   Award,
+  Layers,
+  Wrench,
+  Building2,
 } from "lucide-react";
 
 export interface FramingStep {
@@ -22,56 +23,72 @@ export interface FramingStep {
   description: string;
   bullets: string[];
   ctaLabel: string;
-  icon: typeof UploadCloud;
+  icon: typeof Compass;
 }
 
 export const FRAMING_STEPS: FramingStep[] = [
   {
     stepNumber: "01",
-    badgeLabel: "Step 01",
-    pillTitle: "Upload / Send",
-    title: "Upload or Mail In",
-    tagline: "Archival Giclée Print or Insured Mailer Kit",
+    badgeLabel: "Stage 01",
+    pillTitle: "Consult & Spec",
+    title: "Spatial Consultation & 3D Spec",
+    tagline: "Architectural Survey & 3D Modeling",
     description:
-      "Upload high-res photos for 12-color archival giclée printing, or request our insured prepaid mailer for physical artwork and heirlooms.",
+      "We review site plans, CAD drawings, or artwork dimensions to produce 3D visual specifications, material samples, and precise engineering schematics.",
     bullets: [
-      "Upload digital files (JPEG, TIFF, RAW) with instant DPI inspection",
-      "12-color archival pigment inks on 310gsm Hahnemühle cotton rag",
-      "Complimentary crush-proof art mailer with prepaid insurance",
+      "Comprehensive site survey & architectural CAD review",
+      "3D photorealistic spatial rendering & lighting simulation",
+      "Physical material & finish swatch sample kits dispatched in 48 hours",
     ],
-    ctaLabel: "Upload Photo or Order Mailer",
-    icon: UploadCloud,
+    ctaLabel: "Book Spatial Consultation",
+    icon: Compass,
   },
   {
     stepNumber: "02",
-    badgeLabel: "Step 02",
-    pillTitle: "Customise",
-    title: "Design with Precision",
-    tagline: "Solid Timber, Beveled Mats & Conservation Glass",
+    badgeLabel: "Stage 02",
+    pillTitle: "Precision Fabrication",
+    title: "Engineering & Precision Fabrication",
+    tagline: "5-Axis CNC, Fiber Laser & Master Joinery",
     description:
-      "Pair your piece with solid hardwoods, archival cotton mats, and TruVue® conservation glazing with real-time room preview.",
+      "In-house precision manufacturing combining heavy CNC routing, fiber laser metalworks, and traditional European woodworking.",
     bullets: [
-      "5 hand-finished Appalachian solid hardwood profiles & vintage gilded styles",
-      "4-ply acid-free cotton mats cut with a 45° conservation bevel",
-      "TruVue® 99% UV-blocking acrylic with real-time room lighting preview",
+      "Tolerance-critical CNC metal cutting and brake forming (±0.1mm)",
+      "Sustainably harvested FSC® hardwoods & structural aluminum",
+      "12-color archival giclée printing on 310gsm German etching rag",
     ],
-    ctaLabel: "Explore Studio Customiser",
-    icon: Palette,
+    ctaLabel: "Explore Fabrication Tech",
+    icon: Cpu,
   },
   {
     stepNumber: "03",
-    badgeLabel: "Step 03",
-    pillTitle: "Ready-to-Hang",
-    title: "Delivered Ready to Hang",
-    tagline: "Master Framer Handcraft & Guaranteed Transit",
+    badgeLabel: "Stage 03",
+    pillTitle: "Archival Curation",
+    title: "Museum Archival Curation & Quality Control",
+    tagline: "ISO Certified & Conservation Curation",
     description:
-      "Handcrafted by master framers in 5-7 days, backed with archival dust covers, and shipped with all brass hanging hardware included.",
+      "Rigorous quality inspection in cleanroom environments, mounting with reversible archival corners, TruVue® UV glazing, and structural load testing.",
     bullets: [
-      "Individually hand-assembled and inspected by master framers in 5-7 days",
-      "Sealed with Permacel archival Kraft paper and corner spline joinery",
-      "Solid brass wall hooks, coated wire, nails, and mini level included in every box",
+      "100% reversible museum-grade mounting & acid-free barriers",
+      "TruVue® 99% UV-protective optical glazing with zero distortion",
+      "Structural integrity and wind-load certification for commercial signage",
     ],
-    ctaLabel: "View Delivery Guarantee",
+    ctaLabel: "Review Conservation Standards",
+    icon: ShieldCheck,
+  },
+  {
+    stepNumber: "04",
+    badgeLabel: "Stage 04",
+    pillTitle: "Turnkey Handover",
+    title: "White-Glove Installation & Turnkey Handover",
+    tagline: "On-Site Installation & Turnkey Commissioning",
+    description:
+      "Certified nationwide installation teams handle structural anchoring, electrical hookup for illuminated signage, and flawless handover.",
+    bullets: [
+      "Licensed on-site installation and commercial rigging teams",
+      "Complete electrical compliance for illuminated LED architectural signage",
+      "Turnkey documentation, GeM handover certificates & lifetime warranty",
+    ],
+    ctaLabel: "View Installation Services",
     icon: PackageCheck,
   },
 ];
@@ -81,7 +98,7 @@ export function FramingJourney() {
     <section
       id="framing-journey"
       data-testid="framing-journey"
-      aria-label="How Custom Framing Works - 3-Step Journey"
+      aria-label="End-to-End Studio Execution Workflow"
       className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] relative overflow-hidden text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       {/* Decorative subtle background pattern */}
@@ -100,32 +117,32 @@ export function FramingJourney() {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>The Bespoke Framing Process</span>
+            <span>End-to-End Studio Workflow</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
-            How Custom Framing Works
+            Turnkey Studio Execution Workflow
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
-            From digital memory to handcrafted heirloom in three seamless steps.
+            From initial spatial consultation and 3D modeling to precision fabrication, museum curation, and white-glove turnkey installation.
           </p>
         </div>
 
         {/* =========================================================================
-            3-STEP JOURNEY GRID WITH CONNECTORS
+            4-STAGE JOURNEY GRID WITH CONNECTORS
            ========================================================================= */}
         <div className="relative">
           {/* Desktop connecting hairline with brass nodes */}
           <div
             data-testid="framing-journey-connectors"
             aria-hidden="true"
-            className="hidden lg:block absolute top-[132px] left-[16%] right-[16%] h-[2px] z-0"
+            className="hidden xl:block absolute top-[132px] left-[12%] right-[12%] h-[2px] z-0"
           >
             <div className="w-full h-full bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent border-t border-dashed border-[#C5A059]/60" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {FRAMING_STEPS.map((step, idx) => {
               const StepIcon = step.icon;
 
@@ -133,146 +150,151 @@ export function FramingJourney() {
                 <div
                   key={step.stepNumber}
                   data-testid={`framing-step-${idx + 1}`}
-                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)] transition-all duration-300 hover:-translate-y-1.5"
+                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)] transition-all duration-300 hover:-translate-y-1.5"
                 >
                   {/* Card Header & Badge row */}
                   <div>
-                    <div className="flex items-center justify-between gap-4 mb-6">
+                    <div className="flex items-center justify-between gap-4 mb-5">
                       {/* Numbered Badge */}
                       <div
                         data-testid={`framing-step-number-${idx + 1}`}
-                        className="w-12 h-12 rounded-xl bg-[var(--color-accent-gold)] text-[var(--background)] font-serif text-xl font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
+                        className="w-11 h-11 rounded-xl bg-[var(--color-accent-gold)] text-[var(--background)] font-serif text-lg font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
                       >
                         {step.stepNumber}
                       </div>
 
                       {/* Pill & Icon Tag */}
-                      <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-[var(--color-border-subtle)] text-[11px] font-semibold uppercase tracking-wider">
+                      <div className="flex items-center gap-1.5">
+                        <span className="px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-[var(--color-border-subtle)] text-[10px] font-semibold uppercase tracking-wider">
                           {step.pillTitle}
                         </span>
-                        <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
-                          <StepIcon className="w-4 h-4" />
+                        <div className="w-7 h-7 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
+                          <StepIcon className="w-3.5 h-3.5" />
                         </div>
                       </div>
                     </div>
 
                     {/* Step Visual Miniature Illustration */}
-                    <div className="mb-6 h-36 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] overflow-hidden flex items-center justify-center relative p-4 group-hover:border-[var(--color-accent-gold)]/40 transition-colors">
+                    <div className="mb-5 h-32 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] overflow-hidden flex items-center justify-center relative p-3 group-hover:border-[var(--color-accent-gold)]/40 transition-colors">
                       {idx === 0 && (
-                        /* Step 1 Visual: Art upload & mailer box */
+                        /* Step 1 Visual: 3D CAD Blueprint & Spatial Modeling */
                         <div className="relative w-full h-full flex items-center justify-around select-none">
-                          {/* Digital Upload Phone/Tablet preview */}
-                          <div className="w-20 h-28 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-1.5 flex flex-col items-center justify-between">
-                            <div className="w-full h-16 rounded bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-subtle)] flex flex-col items-center justify-center gap-1">
-                              <UploadCloud className="w-5 h-5 text-[var(--color-accent-gold)]" />
-                              <span className="text-[8px] font-medium text-[var(--color-ink-muted)]">300+ DPI</span>
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                              <span className="text-[9px] font-mono text-[#C5A059]">CAD: Spatial Model</span>
+                              <span className="text-[8px] text-[var(--color-ink-muted)]">3D Revit / Rhino</span>
                             </div>
-                            <div className="w-full flex items-center justify-between text-[7px] text-[var(--color-ink-muted)] font-medium pt-1 border-t border-[var(--color-border-subtle)]">
-                              <span>Digital</span>
-                              <span className="text-[var(--color-accent-gold)] font-bold">12-Color</span>
+                            <div className="grid grid-cols-3 gap-1 my-1">
+                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Elevation</div>
+                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Plan</div>
+                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">3D Mesh</div>
                             </div>
-                          </div>
-
-                          <div className="flex flex-col items-center justify-center text-[var(--color-ink-muted)]">
-                            <span className="text-[10px] italic text-[var(--color-ink-muted)]">or</span>
-                            <div className="w-6 h-[1px] bg-[var(--color-border-subtle)] my-1" />
-                          </div>
-
-                          {/* Physical Mailer Envelope / Box */}
-                          <div className="w-24 h-24 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between relative">
-                            <div className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[var(--color-accent-gold)]/20 border border-[var(--color-accent-gold)] flex items-center justify-center">
-                              <ShieldCheck className="w-2 h-2 text-[var(--color-accent-gold)]" />
-                            </div>
-                            <Mail className="w-5 h-5 text-[var(--color-accent-gold)]" />
-                            <div className="space-y-0.5">
-                              <p className="text-[8px] font-bold text-[var(--color-ink-primary)] uppercase tracking-wider">
-                                Pre-Paid Mailer
-                              </p>
-                              <p className="text-[7px] text-[var(--color-ink-muted)]">Insured up to $5,000</p>
+                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                              <span>Spec: ±0.1mm</span>
+                              <span className="text-[#10B981]">Verified</span>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {idx === 1 && (
-                        /* Step 2 Visual: Bespoke Customiser with frame moulding & mat beveled cut */
+                        /* Step 2 Visual: 5-Axis CNC & Fiber Laser Fabrication */
                         <div className="relative w-full h-full flex items-center justify-center select-none">
-                          <div className="w-44 h-28 rounded-lg bg-[var(--color-canvas-surface)] border-4 border-[#3D2817] shadow-md p-2 flex items-center justify-center relative">
-                            {/* Beveled Mat border */}
-                            <div className="w-full h-full bg-[#F4F1EA] border-2 border-[#E0DCD3] p-2 flex items-center justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]">
-                              <div className="w-full h-full bg-[var(--color-canvas-subtle)] rounded flex flex-col items-center justify-center text-center p-1">
-                                <Sparkles className="w-4 h-4 text-[var(--color-accent-gold)] mb-1" />
-                                <span className="text-[8px] italic text-[var(--color-ink-primary)]">
-                                  TruVue® Glazing
-                                </span>
-                                <span className="text-[6.5px] uppercase tracking-wider text-[var(--color-accent-gold)]">
-                                  4-Ply Cotton Core
-                                </span>
-                              </div>
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                              <span className="text-[9px] font-mono text-[#C5A059]">CNC: Fiber Laser 5-Axis</span>
+                              <span className="text-[8px] text-[#10B981]">Operating</span>
                             </div>
-                            {/* Precision corner badge */}
-                            <div className="absolute -top-2 -right-2 px-1.5 py-0.5 rounded bg-[#6B1C23] text-[#F4F1EA] text-[7.5px] font-medium flex items-center gap-0.5">
-                              <SlidersHorizontal className="w-2.5 h-2.5 text-[#C5A059]" />
-                              <span>Live Preview</span>
+                            <div className="flex items-center justify-center py-1">
+                              <svg viewBox="0 0 80 40" className="w-20 h-10 text-[#C5A059]" fill="none">
+                                <rect x="5" y="5" width="70" height="30" rx="3" stroke="#C5A059" strokeWidth="1" strokeDasharray="3 3" />
+                                <circle cx="40" cy="20" r="10" stroke="#FAF7F2" strokeWidth="1.5" />
+                                <line x1="20" y1="20" x2="60" y2="20" stroke="#EF4444" strokeWidth="1" />
+                                <circle cx="40" cy="20" r="2" fill="#EF4444" />
+                              </svg>
+                            </div>
+                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                              <span>Bed: 3000×1500mm</span>
+                              <span>Brass / Timber</span>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {idx === 2 && (
-                        /* Step 3 Visual: Ready-to-hang framed heirloom on wall with brass hardware */
+                        /* Step 3 Visual: Cleanroom Archival & ISO QC Inspection */
                         <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
-                          {/* Brass wall hanger wire node */}
-                          <div className="flex flex-col items-center">
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#C5A059] border border-[#B38F48] shadow-xs" />
-                            <div className="w-16 h-3 border-t border-l border-r border-[#C5A059] -mt-1" />
-                          </div>
-                          {/* Framed Artwork Ready to Hang */}
-                          <div className="w-36 h-20 bg-[var(--color-canvas-surface)] rounded p-1 shadow-lg border border-[var(--color-border-subtle)] flex items-center justify-center">
-                            <div className="w-full h-full bg-[var(--color-canvas-subtle)] rounded-xs flex items-center justify-between px-2.5">
-                              <div className="text-left">
-                                <p className="text-[8px] font-sans font-bold text-[var(--color-ink-primary)]">
-                                  Ready to Hang
-                                </p>
-                                <p className="text-[6.5px] text-[var(--color-ink-muted)]">
-                                  Brass Hardware Included
-                                </p>
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                              <span className="text-[9px] font-mono text-[#C5A059]">Cleanroom QC</span>
+                              <span className="text-[8px] text-[#10B981]">ISO 9001:2015</span>
+                            </div>
+                            <div className="flex items-center justify-around py-1 text-center">
+                              <div>
+                                <ShieldCheck className="w-6 h-6 text-[#C5A059] mx-auto" />
+                                <span className="text-[7.5px] text-[var(--color-ink-muted)]">TruVue 99% UV</span>
                               </div>
-                              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-gold)]" />
+                              <div className="w-px h-8 bg-[var(--color-border-subtle)]" />
+                              <div>
+                                <Layers className="w-6 h-6 text-[#C5A059] mx-auto" />
+                                <span className="text-[7.5px] text-[var(--color-ink-muted)]">Acid-Free Cotton</span>
+                              </div>
+                            </div>
+                            <div className="text-[8px] text-[var(--color-ink-muted)] text-center">
+                              100% Reversible Archival Barrier
                             </div>
                           </div>
-                          <span className="mt-1 text-[8px] font-medium text-[var(--color-accent-gold)]">
-                            5–7 Days Workshop Dispatch
-                          </span>
+                        </div>
+                      )}
+
+                      {idx === 3 && (
+                        /* Step 4 Visual: Turnkey On-Site Rigging & Handover */
+                        <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                              <span className="text-[9px] font-mono text-[#C5A059]">Turnkey Handover</span>
+                              <span className="text-[8px] text-[#C5A059]">GeM Certified</span>
+                            </div>
+                            <div className="flex items-center justify-center gap-2 py-1">
+                              <Building2 className="w-6 h-6 text-[#C5A059]" />
+                              <div className="text-left">
+                                <div className="text-[8px] font-bold text-[var(--color-ink-primary)]">On-Site Commissioning</div>
+                                <div className="text-[7px] text-[var(--color-ink-muted)]">Structural Rigging & Electric</div>
+                              </div>
+                            </div>
+                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                              <span>White-Glove Team</span>
+                              <span className="text-[#10B981]">Complete</span>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
 
                     {/* Step Title & Description */}
-                    <div className="space-y-2 mb-4">
-                      <p className="text-xs uppercase tracking-[0.18em] text-[#C5A059] font-semibold">
+                    <div className="space-y-1.5 mb-3">
+                      <p className="text-[10px] uppercase tracking-[0.16em] text-[#C5A059] font-semibold">
                         {step.tagline}
                       </p>
                       <h3
                         data-testid={`framing-step-title-${idx + 1}`}
-                        className="font-serif text-2xl font-semibold text-[var(--color-ink-primary)] tracking-tight"
+                        className="font-serif text-lg sm:text-xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-snug"
                       >
                         {step.title}
                       </h3>
                       <p
                         data-testid={`framing-step-desc-${idx + 1}`}
-                        className="text-sm text-[var(--color-ink-secondary)] leading-relaxed pt-1"
+                        className="text-xs text-[var(--color-ink-secondary)] leading-relaxed pt-1"
                       >
                         {step.description}
                       </p>
                     </div>
 
                     {/* Step Feature Checklist */}
-                    <ul className="space-y-2.5 pt-2 border-t border-[var(--color-border-subtle)] text-xs text-[var(--color-ink-secondary)] mb-6">
+                    <ul className="space-y-2 pt-2 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-secondary)] mb-5">
                       {step.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0 mt-0.5" />
+                        <li key={bIdx} className="flex items-start gap-1.5">
+                          <CheckCircle2 className="w-3 h-3 text-[#C5A059] shrink-0 mt-0.5" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -283,7 +305,7 @@ export function FramingJourney() {
                   <div className="pt-2">
                     <a
                       href="#curated-collections"
-                      className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--color-accent-gold)] hover:text-[#D4AF37] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent-gold)] hover:text-[#D4AF37] transition-colors"
                     >
                       <span>{step.ctaLabel}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -305,20 +327,20 @@ export function FramingJourney() {
             </div>
             <div>
               <h4 className="font-serif text-lg font-semibold text-[var(--color-ink-primary)]">
-                The Frame Cottage Lifetime Craft Guarantee
+                The Frame Cottage Lifetime Studio Guarantee
               </h4>
               <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)]">
-                If your bespoke frame ever loosens, warps, or fails under normal room conditions, we rebuild it for free.
+                Every residential, architectural, and civic installation is warranted for structural integrity and archival longevity.
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
             <a
-              href="#atelier-materials"
+              href="/rfq"
               className="px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-[var(--background)] text-xs sm:text-sm font-semibold hover:bg-[#B38F48] transition-all shadow-xs"
             >
-              Explore The Atelier Story
+              Request Studio Consultation
             </a>
           </div>
         </div>

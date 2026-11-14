@@ -2,13 +2,37 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 16:32
-**Tasks Completed:** 16 / 16
-**Current Task:** TASK-16 Complete (Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel)
+**Last Updated:** 2026-11-14 18:42
+**Tasks Completed:** 17 / 17
+**Current Task:** TASK-17 Complete (Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-17: Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals
+- Context & Objective: Per user explicit instruction: "this is the bussinsses it works on: A multi-disciplinary design, fabrication, and framing studio delivering end-to-end spatial, industrial, and aesthetic solutions for B2C, B2B, and public sector clients. Core Service Verticals: 1. Retail & Standard Framing, 2. Bespoke Art & Custom Framing, 3. Spatial Design & Signage, 4. Industrial Fabrication & CNC Metalworks, 5. Custom Gifting & Mementos, 6. Government & Civic Projects. Remove any other sectors we have and make our website on this."
+- Deliverables Implemented:
+  1. `lib/constants/verticals.ts`: Defined data structures, deliverables, technical specs, icons, audience badges, and sub-capabilities for all 6 exact service verticals.
+  2. `components/navigation/announcement-bar.tsx`: Positioned "Multi-Disciplinary Design, Fabrication & Framing Studio • Delivering End-to-End Solutions for B2C, B2B & Public Sector • Request Project RFP".
+  3. `components/navigation/site-header.tsx`: Desktop navigation triggers for "Service Verticals", "Bespoke Framing", "Spatial & Signage", "Industrial CNC", "Government & Civic".
+  4. `components/navigation/mega-menu.tsx`: 4-column mega menu organizing all 6 verticals with sub-capabilities and prominent RFQ CTA box ("Request a Project Quote (RFQ)").
+  5. `components/navigation/mobile-nav.tsx`: Expandable vertical accordions for all 6 core service verticals with audience badges, sub-capabilities, and RFQ callout.
+  6. `components/hero/hero-carousel.tsx`: 3 curated studio slides reflecting Bespoke Framing & Fine Art, Spatial Design & Signage, and Industrial CNC & Civic Projects.
+  7. `components/home/category-swatches.tsx` & `components/home/category-pills.tsx`: Discovery pills for the exact 6 core verticals with audience badges, subtitles, active indicators.
+  8. `components/home/trust-bar.tsx`: 4 studio pillars: In-House Precision Fabrication, Museum Archival & Industrial Standards, End-to-End Turnkey Execution, Public Sector & Enterprise Scale.
+  9. `lib/constants/collections.ts` & `components/home/curated-collections.tsx`: 6 vertical filter tabs and project catalog including architectural wayfinding, CNC perforated facade, executive crystal memento, and civic dedication plaque.
+  10. `components/home/featured-products-carousel.tsx`: 8 multi-disciplinary capability cards including Architectural Wayfinding & Illuminated LED Pylon, Mendocino Archival American Walnut Frame, Precision CNC Laser-Cut Brass Monument Civic Plaque, Architectural Perforated Metal Facade & CNC Screen, Highline Shadowbox Stretched Canvas Art, Executive Crystal & Solid Walnut Memento Award, Ready-Made Archival Gallery Wall Set, and Gilded Atelier Brass Architectural Frame.
+  11. `components/home/framing-journey.tsx`: 4-stage turnkey studio execution workflow: Spatial Consultation & 3D Spec, Engineering & Precision Fabrication, Museum Archival Curation & Quality Control, White-Glove Installation & Turnkey Handover.
+  12. `components/home/customer-lookbook.tsx`: 3 client case studies: Tech Enterprise Headquarters (Silicon Valley, CA), Contemporary Collector Residence (Tribeca, NY), and Municipal City Hall & Civic Plaza (Metro Civic Center).
+  13. `components/home/faq-section.tsx`: 6 comprehensive FAQs addressing B2C framing, B2B commercial spatial design, CNC fabrication tolerances, public sector tender execution / GeM compliance, corporate gifting lead times, and on-site turnkey installation.
+  14. `components/layout/site-footer.tsx`: Reorganized 4 navigation columns (Framing & Fine Art, Spatial & Signage, Industrial Fabrication, Enterprise & Civic), company description, and FSC® + ISO 9001:2015 + GeM Registered accreditations.
+  15. `app/layout.tsx`: Root metadata title updated to "Frame Cottage | Multi-Disciplinary Design, Fabrication & Framing Studio".
+  16. Quality & Verification:
+    - Updated Playwright test suite (`tests/navigation.spec.ts`, `tests/curated-collections.spec.ts`, `tests/merchandising.spec.ts`, `tests/storytelling.spec.ts`, `tests/theme-toggle.spec.ts`, `tests/mobile-responsiveness.spec.ts`, `tests/full-home-e2e.spec.ts`, `tests/design-tokens.spec.ts`, `tests/hero-switcher.spec.ts`).
+    - Verified all 40/40 tests pass with 0 failures in 17.8s.
+    - Verified Next.js production build (`npm run build`) passes with exit code 0.
+    - Captured visual verification screenshots: `task-17-desktop-dark.png`, `task-17-desktop-light.png`, `task-17-mobile.png`.
 
 ### 2026-11-14 - TASK-16: Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel
 - Context & Objective: Per user explicit instruction: "we have to remove this section The Atelier: Material Transparency & Sustainability and in place of it make a featured section for products with carousel. This will be pure image based section we will show case some of our products in carousel form."

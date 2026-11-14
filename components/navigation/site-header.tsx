@@ -45,8 +45,8 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
             <div className="flex items-center gap-1 lg:gap-8 flex-1">
               <MobileNav />
 
-              <nav className="hidden lg:flex items-center gap-6" aria-label="Main Navigation">
-                {/* Mega-menu trigger: Custom Framing */}
+              <nav className="hidden lg:flex items-center gap-5 xl:gap-6" aria-label="Main Navigation">
+                {/* Mega-menu trigger: Service Verticals */}
                 <div
                   className="relative"
                   onMouseEnter={handleMouseEnter}
@@ -56,15 +56,15 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                     type="button"
                     aria-expanded={isMegaMenuOpen}
                     aria-haspopup="true"
-                    data-testid="nav-custom-framing"
+                    data-testid="nav-service-verticals"
                     onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-                    className={`inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] font-medium py-2 transition-colors cursor-pointer ${
+                    className={`inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] font-medium py-2 transition-colors cursor-pointer ${
                       isMegaMenuOpen
                         ? "text-[var(--color-accent-gold)]"
                         : "text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)]"
                     }`}
                   >
-                    Custom Framing
+                    Service Verticals
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
                         isMegaMenuOpen ? "rotate-180 text-[var(--color-accent-gold)]" : "text-[var(--color-ink-muted)]"
@@ -74,27 +74,35 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 </div>
 
                 <Link
-                  href="/ready-made"
-                  data-testid="nav-ready-made"
-                  className="text-xs uppercase tracking-[0.15em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2"
+                  href="/services/bespoke-framing"
+                  data-testid="nav-bespoke-framing"
+                  className="text-xs uppercase tracking-[0.14em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2 whitespace-nowrap"
                 >
-                  Ready-Made
+                  Bespoke Framing
                 </Link>
 
                 <Link
-                  href="/gallery-walls"
-                  data-testid="nav-gallery-walls"
-                  className="text-xs uppercase tracking-[0.15em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2"
+                  href="/services/spatial-signage"
+                  data-testid="nav-spatial-signage"
+                  className="text-xs uppercase tracking-[0.14em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2 whitespace-nowrap"
                 >
-                  Gallery Walls
+                  Spatial & Signage
                 </Link>
 
                 <Link
-                  href="/atelier"
-                  data-testid="nav-atelier"
-                  className="text-xs uppercase tracking-[0.15em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2"
+                  href="/services/industrial-cnc"
+                  data-testid="nav-industrial-cnc"
+                  className="text-xs uppercase tracking-[0.14em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2 whitespace-nowrap"
                 >
-                  The Atelier
+                  Industrial CNC
+                </Link>
+
+                <Link
+                  href="/services/civic-projects"
+                  data-testid="nav-civic-projects"
+                  className="text-xs uppercase tracking-[0.14em] font-medium text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors py-2 whitespace-nowrap"
+                >
+                  Government & Civic
                 </Link>
               </nav>
             </div>

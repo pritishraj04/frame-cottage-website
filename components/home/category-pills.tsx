@@ -9,51 +9,58 @@ export interface CategoryItem {
   name: string;
   subtitle: string;
   count: string;
+  clientBadge: string;
   href: string;
 }
 
 export const CATEGORIES: CategoryItem[] = [
   {
-    id: "solid-hardwoods",
-    name: "Solid Hardwoods",
-    subtitle: "Natural Walnut & Oak Woodgrain",
-    count: "24 Styles",
-    href: "/collections/solid-hardwoods",
+    id: "retail-framing",
+    name: "Retail & Standard Framing",
+    subtitle: "Premium Photo Frames & Display Solutions",
+    count: "B2C / Residential",
+    clientBadge: "B2C",
+    href: "/services/retail-framing",
   },
   {
-    id: "brushed-metals",
-    name: "Brushed Metals",
-    subtitle: "Antique Brass & Metallic Sheen",
-    count: "18 Styles",
-    href: "/collections/brushed-metals",
+    id: "bespoke-framing",
+    name: "Bespoke Art & Custom Framing",
+    subtitle: "Fine Art Printing, Canvas & Archival Frames",
+    count: "B2C / B2B / Galleries",
+    clientBadge: "B2C / B2B",
+    href: "/services/bespoke-framing",
   },
   {
-    id: "vintage-gilded",
-    name: "Vintage & Gilded",
-    subtitle: "Warm Gold Foil Bevel",
-    count: "14 Styles",
-    href: "/collections/vintage-gilded",
+    id: "spatial-signage",
+    name: "Spatial Design & Signage",
+    subtitle: "Environmental Branding & Wayfinding Systems",
+    count: "B2B / Commercial",
+    clientBadge: "B2B",
+    href: "/services/spatial-signage",
   },
   {
-    id: "gallery-wall-sets",
-    name: "Gallery Wall Sets",
-    subtitle: "Miniature Triptych Layout",
-    count: "12 Curations",
-    href: "/collections/gallery-walls",
+    id: "industrial-cnc",
+    name: "Industrial Fabrication & CNC",
+    subtitle: "CNC Routing, Fiber Laser & Metalworks",
+    count: "Commercial / Architecture",
+    clientBadge: "Commercial",
+    href: "/services/industrial-cnc",
   },
   {
-    id: "tabletop-minis",
-    name: "Tabletop & Minis",
-    subtitle: "Desk Frame with Easel Back",
-    count: "16 Styles",
-    href: "/collections/tabletop-minis",
+    id: "custom-gifting",
+    name: "Custom Gifting & Mementos",
+    subtitle: "Executive Awards & Commemorative Plaques",
+    count: "Corporate & Institutional",
+    clientBadge: "Corporate",
+    href: "/services/custom-gifting",
   },
   {
-    id: "archival-shadowboxes",
-    name: "Archival Shadowboxes",
-    subtitle: "Deep Dimensional Shadowbox",
-    count: "10 Styles",
-    href: "/collections/shadowboxes",
+    id: "civic-projects",
+    name: "Government & Civic Projects",
+    subtitle: "Municipal Signage & Public Tender Execution",
+    count: "Public Sector / GeM",
+    clientBadge: "Public Sector",
+    href: "/services/civic-projects",
   },
 ];
 
@@ -63,7 +70,7 @@ interface CategoryPillsProps {
 }
 
 export function CategoryPills({
-  activeCategory = "solid-hardwoods",
+  activeCategory = "retail-framing",
   onSelectCategory,
 }: CategoryPillsProps) {
   const [selectedId, setSelectedId] = useState(activeCategory);
@@ -83,7 +90,7 @@ export function CategoryPills({
 
   return (
     <section
-      aria-label="Visual Category Discovery"
+      aria-label="Core Service Verticals Discovery"
       data-testid="category-pills"
       className="w-full bg-[var(--background)] py-10 lg:py-14 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
@@ -93,13 +100,13 @@ export function CategoryPills({
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Curated by Silhouette & Craft</span>
+              <span>6 Core Service Verticals • End-to-End Solutions</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
-              Visual Category Discovery
+              Service Verticals Discovery
             </h2>
             <p className="mt-1.5 text-xs sm:text-sm text-[var(--color-ink-secondary)] max-w-xl">
-              Explore bespoke mouldings across authentic North American hardwoods, spun metals, and heirloom arrangements.
+              Delivering end-to-end spatial, industrial, and aesthetic solutions for B2C, B2B, and public sector clients.
             </p>
           </div>
 
@@ -131,7 +138,7 @@ export function CategoryPills({
           ref={scrollContainerRef}
           data-testid="category-pills-scroll"
           role="tablist"
-          aria-label="Category filter tabs"
+          aria-label="Service vertical discovery tabs"
           className="flex items-center gap-6 sm:gap-8 overflow-x-auto pb-4 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory scroll-smooth"
         >
           {CATEGORIES.map((category) => {
@@ -161,10 +168,15 @@ export function CategoryPills({
                   </div>
                 </div>
 
+                {/* Client Badge */}
+                <span className="mt-2 text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[#C5A059]">
+                  {category.clientBadge}
+                </span>
+
                 {/* Category Name */}
                 <span
                   data-testid={`category-pill-label-${category.id}`}
-                  className={`mt-3 text-xs sm:text-sm tracking-tight text-center transition-colors max-w-[110px] sm:max-w-[130px] line-clamp-1 ${
+                  className={`mt-1.5 text-xs sm:text-sm tracking-tight text-center transition-colors max-w-[120px] sm:max-w-[140px] line-clamp-2 ${
                     isSelected
                       ? "text-[var(--color-ink-primary)] font-bold"
                       : "text-[var(--color-ink-secondary)] font-medium group-hover:text-[var(--color-ink-primary)]"
@@ -174,8 +186,8 @@ export function CategoryPills({
                 </span>
 
                 {/* Subtitle / Count Tag */}
-                <span className="text-[11px] text-[#9E9E9E] tracking-normal mt-0.5 hidden sm:block">
-                  {category.count}
+                <span className="text-[11px] text-[#9E9E9E] tracking-normal mt-0.5 hidden sm:block max-w-[130px] truncate text-center">
+                  {category.subtitle}
                 </span>
               </button>
             );

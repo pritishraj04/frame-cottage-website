@@ -47,9 +47,9 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
     }
 
     // 2. Verify First Card fits inside the 390px mobile viewport without overflow
-    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
-    await expect(walnutCard).toBeVisible();
-    const cardBox = await walnutCard.boundingBox();
+    const firstCard = page.getByTestId("featured-product-card-architectural-wayfinding");
+    await expect(firstCard).toBeVisible();
+    const cardBox = await firstCard.boundingBox();
     expect(cardBox).not.toBeNull();
     if (cardBox) {
       expect(cardBox.x).toBeGreaterThanOrEqual(0);
@@ -168,7 +168,7 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
     await expect(shopLink).toBeVisible();
     await expect(shopLink).toHaveAttribute(
       "href",
-      "/custom-framing?style=heritage-walnut"
+      "/services/bespoke-framing"
     );
 
     // Test second pin
@@ -234,9 +234,9 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
     await featuredSection.scrollIntoViewIfNeeded();
     await expect(featuredSection).toBeVisible();
 
-    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
-    await expect(walnutCard).toBeVisible();
-    await expect(walnutCard).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    const firstCard = page.getByTestId("featured-product-card-architectural-wayfinding");
+    await expect(firstCard).toBeVisible();
+    await expect(firstCard).toHaveCSS("background-color", "rgb(255, 255, 255)");
 
     // Check Lookbook in Light Mode
     const lookbookSection = page.getByTestId("customer-lookbook");

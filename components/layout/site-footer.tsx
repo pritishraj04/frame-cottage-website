@@ -146,54 +146,53 @@ export function SiteFooter() {
             </Link>
 
             <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed max-w-sm">
-              Handcrafting museum-grade bespoke frames, multi-aperture gallery walls, and archival art preservation. Every profile is shaped from sustainably harvested Appalachian solid hardwoods, joined with hardwood splines, and glazed with 99% UV-protective TruVue® conservation acrylic.
+              A multi-disciplinary design, fabrication, and framing studio delivering end-to-end spatial, industrial, and aesthetic solutions for residential spaces, commercial enterprises, and public sector clients. Equipped for precision CNC routing, fine art archival framing, and large-scale government tender execution.
             </p>
 
             {/* Guild Accreditations */}
             <div className="space-y-2 pt-2">
               <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
                 <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>100% Solid Appalachian Hardwoods • No MDF or Faux Veneers</span>
+                <span>FSC® Certified Timber • 100% Solid Appalachian Hardwoods</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
                 <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>100-Year Lifetime Archival Craftsmanship Guarantee</span>
+                <span>ISO 9001:2015 Certified & GeM Registered Public Sector Vendor</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
+                <Sparkles className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>100-Year Generational Archival Craftsmanship Guarantee</span>
               </div>
             </div>
           </div>
 
-          {/* Navigation Column 1: Custom Framing */}
+          {/* Navigation Column 1: Framing & Fine Art */}
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-custom-framing"
               className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
-              Custom Framing
+              Framing & Fine Art
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/custom-framing" className="hover:text-[#C5A059] transition-colors">
-                  Digital Upload & Giclée
+                <Link href="/services/retail-framing" className="hover:text-[#C5A059] transition-colors">
+                  Retail & Standard Framing
                 </Link>
               </li>
               <li>
-                <Link href="/mail-in" className="hover:text-[#C5A059] transition-colors">
-                  Mail-In Original Art
+                <Link href="/services/bespoke-framing" className="hover:text-[#C5A059] transition-colors">
+                  Bespoke Custom Framing
                 </Link>
               </li>
               <li>
-                <Link href="/shadowbox" className="hover:text-[#C5A059] transition-colors">
-                  Memorabilia Shadowbox
+                <Link href="/services/bespoke-framing#giclee" className="hover:text-[#C5A059] transition-colors">
+                  Archival Giclée Fine Art
                 </Link>
               </li>
               <li>
-                <Link href="/canvas-floater" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/bespoke-framing#canvas" className="hover:text-[#C5A059] transition-colors">
                   Canvas Floater Frames
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery-walls" className="hover:text-[#C5A059] transition-colors">
-                  Gallery Wall Layouts
                 </Link>
               </li>
               <li>
@@ -201,130 +200,135 @@ export function SiteFooter() {
                   TruVue® Conservation Acrylic
                 </Link>
               </li>
+              <li>
+                <Link href="/mail-in" className="hover:text-[#C5A059] transition-colors">
+                  Mail-In Archival Art Service
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Navigation Column 2: Curated Styles */}
+          {/* Navigation Column 2: Spatial & Signage */}
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-curated-styles"
               className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
-              Curated Styles
+              Spatial & Signage
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/styles/walnut" className="hover:text-[#C5A059] transition-colors">
-                  American Black Walnut
+                <Link href="/services/spatial-signage" className="hover:text-[#C5A059] transition-colors">
+                  Architectural Wayfinding
                 </Link>
               </li>
               <li>
-                <Link href="/styles/white-oak" className="hover:text-[#C5A059] transition-colors">
-                  Natural White Oak
+                <Link href="/services/spatial-signage#branding" className="hover:text-[#C5A059] transition-colors">
+                  Environmental Branding
                 </Link>
               </li>
               <li>
-                <Link href="/styles/brass" className="hover:text-[#C5A059] transition-colors">
-                  Antiqued Gilded Brass
+                <Link href="/services/spatial-signage#led" className="hover:text-[#C5A059] transition-colors">
+                  3D Illuminated LED Signs
                 </Link>
               </li>
               <li>
-                <Link href="/styles/bleached-maple" className="hover:text-[#C5A059] transition-colors">
-                  Bleached Hard Maple
+                <Link href="/services/spatial-signage#pylons" className="hover:text-[#C5A059] transition-colors">
+                  Exterior Commercial Pylons
                 </Link>
               </li>
               <li>
-                <Link href="/styles/matte-black" className="hover:text-[#C5A059] transition-colors">
-                  Studio Deep Matte Black
+                <Link href="/services/spatial-signage#ada" className="hover:text-[#C5A059] transition-colors">
+                  ADA Compliance Signage
                 </Link>
               </li>
               <li>
-                <Link href="/styles/gallery-sets" className="hover:text-[#C5A059] transition-colors">
-                  Curated Salon Sets
+                <Link href="/services/spatial-signage#acoustic" className="hover:text-[#C5A059] transition-colors">
+                  Acoustic Spatial Panels
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Navigation Column 3: The Atelier */}
+          {/* Navigation Column 3: Industrial Fabrication */}
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-the-atelier"
               className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
-              The Atelier
+              Industrial Fabrication
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/atelier/timber" className="hover:text-[#C5A059] transition-colors">
-                  FSC® Timber Stewardship
+                <Link href="/services/industrial-cnc" className="hover:text-[#C5A059] transition-colors">
+                  5-Axis Precision CNC Routing
                 </Link>
               </li>
               <li>
-                <Link href="/atelier/splines" className="hover:text-[#C5A059] transition-colors">
-                  Corner Spline Joinery
+                <Link href="/services/industrial-cnc#laser" className="hover:text-[#C5A059] transition-colors">
+                  Fiber Laser Metal Cutting
                 </Link>
               </li>
               <li>
-                <Link href="/atelier/cotton-mats" className="hover:text-[#C5A059] transition-colors">
-                  4-Ply Archival Cotton Mats
+                <Link href="/services/industrial-cnc#screens" className="hover:text-[#C5A059] transition-colors">
+                  Architectural Metal Screens
                 </Link>
               </li>
               <li>
-                <Link href="/atelier/carbon-neutral" className="hover:text-[#C5A059] transition-colors">
-                  Zero Waste Workshop
+                <Link href="/services/industrial-cnc#metalworks" className="hover:text-[#C5A059] transition-colors">
+                  Custom Brass & Aluminum
                 </Link>
               </li>
               <li>
-                <Link href="/atelier/story" className="hover:text-[#C5A059] transition-colors">
-                  Our Guild Heritage
+                <Link href="/services/industrial-cnc#finishes" className="hover:text-[#C5A059] transition-colors">
+                  Powder Coat & Patinas
                 </Link>
               </li>
               <li>
-                <Link href="/atelier/guarantee" className="hover:text-[#C5A059] transition-colors">
-                  100-Year Life Warranty
+                <Link href="/rfq" className="hover:text-[#C5A059] transition-colors">
+                  Engineering CAD/BIM Specs
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Navigation Column 4: Client Services */}
+          {/* Navigation Column 4: Enterprise & Civic */}
           <div className="lg:col-span-2 space-y-3">
             <h4
               data-testid="footer-nav-client-services"
               className="text-xs uppercase tracking-[0.16em] font-semibold text-[var(--color-ink-primary)]"
             >
-              Client Services
+              Enterprise & Civic
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/trade" className="hover:text-[#C5A059] transition-colors">
-                  Interior Trade Program
+                <Link href="/services/custom-gifting" className="hover:text-[#C5A059] transition-colors">
+                  Custom Gifting & Mementos
                 </Link>
               </li>
               <li>
-                <Link href="/consultation" className="hover:text-[#C5A059] transition-colors">
-                  Framing Consultation
+                <Link href="/services/custom-gifting#awards" className="hover:text-[#C5A059] transition-colors">
+                  Corporate Awards & Plaques
                 </Link>
               </li>
               <li>
-                <Link href="/shipping" className="hover:text-[#C5A059] transition-colors">
-                  White-Glove Shipping
+                <Link href="/services/civic-projects" className="hover:text-[#C5A059] transition-colors">
+                  Government & Civic Projects
                 </Link>
               </li>
               <li>
-                <Link href="/damage-claim" className="hover:text-[#C5A059] transition-colors">
-                  Damage Guarantee Claim
+                <Link href="/services/civic-projects#tenders" className="hover:text-[#C5A059] transition-colors">
+                  Public Sector Tenders (GeM)
+                </Link>
+              </li>
+              <li>
+                <Link href="/rfq" className="hover:text-[#C5A059] transition-colors">
+                  Request Project RFP / RFQ
                 </Link>
               </li>
               <li>
                 <Link href="/installation" className="hover:text-[#C5A059] transition-colors">
-                  Hanging & Wire Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#C5A059] transition-colors">
-                  Contact Atelier Concierge
+                  White-Glove Installation
                 </Link>
               </li>
             </ul>
@@ -341,15 +345,27 @@ export function SiteFooter() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-            {/* FSC Certification Badge */}
-            <div
-              data-testid="footer-fsc-badge"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
-            >
-              <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
-              <span>
-                <strong className="text-[var(--color-ink-primary)]">FSC® C104829 Certified:</strong> Responsibly Managed Appalachian Forests
-              </span>
+            {/* FSC & ISO 9001 / GeM Certification Badges */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div
+                data-testid="footer-fsc-badge"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
+              >
+                <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>
+                  <strong className="text-[var(--color-ink-primary)]">FSC® C104829 Certified:</strong> Appalachian Timber
+                </span>
+              </div>
+
+              <div
+                data-testid="footer-gem-badge"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>
+                  <strong className="text-[var(--color-ink-primary)]">ISO 9001:2015 & GeM:</strong> Tender Certified
+                </span>
+              </div>
             </div>
 
             {/* Payment Trust Badges */}

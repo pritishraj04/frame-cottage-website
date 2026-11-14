@@ -11,25 +11,25 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     const heroCarousel = page.getByTestId("hero-carousel");
     await expect(heroCarousel).toBeVisible();
 
-    // Slide 1 verification
+    // Slide 1 verification: Bespoke Art & Archival Custom Framing
     const slide = page.getByTestId("hero-carousel-slide");
     await expect(slide).toBeVisible();
 
     // Eyebrow tag
-    await expect(heroCarousel).toContainText("Bespoke Framing Atelier");
+    await expect(heroCarousel).toContainText("Bespoke Art & Custom Framing");
 
     // Apple-styled headline
     const headline = page.getByTestId("hero-headline");
     await expect(headline).toBeVisible();
     await expect(headline).toHaveText(
-      "Bespoke Framing. Crafted for Life's Masterpieces."
+      "Bespoke Art & Archival Custom Framing"
     );
 
     // Subheadline
     const subheadline = page.getByTestId("hero-subheadline");
     await expect(subheadline).toBeVisible();
     await expect(subheadline).toContainText(
-      "Every frame is precision-milled from sustainably harvested Appalachian hardwoods"
+      "Gallery-quality fine art printing, canvas stretching"
     );
 
     // Dual action buttons
@@ -39,27 +39,27 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
 
     const ctaExplore = page.getByTestId("cta-explore-collections");
     await expect(ctaExplore).toBeVisible();
-    await expect(ctaExplore).toHaveAttribute("href", "/ready-made");
+    await expect(ctaExplore).toHaveAttribute("href", "/services/bespoke-framing");
 
     // Carousel controls
     await expect(page.getByTestId("hero-carousel-prev")).toBeVisible();
     await expect(page.getByTestId("hero-carousel-next")).toBeVisible();
     await expect(page.getByTestId("hero-carousel-indicators")).toBeVisible();
 
-    // Advance to Slide 2: The Gallery Wall, Reimagined
+    // Advance to Slide 2: Spatial Design & Architectural Signage
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("The Gallery Wall, Reimagined.");
-    await expect(heroCarousel).toContainText("The Salon Collection");
+    await expect(headline).toHaveText("Spatial Design & Architectural Signage");
+    await expect(heroCarousel).toContainText("Spatial Design & Signage");
 
-    // Advance to Slide 3: Museum-Grade Preservation
+    // Advance to Slide 3: Industrial Fabrication & Civic Projects
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("Museum-Grade Preservation.");
-    await expect(heroCarousel).toContainText("TruVue® 99% UV-Shield Optical Acrylic");
+    await expect(headline).toHaveText("Industrial Fabrication & Civic Projects");
+    await expect(heroCarousel).toContainText("Precision CNC Metalworks & GeM Certified");
 
     // Click indicator 0 to return to Slide 1
     await page.getByTestId("hero-carousel-indicator-0").click();
     await expect(headline).toHaveText(
-      "Bespoke Framing. Crafted for Life's Masterpieces."
+      "Bespoke Art & Archival Custom Framing"
     );
   });
 

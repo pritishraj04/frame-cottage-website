@@ -20,7 +20,7 @@ export function AnnouncementBar() {
         <div className="flex items-center gap-2 text-center mx-auto truncate sm:overflow-visible">
           <Sparkles className="w-3.5 h-3.5 text-[#C5A059] shrink-0 hidden sm:inline-block" aria-hidden="true" />
           <span className="font-medium tracking-normal text-[11px] sm:text-xs text-[#F4F1EA]">
-            Handcrafted in 5–7 Days <span className="text-[#C5A059] mx-1.5">•</span> Free White-Glove Shipping on Orders $150+ <span className="text-[#C5A059] mx-1.5">•</span> 100% Solid Hardwood Guarantee
+            Multi-Disciplinary Design, Fabrication & Framing Studio <span className="text-[#C5A059] mx-1.5">•</span> Delivering End-to-End Solutions for B2C, B2B & Public Sector <span className="text-[#C5A059] mx-1.5">•</span> Request Project RFP
           </span>
         </div>
 

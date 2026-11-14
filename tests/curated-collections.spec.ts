@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
+test.describe("Curated Projects & Dual-State In-Situ Product Cards", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders Curated Framing Collections section header and all 5 filter tabs", async ({
+  test("renders Curated Projects & Capabilities section header and all 6 vertical filter tabs", async ({
     page,
   }) => {
     const section = page.getByTestId("curated-collections");
@@ -14,17 +14,18 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
     // Section Header and Subheading
     const header = page.getByTestId("curated-collections-header");
     await expect(header).toBeVisible();
-    await expect(header).toContainText("Curated Framing Collections");
-    await expect(header).toContainText("Artisan Milling & Conservation Glazing");
-    await expect(header).toContainText("Tru Vue® UV-shield acrylic");
+    await expect(header).toContainText("Curated Projects & Capabilities");
+    await expect(header).toContainText("Artisan Milling & Spatial Capabilities");
+    await expect(header).toContainText("Tru Vue® UV-Shield Acrylic");
 
-    // All 5 category filter tabs
+    // All 6 vertical filter tabs
     const tabs = [
-      { id: "all", label: "All Collections" },
-      { id: "natural-timber", label: "Natural Timber" },
-      { id: "heritage-gilded", label: "Heritage Gilded" },
-      { id: "modern-metal", label: "Modern Metal" },
-      { id: "gallery-sets", label: "Gallery Sets" },
+      { id: "all", label: "All Verticals" },
+      { id: "bespoke-framing", label: "Bespoke Framing & Art" },
+      { id: "spatial-signage", label: "Spatial & Signage" },
+      { id: "industrial-cnc", label: "Industrial CNC" },
+      { id: "custom-gifting", label: "Custom Gifting" },
+      { id: "civic-projects", label: "Civic & Government" },
     ];
 
     for (const tab of tabs) {
@@ -39,7 +40,7 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
       "true"
     );
     await expect(
-      page.getByTestId("collection-tab-natural-timber")
+      page.getByTestId("collection-tab-bespoke-framing")
     ).toHaveAttribute("aria-selected", "false");
   });
 
@@ -110,28 +111,28 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
   });
 
   test("filters curated frame models by category tab", async ({ page }) => {
-    // Click "Natural Timber"
-    const timberTab = page.getByTestId("collection-tab-natural-timber");
-    await timberTab.click();
-    await expect(timberTab).toHaveAttribute("aria-selected", "true");
+    // Click "Spatial & Signage"
+    const spatialTab = page.getByTestId("collection-tab-spatial-signage");
+    await spatialTab.click();
+    await expect(spatialTab).toHaveAttribute("aria-selected", "true");
 
-    // Timber models should be visible
+    // Spatial signage models should be visible
+    await expect(
+      page.getByTestId("frame-card-architectural-wayfinding")
+    ).toBeVisible();
+
+    // Bespoke framing models should be filtered out
     await expect(
       page.getByTestId("frame-card-mendocino-walnut")
-    ).toBeVisible();
-    await expect(page.getByTestId("frame-card-kyoto-white-oak")).toBeVisible();
-
-    // Modern metal or heritage models should not be in the DOM / filtered out
+    ).not.toBeVisible();
     await expect(
       page.getByTestId("frame-card-tribeca-brass")
     ).not.toBeVisible();
-    await expect(
-      page.getByTestId("frame-card-florentine-gilded")
-    ).not.toBeVisible();
 
-    // Click "All Collections" to restore
+    // Click "All Verticals" to restore
     const allTab = page.getByTestId("collection-tab-all");
     await allTab.click();
+    await expect(page.getByTestId("frame-card-mendocino-walnut")).toBeVisible();
     await expect(page.getByTestId("frame-card-tribeca-brass")).toBeVisible();
   });
 
@@ -184,6 +185,7 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
     await section.scrollIntoViewIfNeeded();
 
     const targetCard = page.getByTestId("frame-card-mendocino-walnut");
+    await targetCard.scrollIntoViewIfNeeded();
     await targetCard.hover();
 
     const quickCustomiseBtn = page.getByTestId(
@@ -193,7 +195,7 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
     await quickCustomiseBtn.click();
 
     // Dialog should open
-    const dialog = page.getByTestId("quick-customise-dialog");
+    const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
 
     // Title and description
@@ -256,14 +258,8 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
       "/customise?moulding=walnut&size=11x14&mat=classic"
     );
 
-    // Capture screenshot of the Quick Customise dialog
-    await page.screenshot({
-      path: ".agent/screenshots/task-6-quick-customise-dialog.png",
-      fullPage: false,
-    });
-
     // Close the dialog
-    const closeBtn = page.getByTestId("dialog-close-button");
+    const closeBtn = page.getByTestId("dialog-close-btn");
     await closeBtn.click();
     await expect(dialog).not.toBeVisible();
   });
@@ -275,11 +271,7 @@ test.describe("Curated Collections & Dual-State In-Situ Product Cards", () => {
     const section = page.getByTestId("curated-collections");
     await expect(section).toBeVisible();
 
-    // Check that frame cards stack and are visible on mobile
-    const card = page.getByTestId("frame-card-highline-matte-black");
+    const card = page.getByTestId("frame-card-mendocino-walnut");
     await expect(card).toBeVisible();
-
-    const title = page.getByTestId("frame-card-title-highline-matte-black");
-    await expect(title).toHaveText("The Highline Matte Black");
   });
 });

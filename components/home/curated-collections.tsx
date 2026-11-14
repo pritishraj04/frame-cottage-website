@@ -32,7 +32,7 @@ export function CuratedCollections() {
     <section
       id="curated-collections"
       data-testid="curated-collections"
-      aria-label="Curated Framing Collections"
+      aria-label="Curated Projects & Capabilities"
       className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,25 +45,25 @@ export function CuratedCollections() {
         >
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-ink-primary)] mb-3">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>Artisan Milling & Conservation Glazing</span>
+            <span>Artisan Milling & Spatial Capabilities • Tru Vue® UV-Shield Acrylic</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
-            Curated Framing Collections
+            Curated Projects & Capabilities
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[var(--color-ink-secondary)] leading-relaxed">
-            Each silhouette is custom-milled to the millimeter from sustainably sourced
-            American hardwoods, hand-finished with organic oils or genuine gold leaf,
-            and glazed with museum-grade Tru Vue® UV-shield acrylic.
+            Delivering end-to-end spatial, industrial, and aesthetic solutions for residential spaces,
+            commercial enterprises, and public sector tenders. Each project is precision-engineered
+            from Appalachian hardwoods, structural metals, and conservation glazing.
           </p>
         </div>
 
         {/* =========================================================================
-            FILTER TABS: All, Natural Timber, Heritage Gilded, Modern Metal, Gallery Sets
+            FILTER TABS: All Verticals, Bespoke Framing & Art, Spatial & Signage, Industrial CNC, Custom Gifting, Civic & Government
            ========================================================================= */}
         <div className="flex items-center justify-between gap-4 border-b border-[var(--color-border-subtle)] pb-4 mb-8 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
-            aria-label="Collection categories"
+            aria-label="Core service vertical tabs"
             className="flex items-center gap-2 sm:gap-3 flex-nowrap"
           >
             {COLLECTION_FILTER_TABS.map((tab) => {
@@ -98,20 +98,14 @@ export function CuratedCollections() {
               );
             })}
           </div>
-
-          {/* Quick Stats Pill */}
-          <div className="hidden md:flex items-center gap-1.5 text-xs text-[var(--color-ink-muted)]">
-            <Layers className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>{filteredProducts.length} Atelier Silhouettes</span>
-          </div>
         </div>
 
         {/* =========================================================================
-            RESPONSIVE PRODUCT GRID (1 col mobile, 2 cols tablet, 4 cols desktop)
+            RESPONSIVE DUAL-STATE IN-SITU PRODUCT GRID
            ========================================================================= */}
         <div
           data-testid="collection-grid"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           {filteredProducts.map((product) => (
             <FrameCard
@@ -122,40 +116,15 @@ export function CuratedCollections() {
           ))}
         </div>
 
-        {/* =========================================================================
-            BOTTOM CATALOG VALUE PROPOSITION FOOTER
-           ========================================================================= */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)]">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-ink-primary)]">
-                100-Year Archival Guarantee
-              </p>
-              <p className="text-xs text-[var(--color-ink-muted)]">
-                Acid-free 4-ply cotton rag mats and Tru Vue® conservation glazing on all builds.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="/collections"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#C5A059] hover:text-[#D4AF37] group transition-colors"
-          >
-            <span>Explore All 48 Framing Profiles</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </a>
-        </div>
+        {/* Quick Customise Modal Dialog */}
+        {selectedProduct && (
+          <QuickCustomiseDialog
+            isOpen={isDialogOpen}
+            product={selectedProduct}
+            onOpenChange={setIsDialogOpen}
+          />
+        )}
       </div>
-
-      {/* Accessible Quick Customise Dialog */}
-      <QuickCustomiseDialog
-        product={selectedProduct}
-        isOpen={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-      />
     </section>
   );
 }

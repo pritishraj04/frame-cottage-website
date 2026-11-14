@@ -2,12 +2,12 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 
-test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
+test.describe("4-Stage Turnkey Studio Workflow & Featured Products Carousel", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders 3-Step Framing Journey with header, badges, and all 3 narrative steps", async ({
+  test("renders 4-Stage Studio Execution Workflow with header, badges, and all 4 narrative steps", async ({
     page,
   }) => {
     const journeySection = page.getByTestId("framing-journey");
@@ -16,33 +16,38 @@ test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
     // Section Header and Subtitle
     const header = page.getByTestId("framing-journey-header");
     await expect(header).toBeVisible();
-    await expect(header).toContainText("How Custom Framing Works");
-    await expect(header).toContainText(
-      "From digital memory to handcrafted heirloom in three seamless steps."
-    );
+    await expect(header).toContainText("Turnkey Studio Execution Workflow");
+    await expect(header).toContainText("End-to-End Studio Workflow");
 
-    // Verify all 3 steps exist
+    // Verify all 4 steps exist
     const steps = [
       {
         index: 1,
         number: "01",
-        title: "Upload or Mail In",
-        descSubstring: "Upload high-res photos for 12-color archival giclée printing",
-        pill: "Upload / Send",
+        title: "Spatial Consultation & 3D Spec",
+        descSubstring: "We review site plans, CAD drawings, or artwork dimensions",
+        pill: "Consult & Spec",
       },
       {
         index: 2,
         number: "02",
-        title: "Design with Precision",
-        descSubstring: "Pair your piece with solid hardwoods, archival cotton mats",
-        pill: "Customise",
+        title: "Engineering & Precision Fabrication",
+        descSubstring: "In-house precision manufacturing combining heavy CNC routing",
+        pill: "Precision Fabrication",
       },
       {
         index: 3,
         number: "03",
-        title: "Delivered Ready to Hang",
-        descSubstring: "Handcrafted by master framers in 5-7 days",
-        pill: "Ready-to-Hang",
+        title: "Museum Archival Curation & Quality Control",
+        descSubstring: "Rigorous quality inspection in cleanroom environments",
+        pill: "Archival Curation",
+      },
+      {
+        index: 4,
+        number: "04",
+        title: "White-Glove Installation & Turnkey Handover",
+        descSubstring: "Certified nationwide installation teams handle structural anchoring",
+        pill: "Turnkey Handover",
       },
     ];
 
@@ -70,7 +75,7 @@ test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
     const connectors = page.getByTestId("framing-journey-connectors");
     await expect(connectors).toBeAttached();
 
-    // Capture screenshot of the 3-step framing journey
+    // Capture screenshot of the 4-stage studio journey
     await journeySection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
     const screenshotPath = path.resolve(
@@ -95,16 +100,16 @@ test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
     await expect(page.getByTestId("carousel-prev-btn")).toBeVisible();
     await expect(page.getByTestId("carousel-next-btn")).toBeVisible();
 
-    // Verify all 8 featured handcrafted cards exist in the DOM
+    // Verify all 8 featured capability cards exist in the DOM across the 6 verticals
     const expectedCards = [
+      "architectural-wayfinding",
       "mendocino-walnut",
+      "laser-cut-brass-monument",
+      "perforated-metal-facade",
+      "highline-shadowbox-canvas",
+      "executive-crystal-walnut",
+      "ready-made-gallery-set",
       "gilded-atelier-brass",
-      "kyoto-white-oak-slim",
-      "highline-matte-black",
-      "florentine-antiqued-gold",
-      "montmartre-gallery-triptych",
-      "versailles-ogee-gilt",
-      "chelsea-gallery-duo",
     ];
 
     for (const cardId of expectedCards) {
@@ -114,7 +119,7 @@ test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
 
     // Verify specific frame presentation elements on Mendocino Walnut card
     const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
-    await expect(walnutCard).toContainText("The Mendocino Walnut");
+    await expect(walnutCard).toContainText("The Mendocino");
     await expect(walnutCard).toContainText("Solid Appalachian Black Walnut");
     await expect(walnutCard).toContainText("Organic Linseed Oil");
     await expect(walnutCard).toContainText("From $64");

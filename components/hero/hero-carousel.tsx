@@ -7,8 +7,11 @@ import {
   ChevronRight,
   ArrowRight,
   Sparkles,
+  Compass,
+  Cpu,
+  Layers,
+  Building2,
   ShieldCheck,
-  LayoutGrid,
   CheckCircle2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -36,28 +39,28 @@ export function HeroCarousel() {
 
   const slides: CarouselSlide[] = [
     {
-      id: "slide-architectural",
-      eyebrow: "Bespoke Framing Atelier",
+      id: "slide-bespoke-framing",
+      eyebrow: "Bespoke Art & Custom Framing",
       eyebrowIcon: Sparkles,
-      title: "Bespoke Framing. Crafted for Life's Masterpieces.",
+      title: "Bespoke Art & Archival Custom Framing",
       subtitle:
-        "Every frame is precision-milled from sustainably harvested Appalachian hardwoods and hand-joined by master artisans. Receive your archival piece ready to hang.",
+        "Gallery-quality fine art printing, canvas stretching, and archival-grade framing precision-milled from Appalachian hardwoods and hand-joined with master splines.",
       primaryCtaText: "Customise Your Frame",
       primaryCtaLink: "/customizer",
       secondaryCtaText: "Explore Collections",
-      secondaryCtaLink: "/ready-made",
-      badgeText: "100% Solid Appalachian Hardwood",
+      secondaryCtaLink: "/services/bespoke-framing",
+      badgeText: "Gallery-Quality Fine Art Printing & Archival Joinery",
       theme: "light",
       renderVisual: () => (
         <div className="relative w-full h-full flex items-center justify-center select-none overflow-hidden">
-          {/* Architectural Living Room Scene */}
+          {/* Architectural Living Room & Fine Art Atelier Scene */}
           <div className="relative w-full max-w-lg lg:max-w-xl aspect-[4/3] flex items-center justify-center">
             {/* Wall Daylight Bloom */}
             <div className="absolute -top-12 -left-12 w-80 h-80 rounded-full bg-gradient-to-br from-white/70 via-amber-50/30 to-transparent blur-3xl pointer-events-none" />
 
             {/* Credenza Base Horizon Line */}
             <div className="absolute bottom-4 left-0 right-0 h-14 bg-gradient-to-t from-[#D6CFBE]/40 to-transparent border-t border-[#D2D2D7]/60 pointer-events-none" />
-            
+
             {/* Minimalist Designer Credenza */}
             <div className="absolute bottom-0 w-3/4 h-7 rounded-t-sm bg-[#5C4230] shadow-md border-t border-[#785741] flex items-center justify-between px-6">
               <div className="w-10 h-1 bg-[#3E2C1F]/60 rounded-full" />
@@ -81,11 +84,11 @@ export function HeroCarousel() {
                   <div className="relative w-44 h-56 sm:w-56 sm:h-72 bg-[#F6F2EA] flex flex-col items-center justify-between p-4 overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)]">
                     {/* Archival Texture */}
                     <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#8C7765_1px,transparent_1px)] [background-size:10px_10px]" />
-                    
+
                     {/* Art Header */}
                     <div className="relative z-10 w-full text-center">
                       <span className="text-[9px] uppercase tracking-[0.25em] text-[#86868B] font-medium">
-                        Atelier Monograph • No. VII
+                        Atelier Monograph • Fine Art Giclée
                       </span>
                       <div className="mx-auto my-1 w-6 h-[1px] bg-[#B88E56]/60" />
                     </div>
@@ -104,10 +107,10 @@ export function HeroCarousel() {
                     {/* Taxonomy Footer */}
                     <div className="relative z-10 w-full text-center">
                       <p className="font-sans text-[11px] font-medium tracking-tight text-[#1D1D1F]">
-                        Composition in Form & Negative Space
+                        Archival Canvas & Appalachian Walnut
                       </p>
                       <p className="text-[8px] uppercase tracking-[0.18em] text-[#86868B]">
-                        310gsm German Etching Cotton Rag
+                        310gsm German Etching Cotton Rag • TruVue® UV Glazing
                       </p>
                     </div>
 
@@ -128,164 +131,167 @@ export function HeroCarousel() {
       ),
     },
     {
-      id: "slide-gallery-wall",
-      eyebrow: "The Salon Collection",
-      eyebrowIcon: LayoutGrid,
-      title: "The Gallery Wall, Reimagined.",
+      id: "slide-spatial-signage",
+      eyebrow: "Spatial Design & Signage",
+      eyebrowIcon: Compass,
+      title: "Spatial Design & Architectural Signage",
       subtitle:
-        "Curated multi-frame arrangements precision-balanced in natural American Walnut and White Oak. Comes with hanging templates for effortless installation.",
+        "Complete environmental branding, architectural wayfinding, exterior commercial signage, and custom illuminated LED displays engineered for commercial campuses.",
       primaryCtaText: "Customise Your Frame",
       primaryCtaLink: "/customizer",
       secondaryCtaText: "Explore Collections",
-      secondaryCtaLink: "/gallery-walls",
-      badgeText: "Laser-Aligned Spacing Templates",
+      secondaryCtaLink: "/services/spatial-signage",
+      badgeText: "Architectural Wayfinding & 3D Illuminated LED",
       theme: "light",
       renderVisual: () => (
         <div className="relative w-full h-full flex items-center justify-center select-none overflow-hidden">
-          {/* Symmetrical Salon Grid Wall */}
+          {/* Architectural Wayfinding Pylon & Environmental Branding Visual */}
           <div className="relative w-full max-w-lg lg:max-w-xl aspect-[4/3] flex items-center justify-center">
-            {/* Gallery Accent Backing Grid */}
-            <div className="relative grid grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6 bg-gradient-to-br from-white/60 via-white/30 to-white/10 rounded-2xl border border-[#D2D2D7]/60 shadow-xs backdrop-blur-xs">
-              {/* Frame 1: American Walnut Portrait */}
-              <div
-                className="p-2 sm:p-2.5 rounded-xs shadow-md transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #442E1F 0%, #2A1C13 100%)",
-                  border: "1px solid #5A3E2B",
-                }}
-              >
-                <div className="p-2 sm:p-3 bg-[#FAF8F5] border border-[#EBE3D7]">
-                  <div className="w-20 h-26 sm:w-28 sm:h-34 bg-[#F2EDE2] flex items-center justify-center p-2">
-                    <svg viewBox="0 0 80 100" className="w-full h-full text-[#3A4A3E]" fill="none">
-                      <path d="M40 90 L40 15 M40 30 C 55 25, 65 35, 60 45 C 50 40, 42 42, 40 45" stroke="#483321" strokeWidth="1.5" strokeLinecap="round" />
-                      <circle cx="40" cy="20" r="12" fill="#526454" fillOpacity="0.4" stroke="#3A483B" strokeWidth="0.8" />
-                      <circle cx="58" cy="42" r="8" fill="#B88E56" fillOpacity="0.5" />
-                    </svg>
+            {/* Architectural Ambient Grid & Backlight */}
+            <div className="absolute inset-4 rounded-2xl bg-gradient-to-br from-[#1E2530]/90 via-[#141820]/95 to-[#0F1218] border border-[#2D3748] shadow-2xl p-6 flex items-center justify-center overflow-hidden">
+              {/* Background Technical Grid */}
+              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#4FD1C5_1px,transparent_1px)] [background-size:16px_16px]" />
+
+              {/* Glowing Monolithic Architectural Totem */}
+              <div className="relative z-10 flex items-center gap-6">
+                {/* 3D Illuminated Wayfinding Pylon */}
+                <div className="relative w-36 sm:w-44 h-64 sm:h-76 bg-gradient-to-b from-[#2D3748] via-[#1A202C] to-[#171923] rounded-lg border border-[#4A5568] shadow-2xl p-3 flex flex-col justify-between overflow-hidden">
+                  {/* Illuminated Top Accent Bar */}
+                  <div className="w-full h-1.5 bg-gradient-to-r from-[#C5A059] via-[#E2C785] to-[#C5A059] rounded-full shadow-[0_0_12px_rgba(197,160,89,0.8)]" />
+
+                  {/* Directional Wayfinding Spec */}
+                  <div className="space-y-3 pt-2">
+                    <div className="flex items-center gap-2 border-b border-white/10 pb-2">
+                      <div className="w-5 h-5 rounded-md bg-[#C5A059]/20 flex items-center justify-center text-[#C5A059] text-[10px] font-bold">
+                        HQ
+                      </div>
+                      <span className="text-[10px] font-semibold text-white tracking-wider uppercase">
+                        Enterprise Center
+                      </span>
+                    </div>
+
+                    <div className="space-y-1.5 text-[9px] text-[#A0AEC0]">
+                      <div className="flex items-center justify-between text-white font-medium">
+                        <span>Level 4 • Atelier Studio</span>
+                        <span className="text-[#C5A059]">↑</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Level 3 • Design Lab</span>
+                        <span>→</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Level 2 • CNC Metalworks</span>
+                        <span>→</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span>Level 1 • Civic Archives</span>
+                        <span>←</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Illuminated 3D LED Badge */}
+                  <div className="mt-auto pt-3 border-t border-white/10 flex items-center justify-between">
+                    <span className="text-[8px] uppercase tracking-widest text-[#718096]">
+                      IP67 Architectural LED
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981]" />
                   </div>
                 </div>
-              </div>
 
-              {/* Frame 2: Natural White Oak Architecture */}
-              <div
-                className="p-2 sm:p-2.5 rounded-xs shadow-md transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #C2A584 0%, #9F8363 100%)",
-                  border: "1px solid #D2BA9C",
-                }}
-              >
-                <div className="p-2 sm:p-3 bg-[#FAF8F5] border border-[#EBE3D7]">
-                  <div className="w-20 h-26 sm:w-28 sm:h-34 bg-[#F2EDE2] flex items-center justify-center p-2">
-                    <svg viewBox="0 0 80 100" className="w-full h-full text-[#1D1D1F]" fill="none">
-                      <rect x="15" y="20" width="50" height="60" stroke="#1D1D1F" strokeWidth="1" fill="#E8E3D8" />
-                      <line x1="15" y1="50" x2="65" y2="50" stroke="#1D1D1F" strokeWidth="0.8" />
-                      <line x1="40" y1="20" x2="40" y2="80" stroke="#1D1D1F" strokeWidth="0.8" />
-                      <circle cx="40" cy="50" r="14" fill="#B88E56" fillOpacity="0.4" stroke="#B88E56" strokeWidth="1" />
-                    </svg>
+                {/* Exterior Illuminated Commercial Sign Detail */}
+                <div className="hidden sm:flex flex-col gap-3">
+                  <div className="p-3.5 rounded-lg bg-[#2D3748]/60 border border-[#4A5568]/80 backdrop-blur-md shadow-md text-left w-40">
+                    <div className="text-[10px] text-[#C5A059] font-semibold uppercase tracking-wider mb-1">
+                      Environmental Branding
+                    </div>
+                    <div className="text-xs text-white font-serif">
+                      Architectural Wayfinding & 3D Letters
+                    </div>
+                    <div className="text-[9px] text-[#A0AEC0] mt-1">
+                      Precision aluminum casing with edge-lit halo LED.
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Frame 3: Matte Black Float Minimal */}
-              <div
-                className="p-2 sm:p-2.5 rounded-xs shadow-md transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #242426 0%, #151516 100%)",
-                  border: "1px solid #3A3A3D",
-                }}
-              >
-                <div className="p-2 sm:p-3 bg-[#FAF8F5] border border-[#EBE3D7]">
-                  <div className="w-20 h-26 sm:w-28 sm:h-34 bg-[#F2EDE2] flex items-center justify-center p-2">
-                    <svg viewBox="0 0 80 100" className="w-full h-full text-[#1D1D1F]" fill="none">
-                      <path d="M20 70 Q 40 20, 60 70" stroke="#1D1D1F" strokeWidth="1.5" fill="none" />
-                      <circle cx="40" cy="35" r="7" fill="#B88E56" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              {/* Frame 4: Florentine Antique Brass */}
-              <div
-                className="p-2 sm:p-2.5 rounded-xs shadow-md transition-transform duration-300 hover:scale-105"
-                style={{
-                  background: "linear-gradient(135deg, #D4AF37 0%, #997A15 50%, #68500C 100%)",
-                  border: "1px solid #E5C358",
-                }}
-              >
-                <div className="p-2 sm:p-3 bg-[#FAF8F5] border border-[#EBE3D7]">
-                  <div className="w-20 h-26 sm:w-28 sm:h-34 bg-[#F2EDE2] flex items-center justify-center p-2">
-                    <svg viewBox="0 0 80 100" className="w-full h-full" fill="none">
-                      <circle cx="40" cy="50" r="22" stroke="#8F7124" strokeWidth="1.2" strokeDasharray="3 3" />
-                      <circle cx="40" cy="50" r="12" fill="#B88E56" fillOpacity="0.3" stroke="#8F7124" strokeWidth="1" />
-                    </svg>
+                  <div className="p-3 rounded-lg bg-[#1A202C]/80 border border-[#C5A059]/40 shadow-xs text-left w-40">
+                    <div className="flex items-center gap-1.5 text-[10px] text-white font-medium">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <span>ADA Code Compliant</span>
+                    </div>
+                    <div className="text-[9px] text-[#A0AEC0] mt-0.5">
+                      Tactile Grade 2 Braille & vandal-resistant finish.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Walnut Credenza Shelf Horizon */}
-            <div className="absolute -bottom-2 w-5/6 h-4 rounded-full bg-[#463223] shadow-md border-t border-[#654832]" />
           </div>
         </div>
       ),
     },
     {
-      id: "slide-preservation",
-      eyebrow: "Museum-Grade Preservation",
-      eyebrowIcon: ShieldCheck,
-      title: "Museum-Grade Preservation.",
+      id: "slide-industrial-civic",
+      eyebrow: "Industrial Fabrication & Civic Projects",
+      eyebrowIcon: Cpu,
+      title: "Industrial Fabrication & Civic Projects",
       subtitle:
-        "Archival cotton matting, optical conservation glazing blocking 99% of UV rays, and mortise spline joinery engineered to safeguard memories for centuries.",
+        "Precision manufacturing, 5-axis CNC routing, fiber laser cutting, and scalable execution of municipal signage, civic installations, and public sector tenders.",
       primaryCtaText: "Customise Your Frame",
       primaryCtaLink: "/customizer",
       secondaryCtaText: "Explore Collections",
-      secondaryCtaLink: "/atelier",
-      badgeText: "TruVue® 99% UV-Shield Optical Acrylic",
+      secondaryCtaLink: "/services/civic-projects",
+      badgeText: "Precision CNC Metalworks & GeM Certified",
       theme: "light",
       renderVisual: () => (
         <div className="relative w-full h-full flex items-center justify-center select-none overflow-hidden">
-          {/* Precision Atelier Exploded Layer Perspective */}
+          {/* Heavy Precision CNC Metalworks & Civic Monument Visual */}
           <div className="relative w-full max-w-lg lg:max-w-xl aspect-[4/3] flex items-center justify-center">
-            {/* Layer 1: Hand-Milled Walnut Splined Corner */}
-            <div
-              className="relative w-64 h-72 sm:w-76 sm:h-84 rounded-lg p-5 shadow-2xl transition-all duration-500"
-              style={{
-                background: "linear-gradient(135deg, #483323 0%, #2A1D14 100%)",
-                border: "2px solid #5F422E",
-              }}
-            >
-              {/* Solid Maple Corner Spline Accent */}
-              <div className="absolute top-2 left-2 w-7 h-1.5 bg-[#D5BE9B] rotate-45 rounded-xs shadow-xs border border-[#9E8668]" />
-              <div className="absolute top-4 left-4 w-7 h-1.5 bg-[#D5BE9B] rotate-45 rounded-xs shadow-xs border border-[#9E8668]" />
+            {/* Industrial Stainless & Brass Backplate */}
+            <div className="relative w-72 sm:w-84 h-72 sm:h-80 rounded-xl p-6 shadow-2xl bg-gradient-to-br from-[#201D1A] via-[#161514] to-[#0D0C0B] border border-[#524436] flex flex-col justify-between">
+              {/* Corner Machined Bolts */}
+              <div className="absolute top-2.5 left-2.5 w-3 h-3 rounded-full bg-[#9E8668] border border-[#D5BE9B] shadow-inner flex items-center justify-center text-[7px] text-black font-bold">
+                +
+              </div>
+              <div className="absolute top-2.5 right-2.5 w-3 h-3 rounded-full bg-[#9E8668] border border-[#D5BE9B] shadow-inner flex items-center justify-center text-[7px] text-black font-bold">
+                +
+              </div>
+              <div className="absolute bottom-2.5 left-2.5 w-3 h-3 rounded-full bg-[#9E8668] border border-[#D5BE9B] shadow-inner flex items-center justify-center text-[7px] text-black font-bold">
+                +
+              </div>
+              <div className="absolute bottom-2.5 right-2.5 w-3 h-3 rounded-full bg-[#9E8668] border border-[#D5BE9B] shadow-inner flex items-center justify-center text-[7px] text-black font-bold">
+                +
+              </div>
 
-              {/* Layer 2: TruVue 99% UV Acrylic Float */}
-              <div className="relative w-full h-full rounded-md p-4 bg-gradient-to-tr from-white/95 via-white/80 to-amber-50/70 border border-[#D2D2D7] shadow-inner flex flex-col justify-between">
-                {/* 45-degree Bevel Mat Rim */}
-                <div className="relative w-full h-full border-4 border-[#F3ECE2] bg-[#FAF8F5] p-4 flex flex-col justify-between items-center text-center shadow-xs">
-                  {/* UV Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1D1D1F] text-white text-[10px] font-semibold tracking-wider uppercase">
-                    <ShieldCheck className="w-3 h-3 text-[#B88E56]" />
-                    <span>99% UV Conservation Glass</span>
+              {/* Laser-Cut Brass Monument Civic Plaque */}
+              <div className="relative w-full h-full rounded-lg bg-gradient-to-tr from-[#94742B] via-[#C5A059] to-[#EBD79B] p-0.5 shadow-lg">
+                <div className="w-full h-full bg-[#1A1816] rounded-md p-4 flex flex-col justify-between items-center text-center border border-[#C5A059]/40">
+                  {/* Civic Monument Seal / Heading */}
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/30 text-[9px] font-semibold text-[#EBD79B] uppercase tracking-widest">
+                      Civic Monument & Tender
+                    </div>
+                    <h4 className="font-serif text-xs sm:text-sm font-semibold text-white tracking-wide">
+                      MUNICIPAL CIVIC ARCHIVES
+                    </h4>
                   </div>
 
-                  {/* Botanical Lithograph Detail */}
-                  <div className="my-auto">
-                    <svg viewBox="0 0 100 100" className="w-24 h-24 sm:w-28 sm:h-28 text-[#526454]" fill="none">
-                      <path d="M50 85 C 50 60, 50 30, 50 15" stroke="#483321" strokeWidth="1.5" strokeLinecap="round" />
-                      <path d="M50 40 C 35 30, 20 40, 25 55 C 35 60, 48 50, 50 40 Z" fill="#627865" stroke="#3A483B" strokeWidth="0.8" />
-                      <path d="M50 30 C 65 20, 80 30, 75 45 C 65 50, 52 40, 50 30 Z" fill="#758C77" stroke="#3A483B" strokeWidth="0.8" />
-                      <circle cx="50" cy="15" r="3" fill="#B88E56" />
+                  {/* Precision CNC Laser Geometric Motif */}
+                  <div className="my-auto py-2">
+                    <svg viewBox="0 0 100 80" className="w-24 h-20 text-[#C5A059]" fill="none">
+                      <rect x="10" y="10" width="80" height="60" rx="4" stroke="#C5A059" strokeWidth="1.2" strokeDasharray="4 2" />
+                      <circle cx="50" cy="40" r="22" stroke="#EBD79B" strokeWidth="1.5" />
+                      <circle cx="50" cy="40" r="14" fill="#C5A059" fillOpacity="0.2" stroke="#C5A059" strokeWidth="1" />
+                      <path d="M50 20 L50 60 M30 40 L70 40" stroke="#EBD79B" strokeWidth="0.8" />
+                      <circle cx="50" cy="40" r="4" fill="#EBD79B" />
                     </svg>
                   </div>
 
-                  {/* Archival Specification Strip */}
-                  <div className="w-full pt-2 border-t border-[#D2D2D7]/70 text-[10px] text-[#86868B] flex items-center justify-between">
-                    <span>100% Cotton Rag Core</span>
-                    <span className="font-semibold text-[#1D1D1F]">Acid-Free</span>
+                  {/* CNC Engineering Tolerances Spec */}
+                  <div className="w-full pt-2 border-t border-white/10 text-[9px] text-[#A0AEC0] flex items-center justify-between">
+                    <span>5-Axis CNC • ±0.1mm</span>
+                    <span className="text-[#C5A059] font-medium">GeM Registered</span>
                   </div>
                 </div>
-
-                {/* Optical Glazing Glare Simulation */}
-                <div className="absolute inset-0 rounded-md pointer-events-none bg-gradient-to-tr from-transparent via-violet-500/5 to-transparent border border-white/40" />
               </div>
             </div>
           </div>
@@ -304,21 +310,14 @@ export function HeroCarousel() {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   }, [totalSlides]);
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  // Auto-rotation with hover pause
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       nextSlide();
-    }, 6500);
-
+    }, 8000);
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
 
-  // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
   };
@@ -329,155 +328,138 @@ export function HeroCarousel() {
 
   const handleTouchEnd = () => {
     if (!touchStartXRef.current || !touchEndXRef.current) return;
-    const deltaX = touchStartXRef.current - touchEndXRef.current;
-    const minSwipeDistance = 45;
-
-    if (deltaX > minSwipeDistance) {
+    const distance = touchStartXRef.current - touchEndXRef.current;
+    if (distance > 50) {
       nextSlide();
-    } else if (deltaX < -minSwipeDistance) {
+    } else if (distance < -50) {
       prevSlide();
     }
-
     touchStartXRef.current = null;
     touchEndXRef.current = null;
   };
 
-  const activeSlide = slides[currentSlide];
-  const EyebrowIcon = activeSlide.eyebrowIcon;
+  const active = slides[currentSlide];
+  const EyebrowIcon = active.eyebrowIcon;
 
   return (
     <section
-      aria-label="Frame Cottage Bespoke Framing Hero Carousel"
-      aria-roledescription="carousel"
+      aria-label="Frame Cottage Studio Showcase"
       data-testid="hero-carousel"
-      className="relative w-full overflow-hidden bg-[var(--background)] border-b border-[var(--color-border-subtle)] h-[520px] sm:h-[600px] lg:h-[700px] flex items-center transition-colors duration-250"
+      className="relative w-full bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Background Subtle Ambient Lighting */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 right-1/4 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-[#6B1C23]/15 via-[#C5A059]/10 to-transparent blur-3xl pointer-events-none -z-10"
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div
           data-testid="hero-carousel-slide"
-          role="group"
-          aria-roledescription="slide"
-          aria-label={`${currentSlide + 1} of ${totalSlides}`}
-          className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center transition-all duration-700 ease-in-out"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
         >
-          {/* Left Column: Editorial Headline, Subtitle, Dual CTAs & Trust Badge */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
-            {/* Museum-style Frosted Pill Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)]/90 border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs backdrop-blur-md">
+          {/* Left Column: Editorial Headline & Actions */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            {/* Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs">
               <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>{activeSlide.eyebrow}</span>
+              <span>{active.eyebrow}</span>
             </div>
 
-            {/* Museum Serif Elegant Headline */}
+            {/* Apple-grade Display Typography */}
             <h1
               data-testid="hero-headline"
-              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
             >
-              {activeSlide.title}
+              {active.title}
             </h1>
 
             {/* Subheadline */}
             <p
               data-testid="hero-subheadline"
-              className="text-sm sm:text-base lg:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-xl font-normal"
+              className="text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-2xl"
             >
-              {activeSlide.subtitle}
+              {active.subtitle}
             </p>
 
-            {/* Dual CTAs in Museum Muted Gold and Rich Burgundy */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+            {/* Dual CTA Button Group */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Link
-                href={activeSlide.primaryCtaLink}
+                href={active.primaryCtaLink}
                 data-testid="cta-customise-frame"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md hover:shadow-lg group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
               >
-                <span>{activeSlide.primaryCtaText}</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <span>{active.primaryCtaText}</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
-                href={activeSlide.secondaryCtaLink}
+                href={active.secondaryCtaLink}
                 data-testid="cta-explore-collections"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#6B1C23] hover:border-[var(--color-accent-gold)] bg-[#6B1C23]/25 hover:bg-[#6B1C23]/40 text-[var(--color-ink-primary)] text-xs sm:text-sm font-medium backdrop-blur-md transition-all shadow-2xs cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] font-medium text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer shadow-2xs"
               >
-                <span>{activeSlide.secondaryCtaText}</span>
+                <span>{active.secondaryCtaText}</span>
               </Link>
             </div>
 
-            {/* Slide Sub-Badge Trust Signal */}
-            <div className="inline-flex items-center gap-2 pt-2 text-xs text-[var(--color-ink-secondary)]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
-              <span className="font-medium text-[var(--color-ink-primary)]">{activeSlide.badgeText}</span>
-              <span>• Handcrafted in 5–7 Days</span>
+            {/* Trust Micro-Badge */}
+            <div className="pt-2 flex items-center gap-2 text-xs text-[var(--color-ink-secondary)] font-medium">
+              <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
+              <span>{active.badgeText}</span>
             </div>
           </div>
 
-          {/* Right Column: High-Impact Visual Scene */}
-          <div className="lg:col-span-6 w-full flex items-center justify-center">
-            {activeSlide.renderVisual()}
+          {/* Right Column: Visual Stage */}
+          <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+            {active.renderVisual()}
           </div>
         </div>
-      </div>
 
-      {/* Glassmorphic Carousel Left/Right Navigation Controls */}
-      <button
-        type="button"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-        data-testid="hero-carousel-prev"
-        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-canvas-surface)]/80 hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
-      >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-      </button>
+        {/* Carousel Navigation Bar (Bottom Controls) */}
+        <div
+          data-testid="hero-carousel-indicators"
+          className="mt-8 pt-6 border-t border-[var(--color-border-subtle)] flex items-center justify-between"
+        >
+          {/* Slide Indicator Dots */}
+          <div className="flex items-center gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.id}
+                type="button"
+                onClick={() => setCurrentSlide(index)}
+                data-testid={`hero-carousel-indicator-${index}`}
+                aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                  currentSlide === index
+                    ? "w-8 bg-[var(--color-accent-gold)]"
+                    : "w-2 bg-[var(--color-border-subtle)] hover:bg-[var(--color-ink-muted)]"
+                )}
+              />
+            ))}
+          </div>
 
-      <button
-        type="button"
-        onClick={nextSlide}
-        aria-label="Next slide"
-        data-testid="hero-carousel-next"
-        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-canvas-surface)]/80 hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
-      >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-      </button>
-
-      {/* Museum-Style Bottom Pill Progress Indicators */}
-      <div
-        data-testid="hero-carousel-indicators"
-        role="tablist"
-        aria-label="Carousel slide pagination"
-        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-y-0 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)]/80 backdrop-blur-md border border-[var(--color-border-subtle)] shadow-xs"
-      >
-        {slides.map((slide, index) => {
-          const isActive = index === currentSlide;
-          return (
+          {/* Previous / Next Arrows */}
+          <div className="flex items-center gap-2">
             <button
-              key={slide.id}
               type="button"
-              role="tab"
-              aria-selected={isActive}
-              aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-              data-testid={`hero-carousel-indicator-${index}`}
-              onClick={() => goToSlide(index)}
-              className={cn(
-                "transition-all duration-300 rounded-full cursor-pointer",
-                isActive
-                  ? "w-7 h-2 bg-[#C5A059]"
-                  : "w-2 h-2 bg-[#444444] hover:bg-[#666666]"
-              )}
-            />
-          );
-        })}
+              onClick={prevSlide}
+              data-testid="hero-carousel-prev"
+              aria-label="Previous slide"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={nextSlide}
+              data-testid="hero-carousel-next"
+              aria-label="Next slide"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

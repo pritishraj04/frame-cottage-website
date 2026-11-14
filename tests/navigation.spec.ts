@@ -1,15 +1,15 @@
 import { test, expect } from "@playwright/test";
 import * as fs from "fs";
 
-test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () => {
-  test("renders announcement bar with guarantees and can be dismissed", async ({ page }) => {
+test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu", () => {
+  test("renders announcement bar with studio proposition and can be dismissed", async ({ page }) => {
     await page.goto("/");
 
     const announcement = page.getByRole("region", { name: "Announcement" });
     await expect(announcement).toBeVisible();
-    await expect(announcement).toContainText("Handcrafted in 5–7 Days");
-    await expect(announcement).toContainText("Free White-Glove Shipping on Orders $150+");
-    await expect(announcement).toContainText("100% Solid Hardwood Guarantee");
+    await expect(announcement).toContainText("Multi-Disciplinary Design, Fabrication & Framing Studio");
+    await expect(announcement).toContainText("Delivering End-to-End Solutions for B2C, B2B & Public Sector");
+    await expect(announcement).toContainText("Request Project RFP");
 
     // Test dismiss button
     const dismissButton = page.getByRole("button", { name: "Dismiss announcement" });
@@ -18,7 +18,7 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     await expect(announcement).not.toBeVisible();
   });
 
-  test("renders sticky header with brand wordmark and quick actions", async ({ page }) => {
+  test("renders sticky header with brand wordmark and all 5 core navigation items", async ({ page }) => {
     await page.goto("/");
 
     const header = page.locator("header");
@@ -29,11 +29,12 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     await expect(wordmark).toBeVisible();
     await expect(wordmark).toHaveText("FRAME COTTAGE");
 
-    // Desktop nav items
-    await expect(page.getByTestId("nav-custom-framing")).toBeVisible();
-    await expect(page.getByTestId("nav-ready-made")).toBeVisible();
-    await expect(page.getByTestId("nav-gallery-walls")).toBeVisible();
-    await expect(page.getByTestId("nav-atelier")).toBeVisible();
+    // Desktop nav items for service verticals
+    await expect(page.getByTestId("nav-service-verticals")).toBeVisible();
+    await expect(page.getByTestId("nav-bespoke-framing")).toBeVisible();
+    await expect(page.getByTestId("nav-spatial-signage")).toBeVisible();
+    await expect(page.getByTestId("nav-industrial-cnc")).toBeVisible();
+    await expect(page.getByTestId("nav-civic-projects")).toBeVisible();
 
     // Right actions
     await expect(page.getByTestId("header-search-btn")).toBeVisible();
@@ -44,44 +45,31 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     await expect(page.getByTestId("cart-badge")).toHaveText("0");
   });
 
-  test("reveals India Circus-inspired mega-menu on hover with all 4 columns", async ({ page }) => {
+  test("reveals service verticals mega-menu on hover with all 6 core verticals and RFQ CTA box", async ({ page }) => {
     await page.goto("/");
 
     const megaMenu = page.getByTestId("mega-menu-dropdown");
     await expect(megaMenu).not.toBeVisible();
 
-    // Hover on Custom Framing trigger
-    const customFramingTrigger = page.getByTestId("nav-custom-framing");
-    await customFramingTrigger.hover();
+    // Hover on Service Verticals trigger
+    const serviceVerticalsTrigger = page.getByTestId("nav-service-verticals");
+    await serviceVerticalsTrigger.hover();
 
     // Verify mega menu appears
     await expect(megaMenu).toBeVisible();
 
-    // Column 1: Custom Framing
-    await expect(megaMenu.getByRole("heading", { name: "Custom Framing", exact: true })).toBeVisible();
-    await expect(megaMenu).toContainText("Upload & Frame");
-    await expect(megaMenu).toContainText("Canvas Floating");
-    await expect(megaMenu).toContainText("Document & Diploma");
-    await expect(megaMenu).toContainText("Shadowboxes");
+    // Verify all 6 core service verticals in mega menu
+    await expect(megaMenu.getByRole("heading", { name: "Retail & Standard Framing" })).toBeVisible();
+    await expect(megaMenu.getByRole("heading", { name: "Bespoke Art & Custom Framing" })).toBeVisible();
+    await expect(megaMenu.getByRole("heading", { name: "Spatial Design & Signage" })).toBeVisible();
+    await expect(megaMenu.getByRole("heading", { name: "Industrial Fabrication & CNC Metalworks" })).toBeVisible();
+    await expect(megaMenu.getByRole("heading", { name: "Custom Gifting & Mementos" })).toBeVisible();
+    await expect(megaMenu.getByRole("heading", { name: "Government & Civic Projects" })).toBeVisible();
 
-    // Column 2: By Wood & Material
-    await expect(megaMenu.getByRole("heading", { name: "By Wood & Material" })).toBeVisible();
-    await expect(megaMenu).toContainText("American Walnut");
-    await expect(megaMenu).toContainText("Nordic White Oak");
-    await expect(megaMenu).toContainText("Gallery Matte Black");
-    await expect(megaMenu).toContainText("Brushed Brass");
-    await expect(megaMenu).toContainText("Florentine Gold");
-
-    // Column 3: Gallery Walls & Sets
-    await expect(megaMenu.getByRole("heading", { name: "Gallery Walls & Sets" })).toBeVisible();
-    await expect(megaMenu).toContainText("3-Piece Triptych");
-    await expect(megaMenu).toContainText("Staircase Flow");
-    await expect(megaMenu).toContainText("9-Frame Grid");
-    await expect(megaMenu).toContainText("Eclectic Salon Wall");
-
-    // Column 4: Featured Collection
-    await expect(megaMenu).toContainText("The Heritage Oak Collection");
-    await expect(megaMenu).toContainText("Hand-stained solid timber");
+    // Column 4: Prominent RFQ CTA Box
+    await expect(megaMenu.getByRole("heading", { name: "Request a Project Quote (RFQ)" })).toBeVisible();
+    await expect(megaMenu.getByTestId("mega-menu-rfq-btn")).toBeVisible();
+    await expect(megaMenu).toContainText("GeM & Tender Ready");
 
     // Capture screenshot of expanded mega-menu as required
     await page.screenshot({
@@ -90,7 +78,7 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     });
   });
 
-  test("supports mobile navigation drawer on small screens", async ({ page }) => {
+  test("supports mobile navigation drawer on small screens with all 6 core service verticals", async ({ page }) => {
     // Set viewport to mobile size
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
@@ -102,9 +90,14 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     // Dialog should open
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByText("FRAME COTTAGE")).toBeVisible();
-    await expect(drawer.getByText("Custom Framing")).toBeVisible();
-    await expect(drawer.getByText("Ready-Made Frames")).toBeVisible();
+    await expect(drawer.getByRole("heading", { name: "FRAME COTTAGE" })).toBeVisible();
+    await expect(drawer.getByText("Retail & Standard Framing")).toBeVisible();
+    await expect(drawer.getByText("Bespoke Art & Custom Framing")).toBeVisible();
+    await expect(drawer.getByText("Spatial Design & Signage")).toBeVisible();
+    await expect(drawer.getByText("Industrial Fabrication & CNC")).toBeVisible();
+    await expect(drawer.getByText("Custom Gifting & Mementos")).toBeVisible();
+    await expect(drawer.getByText("Government & Civic Projects")).toBeVisible();
+    await expect(drawer.getByText("Request Project RFP / RFQ")).toBeVisible();
 
     // Close mobile drawer
     const closeButton = page.getByRole("button", { name: "Close menu" });
@@ -147,9 +140,9 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     await expect(cartBtn).toBeVisible();
     await expect(cartBtn).toBeEnabled();
 
-    // c) Hover over Custom Framing while scrolled: assert mega-menu appears and is visible below the sticky header
-    const customFramingTrigger = page.getByTestId("nav-custom-framing");
-    await customFramingTrigger.hover();
+    // c) Hover over Service Verticals while scrolled: assert mega-menu appears and is visible below the sticky header
+    const serviceVerticalsTrigger = page.getByTestId("nav-service-verticals");
+    await serviceVerticalsTrigger.hover();
 
     const megaMenu = page.getByTestId("mega-menu-dropdown");
     await expect(megaMenu).toBeVisible();
@@ -225,8 +218,8 @@ test.describe("Sticky Header, Announcement Bar, and India Circus Mega-Menu", () 
     // Verify mobile nav drawer opens cleanly
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByText("FRAME COTTAGE")).toBeVisible();
-    await expect(drawer.getByText("Custom Framing")).toBeVisible();
+    await expect(drawer.getByRole("heading", { name: "FRAME COTTAGE" })).toBeVisible();
+    await expect(drawer.getByText("Retail & Standard Framing")).toBeVisible();
 
     const closeButton = page.getByRole("button", { name: "Close menu" });
     await closeButton.click();

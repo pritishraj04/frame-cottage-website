@@ -1,95 +1,93 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Visual Category Discovery Pills & Craftsmanship Trust Bar", () => {
+test.describe("Core Service Verticals Discovery Pills & Studio Capabilities Trust Bar", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders visual category discovery carousel with all 6 circular category pills", async ({
+  test("renders visual category discovery carousel with all 6 core service vertical pills", async ({
     page,
   }) => {
     const categorySection = page.getByTestId("category-pills");
     await expect(categorySection).toBeVisible();
 
     // Section title & description
-    await expect(categorySection).toContainText("Visual Category Discovery");
-    await expect(categorySection).toContainText("Curated by Silhouette & Craft");
+    await expect(categorySection).toContainText("Service Verticals Discovery");
+    await expect(categorySection).toContainText("6 Core Service Verticals");
 
     // Scroll track container
     const scrollTrack = page.getByTestId("category-pills-scroll");
     await expect(scrollTrack).toBeVisible();
 
-    // Verify all 6 category pills are rendered
-    const categories = [
-      { id: "solid-hardwoods", name: "Solid Hardwoods" },
-      { id: "brushed-metals", name: "Brushed Metals" },
-      { id: "vintage-gilded", name: "Vintage & Gilded" },
-      { id: "gallery-wall-sets", name: "Gallery Wall Sets" },
-      { id: "tabletop-minis", name: "Tabletop & Minis" },
-      { id: "archival-shadowboxes", name: "Archival Shadowboxes" },
+    // Verify all 6 service vertical pills are rendered
+    const verticals = [
+      { id: "retail-framing", name: "Retail & Standard Framing" },
+      { id: "bespoke-framing", name: "Bespoke Art & Custom Framing" },
+      { id: "spatial-signage", name: "Spatial Design & Signage" },
+      { id: "industrial-cnc", name: "Industrial Fabrication & CNC" },
+      { id: "custom-gifting", name: "Custom Gifting & Mementos" },
+      { id: "civic-projects", name: "Government & Civic Projects" },
     ];
 
-    for (const cat of categories) {
-      const pill = page.getByTestId(`category-pill-${cat.id}`);
+    for (const vert of verticals) {
+      const pill = page.getByTestId(`category-pill-${vert.id}`);
       await expect(pill).toBeVisible();
-      await expect(page.getByTestId(`category-pill-label-${cat.id}`)).toHaveText(
-        cat.name
+      await expect(page.getByTestId(`category-pill-label-${vert.id}`)).toHaveText(
+        vert.name
       );
     }
 
-    // Default active state should be "solid-hardwoods"
-    const defaultActivePill = page.getByTestId("category-pill-solid-hardwoods");
+    // Default active state should be "retail-framing"
+    const defaultActivePill = page.getByTestId("category-pill-retail-framing");
     await expect(defaultActivePill).toHaveAttribute("aria-selected", "true");
 
-    const inactivePill = page.getByTestId("category-pill-brushed-metals");
+    const inactivePill = page.getByTestId("category-pill-bespoke-framing");
     await expect(inactivePill).toHaveAttribute("aria-selected", "false");
   });
 
-  test("interactively switches category pills and updates active selection", async ({
+  test("interactively switches service vertical pills and updates active selection", async ({
     page,
   }) => {
-    const hardwoodsPill = page.getByTestId("category-pill-solid-hardwoods");
-    const metalsPill = page.getByTestId("category-pill-brushed-metals");
-    const gildedPill = page.getByTestId("category-pill-vintage-gilded");
-    const galleryPill = page.getByTestId("category-pill-gallery-wall-sets");
-    const tabletopPill = page.getByTestId("category-pill-tabletop-minis");
-    const shadowboxesPill = page.getByTestId(
-      "category-pill-archival-shadowboxes"
-    );
+    const retailPill = page.getByTestId("category-pill-retail-framing");
+    const bespokePill = page.getByTestId("category-pill-bespoke-framing");
+    const spatialPill = page.getByTestId("category-pill-spatial-signage");
+    const cncPill = page.getByTestId("category-pill-industrial-cnc");
+    const giftingPill = page.getByTestId("category-pill-custom-gifting");
+    const civicPill = page.getByTestId("category-pill-civic-projects");
 
     // Initial state
-    await expect(hardwoodsPill).toHaveAttribute("aria-selected", "true");
-    await expect(metalsPill).toHaveAttribute("aria-selected", "false");
+    await expect(retailPill).toHaveAttribute("aria-selected", "true");
+    await expect(bespokePill).toHaveAttribute("aria-selected", "false");
 
-    // Select Brushed Metals
-    await metalsPill.click();
-    await expect(metalsPill).toHaveAttribute("aria-selected", "true");
-    await expect(hardwoodsPill).toHaveAttribute("aria-selected", "false");
+    // Select Bespoke Framing
+    await bespokePill.click();
+    await expect(bespokePill).toHaveAttribute("aria-selected", "true");
+    await expect(retailPill).toHaveAttribute("aria-selected", "false");
 
-    // Select Vintage & Gilded
-    await gildedPill.click();
-    await expect(gildedPill).toHaveAttribute("aria-selected", "true");
-    await expect(metalsPill).toHaveAttribute("aria-selected", "false");
+    // Select Spatial & Signage
+    await spatialPill.click();
+    await expect(spatialPill).toHaveAttribute("aria-selected", "true");
+    await expect(bespokePill).toHaveAttribute("aria-selected", "false");
 
-    // Select Gallery Wall Sets
-    await galleryPill.click();
-    await expect(galleryPill).toHaveAttribute("aria-selected", "true");
-    await expect(gildedPill).toHaveAttribute("aria-selected", "false");
+    // Select Industrial CNC
+    await cncPill.click();
+    await expect(cncPill).toHaveAttribute("aria-selected", "true");
+    await expect(spatialPill).toHaveAttribute("aria-selected", "false");
 
-    // Select Tabletop & Minis
-    await tabletopPill.click();
-    await expect(tabletopPill).toHaveAttribute("aria-selected", "true");
-    await expect(galleryPill).toHaveAttribute("aria-selected", "false");
+    // Select Custom Gifting
+    await giftingPill.click();
+    await expect(giftingPill).toHaveAttribute("aria-selected", "true");
+    await expect(cncPill).toHaveAttribute("aria-selected", "false");
 
-    // Select Archival Shadowboxes
-    await shadowboxesPill.click();
-    await expect(shadowboxesPill).toHaveAttribute("aria-selected", "true");
-    await expect(tabletopPill).toHaveAttribute("aria-selected", "false");
+    // Select Civic Projects
+    await civicPill.click();
+    await expect(civicPill).toHaveAttribute("aria-selected", "true");
+    await expect(giftingPill).toHaveAttribute("aria-selected", "false");
 
-    // Select back to Solid Hardwoods
-    await hardwoodsPill.click();
-    await expect(hardwoodsPill).toHaveAttribute("aria-selected", "true");
-    await expect(shadowboxesPill).toHaveAttribute("aria-selected", "false");
+    // Select back to Retail Framing
+    await retailPill.click();
+    await expect(retailPill).toHaveAttribute("aria-selected", "true");
+    await expect(civicPill).toHaveAttribute("aria-selected", "false");
   });
 
   test("renders craftsmanship trust bar with 4 museum-grade commitments and hairline dividers", async ({
@@ -98,36 +96,36 @@ test.describe("Visual Category Discovery Pills & Craftsmanship Trust Bar", () =>
     const trustBar = page.getByTestId("trust-bar");
     await expect(trustBar).toBeVisible();
 
-    // 1. Solid Hardwoods pillar
+    // 1. In-House Precision Fabrication
     const hardwoodsPillar = page.getByTestId("trust-bar-hardwoods");
     await expect(hardwoodsPillar).toBeVisible();
-    await expect(hardwoodsPillar).toContainText("100% Solid Hardwoods");
+    await expect(hardwoodsPillar).toContainText("In-House Precision Fabrication");
     await expect(hardwoodsPillar).toContainText(
-      "Responsibly harvested North American timber. Zero MDF or plastics"
+      "CNC routing, fiber laser cutting, and master artisanal joinery"
     );
 
-    // 2. Archival Cotton Mats pillar
+    // 2. Museum Archival & Industrial Standards
     const matsPillar = page.getByTestId("trust-bar-cotton-mats");
     await expect(matsPillar).toBeVisible();
-    await expect(matsPillar).toContainText("Archival 4-Ply Cotton Mats");
+    await expect(matsPillar).toContainText("Museum Archival & Industrial Standards");
     await expect(matsPillar).toContainText(
-      "Acid-free core prevents yellowing and preserves prints for generations"
+      "ISO certified, FSC® timber stewardship, and TruVue® UV conservation glazing"
     );
 
-    // 3. TruVue Conservation Acrylic pillar
+    // 3. End-to-End Turnkey Execution
     const acrylicPillar = page.getByTestId("trust-bar-acrylic");
     await expect(acrylicPillar).toBeVisible();
-    await expect(acrylicPillar).toContainText("TruVue® Conservation Acrylic");
+    await expect(acrylicPillar).toContainText("End-to-End Turnkey Execution");
     await expect(acrylicPillar).toContainText(
-      "Shatter-safe optical acrylic blocking 99% of fading UV light"
+      "3D spatial design, engineering, precision fabrication & white-glove installation"
     );
 
-    // 4. Ready-to-Hang Hardware pillar
+    // 4. Public Sector & Enterprise Scale
     const hardwarePillar = page.getByTestId("trust-bar-hardware");
     await expect(hardwarePillar).toBeVisible();
-    await expect(hardwarePillar).toContainText("Ready-to-Hang Hardware");
+    await expect(hardwarePillar).toContainText("Public Sector & Enterprise Scale");
     await expect(hardwarePillar).toContainText(
-      "Custom coated wire, brass hangers, and wall bumpers included in every box"
+      "GeM registered and tender compliant with high-volume institutional capacity"
     );
   });
 

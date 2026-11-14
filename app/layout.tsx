@@ -15,8 +15,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Frame Cottage | Bespoke Handcrafted Framing & Archival Art",
-  description: "Bespoke handcrafted custom framing, archival prints, and museum-grade wall art collections.",
+  title: "Frame Cottage | Multi-Disciplinary Design, Fabrication & Framing Studio",
+  description:
+    "Multi-disciplinary design, fabrication, and framing studio delivering end-to-end spatial, industrial, and aesthetic solutions for B2C, B2B, and public sector clients across 6 core service verticals.",
 };
 
 export default function RootLayout({

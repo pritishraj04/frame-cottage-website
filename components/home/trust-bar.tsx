@@ -1,52 +1,52 @@
-import { TreePine, ShieldCheck, SunDim, PackageCheck } from "lucide-react";
+import { Cpu, ShieldCheck, Compass, Landmark } from "lucide-react";
 
 export interface TrustPillar {
   id: string;
   testId: string;
   title: string;
   description: string;
-  icon: typeof TreePine;
+  icon: typeof Cpu;
 }
 
 export const TRUST_PILLARS: TrustPillar[] = [
   {
-    id: "solid-hardwoods",
+    id: "precision-fabrication",
     testId: "trust-bar-hardwoods",
-    title: "100% Solid Hardwoods",
+    title: "In-House Precision Fabrication",
     description:
-      "Responsibly harvested North American timber. Zero MDF or plastics",
-    icon: TreePine,
+      "CNC routing, fiber laser cutting, and master artisanal joinery under one roof.",
+    icon: Cpu,
   },
   {
-    id: "cotton-mats",
+    id: "archival-industrial",
     testId: "trust-bar-cotton-mats",
-    title: "Archival 4-Ply Cotton Mats",
+    title: "Museum Archival & Industrial Standards",
     description:
-      "Acid-free core prevents yellowing and preserves prints for generations",
+      "ISO certified, FSC® timber stewardship, and TruVue® UV conservation glazing.",
     icon: ShieldCheck,
   },
   {
-    id: "conservation-acrylic",
+    id: "turnkey-execution",
     testId: "trust-bar-acrylic",
-    title: "TruVue® Conservation Acrylic",
+    title: "End-to-End Turnkey Execution",
     description:
-      "Shatter-safe optical acrylic blocking 99% of fading UV light",
-    icon: SunDim,
+      "3D spatial design, engineering, precision fabrication & white-glove installation.",
+    icon: Compass,
   },
   {
-    id: "ready-to-hang",
+    id: "enterprise-scale",
     testId: "trust-bar-hardware",
-    title: "Ready-to-Hang Hardware",
+    title: "Public Sector & Enterprise Scale",
     description:
-      "Custom coated wire, brass hangers, and wall bumpers included in every box",
-    icon: PackageCheck,
+      "GeM registered and tender compliant with high-volume institutional capacity.",
+    icon: Landmark,
   },
 ];
 
 export function TrustBar() {
   return (
     <section
-      aria-label="Museum-Grade Craftsmanship Commitments"
+      aria-label="Multi-Disciplinary Studio Capabilities"
       data-testid="trust-bar"
       className="w-full bg-[var(--color-canvas-subtle)] border-b border-[var(--color-border-subtle)] py-8 lg:py-10 text-[var(--color-ink-primary)] transition-colors duration-250"
     >

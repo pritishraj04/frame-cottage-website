@@ -1,0 +1,58 @@
+{
+  "id": "TASK-17",
+  "title": "Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals",
+  "category": "brand-repositioning-studio",
+  "description": "Per user explicit instruction, transformed Frame Cottage from a consumer-only retail framing shop into a multi-disciplinary design, fabrication, and framing studio delivering end-to-end spatial, industrial, and aesthetic solutions for B2C, B2B, and public sector clients across 6 exact service verticals: 1. Retail & Standard Framing (B2C), 2. Bespoke Art & Custom Framing (B2C/B2B), 3. Spatial Design & Signage (B2B), 4. Industrial Fabrication & CNC Metalworks (Commercial), 5. Custom Gifting & Mementos (Corporate), and 6. Government & Civic Projects (Public Sector). Created `lib/constants/verticals.ts` with comprehensive data models, deliverables, technical specs, icons, audience badges, and sub-capabilities. Updated site announcement bar, navigation headers, mega-menu with 6-vertical taxonomy and RFQ CTA box, mobile navigation drawer with expandable vertical accordions, hero carousel with 3 multi-disciplinary studio lifestyle slides, category discovery swatches and pills with client audience badges, studio trust bar with 4 precision engineering and tender-compliance pillars, curated projects grid across all 6 verticals, featured products carousel showcasing architectural wayfinding, CNC laser-cut plaques, perforated metal facades, and crystal awards alongside bespoke frames, 4-stage turnkey studio workflow, multi-disciplinary client case studies (Tech Enterprise HQ, Collector Residence, Municipal City Hall), comprehensive studio FAQ, reorganized 4-column studio footer, and updated root metadata.",
+  "acceptanceCriteria": [
+    "Constants & Data Modeling (lib/constants/verticals.ts) created for the 6 exact Core Service Verticals",
+    "Announcement bar updated with studio proposition and RFQ callout",
+    "Site header navigation triggers updated for Service Verticals, Bespoke Framing, Spatial & Signage, Industrial CNC, Government & Civic",
+    "Service Verticals Mega-Menu organizes all 6 verticals with sub-capabilities and prominent Request a Project Quote (RFQ) CTA box",
+    "Mobile navigation drawer updated with expandable accordions for all 6 verticals, audience badges, and RFQ callout",
+    "Hero Carousel updated with 3 curated studio slides (Bespoke Art & Archival Framing, Spatial Design & Signage, Industrial Fabrication & Civic Projects)",
+    "Category discovery swatches and pills updated for the exact 6 Core Service Verticals with audience badges and subtitles",
+    "Studio Trust Bar updated with 4 multi-disciplinary pillars (In-House Precision Fabrication, Museum Archival & Industrial Standards, End-to-End Turnkey Execution, Public Sector & Enterprise Scale)",
+    "Featured Products Carousel updated with 8 multi-disciplinary capability cards including Architectural Wayfinding, CNC Laser-Cut Brass Plaque, Perforated Metal Facade, and Executive Crystal Award",
+    "Curated Collections grid updated with 6 vertical filter tabs and multi-disciplinary project models",
+    "Framing Journey updated to 4-Stage End-to-End Studio Workflow (Spatial Consultation, Precision Engineering, Archival Curation, White-Glove Installation)",
+    "Customer UGC Lookbook updated to 3 multi-disciplinary client case studies (Tech Enterprise HQ, Contemporary Collector Residence, Municipal City Hall)",
+    "Studio FAQ updated with 6 comprehensive questions spanning B2C, B2B spatial, CNC tolerances, GeM tender compliance, corporate gifting, and turnkey installation",
+    "Site Footer reorganized into 4 vertical columns with FSC®, ISO 9001:2015, and GeM certifications",
+    "Root layout metadata title updated to 'Frame Cottage | Multi-Disciplinary Design, Fabrication & Framing Studio'",
+    "All Playwright automated test suites pass (40/40) with 0 failures",
+    "Next.js production build succeeds with 0 errors",
+    "Visual proof screenshots captured for Desktop Dark, Desktop Light, and Mobile viewports"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Create data models and constants in lib/constants/verticals.ts",
+      "details": "Engineered comprehensive data models and records for the 6 core service verticals with deliverables, technical specs, icons, audience badges, and sub-capabilities.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Update Site Header, Announcement Bar, Mega-Menu, and Mobile Navigation Drawer",
+      "details": "Updated announcement bar, desktop navigation links, 4-column mega-menu with RFQ CTA box, and mobile drawer accordion for all 6 core verticals.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Update Hero Carousel, Category Discovery Pills, and Studio Trust Bar",
+      "details": "Updated hero slides to reflect archival framing, spatial signage, and industrial civic fabrication; updated category swatches and discovery pills for the 6 verticals; updated trust bar to 4 studio pillars.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Update Featured Products Carousel, Curated Collections, 4-Stage Workflow, Lookbook, FAQ, and Footer",
+      "details": "Updated all homepage components and constants to showcase multi-disciplinary capabilities, commercial projects, municipal civic installations, and technical specifications.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Update metadata and run verification test suite and production build",
+      "details": "Updated metadata in app/layout.tsx, resolved test assertions across Playwright test suite, verified 40/40 tests passing with 0 failures, verified npm run build succeeds with code 0, and captured visual screenshots.",
+      "pass": true
+    }
+  ]
+}

@@ -11,6 +11,10 @@ import {
   Truck,
   Wrench,
   Headphones,
+  Compass,
+  Cpu,
+  Landmark,
+  Award,
 } from "lucide-react";
 
 export interface FAQItem {
@@ -26,12 +30,12 @@ export interface FAQItem {
 export const FAQ_DATA: FAQItem[] = [
   {
     id: "faq-resolution",
-    category: "Image & Resolution",
+    category: "B2C Custom Framing",
     question: "What image resolution (DPI) do I need for digital uploads?",
     shortAnswer:
-      "We recommend at least 300 DPI at your target print size, with a 150 DPI minimum accepted by our atelier inspection tool.",
+      "We recommend at least 300 DPI at your target print size, with a 150 DPI minimum accepted by our inspection tool.",
     fullAnswer:
-      "Our automated studio customizer evaluates your image upon upload. If your file is below 150 DPI for your desired frame size, the system triggers a resolution advisory to prevent pixelation. Every print is rendered using 12-color archival giclée pigment inks on 310gsm 100% cotton rag paper.",
+      "Our automated studio customizer evaluates your image upon upload. If your file is below 150 DPI for your desired frame size, the system triggers a resolution advisory to prevent pixelation. Every print is rendered using 12-color archival giclée pigment inks on 310gsm 100% cotton rag paper, sealed behind TruVue® conservation UV acrylic.",
     specs: [
       { label: "Optimal Resolution", value: "300 DPI" },
       { label: "Supported Formats", value: "JPEG, TIFF, PNG, RAW" },
@@ -41,8 +45,8 @@ export const FAQ_DATA: FAQItem[] = [
   },
   {
     id: "faq-acrylic",
-    category: "Preservation & Glazing",
-    question: "Why does Frame Cottage use TruVue® Conservation Acrylic instead of regular glass?",
+    category: "B2B Spatial Design & Signage",
+    question: "Why does Frame Cottage use TruVue® Conservation Acrylic for commercial spatial design and bespoke framing?",
     shortAnswer:
       "TruVue® Conservation Acrylic provides 99% UV protection, is optically transparent, shatter-proof in transit, and half the weight of traditional float glass.",
     fullAnswer:
@@ -50,14 +54,29 @@ export const FAQ_DATA: FAQItem[] = [
     specs: [
       { label: "UV Radiation Block", value: "99% (300nm–380nm)" },
       { label: "Safety Rating", value: "Shatter-Resistant" },
-      { label: "Weight Savings", value: "50% Lighter than Float Glass" },
+      { label: "Commercial Glazing", value: "ADA Title III & Exterior Wayfinding Compatible" },
     ],
-    icon: ShieldCheck,
+    icon: Compass,
+  },
+  {
+    id: "faq-cnc",
+    category: "Industrial CNC & Metalworks",
+    question: "What tolerances, materials, and envelope sizes are supported by your precision CNC & laser facility?",
+    shortAnswer:
+      "Our 5-axis CNC routing and high-power fiber laser cutting achieve micro-tolerances within ±0.1mm on solid brass, stainless steel, aluminum, and timber.",
+    fullAnswer:
+      "We operate dual-shuttle 3000 mm × 1500 mm bed envelopes capable of cutting structural sheet metals up to 20mm in stainless steel and brass, and heavy 5-axis routing for architectural timber screens. Finishes include architectural brushed satin, hand-rubbed antique bronze patinas, bead-blasting, and marine-grade PVDF powder coating.",
+    specs: [
+      { label: "Machining Tolerance", value: "Micro-Precision within ±0.1 mm" },
+      { label: "Laser Envelope", value: "Large-Format 3000 mm × 1500 mm Bed" },
+      { label: "Materials", value: "Solid Brass C260, 316 Stainless, 5052 Aluminum & FSC Hardwoods" },
+    ],
+    icon: Cpu,
   },
   {
     id: "faq-guarantee",
-    category: "Warranty & Shipping",
-    question: "What is your Transit & Lifetime Craftsmanship Guarantee?",
+    category: "Warranty & Public Sector",
+    question: "What is your Transit & Lifetime Craftsmanship Guarantee and GeM compliance?",
     shortAnswer:
       "If your frame arrives damaged or ever loosens, warps, or separates over its lifetime, we rebuild and replace it 100% free of charge.",
     fullAnswer:
@@ -65,37 +84,37 @@ export const FAQ_DATA: FAQItem[] = [
     specs: [
       { label: "Transit Coverage", value: "100% Insured Priority Dispatch" },
       { label: "Damage Response", value: "Priority Rebuild within 48 hours" },
-      { label: "Craft Warranty", value: "Generational Lifetime Guarantee" },
+      { label: "Tender Standards", value: "GeM Registered & ISO 9001:2015" },
     ],
-    icon: Truck,
+    icon: Landmark,
   },
   {
     id: "faq-memorabilia",
-    category: "Atelier Services",
-    question: "Can I mail in original fine art, diplomas, or memorabilia?",
+    category: "Custom Gifting & Corporate Mementos",
+    question: "What are the minimum volume quantities and lead times for corporate gifting and custom awards?",
     shortAnswer:
-      "Yes. We offer prepaid insured art mailer kits with white-glove archival handling by Master Guild picture framers.",
+      "We produce bespoke one-off executive awards up to 10,000+ unit corporate milestone drops, typically dispatched within 7–14 business days.",
     fullAnswer:
-      "When you choose our Mail-In Atelier service, we ship you a reinforced archival mailer complete with acid-free glassine sleeves, rigid foam backing, and prepaid trackable return shipping insured up to $5,000. Once received at our studio, our framers photograph and inspect your piece under controlled gallery lighting before mounting with reversible archival corners.",
+      "From solid American walnut and K9 optical crystal leadership trophies to fiber-engraved solid brass milestone plaques, our gifting studio offers full end-to-end personalization. Each order includes custom-molded velvet-lined presentation keepsake boxes with gold foil debossing and white-glove drop-shipping to individual recipient addresses.",
     specs: [
-      { label: "Mailer Insurance", value: "Up to $5,000 Included" },
-      { label: "Mounting Method", value: "100% Reversible Archival Mylar Corners" },
-      { label: "Handling Protocol", value: "White-Glove Cleanroom Atelier" },
+      { label: "Volume Scaling", value: "From 1 bespoke trophy to 10,000+ corporate gifts" },
+      { label: "Production Window", value: "7–14 Business Days (Expedited Available)" },
+      { label: "Packaging Included", value: "Custom Velvet-Lined Archival Presentation Case" },
     ],
-    icon: HelpCircle,
+    icon: Award,
   },
   {
     id: "faq-hardware",
-    category: "Installation & Hardware",
-    question: "What hanging hardware is included with my bespoke frame?",
+    category: "Turnkey Installation & Hardware",
+    question: "What turnkey on-site installation and hardware services are provided with your architectural projects?",
     shortAnswer:
-      "Every frame arrives completely ready to hang with stainless steel coated wire, solid brass hooks, nails, and a pocket bubble level.",
+      "Every project includes pre-engineered hanging hardware, and commercial/civic installations feature certified on-site rigging teams.",
     fullAnswer:
-      "We believe framing is incomplete if you have to visit a hardware store. Every order includes pre-installed coated hanging wire, solid brass wall brackets, tempered steel nails suitable for drywall and plaster, silicone wall-protecting bumpers, and a mini bubble level. For large or heavy gallery pieces, we provide recessed aluminum French cleats.",
+      "Residential framing orders include pre-installed poly-coated stainless steel wire, antiqued brass brackets, tempered nails, and a pocket bubble level. For large commercial spatial installations and public sector civic monuments, our licensed nationwide white-glove rigging teams handle on-site structural anchoring, French cleats, and electrical tie-ins.",
     specs: [
-      { label: "Wire Specification", value: "Poly-Coated Braided Stainless Steel" },
-      { label: "Wall Brackets", value: "Heavy-Duty Solid Antiqued Brass" },
-      { label: "Tool Included", value: "Atelier Pocket Level & Wall Bumpers" },
+      { label: "Residential Hardware", value: "Poly-Coated Wire, Brass Brackets & Bubble Level" },
+      { label: "Commercial Installation", value: "Licensed Nationwide Rigging & Structural Anchoring" },
+      { label: "Warranty", value: "Generational Lifetime Craftsmanship Guarantee" },
     ],
     icon: Wrench,
   },
@@ -110,36 +129,33 @@ export function FAQSection() {
       className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* =====================================================================
-            EDITORIAL SECTION HEADER
-           ===================================================================== */}
-        <div
-          data-testid="faq-header"
-          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
-        >
+        {/* =========================================================================
+            SECTION HEADER
+           ========================================================================= */}
+        <div data-testid="faq-header" className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>The Atelier Knowledge Base</span>
+            <span>Enterprise, Studio & Client Guidance</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
-            Curating, Crafting & Caring for Your Frames
+            Frequently Asked Questions
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal">
-            Clear, transparent answers on digital resolution, museum-grade TruVue® acrylic, damage replacement guarantees, and included hanging suites.
+          <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-xl mx-auto">
+            Technical guidance across our 6 service verticals—from bespoke residential framing to commercial spatial signage and public sector contracts.
           </p>
         </div>
 
-        {/* =====================================================================
-            RADIX UI ACCORDION ROOT
-           ===================================================================== */}
+        {/* =========================================================================
+            RADIX UI ACCORDION
+           ========================================================================= */}
         <Accordion.Root
           type="single"
           collapsible
           defaultValue="faq-resolution"
           data-testid="faq-accordion"
-          className="w-full space-y-4"
+          className="space-y-4"
         >
           {FAQ_DATA.map((item) => {
             const ItemIcon = item.icon;
@@ -149,62 +165,59 @@ export function FAQSection() {
                 key={item.id}
                 value={item.id}
                 data-testid={`faq-item-${item.id}`}
-                className="bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-2xl overflow-hidden shadow-xs hover:border-[var(--color-accent-gold)]/50 transition-colors group data-[state=open]:border-[var(--color-accent-gold)]/70 data-[state=open]:shadow-md"
+                className="bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] overflow-hidden transition-all duration-200 hover:border-[var(--color-accent-gold)] shadow-xs"
               >
                 <Accordion.Header className="flex">
                   <Accordion.Trigger
                     data-testid={`faq-trigger-${item.id}`}
-                    className="flex flex-1 items-center justify-between p-5 sm:p-6 text-left cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] group transition-all"
+                    className="flex-1 flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer group hover:bg-[var(--color-canvas-subtle)] transition-colors focus:outline-none"
                   >
-                    <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 pr-4">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center shrink-0 group-data-[state=open]:bg-[#6B1C23] group-data-[state=open]:text-[#F4F1EA] transition-colors">
-                        <ItemIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <div className="flex items-start gap-3.5 sm:gap-4 pr-4">
+                      {/* Category Badge Icon */}
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0 group-hover:scale-105 transition-transform">
+                        <ItemIcon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.75]" />
                       </div>
 
-                      <div>
-                        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[var(--color-accent-gold)] block mb-0.5">
+                      <div className="space-y-1">
+                        <span className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#C5A059]">
                           {item.category}
                         </span>
-                        <h3 className="font-serif text-base sm:text-lg text-[var(--color-ink-primary)] font-semibold leading-snug group-hover:text-[var(--color-accent-gold)] transition-colors">
+                        <h3 className="font-serif text-base sm:text-lg font-semibold text-[var(--color-ink-primary)] tracking-tight group-hover:text-[var(--color-accent-gold)] transition-colors">
                           {item.question}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center shrink-0 text-[var(--color-accent-gold)] group-data-[state=open]:bg-[#6B1C23] group-data-[state=open]:text-[#F4F1EA] group-data-[state=open]:border-[#6B1C23] transition-colors">
-                      <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-ink-muted)] group-hover:text-[var(--color-accent-gold)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180">
+                      <ChevronDown className="w-4 h-4" />
                     </div>
                   </Accordion.Trigger>
                 </Accordion.Header>
 
                 <Accordion.Content
                   data-testid={`faq-content-${item.id}`}
-                  className="accordion-content overflow-hidden text-sm px-5 sm:px-6 pb-6 pt-1 text-[var(--color-ink-secondary)]"
+                  className="px-5 sm:px-6 pb-6 pt-2 text-sm text-[var(--color-ink-secondary)] leading-relaxed border-t border-[var(--color-border-subtle)] animate-in fade-in duration-200"
                 >
-                  <div className="border-t border-[var(--color-border-subtle)] pt-4">
-                    {/* Short Summary Highlight */}
-                    <p className="font-semibold text-xs sm:text-sm text-[var(--color-ink-primary)] mb-3 leading-relaxed">
-                      {item.shortAnswer}
-                    </p>
+                  <p className="font-medium text-[var(--color-ink-primary)] mb-3">
+                    {item.shortAnswer}
+                  </p>
 
-                    {/* Extended Technical Explanation */}
-                    <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed mb-4">
-                      {item.fullAnswer}
-                    </p>
+                  <p className="mb-4 text-xs sm:text-sm text-[var(--color-ink-secondary)]">
+                    {item.fullAnswer}
+                  </p>
 
-                    {/* Technical Specs Grid */}
-                    <div className="bg-[var(--color-canvas-subtle)] rounded-xl border border-[var(--color-border-subtle)] p-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                      {item.specs.map((spec, sIdx) => (
-                        <div key={sIdx} className="flex flex-col">
-                          <span className="text-[10px] uppercase tracking-wider text-[var(--color-ink-muted)] font-medium">
-                            {spec.label}
-                          </span>
-                          <span className="font-semibold text-[var(--color-ink-primary)] mt-0.5">
-                            {spec.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Technical Specs Strip */}
+                  <div className="bg-[var(--color-canvas-subtle)] rounded-xl p-3 sm:p-4 border border-[var(--color-border-subtle)] grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    {item.specs.map((spec, sIdx) => (
+                      <div key={sIdx} className="space-y-0.5">
+                        <span className="text-[10px] uppercase font-semibold text-[var(--color-ink-muted)] tracking-wider">
+                          {spec.label}
+                        </span>
+                        <p className="font-medium text-[var(--color-ink-primary)]">
+                          {spec.value}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </Accordion.Content>
               </Accordion.Item>
@@ -212,29 +225,27 @@ export function FAQSection() {
           })}
         </Accordion.Root>
 
-        {/* =====================================================================
-            CONCIERGE HELP FOOTNOTE CARD
-           ===================================================================== */}
-        <div className="mt-10 sm:mt-12 bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center shrink-0">
-              <Headphones className="w-6 h-6" />
+        {/* Studio Concierge Callout */}
+        <div className="mt-10 p-6 rounded-2xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0">
+              <Headphones className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-serif text-base sm:text-lg font-semibold text-[var(--color-ink-primary)]">
-                Have a bespoke framing inquiry or oversized installation?
+              <h4 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)]">
+                Have a Complex Spatial or Tender Specification?
               </h4>
-              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] mt-0.5">
-                Our Master Guild framing advisors provide complimentary layout styling consultations.
+              <p className="text-xs text-[var(--color-ink-secondary)]">
+                Our structural engineers and framing curators review CAD drawings and tender documents within 24 hours.
               </p>
             </div>
           </div>
 
           <Link
-            href="/contact"
-            className="shrink-0 px-6 py-3 rounded-full bg-[var(--color-accent-gold)] text-[var(--background)] hover:bg-[#B38F48] text-xs font-semibold tracking-wider uppercase transition-colors shadow-xs"
+            href="/rfq"
+            className="px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-[#1A1A1A] text-xs font-semibold hover:bg-[#B38F48] transition-colors shrink-0"
           >
-            Speak with an Advisor
+            Submit Project RFQ
           </Link>
         </div>
       </div>

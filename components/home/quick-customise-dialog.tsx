@@ -76,21 +76,23 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
           <span>Quick Atelier Customiser</span>
         </div>
         <Dialog.Close
-          data-testid="dialog-close-button"
+          data-testid="dialog-close-btn"
           aria-label="Close dialog"
           className="rounded-full p-2 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
         >
-          <X className="w-5 h-5" />
+          <span data-testid="dialog-close-button" className="flex items-center justify-center">
+            <X className="w-5 h-5" />
+          </span>
         </Dialog.Close>
       </div>
 
       {/* Header info */}
       <div className="mt-4">
         <Dialog.Title
-          data-testid="dialog-title"
+          data-testid="dialog-product-title"
           className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--color-ink-primary)]"
         >
-          {product.name}
+          <span data-testid="dialog-title">{product.name}</span>
         </Dialog.Title>
         <Dialog.Description
           data-testid="dialog-description"
@@ -282,10 +284,10 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
               </span>
               <div className="flex items-baseline gap-2">
                 <span
-                  data-testid="dialog-total-price"
+                  data-testid="dialog-dynamic-price"
                   className="font-serif text-3xl font-bold text-[var(--color-accent-gold)]"
                 >
-                  ${calculatedPrice}
+                  <span data-testid="dialog-total-price">${calculatedPrice}</span>
                 </span>
                 <span className="text-xs text-[#9E9E9E]">
                   (Base ${product.startingPrice}

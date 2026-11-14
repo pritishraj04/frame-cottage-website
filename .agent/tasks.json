@@ -110,5 +110,12 @@
     "category": "ui-merchandising-carousel",
     "specFilePath": ".agent/tasks/TASK-16.json",
     "passes": true
+  },
+  {
+    "id": "TASK-17",
+    "title": "Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals",
+    "category": "brand-repositioning-studio",
+    "specFilePath": ".agent/tasks/TASK-17.json",
+    "passes": true
   }
 ]

@@ -2,10 +2,11 @@ import { MouldingId, MatId } from "./frames";
 
 export type CollectionFilterId =
   | "all"
-  | "natural-timber"
-  | "heritage-gilded"
-  | "modern-metal"
-  | "gallery-sets";
+  | "bespoke-framing"
+  | "spatial-signage"
+  | "industrial-cnc"
+  | "custom-gifting"
+  | "civic-projects";
 
 export interface CollectionFilterTab {
   id: CollectionFilterId;
@@ -16,7 +17,13 @@ export interface CollectionFilterTab {
 export interface CuratedFrameProduct {
   id: string;
   name: string;
-  category: "natural-timber" | "heritage-gilded" | "modern-metal" | "gallery-sets";
+  category:
+    | "bespoke-framing"
+    | "spatial-signage"
+    | "industrial-cnc"
+    | "custom-gifting"
+    | "civic-projects"
+    | "retail-framing";
   subtitle: string;
   material: string;
   description: string;
@@ -85,7 +92,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
   {
     id: "highline-matte-black",
     name: "The Highline Matte Black",
-    category: "modern-metal",
+    category: "bespoke-framing",
     subtitle: "Velvet Satin Hardwood Shadowbox",
     material: "Solid Maple with Museum Black Matte Lacquer",
     description:
@@ -106,7 +113,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
   {
     id: "kyoto-white-oak",
     name: "The Kyoto White Oak",
-    category: "natural-timber",
+    category: "bespoke-framing",
     subtitle: "Quarter-Sawn American White Oak",
     material: "100% Solid White Oak with Botanical Matte Coat",
     description:
@@ -127,7 +134,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
   {
     id: "mendocino-walnut",
     name: "The Mendocino Walnut",
-    category: "natural-timber",
+    category: "bespoke-framing",
     subtitle: "Sustainably Harvested American Black Walnut",
     material: "100% Solid American Walnut & Organic Linseed Oil",
     description:
@@ -148,7 +155,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
   {
     id: "tribeca-brass",
     name: "The Tribeca Brushed Brass",
-    category: "modern-metal",
+    category: "bespoke-framing",
     subtitle: "Solid Spun Brass with Warm Patina",
     material: "Solid Brass Casing over Hardwood Birch Core",
     description:
@@ -169,7 +176,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
   {
     id: "florentine-gilded",
     name: "The Florentine Gilded Heirloom",
-    category: "heritage-gilded",
+    category: "bespoke-framing",
     subtitle: "Hand-Applied 22-Karat Gold Leaf Foil",
     material: "Gilded Hardwood with Red Clay Bole Reveal",
     description:
@@ -188,55 +195,97 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
     },
   },
   {
-    id: "versailles-ogee-gilt",
-    name: "The Versailles Ogee Gilt",
-    category: "heritage-gilded",
-    subtitle: "Baroque Sweep with Beaded Inner Lip",
-    material: "Sculpted Hardwood with Antiqued Champagne Leaf",
+    id: "architectural-wayfinding",
+    name: "Architectural Wayfinding & Illuminated LED Pylon",
+    category: "spatial-signage",
+    subtitle: "Environmental Branding Monolith",
+    material: "Architectural 5052-H32 Aluminum & Commercial IP67 LED",
     description:
-      "Architectural profile featuring historic bead-and-reel filigree and warm museum patina.",
-    startingPrice: 88,
-    sizeRange: "8×10 to 24×36 in",
-    mouldingId: "gold",
+      "Engineered exterior and campus navigation monolith with high-output energy-efficient halo LED illumination.",
+    startingPrice: 850,
+    sizeRange: '48"×18" to 96"×36"',
+    mouldingId: "black",
     defaultMatId: "classic",
-    artworkType: "classical",
+    artworkType: "architectural",
     roomContext: {
-      title: "In Situ • Grand Library Nook",
-      description: "Accenting an antiqued walnut library desk",
-      wallColor: "#2E2428",
-      settingType: "mantle",
-      furnitureColor: "#4E3224",
+      title: "In Situ • Corporate Campus Entrance",
+      description: "Installed on concrete foundation with concealed anchors",
+      wallColor: "#1A202C",
+      settingType: "console",
+      furnitureColor: "#2D3748",
     },
   },
   {
-    id: "chelsea-gallery-duo",
-    name: "The Chelsea Gallery Wall Duo",
-    category: "gallery-sets",
-    subtitle: "Harmonized Diptych in Brushed Brass",
-    material: "Solid Brass Spun Profiles & Museum Cotton Rag",
+    id: "perforated-metal-facade",
+    name: "Architectural Perforated Metal Facade & CNC Screen",
+    category: "industrial-cnc",
+    subtitle: "5-Axis Precision CNC Laser Metalworks",
+    material: "Marine-Grade 316 Stainless Steel & Architectural Brass",
     description:
-      "A balanced pair of contemporary frames calibrated for symmetrical gallery grouping with archival spacing.",
-    startingPrice: 142,
-    sizeRange: "8×10 to 24×36 in",
+      "Parametric acoustic lattice and exterior facade screen manufactured with ±0.1mm micro-tolerances.",
+    startingPrice: 680,
+    sizeRange: '36"×72" to 48"×96"',
     mouldingId: "brass",
+    defaultMatId: "classic",
+    artworkType: "geometric",
+    roomContext: {
+      title: "In Situ • Executive Atrium Partition",
+      description: "Suspended in double-height atrium with architectural tension cables",
+      wallColor: "#262626",
+      settingType: "gallery-shelf",
+      furnitureColor: "#404040",
+    },
+  },
+  {
+    id: "executive-crystal-walnut",
+    name: "Executive Crystal & Solid Walnut Memento Award",
+    category: "custom-gifting",
+    subtitle: "Optical K9 Crystal & Appalachian Hardwood Plinth",
+    material: "FSC® American Walnut & K9 Beveled Optical Crystal",
+    description:
+      "Sub-surface 3D fiber laser engraved commemorative milestone award housed in custom velvet keepsake case.",
+    startingPrice: 145,
+    sizeRange: '8" to 14" Height',
+    mouldingId: "walnut",
     defaultMatId: "classic",
     artworkType: "minimalist",
     roomContext: {
-      title: "In Situ • Architectural Study",
-      description: "Hung above low travertine credenza ledge",
-      wallColor: "#34393E",
-      settingType: "console",
-      furnitureColor: "#D0C7B8",
+      title: "In Situ • Boardroom Trophy Cabinet",
+      description: "Display on illuminated floating glass shelf in executive suite",
+      wallColor: "#1E2530",
+      settingType: "credenza",
+      furnitureColor: "#3B4252",
+    },
+  },
+  {
+    id: "laser-cut-brass-monument",
+    name: "Precision CNC Laser-Cut Brass Monument Civic Plaque",
+    category: "civic-projects",
+    subtitle: "Public Sector Tender & Municipal Dedication",
+    material: "Solid Jewelers C260 Heavy Brass with Anti-Oxidation Seal",
+    description:
+      "Vandal-resistant civic monument dedication plaque with deep relief etching and GeM tender certification.",
+    startingPrice: 420,
+    sizeRange: '18"×24" to 36"×48"',
+    mouldingId: "brass",
+    defaultMatId: "gallery",
+    artworkType: "classical",
+    roomContext: {
+      title: "In Situ • Municipal City Hall Plaza",
+      description: "Mounted on fluted granite wall with tamper-resistant blind studs",
+      wallColor: "#333A42",
+      settingType: "mantle",
+      furnitureColor: "#4C566A",
     },
   },
   {
     id: "montmartre-gallery-set",
     name: "The Montmartre Gallery Wall Set",
-    category: "gallery-sets",
+    category: "civic-projects",
     subtitle: "Curated 3-Piece Atelier Salon Wall",
     material: "American Walnut & Nordic Oak Mitered Splines",
     description:
-      "Complete 3-frame salon arrangement designed by our master curators for an instant living room focal statement.",
+      "Complete 3-frame salon arrangement designed by our master curators for an instant focal statement.",
     startingPrice: 168,
     sizeRange: "8×10 to 24×36 in",
     mouldingId: "walnut",
@@ -244,7 +293,7 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
     artworkType: "triptych",
     roomContext: {
       title: "In Situ • Velvet Settee Salon",
-      description: "Arranged over olive velvet Parisian settee",
+      description: "Arranged over olive velvet settee with laser spacing",
       wallColor: "#2A332B",
       settingType: "salon-wall",
       furnitureColor: "#465948",
@@ -253,25 +302,30 @@ export const CURATED_PRODUCTS: CuratedFrameProduct[] = [
 ];
 
 export const COLLECTION_FILTER_TABS: CollectionFilterTab[] = [
-  { id: "all", label: "All Collections", count: CURATED_PRODUCTS.length },
+  { id: "all", label: "All Verticals", count: CURATED_PRODUCTS.length },
   {
-    id: "natural-timber",
-    label: "Natural Timber",
-    count: CURATED_PRODUCTS.filter((p) => p.category === "natural-timber").length,
+    id: "bespoke-framing",
+    label: "Bespoke Framing & Art",
+    count: CURATED_PRODUCTS.filter((p) => p.category === "bespoke-framing").length,
   },
   {
-    id: "heritage-gilded",
-    label: "Heritage Gilded",
-    count: CURATED_PRODUCTS.filter((p) => p.category === "heritage-gilded").length,
+    id: "spatial-signage",
+    label: "Spatial & Signage",
+    count: CURATED_PRODUCTS.filter((p) => p.category === "spatial-signage").length,
   },
   {
-    id: "modern-metal",
-    label: "Modern Metal",
-    count: CURATED_PRODUCTS.filter((p) => p.category === "modern-metal").length,
+    id: "industrial-cnc",
+    label: "Industrial CNC",
+    count: CURATED_PRODUCTS.filter((p) => p.category === "industrial-cnc").length,
   },
   {
-    id: "gallery-sets",
-    label: "Gallery Sets",
-    count: CURATED_PRODUCTS.filter((p) => p.category === "gallery-sets").length,
+    id: "custom-gifting",
+    label: "Custom Gifting",
+    count: CURATED_PRODUCTS.filter((p) => p.category === "custom-gifting").length,
+  },
+  {
+    id: "civic-projects",
+    label: "Civic & Government",
+    count: CURATED_PRODUCTS.filter((p) => p.category === "civic-projects").length,
   },
 ];
