@@ -82,5 +82,12 @@
     "category": "theme-refinement",
     "specFilePath": ".agent/tasks/TASK-12.json",
     "passes": true
+  },
+  {
+    "id": "TASK-13",
+    "title": "Resolve Light Mode Theme Styling and Contrast in Site Footer",
+    "category": "theme-fix",
+    "specFilePath": ".agent/tasks/TASK-13.json",
+    "passes": true
   }
 ]

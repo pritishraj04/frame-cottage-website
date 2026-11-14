@@ -2,13 +2,29 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 13:41
-**Tasks Completed:** 12 / 12
-**Current Task:** TASK-12 Complete (Light Theme Adaptations Fixed)
+**Last Updated:** 2026-11-14 14:03
+**Tasks Completed:** 13 / 13
+**Current Task:** TASK-13 Complete (Light Mode Theme Styling and Contrast in Site Footer Resolved)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-13: Resolve Light Mode Theme Styling and Contrast in Site Footer
+- Root Cause Identified: In Tailwind CSS v4, `dark:` modifier defaults to the OS media query (`prefers-color-scheme: dark`) rather than ancestor `.dark` class unless `@custom-variant dark` is configured. As a result, users with dark mode enabled in macOS experienced `dark:bg-[#141414]` overriding light mode styles even when `.light` was present on `<html>`.
+- Fixed `app/globals.css`: Added `@custom-variant dark (&:where(.dark, .dark *));` to bind all `dark:` utility variants to `.dark` class selector.
+- Refactored `components/layout/site-footer.tsx`:
+  - Main container: Changed background to `bg-[#FAF8F5] dark:bg-[#141414]` for clean, museum gallery warm ivory in Light Mode and charcoal in Dark Mode.
+  - Newsletter section: Changed submit button text from `text-[var(--background)]` to high-contrast `text-[#1A1A1A]`, ensuring legible dark charcoal typography on gold `#C5A059` / `#B38F48`. White input field (`bg-[var(--color-canvas-surface)]`) with clear placeholder and border.
+  - Navigation links: Upgraded text color from `text-[var(--color-ink-muted)]` to `text-[var(--color-ink-secondary)]` (`#5C554E` in light mode, `#E0E0E0` in dark mode) with smooth gold hover transitions.
+  - Bottom Trust Bar: Set to `bg-[var(--color-canvas-subtle)]` (`#F0ECE1` in light mode, `#2A2A2A` in dark mode) with `data-testid="footer-bottom-bar"` and high-contrast badges and legal links (`text-[var(--color-ink-secondary)]`).
+- Automated Verification: Added explicit test case in `tests/theme-toggle.spec.ts` asserting footer background `#FAF8F5`, ink colors, input styling, and bottom bar colors in both modes. All 34 Playwright tests passing (34/34).
+- Production Build: `npm run build` completed with 0 errors.
+- Screenshots Captured:
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-light-mode.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-dark-mode.png`
+  - `.agent/screenshots/task-13-footer-light-mode.png`
+  - `.agent/screenshots/task-13-footer-dark-mode.png`
 
 ### 2026-11-14 - TASK-12: Fix Light Theme Adaptations for Atelier 50/50 Glass Slider, Lookbook Cards, and Hardcoded Surfaces
 - Fixed AtelierMaterials Glass Comparison Slider (50/50 view): replaced hardcoded dark gradient with adaptive museum gallery wall gradient (`dark:from-[#2D2218] dark:to-[#0F0C08] from-[#F4EFE6] via-[#EAE2D2] to-[#DFD5C2]`), and replaced `#333333` with `--color-border-subtle`.

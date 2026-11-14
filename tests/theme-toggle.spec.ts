@@ -138,4 +138,81 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     await expect(standardPanel).toBeVisible();
     await expect(standardPanel).toHaveCSS("background-color", "rgb(240, 236, 225)"); // #F0ECE1 (canvas-subtle)
   });
+
+  test("adapts site footer cleanly to light mode and dark mode with high contrast", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    const footer = page.locator("#site-footer");
+    await footer.scrollIntoViewIfNeeded();
+    await expect(footer).toBeVisible();
+
+    // 1. Verify Dark Mode initial styles
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await expect(footer).toHaveCSS("background-color", "rgb(20, 20, 20)"); // #141414
+    await expect(footer).toHaveCSS("color", "rgb(244, 241, 234)"); // #F4F1EA
+
+    // Dark mode bottom bar
+    const bottomBar = page.getByTestId("footer-bottom-bar");
+    await expect(bottomBar).toHaveCSS("background-color", "rgb(42, 42, 42)"); // #2A2A2A
+
+    // Capture Dark Mode Footer Screenshot
+    await footer.screenshot({
+      path: "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-dark-mode.png",
+    });
+    await footer.screenshot({
+      path: ".agent/screenshots/task-13-footer-dark-mode.png",
+    });
+    expect(
+      fs.existsSync(
+        "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-dark-mode.png"
+      )
+    ).toBe(true);
+    expect(fs.existsSync(".agent/screenshots/task-13-footer-dark-mode.png")).toBe(true);
+
+    // 2. Switch to Light Mode
+    const headerToggle = page.getByTestId("header-theme-toggle");
+    await headerToggle.click();
+    await expect(page.locator("html")).toHaveClass(/light/);
+
+    // Allow CSS transition to settle
+    await page.waitForTimeout(300);
+
+    // 3. Verify Light Mode footer styles
+    // Must NOT be dark #141414 (rgb(20, 20, 20))
+    await expect(footer).not.toHaveCSS("background-color", "rgb(20, 20, 20)");
+    // Must be warm ivory #FAF8F5 (rgb(250, 248, 245))
+    await expect(footer).toHaveCSS("background-color", "rgb(250, 248, 245)");
+    // Must have dark ink text #1A1A1A (rgb(26, 26, 26))
+    await expect(footer).toHaveCSS("color", "rgb(26, 26, 26)");
+
+    // Bottom bar in light mode must be #F0ECE1 (rgb(240, 236, 225))
+    await expect(bottomBar).toHaveCSS("background-color", "rgb(240, 236, 225)");
+
+    // Newsletter input in light mode
+    const newsletterInput = page.getByTestId("footer-newsletter-input");
+    await expect(newsletterInput).toBeVisible();
+    await expect(newsletterInput).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(newsletterInput).toHaveCSS("color", "rgb(26, 26, 26)");
+
+    // Newsletter submit button
+    const newsletterSubmit = page.getByTestId("footer-newsletter-submit");
+    await expect(newsletterSubmit).toBeVisible();
+    await expect(newsletterSubmit).toHaveCSS("color", "rgb(26, 26, 26)");
+
+    // Capture Light Mode Footer Screenshot
+    await footer.screenshot({
+      path: "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-light-mode.png",
+    });
+    await footer.screenshot({
+      path: ".agent/screenshots/task-13-footer-light-mode.png",
+    });
+    expect(
+      fs.existsSync(
+        "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-13-footer-light-mode.png"
+      )
+    ).toBe(true);
+    expect(fs.existsSync(".agent/screenshots/task-13-footer-light-mode.png")).toBe(true);
+  });
 });

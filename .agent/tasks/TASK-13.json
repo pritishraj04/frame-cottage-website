@@ -1,0 +1,40 @@
+{
+  "id": "TASK-13",
+  "title": "Resolve Light Mode Theme Styling and Contrast in Site Footer",
+  "category": "theme-fix",
+  "description": "Fix footer light mode color adaptation reported by user: (1) Added `@custom-variant dark (&:where(.dark, .dark *));` in `app/globals.css` so Tailwind CSS v4 class-based theming correctly targets `.dark` instead of falling back to OS `prefers-color-scheme: dark`. (2) Refactored `components/layout/site-footer.tsx` with clean warm ivory container (`bg-[#FAF8F5] dark:bg-[#141414]`), dark charcoal text on newsletter subscribe button (`text-[#1A1A1A]`), readable secondary ink for navigation links and bottom bar (`text-[var(--color-ink-secondary)]`), and explicit subtle canvas for bottom trust bar (`bg-[var(--color-canvas-subtle)]`). (3) Added comprehensive Playwright assertions and captured verification screenshots in both Dark and Light modes.",
+  "acceptanceCriteria": [
+    "Footer properly changes background to warm ivory (#FAF8F5 / rgb(250, 248, 245)) in Light Mode and charcoal (#141414 / rgb(20, 20, 20)) in Dark Mode regardless of OS prefers-color-scheme",
+    "Newsletter input and subscribe button have clear contrast with dark readable text in both themes",
+    "Footer navigation links and copyright legal strip use high-contrast ink (text-[var(--color-ink-secondary)]) with gold hover transitions",
+    "Bottom trust bar (FSC badge, payments, SSL) adapts seamlessly with border-[var(--color-border-subtle)] and bg-[var(--color-canvas-subtle)]",
+    "All Playwright tests pass (34/34)",
+    "Footer screenshots captured and saved to brain artifact directory and .agent/screenshots/ in both Light and Dark modes"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Configure Tailwind v4 custom dark variant in app/globals.css",
+      "details": "Added @custom-variant dark (&:where(.dark, .dark *)); to ensure Tailwind v4 scopes dark: utilities to the .dark class on html instead of the OS media query.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Refactor components/layout/site-footer.tsx styling and contrast",
+      "details": "Set container to bg-[#FAF8F5] dark:bg-[#141414], newsletter button to text-[#1A1A1A], column links to text-[var(--color-ink-secondary)], and bottom bar to bg-[var(--color-canvas-subtle)].",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Add Playwright test in tests/theme-toggle.spec.ts for footer theme adaptation",
+      "details": "Assert dark mode background (rgb(20, 20, 20)) and text (rgb(244, 241, 234)), toggle to light mode, assert light background (rgb(250, 248, 245)) and dark ink (rgb(26, 26, 26)), input styling, and capture screenshots.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Execute Playwright suite and Next.js production build",
+      "details": "Ran full test suite (34 passed) and npm run build (0 errors).",
+      "pass": true
+    }
+  ]
+}

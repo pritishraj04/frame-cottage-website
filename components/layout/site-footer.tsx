@@ -42,7 +42,7 @@ export function SiteFooter() {
       id="site-footer"
       data-testid="site-footer"
       aria-label="Site Footer"
-      className="w-full dark:bg-[#141414] bg-[#F0ECE1] text-[var(--color-ink-primary)] border-t border-[var(--color-border-subtle)] relative z-10 transition-colors duration-250"
+      className="w-full bg-[#FAF8F5] dark:bg-[#141414] text-[var(--color-ink-primary)] border-t border-[var(--color-border-subtle)] relative z-10 transition-colors duration-250"
     >
       {/* =====================================================================
           TOP NEWSLETTER & ATELIER PROMISE BANNER
@@ -92,7 +92,7 @@ export function SiteFooter() {
                   <button
                     type="submit"
                     data-testid="footer-newsletter-submit"
-                    className="px-6 py-3 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
+                    className="px-6 py-3 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -170,7 +170,7 @@ export function SiteFooter() {
             >
               Custom Framing
             </h4>
-            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
                 <Link href="/custom-framing" className="hover:text-[#C5A059] transition-colors">
                   Digital Upload & Giclée
@@ -212,7 +212,7 @@ export function SiteFooter() {
             >
               Curated Styles
             </h4>
-            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
                 <Link href="/styles/walnut" className="hover:text-[#C5A059] transition-colors">
                   American Black Walnut
@@ -254,7 +254,7 @@ export function SiteFooter() {
             >
               The Atelier
             </h4>
-            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
                 <Link href="/atelier/timber" className="hover:text-[#C5A059] transition-colors">
                   FSC® Timber Stewardship
@@ -296,7 +296,7 @@ export function SiteFooter() {
             >
               Client Services
             </h4>
-            <ul className="space-y-2 text-xs text-[var(--color-ink-muted)]">
+            <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
                 <Link href="/trade" className="hover:text-[#C5A059] transition-colors">
                   Interior Trade Program
@@ -335,13 +335,16 @@ export function SiteFooter() {
       {/* =====================================================================
           BOTTOM TRUST BAR, FSC CERTIFICATION & LEGAL
          ===================================================================== */}
-      <div className="border-t border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)] py-8">
+      <div
+        data-testid="footer-bottom-bar"
+        className="border-t border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)] py-8"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
             {/* FSC Certification Badge */}
             <div
               data-testid="footer-fsc-badge"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-muted)] shadow-2xs"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
             >
               <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
               <span>
@@ -352,7 +355,7 @@ export function SiteFooter() {
             {/* Payment Trust Badges */}
             <div
               data-testid="footer-payment-badges"
-              className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--color-ink-muted)]"
+              className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--color-ink-secondary)]"
             >
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)]">
                 <CreditCard className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -375,22 +378,22 @@ export function SiteFooter() {
           </div>
 
           {/* Copyright & Legal Links */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-muted)]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-secondary)]">
             <p>© 2026 Frame Cottage Atelier Ltd. All rights reserved. Handcrafted in the USA.</p>
 
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/privacy" className="hover:text-[#C5A059] transition-colors">
                 Privacy Policy
               </Link>
-              <span>•</span>
+              <span className="text-[var(--color-ink-muted)]">•</span>
               <Link href="/terms" className="hover:text-[#C5A059] transition-colors">
                 Terms of Service
               </Link>
-              <span>•</span>
+              <span className="text-[var(--color-ink-muted)]">•</span>
               <Link href="/accessibility" className="hover:text-[#C5A059] transition-colors">
                 Accessibility Statement
               </Link>
-              <span>•</span>
+              <span className="text-[var(--color-ink-muted)]">•</span>
               <Link href="/cookies" className="hover:text-[#C5A059] transition-colors">
                 Cookie Preferences
               </Link>
