@@ -1,0 +1,32 @@
+{
+  "id": "TASK-1",
+  "title": "Verify project prerequisites and setup dependencies",
+  "category": "setup",
+  "description": "Verify Next.js 16 environment, check .env.local placeholder values for Supabase and Cloudflare R2, and install required UI dependencies (lucide-react, @radix-ui/react-dialog, @radix-ui/react-accordion).",
+  "acceptanceCriteria": [
+    ".env.local exists with Supabase and Cloudflare R2 environment variable placeholders",
+    "npm dependencies for lucide-react and Radix UI primitives are cleanly installed without SIGILL crashes",
+    "Next.js build or dev server starts cleanly on port 3000",
+    "Playwright test runner configuration is verified"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Inspect .env.local",
+      "details": "Verify NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, and Cloudflare R2 configurations exist in .env.local.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Install UI dependencies",
+      "details": "Install lucide-react and essential Radix UI primitives (dialog, accordion, tooltip) needed for the navigation and customizer.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Verify build and dev server sanity",
+      "details": "Run `npm run build` or start dev server to confirm Next.js 16 and Tailwind v4 compile without errors.",
+      "pass": true
+    }
+  ]
+}
