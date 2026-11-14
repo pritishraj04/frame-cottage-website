@@ -113,7 +113,7 @@ export function GlassComparisonSlider() {
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
     calculatePosition(e.clientX);
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    containerRef.current?.setPointerCapture?.(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -124,7 +124,7 @@ export function GlassComparisonSlider() {
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
     try {
-      (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
+      containerRef.current?.releasePointerCapture?.(e.pointerId);
     } catch {
       // ignore
     }
@@ -148,15 +148,15 @@ export function GlassComparisonSlider() {
   };
 
   return (
-    <div className="w-full bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 shadow-sm text-[var(--color-ink-primary)]">
+    <div className="w-full bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-4 sm:p-8 shadow-sm text-[var(--color-ink-primary)]">
       {/* Slider Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pb-6 border-b border-[var(--color-border-subtle)]">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-[var(--color-border-subtle)]">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[#C5A059] text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[#C5A059] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
             <Eye className="w-3.5 h-3.5" />
-            <span>Interactive Glare & UV Simulation</span>
+            <span>Interactive Glare &amp; UV Simulation</span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
+          <h3 className="font-serif text-xl sm:text-3xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-snug">
             Standard Glare-Prone Glass vs. TruVue® Conservation Acrylic
           </h3>
           <p className="mt-1 text-xs sm:text-sm text-[var(--color-ink-secondary)] max-w-2xl">
@@ -165,13 +165,13 @@ export function GlassComparisonSlider() {
         </div>
 
         {/* Preset View Switcher Buttons */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="grid grid-cols-3 sm:flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto shrink-0">
           <button
             type="button"
             data-testid="slider-preset-standard"
             onClick={() => setSliderPosition(100)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
+              "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition >= 90
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
@@ -184,7 +184,7 @@ export function GlassComparisonSlider() {
             data-testid="slider-preset-split"
             onClick={() => setSliderPosition(50)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
+              "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition > 20 && sliderPosition < 80
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
@@ -197,7 +197,7 @@ export function GlassComparisonSlider() {
             data-testid="slider-preset-truvue"
             onClick={() => setSliderPosition(0)}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors cursor-pointer",
+              "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition <= 10
                 ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
@@ -225,7 +225,8 @@ export function GlassComparisonSlider() {
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        className="relative w-full h-[360px] sm:h-[420px] md:h-[480px] rounded-xl overflow-hidden cursor-ew-resize select-none border border-[var(--color-border-subtle)] shadow-md focus:outline-none focus:ring-2 focus:ring-[#C5A059]"
+        onPointerCancel={handlePointerUp}
+        className="relative w-full h-[340px] sm:h-[420px] md:h-[480px] rounded-xl overflow-hidden cursor-ew-resize select-none touch-none border border-[var(--color-border-subtle)] shadow-md focus:outline-none focus:ring-2 focus:ring-[#C5A059]"
       >
         {/* =====================================================================
             LAYER 1 (BASE): STANDARD REFLECTION-PRONE GLASS
@@ -235,21 +236,21 @@ export function GlassComparisonSlider() {
           className="absolute inset-0 w-full h-full bg-[var(--color-canvas-subtle)] flex items-center justify-center overflow-hidden"
         >
           {/* Rich Artwork Canvas under Standard Glass */}
-          <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br dark:from-[#2D2218] dark:via-[#1E1710] dark:to-[#0F0C08] from-[#F4EFE6] via-[#EAE2D2] to-[#DFD5C2] p-6 sm:p-10">
+          <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br dark:from-[#2D2218] dark:via-[#1E1710] dark:to-[#0F0C08] from-[#F4EFE6] via-[#EAE2D2] to-[#DFD5C2] p-4 sm:p-10">
             {/* The Artwork Itself (Artisanal Botanical & Geometric Still Life) */}
-            <div className="relative w-full max-w-md h-full rounded-lg bg-[#F5ECE0] border-8 border-[#3A2A1E] shadow-inner flex flex-col items-center justify-between p-6 overflow-hidden">
+            <div className="relative w-full max-w-[220px] sm:max-w-md h-[270px] sm:h-full rounded-lg bg-[#F5ECE0] border-4 sm:border-8 border-[#3A2A1E] shadow-inner flex flex-col items-center justify-between p-3 sm:p-6 overflow-hidden">
               <div className="text-center">
-                <span className="text-[10px] uppercase tracking-[0.25em] text-[#86868B] font-serif">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#86868B] font-serif block">
                   Atelier Archival Plate No. 12
                 </span>
-                <h4 className="font-serif text-lg font-bold text-[#1D1D1F]">
+                <h4 className="font-serif text-sm sm:text-lg font-bold text-[#1D1D1F] line-clamp-1">
                   Botanical Still Life in Sunlight
                 </h4>
               </div>
 
               {/* Central Illustration Motif */}
               <div className="my-auto flex items-center justify-center relative">
-                <svg viewBox="0 0 200 200" className="w-44 h-44 sm:w-52 sm:h-52 drop-shadow-md">
+                <svg viewBox="0 0 200 200" className="w-28 h-28 sm:w-52 sm:h-52 drop-shadow-md">
                   <circle cx="100" cy="100" r="75" fill="#C5A059" opacity="0.35" />
                   <circle cx="100" cy="100" r="50" fill="#B45309" opacity="0.45" />
                   <path
@@ -262,7 +263,7 @@ export function GlassComparisonSlider() {
               </div>
 
               <div className="text-center">
-                <p className="text-[9px] uppercase tracking-wider text-[#86868B]">
+                <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#86868B]">
                   Archival Pigment on 310gsm Cotton Rag
                 </p>
               </div>
@@ -281,15 +282,16 @@ export function GlassComparisonSlider() {
             {/* Standard Glass Warning Badge */}
             <div
               data-testid="standard-glass-label"
-              className="absolute top-4 left-4 z-10 flex flex-col items-start gap-1.5 pointer-events-none max-w-[210px] sm:max-w-xs"
+              className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 flex flex-col items-start gap-1.5 pointer-events-none max-w-[125px] sm:max-w-xs"
             >
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1D1D1F]/90 text-white backdrop-blur-md border border-red-500/40 shadow-lg">
-                <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                <span className="text-xs font-bold tracking-tight text-[#FAF7F2]">
-                  Standard Reflection-Prone Glass
+              <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#1D1D1F]/90 text-white backdrop-blur-md border border-red-500/40 shadow-lg whitespace-nowrap">
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="text-[10px] sm:text-xs font-bold tracking-tight text-[#FAF7F2]">
+                  <span className="sm:hidden">Standard Glass</span>
+                  <span className="hidden sm:inline">Standard Reflection-Prone Glass</span>
                 </span>
               </div>
-              <div className="px-2.5 py-1 rounded bg-[#1D1D1F]/80 text-[#FAF7F2] text-[10px] sm:text-[11px] backdrop-blur-sm border border-white/10 space-y-0.5">
+              <div className="hidden sm:block px-2.5 py-1 rounded bg-[#1D1D1F]/80 text-[#FAF7F2] text-[10px] sm:text-[11px] backdrop-blur-sm border border-white/10 space-y-0.5">
                 <p className="font-semibold text-amber-300">• Uncoated specular glare</p>
                 <p className="text-[#FAF7F2]/80">• Only ~45% UV protection (fades in 2-3 yrs)</p>
                 <p className="text-[#FAF7F2]/80">• Heavy, fragile & risky to ship</p>
@@ -307,21 +309,21 @@ export function GlassComparisonSlider() {
           className="absolute inset-0 w-full h-full bg-[var(--color-canvas-subtle)] flex items-center justify-center overflow-hidden transition-none"
         >
           {/* Pristine, Vivid Artwork Canvas with 99% UV Conservation Acrylic */}
-          <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br dark:from-[#2D2218] dark:via-[#1E1710] dark:to-[#0F0C08] from-[#F4EFE6] via-[#EAE2D2] to-[#DFD5C2] p-6 sm:p-10">
+          <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br dark:from-[#2D2218] dark:via-[#1E1710] dark:to-[#0F0C08] from-[#F4EFE6] via-[#EAE2D2] to-[#DFD5C2] p-4 sm:p-10">
             {/* Exactly identical artwork underneath, but with Rich, Saturated, Crystal-Clear Rendering */}
-            <div className="relative w-full max-w-md h-full rounded-lg bg-[#FDF9F2] border-8 border-[#3A2A1E] shadow-2xl flex flex-col items-center justify-between p-6 overflow-hidden">
+            <div className="relative w-full max-w-[220px] sm:max-w-md h-[270px] sm:h-full rounded-lg bg-[#FDF9F2] border-4 sm:border-8 border-[#3A2A1E] shadow-2xl flex flex-col items-center justify-between p-3 sm:p-6 overflow-hidden">
               <div className="text-center">
-                <span className="text-[10px] uppercase tracking-[0.25em] text-[#86868B] font-serif">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#86868B] font-serif block">
                   Atelier Archival Plate No. 12
                 </span>
-                <h4 className="font-serif text-lg font-bold text-[#1D1D1F]">
+                <h4 className="font-serif text-sm sm:text-lg font-bold text-[#1D1D1F] line-clamp-1">
                   Botanical Still Life in Sunlight
                 </h4>
               </div>
 
               {/* Central Illustration Motif: Highly Saturated & Deep Contrast */}
               <div className="my-auto flex items-center justify-center relative">
-                <svg viewBox="0 0 200 200" className="w-44 h-44 sm:w-52 sm:h-52 drop-shadow-xl">
+                <svg viewBox="0 0 200 200" className="w-28 h-28 sm:w-52 sm:h-52 drop-shadow-xl">
                   <circle cx="100" cy="100" r="75" fill="#C5A059" opacity="0.65" />
                   <circle cx="100" cy="100" r="50" fill="#B45309" opacity="0.8" />
                   <path
@@ -334,7 +336,7 @@ export function GlassComparisonSlider() {
               </div>
 
               <div className="text-center">
-                <p className="text-[9px] uppercase tracking-wider text-[#86868B]">
+                <p className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#86868B]">
                   Archival Pigment on 310gsm Cotton Rag
                 </p>
               </div>
@@ -350,15 +352,16 @@ export function GlassComparisonSlider() {
           {/* TruVue Conservation Acrylic Feature Badge */}
           <div
             data-testid="truvue-acrylic-label"
-            className="absolute top-4 right-4 z-20 flex flex-col items-end gap-1.5 pointer-events-none max-w-[210px] sm:max-w-xs text-right"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex flex-col items-end gap-1.5 pointer-events-none max-w-[125px] sm:max-w-xs text-right"
           >
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1D1D1F]/90 text-white backdrop-blur-md border border-[var(--color-border-subtle)] shadow-lg">
-              <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
-              <span className="text-xs font-bold tracking-tight text-white">
-                TruVue® Conservation Acrylic
+            <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#1D1D1F]/90 text-white backdrop-blur-md border border-[var(--color-border-subtle)] shadow-lg whitespace-nowrap">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+              <span className="text-[10px] sm:text-xs font-bold tracking-tight text-white">
+                <span className="sm:hidden">TruVue® Acrylic</span>
+                <span className="hidden sm:inline">TruVue® Conservation Acrylic</span>
               </span>
             </div>
-            <div className="px-2.5 py-1 rounded bg-[#1D1D1F]/80 text-white text-[10px] sm:text-[11px] backdrop-blur-sm border border-white/10 space-y-0.5">
+            <div className="hidden sm:block px-2.5 py-1 rounded bg-[#1D1D1F]/80 text-white text-[10px] sm:text-[11px] backdrop-blur-sm border border-white/10 space-y-0.5">
               <p className="font-semibold text-[#C5A059]">• 99% UV-defense shields pigments</p>
               <p className="text-white/90">• Optically clear, saturated color preservation</p>
               <p className="text-white/90">• Lightweight, shatter-resistant & safe</p>
@@ -372,13 +375,13 @@ export function GlassComparisonSlider() {
         <div
           data-testid="glass-slider-handle"
           style={{ left: `${sliderPosition}%` }}
-          className="absolute top-0 bottom-0 w-1 -ml-0.5 z-30 bg-[#C5A059] shadow-[0_0_12px_rgba(197,160,89,0.5)] pointer-events-none flex items-center justify-center"
+          className="absolute top-0 bottom-0 w-1 -ml-0.5 z-30 bg-[#C5A059] shadow-[0_0_12px_rgba(197,160,89,0.5)] pointer-events-none flex items-center justify-center touch-none"
         >
           {/* Top Finial */}
           <div className="absolute top-0 w-3 h-3 rounded-full bg-[#C5A059] -mt-1 shadow-sm" />
 
           {/* Center Draggable Knob */}
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#C5A059] border-2 border-[#F4F1EA] text-[#1A1A1A] flex items-center justify-center shadow-2xl transform active:scale-95 transition-transform">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#C5A059] border-2 border-[#F4F1EA] text-[#1A1A1A] flex items-center justify-center shadow-2xl transform active:scale-95 transition-transform touch-none">
             <ChevronsLeftRight className="w-5 h-5 text-[#1A1A1A]" />
           </div>
 
@@ -387,10 +390,62 @@ export function GlassComparisonSlider() {
         </div>
       </div>
 
+      {/* Mobile-Only Side-by-Side Comparison Summary Card */}
+      <div
+        data-testid="glass-mobile-comparison-card"
+        className="block sm:hidden mt-3 p-3.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)]"
+      >
+        <div className="grid grid-cols-2 gap-3 divide-x divide-[var(--color-border-subtle)]">
+          {/* Left Column: Standard Glass */}
+          <div className="pr-1.5 space-y-1.5">
+            <div className="flex items-center gap-1 text-red-500 font-semibold text-[11px]">
+              <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-amber-400" />
+              <span>Standard Glass</span>
+            </div>
+            <ul className="text-[10px] text-[var(--color-ink-secondary)] space-y-1 leading-snug">
+              <li className="flex items-start gap-1">
+                <span className="text-amber-500 shrink-0">•</span>
+                <span>Uncoated specular glare</span>
+              </li>
+              <li className="flex items-start gap-1">
+                <span className="text-amber-500 shrink-0">•</span>
+                <span>~45% UV fading (2-3 yrs)</span>
+              </li>
+              <li className="flex items-start gap-1">
+                <span className="text-amber-500 shrink-0">•</span>
+                <span>Fragile, heavy &amp; risky</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right Column: TruVue Conservation Acrylic */}
+          <div className="pl-3 space-y-1.5">
+            <div className="flex items-center gap-1 text-[#C5A059] font-semibold text-[11px]">
+              <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-[#C5A059]" />
+              <span>TruVue® Acrylic</span>
+            </div>
+            <ul className="text-[10px] text-[var(--color-ink-secondary)] space-y-1 leading-snug">
+              <li className="flex items-start gap-1">
+                <span className="text-[#C5A059] shrink-0">•</span>
+                <span>Anti-reflective coating</span>
+              </li>
+              <li className="flex items-start gap-1">
+                <span className="text-[#C5A059] shrink-0">•</span>
+                <span>99% UV defense defense</span>
+              </li>
+              <li className="flex items-start gap-1">
+                <span className="text-[#C5A059] shrink-0">•</span>
+                <span>Lightweight &amp; shatter-safe</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* Slider Footer Status Bar */}
       <div
         data-testid="glass-slider-track"
-        className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--color-ink-muted)] pt-3 border-t border-[var(--color-border-subtle)]"
+        className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-xs text-[var(--color-ink-muted)] pt-3 border-t border-[var(--color-border-subtle)]"
       >
         <div className="flex items-center gap-2">
           <span className="font-semibold text-[var(--color-ink-primary)]">Current Ratio:</span>

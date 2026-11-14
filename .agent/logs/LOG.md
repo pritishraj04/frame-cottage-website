@@ -2,13 +2,51 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 14:35
-**Tasks Completed:** 14 / 14
-**Current Task:** TASK-14 Complete (Sticky Navigation Bar on Scroll Fixed by Eliminating Parent Containment Wrapper)
+**Last Updated:** 2026-11-14 16:20
+**Tasks Completed:** 15 / 15
+**Current Task:** TASK-15 Complete (Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-15: Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook
+- Root Causes Identified:
+  1. Atelier Materials Glass Comparison Slider (`components/home/atelier-materials.tsx`):
+     - Inside-stage floating labels (`standard-glass-label` and `truvue-acrylic-label`) each had `max-w-[210px]`. On mobile viewports (375px - 390px), their combined width of 420px exceeded the container width (~340px), causing horizontal collision, overlapping text, and obscuring the central artwork.
+     - Preset buttons wrapped unpredictably and lacked mobile touch target sizing.
+     - Touch dragging lacked `touch-none` / proper pointer capture on `containerRef.current`, resulting in scroll jitter during swipe gestures.
+  2. Customer Lookbook (`components/home/customer-lookbook.tsx`):
+     - The 3 room tab names ("Living Room Salon Wall", "Dining Credenza", "Minimalist Bedside") wrapped awkwardly into 3 rows on mobile viewports.
+     - Framed wall artworks and room silhouettes did not scale down sufficiently for narrow mobile screens.
+     - Active hotspot popover card was positioned with absolute percentages (`left: activeHotspot.x%`) and fixed `w-[280px]`, causing it to overflow the screen edge, clip outside the stage container, and cover hotspot pins.
+- Refactored `components/home/atelier-materials.tsx`:
+  - Transformed inside-stage floating labels on mobile (`< sm`) into compact pill badges (`text-[10px] sm:text-xs`) with concise text ("Standard Glass" and "TruVue® Acrylic") and responsive icons, hiding the bulky 3-bullet lists from the stage overlay (`hidden sm:block`).
+  - Added a dedicated mobile-only side-by-side comparison summary card below the slider stage (`block sm:hidden mt-3 p-3.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)]`) displaying the complete educational points (Uncoated specular glare, ~45% UV fading, fragile/heavy vs. anti-reflective coating, 99% UV defense, lightweight/shatter-safe).
+  - Styled preset buttons into a clean 3-column mobile grid (`grid grid-cols-3 sm:flex w-full sm:w-auto gap-1.5 sm:gap-2`) with comfortable touch targets (`min-h-[36px]`).
+  - Applied `touch-none` and pointer capture on `containerRef.current` to guarantee smooth, jitter-free dragging on mobile touch pointers.
+  - Scaled mobile stage height to `h-[340px] sm:h-[420px] md:h-[480px]` and inner artwork frame to `max-w-[220px] sm:max-w-md` with appropriately scaled SVG illustration (`w-28 h-28 sm:w-52 sm:h-52`).
+- Refactored `components/home/customer-lookbook.tsx`:
+  - Converted room tab switcher into a horizontally scrollable container with smooth swipe, snap scrolling, and pill buttons (`flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none snap-x -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 sm:mb-8`) with `shrink-0 snap-center`.
+  - Scaled room stage height to `h-[420px] sm:h-[560px] md:h-[620px]` and wall artworks to `w-24 h-32`, `w-20 h-28`, and `w-18 h-22` on mobile, scaling furniture silhouettes appropriately.
+  - Re-anchored active hotspot popover card to dock at the bottom of the room stage on mobile (`className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] ..."`), eliminating clipping and screen overflow while allowing full visibility of the artwork and pins above.
+- Automated Verification:
+  - Created dedicated Playwright test suite `tests/mobile-responsiveness.spec.ts` (390x844 viewport):
+    - Verified zero horizontal overflow across entire document (`scrollWidth <= clientWidth === 390`).
+    - Verified floating badges are visible without colliding (`boxStandard.x + boxStandard.width < boxTruvue.x`).
+    - Verified mobile comparison summary card renders with full comparison details.
+    - Verified all 3 preset buttons switch `aria-valuenow` correctly to 100, 0, and 50.
+    - Verified touch dragging updates `aria-valuenow` smoothly.
+    - Verified room tabs horizontal scrolling and switching.
+    - Verified active hotspot card stays strictly within viewport bounds (`box.x >= 0` and `box.x + box.width <= 390`) with verified collector badge, review quote, customer name, and clickable "Shop Frame" button.
+    - Verified mobile layout fidelity in both Dark Mode and Light Mode.
+  - Executed full test suite: all 40 Playwright tests passing (40/40) with zero regressions.
+  - Verified production build: `npm run build` completed with 0 errors.
+- Verification Screenshots:
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-15-glass-slider-mobile.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-15-customer-lookbook-mobile.png`
+  - `.agent/screenshots/task-15-glass-slider-mobile.png`
+  - `.agent/screenshots/task-15-customer-lookbook-mobile.png`
 
 ### 2026-11-14 - TASK-14: Fix Sticky Navigation Bar on Scroll by Eliminating Parent Containment Wrapper
 - Root Cause Identified: In CSS specification, an element with `position: sticky` is bound strictly to the height and boundaries of its containing block (its direct parent element). In `components/navigation/site-header.tsx`, `<header className="sticky top-0 ...">` was wrapped inside `<div className="w-full relative z-50">`. That wrapper `div` had a height equal only to the announcement bar + header (~100px total) and ended right above `<main>`. When the user scrolled past that `div` (~100px down), the entire wrapper scrolled out of view and took the header with it, causing the navigation bar to completely disappear.

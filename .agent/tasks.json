@@ -96,5 +96,12 @@
     "category": "navigation-fix",
     "specFilePath": ".agent/tasks/TASK-14.json",
     "passes": true
+  },
+  {
+    "id": "TASK-15",
+    "title": "Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook",
+    "category": "responsive-fix",
+    "specFilePath": ".agent/tasks/TASK-15.json",
+    "passes": true
   }
 ]

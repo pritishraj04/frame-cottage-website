@@ -254,7 +254,7 @@ export function CustomerLookbook() {
         {/* =====================================================================
             ROOM TABS SWITCHER
            ===================================================================== */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none snap-x -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 sm:mb-8">
           {ROOM_SETTINGS.map((room) => {
             const isSelected = room.id === currentRoom.id;
             return (
@@ -265,7 +265,7 @@ export function CustomerLookbook() {
                 onClick={() => handleRoomSelect(room.id)}
                 aria-pressed={isSelected}
                 className={cn(
-                  "px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2",
+                  "shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2 whitespace-nowrap",
                   isSelected
                     ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-md"
                     : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink-primary)]"
@@ -300,7 +300,7 @@ export function CustomerLookbook() {
           {/* Room Ambient Background */}
           <div
             className={cn(
-              "relative w-full h-[460px] sm:h-[560px] md:h-[620px] overflow-hidden select-none flex items-center justify-center transition-colors duration-500",
+              "relative w-full h-[420px] sm:h-[560px] md:h-[620px] overflow-hidden select-none flex items-center justify-center transition-colors duration-500",
               `bg-gradient-to-b ${currentRoom.wallTexture}`
             )}
           >
@@ -320,25 +320,25 @@ export function CustomerLookbook() {
 
               {/* Render Room Specific Furniture Silhouettes */}
               {currentRoom.id === "living-room" && (
-                <div className="absolute bottom-12 inset-x-12 sm:inset-x-28 h-28 sm:h-36 bg-gradient-to-t from-[#1F2922] to-[#2B3B30] rounded-t-3xl border-t border-[#3D5244] shadow-2xl flex items-center justify-around px-8">
+                <div className="absolute bottom-12 inset-x-6 sm:inset-x-28 h-24 sm:h-36 bg-gradient-to-t from-[#1F2922] to-[#2B3B30] rounded-t-3xl border-t border-[#3D5244] shadow-2xl flex items-center justify-around px-4 sm:px-8">
                   {/* Velvet sofa cushions accent */}
-                  <div className="w-20 sm:w-28 h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
-                  <div className="w-24 sm:w-36 h-14 rounded-xl bg-[#26352C] border border-[#3D5244]/50 shadow-inner" />
-                  <div className="w-20 sm:w-28 h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
+                  <div className="w-16 sm:w-28 h-10 sm:h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
+                  <div className="w-20 sm:w-36 h-12 sm:h-14 rounded-xl bg-[#26352C] border border-[#3D5244]/50 shadow-inner" />
+                  <div className="w-16 sm:w-28 h-10 sm:h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
                 </div>
               )}
 
               {currentRoom.id === "dining-credenza" && (
-                <div className="absolute bottom-10 inset-x-16 sm:inset-x-32 h-24 sm:h-28 bg-[#5A3825] rounded-t-lg border-t-4 border-[#7A4D33] shadow-2xl flex items-end justify-between px-10 pb-2">
-                  <div className="w-10 h-16 rounded-t-full bg-[#E5D7C3] opacity-90 shadow-md" />
-                  <div className="w-14 h-12 rounded-lg bg-[#3C2418] shadow-inner" />
-                  <div className="w-8 h-20 rounded-t-lg bg-[#B39B82] opacity-80 shadow-md" />
+                <div className="absolute bottom-10 inset-x-8 sm:inset-x-32 h-20 sm:h-28 bg-[#5A3825] rounded-t-lg border-t-4 border-[#7A4D33] shadow-2xl flex items-end justify-between px-6 sm:px-10 pb-2">
+                  <div className="w-8 sm:w-10 h-12 sm:h-16 rounded-t-full bg-[#E5D7C3] opacity-90 shadow-md" />
+                  <div className="w-10 sm:w-14 h-10 sm:h-12 rounded-lg bg-[#3C2418] shadow-inner" />
+                  <div className="w-7 sm:w-8 h-16 sm:h-20 rounded-t-lg bg-[#B39B82] opacity-80 shadow-md" />
                 </div>
               )}
 
               {currentRoom.id === "minimalist-bedside" && (
-                <div className="absolute bottom-8 left-12 sm:left-24 w-36 sm:w-48 h-24 sm:h-28 bg-[#C8BCAB] rounded-t-md border-t-2 border-[#DFD6C7] shadow-xl flex items-center justify-center">
-                  <div className="w-10 h-14 rounded-t-sm bg-[#5C4D3C] shadow-sm" />
+                <div className="absolute bottom-8 left-6 sm:left-24 w-28 sm:w-48 h-20 sm:h-28 bg-[#C8BCAB] rounded-t-md border-t-2 border-[#DFD6C7] shadow-xl flex items-center justify-center">
+                  <div className="w-8 sm:w-10 h-10 sm:h-14 rounded-t-sm bg-[#5C4D3C] shadow-sm" />
                 </div>
               )}
             </div>
@@ -354,9 +354,9 @@ export function CustomerLookbook() {
               }}
               className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             >
-              <div className="w-32 h-40 sm:w-44 sm:h-56 bg-[#FAF7F2] rounded-xs border-8 border-[#3A2417] shadow-[0_20px_40px_rgba(0,0,0,0.55)] p-3 sm:p-4 flex flex-col items-center justify-between">
-                <div className="w-full h-full bg-[#EDE5D8] rounded-xs p-2 sm:p-3 flex items-center justify-center border border-[#D5C8B5]">
-                  <div className="w-16 h-20 sm:w-24 sm:h-32 bg-[#2D3F33] rounded-xs flex items-center justify-center text-[10px] text-white/80 font-serif italic text-center p-1">
+              <div className="w-24 h-32 sm:w-44 sm:h-56 bg-[#FAF7F2] rounded-xs border-4 sm:border-8 border-[#3A2417] shadow-[0_20px_40px_rgba(0,0,0,0.55)] p-2 sm:p-4 flex flex-col items-center justify-between">
+                <div className="w-full h-full bg-[#EDE5D8] rounded-xs p-1.5 sm:p-3 flex items-center justify-center border border-[#D5C8B5]">
+                  <div className="w-12 h-16 sm:w-24 sm:h-32 bg-[#2D3F33] rounded-xs flex items-center justify-center text-[8px] sm:text-[10px] text-white/80 font-serif italic text-center p-0.5 sm:p-1">
                     {currentRoom.hotspots[0]?.artTitle || "Art Piece"}
                   </div>
                 </div>
@@ -372,9 +372,9 @@ export function CustomerLookbook() {
                 }}
                 className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
               >
-                <div className="w-28 h-36 sm:w-36 sm:h-48 bg-[#FAF7F2] rounded-xs border-6 border-[#C5A059] shadow-[0_18px_36px_rgba(0,0,0,0.5)] p-2.5 sm:p-3 flex flex-col items-center justify-between">
-                  <div className="w-full h-full bg-[#FAF5EE] rounded-xs p-2 flex items-center justify-center border border-[#D5C8B5]">
-                    <div className="w-14 h-18 sm:w-20 sm:h-26 bg-[#7C3F2A] rounded-xs flex items-center justify-center text-[9px] text-white/90 font-serif italic text-center p-1">
+                <div className="w-20 h-28 sm:w-36 sm:h-48 bg-[#FAF7F2] rounded-xs border-4 sm:border-6 border-[#C5A059] shadow-[0_18px_36px_rgba(0,0,0,0.5)] p-1.5 sm:p-3 flex flex-col items-center justify-between">
+                  <div className="w-full h-full bg-[#FAF5EE] rounded-xs p-1 sm:p-2 flex items-center justify-center border border-[#D5C8B5]">
+                    <div className="w-10 h-14 sm:w-20 sm:h-26 bg-[#7C3F2A] rounded-xs flex items-center justify-center text-[8px] sm:text-[9px] text-white/90 font-serif italic text-center p-0.5 sm:p-1">
                       {currentRoom.hotspots[1].artTitle}
                     </div>
                   </div>
@@ -391,9 +391,9 @@ export function CustomerLookbook() {
                 }}
                 className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
               >
-                <div className="w-24 h-30 sm:w-32 sm:h-40 bg-[#FAF7F2] rounded-xs border-4 border-[#D9C4A6] shadow-[0_16px_32px_rgba(0,0,0,0.45)] p-2 sm:p-2.5 flex flex-col items-center justify-between">
-                  <div className="w-full h-full bg-[#FFFFFF] rounded-xs p-1.5 flex items-center justify-center border border-[#E5DACB]">
-                    <div className="w-12 h-14 sm:w-16 sm:h-20 bg-[#1E293B] rounded-xs flex items-center justify-center text-[8px] text-white/80 font-serif italic text-center p-1">
+                <div className="w-18 h-22 sm:w-32 sm:h-40 bg-[#FAF7F2] rounded-xs border-2 sm:border-4 border-[#D9C4A6] shadow-[0_16px_32px_rgba(0,0,0,0.45)] p-1 sm:p-2.5 flex flex-col items-center justify-between">
+                  <div className="w-full h-full bg-[#FFFFFF] rounded-xs p-1 sm:p-1.5 flex items-center justify-center border border-[#E5DACB]">
+                    <div className="w-9 h-11 sm:w-16 sm:h-20 bg-[#1E293B] rounded-xs flex items-center justify-center text-[7px] sm:text-[8px] text-white/80 font-serif italic text-center p-0.5 sm:p-1">
                       {currentRoom.hotspots[2].artTitle}
                     </div>
                   </div>
@@ -451,24 +451,26 @@ export function CustomerLookbook() {
             {activeHotspot && (
               <div
                 data-testid={`lookbook-card-${activeHotspot.id}`}
-                style={{
-                  left: `${Math.min(78, Math.max(22, activeHotspot.x))}%`,
-                  top: `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
-                }}
-                className="absolute z-40 -translate-x-1/2 w-[280px] sm:w-[320px] max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-4 sm:p-5 shadow-2xl border border-[var(--color-border-subtle)] transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
+                style={
+                  {
+                    "--pin-x": `${Math.min(78, Math.max(22, activeHotspot.x))}%`,
+                    "--pin-y": `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
+                  } as React.CSSProperties
+                }
+                className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border border-[var(--color-border-subtle)] transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
               >
                 {/* Close Button */}
                 <button
                   type="button"
                   onClick={() => setActivePinId(null)}
-                  className="absolute top-3 right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors"
+                  className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
                   aria-label="Close card"
                 >
                   <X className="w-4 h-4" />
                 </button>
 
                 {/* Customer & Verified Badge Row */}
-                <div className="flex items-center gap-2 mb-2 pr-6">
+                <div className="flex items-center gap-2 mb-1.5 sm:mb-2 pr-6">
                   <div
                     data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
                     className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
@@ -484,12 +486,12 @@ export function CustomerLookbook() {
                 </div>
 
                 {/* Customer Review Quote */}
-                <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-3 font-serif">
+                <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-2 sm:mb-3 font-serif line-clamp-2 sm:line-clamp-none">
                   {activeHotspot.review}
                 </p>
 
                 {/* Reviewer Name and Location */}
-                <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-ink-secondary)] mb-3 pb-3 border-b border-[var(--color-border-subtle)]">
+                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[var(--color-ink-secondary)] mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-[var(--color-border-subtle)]">
                   <MapPin className="w-3 h-3 text-[#C5A059]" />
                   <span className="font-semibold text-[var(--color-ink-primary)]">{activeHotspot.customerName}</span>
                   <span className="text-[var(--color-ink-muted)]">•</span>
@@ -497,20 +499,20 @@ export function CustomerLookbook() {
                 </div>
 
                 {/* Frame Title & Specs */}
-                <div className="mb-3">
-                  <h4 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)]">
+                <div className="mb-2 sm:mb-3">
+                  <h4 className="font-serif text-xs sm:text-sm font-semibold text-[var(--color-ink-primary)]">
                     {activeHotspot.frameTitle}
                   </h4>
-                  <p className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">{activeHotspot.specs}</p>
+                  <p className="text-[10px] sm:text-[11px] text-[var(--color-ink-muted)] mt-0.5 truncate sm:whitespace-normal">{activeHotspot.specs}</p>
                 </div>
 
                 {/* Price and Action Button */}
-                <div className="flex items-center justify-between gap-3 pt-1">
+                <div className="flex items-center justify-between gap-3 pt-0.5 sm:pt-1">
                   <div>
-                    <span className="text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
+                    <span className="text-[9px] sm:text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
                       From
                     </span>
-                    <span className="font-serif text-base font-bold text-[var(--color-accent-gold)]">
+                    <span className="font-serif text-sm sm:text-base font-bold text-[var(--color-accent-gold)]">
                       {activeHotspot.price}
                     </span>
                   </div>
@@ -518,7 +520,7 @@ export function CustomerLookbook() {
                   <Link
                     href={activeHotspot.shopUrl}
                     data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs font-semibold tracking-wide shadow-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
                   >
                     <span>Shop Frame</span>
                     <ArrowRight className="w-3 h-3" />

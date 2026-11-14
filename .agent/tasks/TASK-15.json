@@ -1,0 +1,43 @@
+{
+  "id": "TASK-15",
+  "title": "Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook",
+  "category": "responsive-fix",
+  "description": "Resolved critical mobile responsiveness bottlenecks identified in the user issue: (1) Standard Glare-Prone Glass vs. TruVue® Conservation Acrylic in `components/home/atelier-materials.tsx`: fixed collision of inside-stage floating labels on mobile (< sm) where 210px + 210px collided on 375px-390px viewports. Converted them to compact pill badges on mobile with concise labels ('Standard Glass' and 'TruVue® Acrylic') while hiding bulky bullet lists inside the stage. Added a dedicated mobile-only side-by-side comparison summary card below the slider stage displaying uncoated glare, UV fading, and fragility vs anti-reflective coating, 99% UV defense, and shatter safety. Reorganized preset buttons into a 3-column touch-friendly grid on mobile. Added `touch-none` and HTML5 pointer capture on `containerRef.current` to guarantee smooth, jitter-free dragging on mobile touch pointers. Scaled down stage height (`h-[340px] sm:h-[420px] md:h-[480px]`) and inner artwork frame (`max-w-[220px] sm:max-w-md`). (2) Living with Craft • Real Homes in `components/home/customer-lookbook.tsx`: fixed awkward 3-line tab wrapping by turning room tabs into a horizontally scrollable container with smooth swipe, snap scrolling, and pill buttons (`-mx-4 px-4 sm:mx-0 sm:px-0`). Scaled stage height (`h-[420px] sm:h-[560px] md:h-[620px]`) and scaled down in-situ wall artworks on mobile (`w-24 h-32`, `w-20 h-28`, `w-18 h-22`). Fixed popover clipping and viewport overflow by docking the active hotspot card to the bottom of the room stage on mobile (`inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px]`). (3) Created comprehensive Playwright test suite `tests/mobile-responsiveness.spec.ts` at 390x844 viewport verifying zero horizontal overflow, label separation, summary card visibility, preset buttons, touch dragging, room tab horizontal scroll, and docked popover positioning in both Dark and Light modes. (4) Captured all verification screenshots to the caller artifact directory and `.agent/screenshots/`.",
+  "acceptanceCriteria": [
+    "Inside-stage floating badges on mobile render as compact pill badges without colliding or overlapping horizontally",
+    "Mobile-only side-by-side comparison summary card renders below the glass slider stage displaying full educational comparison points",
+    "Preset switcher buttons display in a neat 3-column grid on mobile with comfortable touch targets",
+    "Touch dragging on the slider handle is smooth without scroll jitter via touch-none and pointer capture",
+    "Room tabs in Customer Lookbook are horizontally scrollable on mobile without wrapping awkwardly",
+    "Customer Lookbook active hotspot card docks at the bottom of the room stage on mobile without clipping or viewport overflow",
+    "Zero horizontal overflow across the entire mobile page on a 390px viewport (scrollWidth <= clientWidth)",
+    "All Playwright tests pass (40/40) with zero regressions across both Dark and Light themes",
+    "Verification screenshots captured and saved to artifact directory and .agent/screenshots/"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Refactor GlassComparisonSlider in components/home/atelier-materials.tsx for mobile viewports",
+      "details": "Converted inside-stage floating labels to compact pill badges, hid inner bullet lists on mobile, added mobile comparison summary card below stage, styled presets into a 3-column grid, applied touch-none, and scaled inner artwork frame and stage height.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Refactor CustomerLookbook in components/home/customer-lookbook.tsx for mobile viewports",
+      "details": "Turned room tabs into a horizontally scrollable container (-mx-4 px-4 sm:mx-0 sm:px-0), scaled room stage height and in-situ framed artwork dimensions, docked active hotspot card to stage bottom on mobile using CSS variables for responsive placement.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Create automated Playwright test suite in tests/mobile-responsiveness.spec.ts",
+      "details": "Implemented tests at 390x844 verifying badge non-collision, comparison summary card, preset buttons, touch dragging, room tabs swipe, docked card bounds, zero horizontal overflow, and Light/Dark mode fidelity. Captured mobile screenshots.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Execute Playwright test suite and Next.js production build",
+      "details": "Ran full test suite (40/40 passed) and verified clean Next.js build with zero TypeScript and compiler errors.",
+      "pass": true
+    }
+  ]
+}
