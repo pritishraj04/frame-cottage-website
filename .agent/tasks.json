@@ -194,5 +194,12 @@
     "category": "storefront-pages",
     "specFilePath": ".agent/tasks/TASK-28.json",
     "passes": true
+  },
+  {
+    "id": "TASK-29",
+    "title": "Developing Full Search Functionality (Global Command Palette Modal & Dedicated Search Page)",
+    "category": "search-functionality",
+    "specFilePath": ".agent/tasks/TASK-29.json",
+    "passes": true
   }
 ]

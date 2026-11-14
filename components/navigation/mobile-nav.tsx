@@ -3,6 +3,7 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Menu,
   X,
@@ -20,14 +21,26 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SERVICE_VERTICALS } from "@/lib/constants/verticals";
 
 export function MobileNav() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [expandedVertical, setExpandedVertical] = useState<string | null>("bespoke-framing");
 
   const toggleVertical = (id: string) => {
     setExpandedVertical(expandedVertical === id ? null : id);
   };
 
-  const closeMenu = () => setOpen(false);
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      closeMenu();
+    }
+  };
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -76,14 +89,17 @@ export function MobileNav() {
             </div>
 
             {/* Quick search input */}
-            <div className="mt-4 relative">
+            <form onSubmit={handleSearchSubmit} className="mt-4 relative" data-testid="mobile-search-form">
               <input
                 type="search"
+                data-testid="mobile-search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search verticals, capabilities, specs..."
                 className="w-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-xl py-2.5 pl-9 pr-3 text-xs text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-[#C5A059]"
               />
               <Search className="w-4 h-4 text-[var(--color-ink-muted)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            </div>
+            </form>
 
             {/* 6 Core Service Verticals Navigation Accordion */}
             <div className="mt-6">

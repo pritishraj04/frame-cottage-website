@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Search, Heart, User, ShoppingBag, ChevronDown } from "lucide-react";
 import { AnnouncementBar } from "./announcement-bar";
 import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { SearchModal } from "@/components/search/search-modal";
 
 interface SiteHeaderProps {
   showAnnouncement?: boolean;
@@ -15,7 +16,20 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeaderProps) {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Global keyboard shortcut for Command+K or Control+K to toggle search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
@@ -139,7 +153,8 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 type="button"
                 aria-label="Quick Search"
                 data-testid="header-search-btn"
-                className="p-2 text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)]"
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)] cursor-pointer"
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -187,6 +202,12 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
           onMouseLeave={handleMouseLeave}
         />
       </header>
+
+      {/* Global Command Palette / Search Modal */}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </>
   );
 }
