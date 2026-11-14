@@ -5,6 +5,9 @@ import { TrustBar } from "@/components/home/trust-bar";
 import { CuratedCollections } from "@/components/home/curated-collections";
 import { FramingJourney } from "@/components/home/framing-journey";
 import { AtelierMaterials } from "@/components/home/atelier-materials";
+import { CustomerLookbook } from "@/components/home/customer-lookbook";
+import { FAQSection } from "@/components/home/faq-section";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export default function Home() {
   return (
@@ -17,7 +20,10 @@ export default function Home() {
         <CuratedCollections />
         <FramingJourney />
         <AtelierMaterials />
+        <CustomerLookbook />
+        <FAQSection />
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -1,0 +1,45 @@
+{
+  "id": "TASK-8",
+  "title": "Build Customer UGC Lookbook, Accessible FAQ Accordion, Footer and E2E Smoke Test",
+  "category": "ui-validation",
+  "description": "Implement the customer home interior lookbook with interactive 'Shop This Look' pins, shadcn accessible FAQ accordion, luxury archival footer, and complete Playwright end-to-end verification.",
+  "acceptanceCriteria": [
+    "Customer Lookbook displays real interior photos with clickable hotspots linking to specific frames",
+    "FAQ Accordion is built using accessible Radix UI primitives with smooth height animation",
+    "Archival Footer provides brand story, newsletter signup, trust badges, and comprehensive links",
+    "Home page compiles with zero TypeScript errors and passes full Playwright visual smoke suite",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Build CustomerLookbook with hotspot pins",
+      "details": "Create components/home/customer-lookbook.tsx with interactive frame tag popovers.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build FAQSection accordion",
+      "details": "Create components/home/faq-section.tsx answering key framing and shipping questions.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Build SiteFooter component",
+      "details": "Create components/layout/site-footer.tsx with newsletter capture and guarantee seals.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Assemble full app/page.tsx",
+      "details": "Compose all sections cleanly into app/page.tsx.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Full E2E Playwright validation",
+      "details": "Run tsc, eslint, and Playwright test capturing full-page screenshot into .agent/screenshots/.",
+      "pass": true
+    }
+  ]
+}
