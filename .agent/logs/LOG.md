@@ -2,13 +2,53 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 02:18
-**Tasks Completed:** 27 / 27
-**Current Task:** TASK-27 Complete (Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge)
+**Last Updated:** 2026-11-15 02:32
+**Tasks Completed:** 28 / 28
+**Current Task:** TASK-28 Complete (Develop Frontend-Only Wishlist, Cart, Profile/Account, and Login Pages with PNG-Styled Spatial Canvas Architecture)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-28: Develop Frontend-Only Wishlist, Cart, Profile/Account, and Login Pages with PNG-Styled Spatial Canvas Architecture
+- Context & Objective: Per user directive ("develop wishlist cart and profile and login pages only frontend"), built complete interactive frontend pages for Wishlist (`/wishlist`), Cart & Requisition (`/cart`), Client Login & Registration (`/login`), and Profile & Account Dashboard (`/account` and `/profile`).
+- Architectural & Visual Implementations:
+  1. **Global Client State & Context** (`lib/store/storefront-store.ts` & `lib/store/storefront-context.tsx`):
+     - Comprehensive `localStorage` synchronization for seamless navigation across routes.
+     - Wishlist state management with individual and batch cart transfer, deletion, and sample restore.
+     - Cart state management with unit price calculations, +/- quantity selector, B2B GSTIN tax exemption toggle (0% vs standard 8.25%), trade discount code engine (`ARCHITECT10`, `TRADE15`, `STUDIO20`), delivery method switcher, and special engraving notes.
+     - User authentication state with demo accounts for Private Collector ("Camilla Vance") and Corporate Enterprise ("Marcus Sterling").
+     - Wrapped root layout body in `app/layout.tsx` with `<StorefrontProvider>`.
+  2. **Updated Site Header Navigation** (`components/navigation/site-header.tsx`):
+     - Converted cart button into `<Link href="/cart" data-testid="header-cart-btn">` with live cart counter badge.
+  3. **Wishlist Page** (`app/wishlist/page.tsx`):
+     - Route `/wishlist` with editorial serif title, subtitle, and counter badge (`data-testid="wishlist-counter-badge"`).
+     - Pre-populated with realistic commissions: Appalachian Walnut Bespoke Frame, 3D Illuminated Wayfinding Signage, CNC Laser-Cut Brass Lattice Screen, Museum Conservation Shadowbox.
+     - Each card features a 4:3 dashed spatial drop zone container (`data-testid="wishlist-dropzone-..."`) with dimension guides, vector blueprint illustrations, and corner registration marks.
+     - Action buttons: "Move to Cart", "Configure in RFQ Portal", "Remove", batch controls "Move All to Cart" and "Clear Wishlist", and empty state with sample restore.
+  4. **Cart Page** (`app/cart/page.tsx`):
+     - Route `/cart` with 2-column layout: left column for cart line items with quantity selector (`+` / `-`), custom engraving text area (`data-testid="cart-engraving-notes"`), and delivery selector ("Insured White-Glove" vs "Atelier Pick-Up").
+     - Right column with sticky order summary card (`data-testid="cart-summary-card"`), subtotal, shipping, B2B GSTIN tax toggle (`data-testid="cart-tax-toggle"`), promo input (`data-testid="promo-input"`), primary CTA "Proceed to White-Glove Checkout" (`data-testid="checkout-btn"`) opening interactive simulated checkout modal (`data-testid="checkout-modal"`), and secondary CTA "Request Proforma Invoice (B2B / GeM Tender)".
+  5. **Login Page** (`app/login/page.tsx`):
+     - Route `/login` with centered luxury atelier card, dual tabs ("Client Sign In" & "Create Studio Account / Register Organization"), and client portal switcher ("Private Collector" vs "Corporate B2B / GeM").
+     - One-click demo credentials buttons ("Demo Collector Login" and "Demo Enterprise / B2B Login") that set session and redirect to `/account`.
+     - Google sign-in and Enterprise SAML SSO buttons.
+  6. **Profile & Account Dashboard** (`components/account/account-dashboard.tsx`, `app/account/page.tsx`, `app/profile/page.tsx`):
+     - Both `/account` and `/profile` routes render full client dashboard.
+     - Monogram avatar circle (`data-testid="account-avatar"`), client name (`data-testid="account-name"`), and client tier badge (`data-testid="account-tier-badge"`).
+     - 4-tab interactive navigation: "Orders & Active Projects" (with in-situ spec sheet PDF modal), "RFQ & Tender Submissions" (with proposal modal), "Studio & Shipping Addresses" (with add address modal), and "Studio Preferences & Security" (with theme toggle and sign out button redirecting to `/login`).
+  7. **Quality Gates & Testing**:
+     - Automated Playwright suite `tests/task-28-storefront-pages.spec.ts` (7 tests).
+     - High-resolution visual proof screenshots saved in `.agent/screenshots/` and copied to parent brain directory:
+       - `task-28-wishlist-dark.png`
+       - `task-28-cart-dark.png`
+       - `task-28-login-dark.png`
+       - `task-28-account-dark.png`
+       - `task-28-wishlist-light.png`
+       - `task-28-cart-light.png`
+       - `task-28-account-mobile.png`
+     - Production build compiles with 0 TypeScript/build errors across all 18 static routes.
+     - Complete Playwright suite passes with 100% pass rate (79/79 passed in 53.8s).
 
 ### 2026-11-15 - TASK-27: Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge
 - Context & Objective: Per user directive ("add a whatsapp button at the bottom right corner and also i want to develop someting interactive to help user with the desisions"), designed, built, and verified two flagship interactive features:

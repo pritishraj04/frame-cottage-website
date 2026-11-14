@@ -187,5 +187,12 @@
     "category": "interactive-decision-concierge",
     "specFilePath": ".agent/tasks/TASK-27.json",
     "passes": true
+  },
+  {
+    "id": "TASK-28",
+    "title": "Develop Frontend-Only Wishlist, Cart, Profile/Account, and Login Pages with PNG-Styled Spatial Canvas Architecture",
+    "category": "storefront-pages",
+    "specFilePath": ".agent/tasks/TASK-28.json",
+    "passes": true
   }
 ]

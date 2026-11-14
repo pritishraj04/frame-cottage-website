@@ -162,8 +162,8 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 <User className="w-5 h-5" />
               </Link>
 
-              <button
-                type="button"
+              <Link
+                href="/cart"
                 aria-label={`Cart with ${cartCount} items`}
                 data-testid="header-cart-btn"
                 className="p-2 text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)] relative cursor-pointer"
@@ -175,7 +175,7 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 >
                   {cartCount}
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

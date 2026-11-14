@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/interactive/whatsapp-button";
+import { StorefrontProvider } from "@/lib/store/storefront-context";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -50,8 +51,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)] transition-colors duration-250">
-        {children}
-        <WhatsAppButton />
+        <StorefrontProvider>
+          {children}
+          <WhatsAppButton />
+        </StorefrontProvider>
       </body>
     </html>
   );

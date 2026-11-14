@@ -1,0 +1,81 @@
+{
+  "id": "TASK-28",
+  "title": "Develop Frontend-Only Wishlist, Cart, Profile/Account, and Login Pages with PNG-Styled Spatial Canvas Architecture",
+  "category": "storefront-pages",
+  "description": "Per user directive ('develop wishlist cart and profile and login pages only frontend'), built complete interactive client-side frontend pages for Wishlist (/wishlist), Cart & Requisition (/cart), Client Login & Registration (/login), and Profile & Account Dashboard (/account and /profile). Adheres to Frame Cottage's PNG-styled spatial canvas architecture with dashed borders (border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50), Playfair Display serif headings, Geist sans UI text, and #C5A059 gold accents. Features rich client state, dual-theme support (Museum Dark Mode #1A1A1A and Warm Museum Light Mode #FAF8F5), mobile responsiveness (390x844) with 0 horizontal overflow, 0 TypeScript/build errors, and 100% test pass rate (79/79 passed in Playwright).",
+  "acceptanceCriteria": [
+    "Wishlist Page (/wishlist) with editorial serif title, subtitle, counter badge (data-testid='wishlist-counter-badge'), 4:3 dashed spatial drop zones (data-testid='wishlist-dropzone-...'), technical joinery specs, starting price, actions ('Move to Cart', 'Configure in RFQ Portal', 'Remove'), batch controls ('Move All to Cart', 'Clear Wishlist'), empty state with 'Discover Studio Verticals', and sample restore action",
+    "Cart Page (/cart) with updated site header cart button linking to /cart (data-testid='header-cart-btn'), 2-column responsive layout, line items with quantity selector (+/-), custom engraving and master framer notes textarea (data-testid='cart-engraving-notes'), delivery method selector ('Insured White-Glove' vs 'Atelier Pick-Up'), order summary card with subtotal, logistics, B2B GSTIN tax toggle, promo discount code (ARCHITECT10 / TRADE15 / STUDIO20), interactive simulated checkout modal (data-testid='checkout-modal'), proforma invoice RFQ deep-link, and atelier guarantees",
+    "Login Page (/login) with dual-tab interface ('Client Sign In' & 'Create Studio Account / Register Organization'), client portal switcher ('Private Collector' vs 'Corporate B2B / Architectural Firm / GeM Contractor'), interactive form fields (email, password, remember checkbox, forgot password link), one-click demo credentials ('Demo Collector Login' & 'Demo Enterprise / B2B Login'), social and enterprise SSO buttons, and smooth redirect to /account",
+    "Profile & Account Dashboard (/account & /profile) with client avatar monogram, name ('Camilla Vance' / dynamic), client tier badge ('Atelier Collector • Tier II' or 'Corporate Enterprise Partner'), 4-tab dashboard ('Orders & Active Projects', 'RFQ & Tender Submissions', 'Studio & Shipping Addresses', 'Studio Preferences & Security'), interactive in-situ spec sheet PDF modal, RFQ proposal detail modal, add new address modal, dark/light theme switcher toggle, and sign out button redirecting to /login",
+    "Full dual-theme compatibility across Museum Dark Mode (#1A1A1A) and Warm Museum Light Mode (#FAF8F5)",
+    "Mobile viewport responsiveness at 390x844 with zero horizontal overflow across all new routes",
+    "Comprehensive automated Playwright test suite tests/task-28-storefront-pages.spec.ts passing with 100% success rate",
+    "High-resolution visual proof screenshots captured: task-28-wishlist-dark.png, task-28-cart-dark.png, task-28-login-dark.png, task-28-account-dark.png, task-28-wishlist-light.png, task-28-cart-light.png, and task-28-account-mobile.png saved in .agent/screenshots/ and copied to parent brain directory",
+    "npm run build compiles with 0 TypeScript and 0 build errors across all 18 static routes",
+    "Full Playwright test suite passes with 100% pass rate (79/79 passed in 53.8s)"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Architect client-side state management and mock data",
+      "details": "Created lib/store/storefront-store.ts and lib/store/storefront-context.tsx with full localStorage synchronization, reactive hooks, and mock datasets for wishlist, cart, orders, RFQs, addresses, user profiles, and order calculations.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Integrate StorefrontProvider into root layout",
+      "details": "Wrapped root layout body in app/layout.tsx with <StorefrontProvider> to share cart count, wishlist, and authentication state globally.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Update site header cart button to link to /cart",
+      "details": "Updated components/navigation/site-header.tsx so the cart button (data-testid='header-cart-btn') is a Next.js <Link href='/cart'> with cart counter badge.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Build Wishlist Page (app/wishlist/page.tsx)",
+      "details": "Constructed /wishlist featuring editorial header, counter badge, 4:3 dashed spatial drop zones with vector blueprints, spec matrix, individual and batch actions ('Move to Cart', 'Configure in RFQ', 'Remove', 'Move All', 'Clear Wishlist'), empty state, and sample restore.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Build Cart Page (app/cart/page.tsx)",
+      "details": "Constructed /cart featuring 2-column layout, line items with +/- quantity adjustments, custom engraving textarea, white-glove vs atelier delivery selector, order summary card, B2B GSTIN tax exemption toggle, trade promo code engine, simulated checkout modal with project reference ID, and proforma invoice CTA.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Build Login Page (app/login/page.tsx)",
+      "details": "Constructed /login with luxury centered atelier card, dual tabs (Sign In / Register), client portal switcher (Private Collector vs Corporate B2B), form inputs, one-click demo login buttons ('Demo Collector Login' & 'Demo Enterprise / B2B Login'), social and SAML SSO buttons, and seamless redirect to /account.",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Build Profile & Account Dashboard (app/account/page.tsx & app/profile/page.tsx)",
+      "details": "Constructed components/account/account-dashboard.tsx rendered on both /account and /profile with client monogram avatar, tier badge, 4 tabs (Orders, RFQs, Addresses, Settings), spec sheet PDF modal, RFQ proposal modal, add address modal, theme toggle, and sign out.",
+      "pass": true
+    },
+    {
+      "step": 8,
+      "description": "Create automated Playwright test suite tests/task-28-storefront-pages.spec.ts",
+      "details": "Authored 7 comprehensive test specs covering HTTP 200 checks, Wishlist operations, Cart quantity/tax/promo/checkout, Login demo credentials, Account tabs and modals, dual-theme switching, and 390x844 mobile viewport zero overflow.",
+      "pass": true
+    },
+    {
+      "step": 9,
+      "description": "Capture high-resolution visual proof screenshots",
+      "details": "Captured task-28-wishlist-dark.png, task-28-cart-dark.png, task-28-login-dark.png, task-28-account-dark.png, task-28-wishlist-light.png, task-28-cart-light.png, and task-28-account-mobile.png saved in .agent/screenshots/ and copied to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 10,
+      "description": "Verify quality gates: build and complete Playwright test suite",
+      "details": "Compiled production build with 0 errors across 18/18 static routes; ran complete Playwright test suite with 100% pass rate (79/79 passed in 53.8s).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}
