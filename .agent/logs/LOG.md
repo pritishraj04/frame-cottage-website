@@ -2,13 +2,35 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 14:03
-**Tasks Completed:** 13 / 13
-**Current Task:** TASK-13 Complete (Light Mode Theme Styling and Contrast in Site Footer Resolved)
+**Last Updated:** 2026-11-14 14:35
+**Tasks Completed:** 14 / 14
+**Current Task:** TASK-14 Complete (Sticky Navigation Bar on Scroll Fixed by Eliminating Parent Containment Wrapper)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-14: Fix Sticky Navigation Bar on Scroll by Eliminating Parent Containment Wrapper
+- Root Cause Identified: In CSS specification, an element with `position: sticky` is bound strictly to the height and boundaries of its containing block (its direct parent element). In `components/navigation/site-header.tsx`, `<header className="sticky top-0 ...">` was wrapped inside `<div className="w-full relative z-50">`. That wrapper `div` had a height equal only to the announcement bar + header (~100px total) and ended right above `<main>`. When the user scrolled past that `div` (~100px down), the entire wrapper scrolled out of view and took the header with it, causing the navigation bar to completely disappear.
+- Refactored `components/navigation/site-header.tsx`:
+  - Removed restricting wrapper `<div className="w-full relative z-50">` and replaced with React Fragment `<> ... </>`.
+  - Added `w-full relative` directly to `<header>` (`<header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--color-border-subtle)] transition-colors duration-200 relative">`), ensuring `MegaMenu` (`absolute top-full left-0`) stays positioned directly beneath the header.
+  - The containing block of `<header>` is now the full-page container `<div className="min-h-screen flex flex-col">`, allowing the header to remain pinned to `top: 0` throughout the entire scroll depth of the page.
+- Automated Verification:
+  - Added dedicated Playwright tests in `tests/navigation.spec.ts` asserting:
+    - Sticky header remains visible and pinned at `box.y === 0` when scrolled 800px down.
+    - Wordmark, search button, and cart button are visible and interactable while scrolled.
+    - Hovering over "Custom Framing" while scrolled properly reveals the India Circus-inspired MegaMenu directly beneath the sticky header.
+    - Theme switching while scrolled toggles cleanly between Dark Mode and Light Mode with sticky header maintaining `top: 0`.
+    - Mobile viewport (390x844) maintains sticky header at `box.y === 0` when scrolled 600px down, and mobile navigation drawer opens and closes cleanly.
+  - All 36 Playwright tests passed (36/36).
+- Production Build: `npm run build` completed with 0 errors.
+  - TypeScript compilation and Turbopack static page generation passed with 0 errors.
+- Verification Screenshots:
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-14-sticky-header-scrolled-dark.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-14-sticky-header-scrolled-light.png`
+  - `.agent/screenshots/task-14-sticky-header-scrolled-dark.png`
+  - `.agent/screenshots/task-14-sticky-header-scrolled-light.png`
 
 ### 2026-11-14 - TASK-13: Resolve Light Mode Theme Styling and Contrast in Site Footer
 - Root Cause Identified: In Tailwind CSS v4, `dark:` modifier defaults to the OS media query (`prefers-color-scheme: dark`) rather than ancestor `.dark` class unless `@custom-variant dark` is configured. As a result, users with dark mode enabled in macOS experienced `dark:bg-[#141414]` overriding light mode styles even when `.light` was present on `<html>`.

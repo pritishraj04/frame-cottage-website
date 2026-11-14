@@ -1,0 +1,42 @@
+{
+  "id": "TASK-14",
+  "title": "Fix Sticky Navigation Bar on Scroll by Eliminating Parent Containment Wrapper",
+  "category": "navigation-fix",
+  "description": "Fix navigation bar disappearing upon page scroll: (1) Diagnosed root cause in `components/navigation/site-header.tsx`, where `<header className=\"sticky top-0 ...\">` was wrapped within `<div className=\"w-full relative z-50\">`. According to CSS specification, position: sticky is constrained by the height of its containing block. Because the wrapper div had a height equal only to the announcement bar + header (~100px) and ended right above `<main>`, scrolling past 100px caused the entire wrapper to scroll out of view, taking the sticky header with it. (2) Refactored `components/navigation/site-header.tsx` to return a React Fragment `<> ... </>` containing `{showAnnouncement && <AnnouncementBar />}` and `<header className=\"sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--color-border-subtle)] transition-colors duration-200 relative\">`, making `<div className=\"min-h-screen flex flex-col\">` its containing block spanning the full page height. (3) Retained relative positioning on header so `MegaMenu`'s `absolute top-full left-0` aligns beneath it. (4) Updated `tests/navigation.spec.ts` with comprehensive scroll tests (desktop 800px scroll, y=0 bounding box verification, mega menu hover while scrolled, mobile 390x844 600px scroll with mobile nav drawer), verified build, and captured verification screenshots in both Dark and Light modes.",
+  "acceptanceCriteria": [
+    "Navigation bar remains firmly pinned to top: 0 of the viewport across the entire scroll depth of the page",
+    "Announcement bar scrolls off naturally when scrolling down, and becomes visible again when scrolling back to the top",
+    "Brand wordmark, quick search button, and cart button remain fully visible, accessible, and interactable while scrolled",
+    "India Circus-inspired MegaMenu opens directly below the sticky header when hovering over 'Custom Framing' while scrolled",
+    "Mobile navigation drawer operates cleanly from the sticky hamburger button at 390x844 viewport when scrolled 600px",
+    "Sticky header adapts seamlessly across Dark Mode (#1A1A1A/90 with blur) and Light Mode (#FAF8F5/90 with blur)",
+    "All Playwright tests pass (36/36) with zero regressions",
+    "Screenshots captured while scrolled in both Dark and Light modes and saved to artifact directory and .agent/screenshots/"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Identify containing block issue in components/navigation/site-header.tsx",
+      "details": "Identified that `<div className=\"w-full relative z-50\">` bounded `<header className=\"sticky top-0 ...\">`, restricting sticky containment to ~100px height.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Refactor site-header.tsx to eliminate wrapper div and return React Fragment",
+      "details": "Replaced wrapper div with `<>` fragment, added `w-full` and `relative` directly to `<header>` to preserve MegaMenu positioning.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Implement Playwright scroll verification tests in tests/navigation.spec.ts",
+      "details": "Added tests verifying desktop scroll (800px, bounding box y = 0, interactive header controls, mega menu positioning) and mobile scroll (390x844, 600px, mobile drawer). Captured verification screenshots for dark and light modes.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Execute Playwright test suite and Next.js production build",
+      "details": "Executed full Playwright test suite (36/36 passing) and verified clean Next.js build with zero TypeScript errors.",
+      "pass": true
+    }
+  ]
+}

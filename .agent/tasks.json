@@ -89,5 +89,12 @@
     "category": "theme-fix",
     "specFilePath": ".agent/tasks/TASK-13.json",
     "passes": true
+  },
+  {
+    "id": "TASK-14",
+    "title": "Fix Sticky Navigation Bar on Scroll by Eliminating Parent Containment Wrapper",
+    "category": "navigation-fix",
+    "specFilePath": ".agent/tasks/TASK-14.json",
+    "passes": true
   }
 ]

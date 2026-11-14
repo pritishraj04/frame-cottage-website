@@ -35,10 +35,10 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
   };
 
   return (
-    <div className="w-full relative z-50">
+    <>
       {showAnnouncement && <AnnouncementBar />}
 
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--color-border-subtle)] transition-colors duration-200">
+      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--color-border-subtle)] transition-colors duration-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18 sm:h-20">
             {/* Left: Mobile Nav Button + Desktop Navigation triggers */}
@@ -166,6 +166,6 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
           onMouseLeave={handleMouseLeave}
         />
       </header>
-    </div>
+    </>
   );
 }
