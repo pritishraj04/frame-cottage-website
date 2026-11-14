@@ -40,10 +40,11 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
     const framingJourney = page.getByTestId("framing-journey");
     await expect(framingJourney).toBeVisible();
 
-    // 8. Atelier Materials & Glazing Slider
-    const atelierMaterials = page.getByTestId("atelier-materials");
-    await expect(atelierMaterials).toBeVisible();
-    await expect(page.getByTestId("glass-comparison-slider")).toBeVisible();
+    // 8. Featured Products Carousel
+    const featuredCarousel = page.getByTestId("featured-products-carousel");
+    await expect(featuredCarousel).toBeVisible();
+    await expect(page.getByTestId("carousel-next-btn")).toBeVisible();
+    await expect(page.getByTestId("carousel-prev-btn")).toBeVisible();
 
     // 9. Customer Lookbook
     const customerLookbook = page.getByTestId("customer-lookbook");

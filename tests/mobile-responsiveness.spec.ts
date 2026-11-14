@@ -24,109 +24,88 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
     expect(clientWidth).toBe(390);
   });
 
-  test("verifies Glass Comparison Slider mobile layout, non-colliding badges, summary card, and touch controls", async ({
+  test("verifies Featured Products Carousel mobile layout, touch ergonomics, controls, and zero overflow", async ({
     page,
   }) => {
-    const atelierSection = page.getByTestId("atelier-materials");
-    await atelierSection.scrollIntoViewIfNeeded();
-    await expect(atelierSection).toBeVisible();
+    const featuredSection = page.getByTestId("featured-products-carousel");
+    await featuredSection.scrollIntoViewIfNeeded();
+    await expect(featuredSection).toBeVisible();
 
-    const slider = page.getByTestId("glass-comparison-slider");
-    await expect(slider).toBeVisible();
+    // 1. Verify navigation controls are visible and within screen width
+    const prevBtn = page.getByTestId("carousel-prev-btn");
+    const nextBtn = page.getByTestId("carousel-next-btn");
+    await expect(prevBtn).toBeVisible();
+    await expect(nextBtn).toBeVisible();
 
-    // 1. Verify Both Floating Badges are Visible & Do Not Horizontally Collide
-    const standardBadge = page.getByTestId("standard-glass-label");
-    const truvueBadge = page.getByTestId("truvue-acrylic-label");
-
-    await expect(standardBadge).toBeVisible();
-    await expect(truvueBadge).toBeVisible();
-
-    // Verify compact label text on mobile
-    await expect(standardBadge).toContainText("Standard Glass");
-    await expect(truvueBadge).toContainText("TruVue® Acrylic");
-
-    const boxStandard = await standardBadge.boundingBox();
-    const boxTruvue = await truvueBadge.boundingBox();
-
-    expect(boxStandard).not.toBeNull();
-    expect(boxTruvue).not.toBeNull();
-
-    if (boxStandard && boxTruvue) {
-      // Must be inside mobile screen bounds
-      expect(boxStandard.x).toBeGreaterThanOrEqual(0);
-      expect(boxTruvue.x + boxTruvue.width).toBeLessThanOrEqual(390);
-
-      // Must NOT horizontally overlap/collide!
-      expect(boxStandard.x + boxStandard.width).toBeLessThan(boxTruvue.x);
+    const prevBox = await prevBtn.boundingBox();
+    const nextBox = await nextBtn.boundingBox();
+    expect(prevBox).not.toBeNull();
+    expect(nextBox).not.toBeNull();
+    if (prevBox && nextBox) {
+      expect(prevBox.x).toBeGreaterThanOrEqual(0);
+      expect(nextBox.x + nextBox.width).toBeLessThanOrEqual(390);
     }
 
-    // 2. Verify Mobile Side-by-Side Comparison Summary Card is Visible
-    const mobileSummaryCard = page.getByTestId("glass-mobile-comparison-card");
-    await expect(mobileSummaryCard).toBeVisible();
-    await expect(mobileSummaryCard).toContainText("Standard Glass");
-    await expect(mobileSummaryCard).toContainText("Uncoated specular glare");
-    await expect(mobileSummaryCard).toContainText("TruVue® Acrylic");
-    await expect(mobileSummaryCard).toContainText("99% UV defense");
-
-    // 3. Verify Preset Buttons in 3-Column Mobile Grid and Interactive Switching
-    const presetStandard = page.getByTestId("slider-preset-standard");
-    const presetSplit = page.getByTestId("slider-preset-split");
-    const presetTruVue = page.getByTestId("slider-preset-truvue");
-
-    await expect(presetStandard).toBeVisible();
-    await expect(presetSplit).toBeVisible();
-    await expect(presetTruVue).toBeVisible();
-
-    // Standard preset -> 100
-    await presetStandard.click();
-    await expect(slider).toHaveAttribute("aria-valuenow", "100");
-
-    // TruVue preset -> 0
-    await presetTruVue.click();
-    await expect(slider).toHaveAttribute("aria-valuenow", "0");
-
-    // Split 50/50 preset -> 50
-    await presetSplit.click();
-    await expect(slider).toHaveAttribute("aria-valuenow", "50");
-
-    // 4. Test Touch Dragging on Mobile Viewport
-    const sliderBox = await slider.boundingBox();
-    expect(sliderBox).not.toBeNull();
-
-    if (sliderBox) {
-      const startX = sliderBox.x + sliderBox.width * 0.5;
-      const startY = sliderBox.y + sliderBox.height * 0.5;
-      const targetX = sliderBox.x + sliderBox.width * 0.25;
-
-      // Simulate pointer drag gesture
-      await page.mouse.move(startX, startY);
-      await page.mouse.down();
-      await page.mouse.move(targetX, startY, { steps: 5 });
-      await page.mouse.up();
-
-      const updatedVal = Number(await slider.getAttribute("aria-valuenow"));
-      expect(updatedVal).toBeGreaterThanOrEqual(20);
-      expect(updatedVal).toBeLessThanOrEqual(30);
+    // 2. Verify First Card fits inside the 390px mobile viewport without overflow
+    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
+    await expect(walnutCard).toBeVisible();
+    const cardBox = await walnutCard.boundingBox();
+    expect(cardBox).not.toBeNull();
+    if (cardBox) {
+      expect(cardBox.x).toBeGreaterThanOrEqual(0);
+      expect(cardBox.x + cardBox.width).toBeLessThanOrEqual(390);
     }
 
-    // Reset to 50 for clean screenshot
-    await presetSplit.click();
-    await expect(slider).toHaveAttribute("aria-valuenow", "50");
+    // 3. Verify Dot Indicators and Interactive Next/Prev on Mobile
+    const dot0 = page.getByTestId("carousel-dot-0");
+    const dot1 = page.getByTestId("carousel-dot-1");
+    await expect(dot0).toHaveAttribute("aria-selected", "true");
+
+    await nextBtn.click();
+    await expect(dot1).toHaveAttribute("aria-selected", "true");
+
+    await prevBtn.click();
+    await expect(dot0).toHaveAttribute("aria-selected", "true");
+
+    // 4. Test Touch-Swipe Gesture on Mobile Viewport
+    const track = featuredSection.locator(".overflow-hidden").first();
+    await track.evaluate((el) => {
+      const startEv = new CustomEvent("touchstart", { bubbles: true });
+      Object.defineProperty(startEv, "touches", {
+        value: [{ clientX: 300, clientY: 100 }],
+      });
+      el.dispatchEvent(startEv);
+
+      const moveEv = new CustomEvent("touchmove", { bubbles: true });
+      Object.defineProperty(moveEv, "touches", {
+        value: [{ clientX: 50, clientY: 100 }],
+      });
+      el.dispatchEvent(moveEv);
+
+      const endEv = new CustomEvent("touchend", { bubbles: true });
+      el.dispatchEvent(endEv);
+    });
+    await page.waitForTimeout(300);
+    await expect(dot1).toHaveAttribute("aria-selected", "true");
+
+    // Reset back to dot 0
+    await dot0.click();
+    await expect(dot0).toHaveAttribute("aria-selected", "true");
 
     // 5. Capture Verification Screenshot
     const brainDir =
       "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af";
     const brainScreenshot = path.join(
       brainDir,
-      "task-15-glass-slider-mobile.png"
+      "task-16-featured-carousel-mobile.png"
     );
-    const agentScreenshot = ".agent/screenshots/task-15-glass-slider-mobile.png";
+    const agentScreenshot = ".agent/screenshots/task-16-featured-carousel-mobile.png";
 
     if (fs.existsSync(brainDir)) {
-      await slider.screenshot({ path: brainScreenshot });
+      await featuredSection.screenshot({ path: brainScreenshot });
       expect(fs.existsSync(brainScreenshot)).toBe(true);
     }
-    await slider.screenshot({ path: agentScreenshot });
+    await featuredSection.screenshot({ path: agentScreenshot });
     expect(fs.existsSync(agentScreenshot)).toBe(true);
   });
 
@@ -250,15 +229,14 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
     await closeButton.click();
     await expect(drawer).not.toBeVisible();
 
-    // Check Glass Comparison Slider in Light Mode
-    const atelierSection = page.getByTestId("atelier-materials");
-    await atelierSection.scrollIntoViewIfNeeded();
-    await expect(atelierSection).toBeVisible();
+    // Check Featured Products Carousel in Light Mode
+    const featuredSection = page.getByTestId("featured-products-carousel");
+    await featuredSection.scrollIntoViewIfNeeded();
+    await expect(featuredSection).toBeVisible();
 
-    const standardBadge = page.getByTestId("standard-glass-label");
-    const truvueBadge = page.getByTestId("truvue-acrylic-label");
-    await expect(standardBadge).toBeVisible();
-    await expect(truvueBadge).toBeVisible();
+    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
+    await expect(walnutCard).toBeVisible();
+    await expect(walnutCard).toHaveCSS("background-color", "rgb(255, 255, 255)");
 
     // Check Lookbook in Light Mode
     const lookbookSection = page.getByTestId("customer-lookbook");

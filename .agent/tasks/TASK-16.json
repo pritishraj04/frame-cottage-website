@@ -1,0 +1,46 @@
+{
+  "id": "TASK-16",
+  "title": "Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel",
+  "category": "ui-merchandising-carousel",
+  "description": "Per user explicit instruction, removed 'The Atelier: Material Transparency & Sustainability' section (<AtelierMaterials />) from `app/page.tsx` and replaced it with an editorial, pure image-based Featured Products Carousel (`<FeaturedProductsCarousel />` in `components/home/featured-products-carousel.tsx`). The section showcases 8 handcrafted frame products: The Mendocino Walnut, Gilded Atelier Brass, The Kyoto White Oak Slim, The Highline Matte Black, The Florentine Antiqued Gold, The Montmartre Gallery Triptych, The Versailles Ogee Gilt, and The Chelsea Gallery Duo. Each card features prominent museum-grade frame rendering with realistic multi-layer drop shadows, mitered corner splines, 4-ply bevel-cut cotton rag mats, optical TruVue UV-glaze reflections, and curated artworks (botanical, abstract, sumi-e, geometric, architectural, triptych, classical, minimalist). Interactive controls feature Apple-style circular previous/next buttons with backdrop blur, dot indicators showing the active slide, full mobile touch-swipe support (onTouchStart, onTouchMove, onTouchEnd), auto-advance timer with hover/touch pause, and quick customisation modal integration. Fully adapted to both Museum Dark Mode and Warm Museum Light Mode. Updated automated Playwright test suites (storytelling, full-home-e2e, theme-toggle, mobile-responsiveness) with 40/40 tests passing.",
+  "acceptanceCriteria": [
+    "AtelierMaterials section removed from app/page.tsx and replaced with FeaturedProductsCarousel",
+    "components/home/featured-products-carousel.tsx created showcasing 8 handcrafted luxury frame products",
+    "Each card is pure image-based with prominent realistic frames, deep multi-layer drop shadows, mitered corner splines, bevel-cut archival mats, and curated museum artworks",
+    "Interactive previous/next circular buttons with backdrop blur and hover states",
+    "Dot indicators / pagination bar at the bottom with real-time active slide updates",
+    "Full touch-swipe gesture support on mobile devices",
+    "Responsive multi-card display (Desktop: 3-4 cards, Tablet: 2 cards, Mobile: 1 card)",
+    "Quick Customise modal opens on demand and Studio anchor link provided",
+    "Full compatibility with Museum Dark Mode (#1A1A1A) and Warm Light Mode (#FAF8F5)",
+    "All Playwright automated test suites pass (40/40) with 0 failures",
+    "Next.js production build succeeds with 0 errors",
+    "Verification screenshots captured in Dark, Light, and Mobile viewports"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Build FeaturedProductsCarousel component in components/home/featured-products-carousel.tsx",
+      "details": "Engineered luxury pure image-based carousel featuring 8 handcrafted frames with realistic shadow rendering, mitered corner splines, bevel-cut mats, curated artworks, Apple-style controls, touch-swipe handlers, and QuickCustomiseDialog integration.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Update Home page in app/page.tsx",
+      "details": "Replaced AtelierMaterials import and JSX element with FeaturedProductsCarousel directly below FramingJourney and above CustomerLookbook.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Update Playwright test suites to validate Featured Products Carousel",
+      "details": "Updated tests/storytelling.spec.ts, tests/full-home-e2e.spec.ts, tests/theme-toggle.spec.ts, and tests/mobile-responsiveness.spec.ts to test card rendering, previous/next controls, dot pagination, touch swipe, modal interaction, light/dark mode adaptation, and mobile ergonomics.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Run Playwright test suite and Next.js production build",
+      "details": "Ran full test suite (40/40 passed) and verified clean Next.js build (exit code 0). Captured verification screenshots for Dark, Light, and Mobile viewports in .agent/screenshots/ and brain directory.",
+      "pass": true
+    }
+  ]
+}

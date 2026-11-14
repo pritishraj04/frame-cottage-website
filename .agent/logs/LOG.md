@@ -2,13 +2,55 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 16:20
-**Tasks Completed:** 15 / 15
-**Current Task:** TASK-15 Complete (Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook)
+**Last Updated:** 2026-11-14 16:32
+**Tasks Completed:** 16 / 16
+**Current Task:** TASK-16 Complete (Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-16: Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel
+- Context & Objective: Per user explicit instruction: "we have to remove this section The Atelier: Material Transparency & Sustainability and in place of it make a featured section for products with carousel. This will be pure image based section we will show case some of our products in carousel form."
+- Implementation in `components/home/featured-products-carousel.tsx`:
+  - Engineered an editorial, luxury, pure image-based Featured Products Carousel showcasing 8 handcrafted frames:
+    1. The Mendocino Walnut (Solid Appalachian Black Walnut, Organic Linseed Oil, 16" × 20", $64, Ginkgo biloba botanical art)
+    2. Gilded Atelier Brass (Solid Spun Brass & Birch Core, Hand-Brushed Satin Patina, 11" × 14", $78, Study in Form abstract art)
+    3. The Kyoto White Oak Slim (100% Quarter-Sawn White Oak, Botanical Matte Wax, 16" × 20", $62, Sumi-e bamboo art)
+    4. The Highline Matte Black (Solid Maple, Velvet Satin Shadowbox, 24" × 36", $54, Bauhaus geometric art)
+    5. The Florentine Antiqued Gold (Hand-Applied 22k Gold Leaf Bole, 16" × 20", $82, Portico d'Ottavia etching)
+    6. The Montmartre Gallery Triptych (Appalachian Walnut Suite, 3 × 8" × 10", $168, Salon Triptych Studies)
+    7. The Versailles Ogee Gilt (Sculpted Hardwood Profile, Champagne Leaf, 11" × 14", $88, Galleria Farnese classical art)
+    8. The Chelsea Gallery Duo (Solid Brass Spun Profiles, 2 × 11" × 14", $142, Silenzio minimalist art)
+  - Pure Image-First Visual Presentation:
+    - Prominent handcrafted frame taking up majority of card height with realistic multi-layer drop shadows (`0 22px 45px -10px rgba(0,0,0,0.45), 0 8px 18px -4px rgba(0,0,0,0.25)`).
+    - Mitered corner splines joinery indicators at frame corners.
+    - 4-ply bevel-cut cotton rag mats (#F4F1EA) with 45° bevel cut shadow (`inset 0 2px 4px rgba(0,0,0,0.25)`).
+    - TruVue® conservation optical glare line across the glazing.
+    - Archival SVG museum artworks from `FrameArtwork` (botanical, abstract, sumi-e, geometric, architectural, triptych, classical, minimalist).
+  - Interactive Carousel Controls:
+    - Apple-style circular previous/next navigation buttons (`data-testid="carousel-prev-btn"`, `data-testid="carousel-next-btn"`) with backdrop blur and hover elevation.
+    - 8 dot pagination indicators (`data-testid="carousel-dot-[index]"`) with active slide pill animation.
+    - Multi-card responsive layout: Desktop (3-4 cards), Tablet (2 cards), Mobile (1 card).
+    - Full mobile touch-swipe support (`onTouchStart`, `onTouchMove`, `onTouchEnd`) with threshold detection.
+    - Automatic slide advancement (every 5 seconds) with hover and touch pause.
+    - Direct "Studio" anchor link and "Customise" button opening `QuickCustomiseDialog`.
+  - Theming: Full compatibility with Museum Dark Mode (`#1A1A1A`) and Warm Museum Light Mode (`#FAF8F5`).
+- Updated `app/page.tsx`:
+  - Removed `<AtelierMaterials />` and replaced it with `<FeaturedProductsCarousel />` between `FramingJourney` and `CustomerLookbook`.
+- Automated Test Verification:
+  - Updated `tests/storytelling.spec.ts` with comprehensive tests verifying carousel rendering, all 8 frame cards, navigation button controls, dot indicator updates, touch swipe interaction, and Quick Customise modal.
+  - Updated `tests/full-home-e2e.spec.ts` replacing atelier materials with `featured-products-carousel` in the 11-section page sequence test.
+  - Updated `tests/theme-toggle.spec.ts` verifying that `featured-products-carousel` adapts cleanly to Light Mode.
+  - Updated `tests/mobile-responsiveness.spec.ts` verifying that `featured-products-carousel` has zero horizontal overflow, scales within 390px viewport, and touch-swipes smoothly.
+  - Ran full test suite: 40/40 Playwright tests passing with 0 failures.
+  - Production build: `npm run build` completed with exit code 0 and 0 errors.
+- Visual Proof Screenshots:
+  - Desktop Dark Mode: `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-16-featured-carousel-dark.png`
+  - Desktop Light Mode: `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-16-featured-carousel-light.png`
+  - Mobile Viewport (390px): `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-16-featured-carousel-mobile.png`
+  - Also mirrored to `.agent/screenshots/`.
+
 
 ### 2026-11-14 - TASK-15: Refine Mobile Layout, Touch Ergonomics, and Card Positioning for Atelier Glass Slider and Customer Lookbook
 - Root Causes Identified:

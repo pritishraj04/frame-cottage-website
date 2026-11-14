@@ -114,7 +114,7 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     expect(isLightInStorage).toBe("light");
   });
 
-  test("adapts Atelier 50/50 slider and Customer Lookbook cards cleanly to light mode", async ({
+  test("adapts Featured Products Carousel and Customer Lookbook cards cleanly to light mode", async ({
     page,
   }) => {
     await page.goto("/");
@@ -130,13 +130,16 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     const lookbookCardTitle = lookbook.locator("h5").first();
     await expect(lookbookCardTitle).toHaveCSS("color", "rgb(26, 26, 26)");
 
-    // Atelier Materials slider stage
-    const atelier = page.getByTestId("atelier-materials");
-    await atelier.scrollIntoViewIfNeeded();
-    await expect(atelier).toBeVisible();
-    const standardPanel = page.getByTestId("standard-glass-panel");
-    await expect(standardPanel).toBeVisible();
-    await expect(standardPanel).toHaveCSS("background-color", "rgb(240, 236, 225)"); // #F0ECE1 (canvas-subtle)
+    // Featured Products Carousel adaptation in Light Mode
+    const featuredSection = page.getByTestId("featured-products-carousel");
+    await featuredSection.scrollIntoViewIfNeeded();
+    await expect(featuredSection).toBeVisible();
+    await expect(featuredSection).toHaveCSS("background-color", "rgb(250, 248, 245)"); // #FAF8F5
+    await expect(featuredSection).toHaveCSS("color", "rgb(26, 26, 26)"); // #1A1A1A
+
+    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
+    await expect(walnutCard).toBeVisible();
+    await expect(walnutCard).toHaveCSS("background-color", "rgb(255, 255, 255)"); // #FFFFFF (canvas-surface)
   });
 
   test("adapts site footer cleanly to light mode and dark mode with high contrast", async ({

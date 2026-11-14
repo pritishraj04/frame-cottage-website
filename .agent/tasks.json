@@ -103,5 +103,12 @@
     "category": "responsive-fix",
     "specFilePath": ".agent/tasks/TASK-15.json",
     "passes": true
+  },
+  {
+    "id": "TASK-16",
+    "title": "Replace The Atelier Material Section with Pure Image-Based Featured Products Carousel",
+    "category": "ui-merchandising-carousel",
+    "specFilePath": ".agent/tasks/TASK-16.json",
+    "passes": true
   }
 ]

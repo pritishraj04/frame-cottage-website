@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import path from "path";
+import fs from "fs";
 
 test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
   test.beforeEach(async ({ page }) => {
@@ -79,118 +80,172 @@ test.describe("3-Step Framing Journey & The Atelier Material Story", () => {
     await journeySection.screenshot({ path: screenshotPath });
   });
 
-  test("renders The Atelier: Material Transparency & Sustainability with all 4 craft pillars", async ({
+  test("renders pure image-based Featured Products Carousel with editorial header and all 8 handcrafted frame cards", async ({
     page,
   }) => {
-    const atelierSection = page.getByTestId("atelier-materials");
-    await expect(atelierSection).toBeVisible();
+    const featuredSection = page.getByTestId("featured-products-carousel");
+    await expect(featuredSection).toBeVisible();
 
-    // Atelier Header
-    const header = page.getByTestId("atelier-header");
-    await expect(header).toBeVisible();
-    await expect(header).toContainText(
-      "The Atelier: Material Transparency & Sustainability"
-    );
-    await expect(header).toContainText("FSC-certified Appalachian hardwoods");
-    await expect(header).toContainText("corner spline joinery");
-    await expect(header).toContainText("4-ply cotton rag mats");
-    await expect(header).toContainText("conservation acrylic");
+    // Section Header
+    await expect(featuredSection).toContainText("Curated Atelier Gallery");
+    await expect(featuredSection).toContainText("Featured Handcrafted Works");
+    await expect(featuredSection).toContainText("TruVue® museum conservation acrylic");
 
-    // Pillar 1: FSC Appalachian Hardwoods
-    const hardwoodsPillar = page.getByTestId("material-pillar-hardwoods");
-    await expect(hardwoodsPillar).toBeVisible();
-    await expect(hardwoodsPillar).toContainText("FSC-Certified Appalachian Hardwoods");
-    await expect(hardwoodsPillar).toContainText("Solid White Oak, Black Walnut & Rock Maple");
+    // Circular Prev & Next navigation buttons
+    await expect(page.getByTestId("carousel-prev-btn")).toBeVisible();
+    await expect(page.getByTestId("carousel-next-btn")).toBeVisible();
 
-    // Pillar 2: Corner Spline Joinery
-    const splinesPillar = page.getByTestId("material-pillar-splines");
-    await expect(splinesPillar).toBeVisible();
-    await expect(splinesPillar).toContainText("Corner Spline Joinery");
-    await expect(splinesPillar).toContainText("Mortise-Keyed Hardwood Spline Reinforcement");
+    // Verify all 8 featured handcrafted cards exist in the DOM
+    const expectedCards = [
+      "mendocino-walnut",
+      "gilded-atelier-brass",
+      "kyoto-white-oak-slim",
+      "highline-matte-black",
+      "florentine-antiqued-gold",
+      "montmartre-gallery-triptych",
+      "versailles-ogee-gilt",
+      "chelsea-gallery-duo",
+    ];
 
-    // Pillar 3: 4-Ply Cotton Rag Mats
-    const matsPillar = page.getByTestId("material-pillar-cotton-mats");
-    await expect(matsPillar).toBeVisible();
-    await expect(matsPillar).toContainText("4-Ply Archival Cotton Rag Mats");
-    await expect(matsPillar).toContainText("100% Acid-Free & Lignin-Free Virgin Cotton Core");
-
-    // Pillar 4: TruVue Conservation Glazing
-    const acrylicPillar = page.getByTestId("material-pillar-acrylic");
-    await expect(acrylicPillar).toBeVisible();
-    await expect(acrylicPillar).toContainText("TruVue® Conservation Glazing");
-    await expect(acrylicPillar).toContainText("99% UV-Shielding Optical Grade Acrylic");
-  });
-
-  test("interactively controls Glass Comparison Slider via drag, presets, and keyboard", async ({
-    page,
-  }) => {
-    const sliderContainer = page.getByTestId("glass-comparison-slider");
-    await expect(sliderContainer).toBeVisible();
-
-    // Verify initial panels and labels
-    await expect(page.getByTestId("standard-glass-panel")).toBeVisible();
-    await expect(page.getByTestId("truvue-acrylic-panel")).toBeVisible();
-    await expect(page.getByTestId("standard-glass-label")).toContainText(
-      "Standard Reflection-Prone Glass"
-    );
-    await expect(page.getByTestId("truvue-acrylic-label")).toContainText(
-      "TruVue® Conservation Acrylic"
-    );
-
-    // Initial value should be 50
-    await expect(sliderContainer).toHaveAttribute("aria-valuenow", "50");
-
-    // Test preset switchers
-    const presetStandard = page.getByTestId("slider-preset-standard");
-    await presetStandard.click();
-    await expect(sliderContainer).toHaveAttribute("aria-valuenow", "100");
-
-    const presetTruVue = page.getByTestId("slider-preset-truvue");
-    await presetTruVue.click();
-    await expect(sliderContainer).toHaveAttribute("aria-valuenow", "0");
-
-    const presetSplit = page.getByTestId("slider-preset-split");
-    await presetSplit.click();
-    await expect(sliderContainer).toHaveAttribute("aria-valuenow", "50");
-
-    // Test dragging the slider
-    const box = await sliderContainer.boundingBox();
-    expect(box).not.toBeNull();
-    if (box) {
-      // Start drag at middle (50%) and move towards left (25%)
-      const startX = box.x + box.width * 0.5;
-      const startY = box.y + box.height * 0.5;
-      const targetX = box.x + box.width * 0.25;
-
-      await page.mouse.move(startX, startY);
-      await page.mouse.down();
-      await page.mouse.move(targetX, startY, { steps: 5 });
-      await page.mouse.up();
-
-      // The position should now be close to 25
-      const valAfterDrag = await sliderContainer.getAttribute("aria-valuenow");
-      expect(Number(valAfterDrag)).toBeLessThan(40);
-      expect(Number(valAfterDrag)).toBeGreaterThanOrEqual(15);
+    for (const cardId of expectedCards) {
+      const card = page.getByTestId(`featured-product-card-${cardId}`);
+      await expect(card).toBeAttached();
     }
 
-    // Test keyboard arrow navigation
-    await sliderContainer.focus();
-    await page.keyboard.press("ArrowRight");
-    await page.keyboard.press("ArrowRight");
-    const valAfterArrows = await sliderContainer.getAttribute("aria-valuenow");
-    expect(Number(valAfterArrows)).toBeGreaterThan(20);
+    // Verify specific frame presentation elements on Mendocino Walnut card
+    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
+    await expect(walnutCard).toContainText("The Mendocino Walnut");
+    await expect(walnutCard).toContainText("Solid Appalachian Black Walnut");
+    await expect(walnutCard).toContainText("Organic Linseed Oil");
+    await expect(walnutCard).toContainText("From $64");
+    await expect(walnutCard).toContainText("Mortise-Keyed Maple Spline");
 
-    // Reset to 50 for clean screenshot
-    await presetSplit.click();
-    await expect(sliderContainer).toHaveAttribute("aria-valuenow", "50");
+    // Verify pagination dots
+    for (let i = 0; i < 8; i++) {
+      await expect(page.getByTestId(`carousel-dot-${i}`)).toBeVisible();
+    }
+  });
 
-    // Capture screenshot of the Glass Comparison Slider
-    await sliderContainer.scrollIntoViewIfNeeded();
+  test("interactively controls Featured Products Carousel via next/prev buttons, dots, touch swipe, and customisation", async ({
+    page,
+  }) => {
+    const featuredSection = page.getByTestId("featured-products-carousel");
+    await featuredSection.scrollIntoViewIfNeeded();
+    await expect(featuredSection).toBeVisible();
+
+    const nextBtn = page.getByTestId("carousel-next-btn");
+    const prevBtn = page.getByTestId("carousel-prev-btn");
+    const dot0 = page.getByTestId("carousel-dot-0");
+    const dot1 = page.getByTestId("carousel-dot-1");
+    const dot2 = page.getByTestId("carousel-dot-2");
+
+    // Dot 0 is initially active
+    await expect(dot0).toHaveAttribute("aria-selected", "true");
+
+    // Click Next button -> Advances to slide 1
+    await nextBtn.click();
+    await expect(dot1).toHaveAttribute("aria-selected", "true");
+
+    // Click Next button again -> Advances to slide 2
+    await nextBtn.click();
+    await expect(dot2).toHaveAttribute("aria-selected", "true");
+
+    // Click Prev button -> Returns to slide 1
+    await prevBtn.click();
+    await expect(dot1).toHaveAttribute("aria-selected", "true");
+
+    // Direct dot navigation -> Click dot 3
+    const dot3 = page.getByTestId("carousel-dot-3");
+    await dot3.click();
+    await expect(dot3).toHaveAttribute("aria-selected", "true");
+
+    // Test touch-swipe interaction via synthetic touch events
+    const track = featuredSection.locator(".overflow-hidden").first();
+    await track.evaluate((el) => {
+      const startEv = new CustomEvent("touchstart", { bubbles: true });
+      Object.defineProperty(startEv, "touches", {
+        value: [{ clientX: 350, clientY: 100 }],
+      });
+      el.dispatchEvent(startEv);
+
+      const moveEv = new CustomEvent("touchmove", { bubbles: true });
+      Object.defineProperty(moveEv, "touches", {
+        value: [{ clientX: 50, clientY: 100 }],
+      });
+      el.dispatchEvent(moveEv);
+
+      const endEv = new CustomEvent("touchend", { bubbles: true });
+      el.dispatchEvent(endEv);
+    });
+    await page.waitForTimeout(300);
+
+    // Reset back to slide 0 for clean screenshot
+    await dot0.click();
+    await expect(dot0).toHaveAttribute("aria-selected", "true");
+
+    // Test Quick Customise Modal Trigger
+    const customiseBtn = page.getByTestId("featured-card-customise-mendocino-walnut");
+    await expect(customiseBtn).toBeVisible();
+    await customiseBtn.click();
+
+    // Verify Quick Customise dialog opened
+    const dialog = page.getByTestId("quick-customise-dialog");
+    await expect(dialog).toBeVisible();
+    await expect(page.getByTestId("dialog-title")).toContainText("The Mendocino Walnut");
+
+    // Close dialog
+    const closeBtn = page.getByTestId("dialog-close-button");
+    await closeBtn.click();
+    await expect(dialog).not.toBeVisible();
+
+    // 1. Capture Dark Mode Screenshot of Featured Products Carousel
+    await featuredSection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(400);
-    const sliderScreenshotPath = path.resolve(
-      process.cwd(),
-      ".agent/screenshots/task-7-glass-slider.png"
+
+    const brainDir =
+      "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af";
+    const darkBrainPath = path.join(
+      brainDir,
+      "task-16-featured-carousel-dark.png"
     );
-    await sliderContainer.screenshot({ path: sliderScreenshotPath });
+    const darkAgentPath = path.resolve(
+      process.cwd(),
+      ".agent/screenshots/task-16-featured-carousel-dark.png"
+    );
+
+    if (fs.existsSync(brainDir)) {
+      await featuredSection.screenshot({ path: darkBrainPath });
+      expect(fs.existsSync(darkBrainPath)).toBe(true);
+    }
+    await featuredSection.screenshot({ path: darkAgentPath });
+    expect(fs.existsSync(darkAgentPath)).toBe(true);
+
+    // 2. Switch to Light Mode and capture Light Mode Screenshot
+    const themeToggle = page.getByTestId("header-theme-toggle");
+    await themeToggle.click();
+    await expect(page.locator("html")).toHaveClass(/light/);
+
+    await featuredSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+
+    const lightBrainPath = path.join(
+      brainDir,
+      "task-16-featured-carousel-light.png"
+    );
+    const lightAgentPath = path.resolve(
+      process.cwd(),
+      ".agent/screenshots/task-16-featured-carousel-light.png"
+    );
+
+    if (fs.existsSync(brainDir)) {
+      await featuredSection.screenshot({ path: lightBrainPath });
+      expect(fs.existsSync(lightBrainPath)).toBe(true);
+    }
+    await featuredSection.screenshot({ path: lightAgentPath });
+    expect(fs.existsSync(lightAgentPath)).toBe(true);
+
+    // 3. Switch back to Dark Mode
+    await themeToggle.click();
+    await expect(page.locator("html")).toHaveClass(/dark/);
   });
 });
