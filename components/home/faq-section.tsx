@@ -130,11 +130,11 @@ export function FAQSection() {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
-            SECTION HEADER
+            SECTION HEADER WITH PNG TECHNICAL BADGES
            ========================================================================= */}
         <div data-testid="faq-header" className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] text-xs font-mono font-medium uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
             <span>Enterprise, Studio & Client Guidance</span>
           </div>
 
@@ -145,10 +145,14 @@ export function FAQSection() {
           <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-xl mx-auto">
             Technical guidance across our 6 service verticals—from bespoke residential framing to commercial spatial signage and public sector contracts.
           </p>
+
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
+            Enterprise Technical FAQ & Engineering Matrix
+          </div>
         </div>
 
         {/* =========================================================================
-            RADIX UI ACCORDION
+            RADIX UI ACCORDION WITH DASHED SPATIAL CARDS
            ========================================================================= */}
         <Accordion.Root
           type="single"
@@ -165,7 +169,7 @@ export function FAQSection() {
                 key={item.id}
                 value={item.id}
                 data-testid={`faq-item-${item.id}`}
-                className="bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] overflow-hidden transition-all duration-200 hover:border-[var(--color-accent-gold)] shadow-xs"
+                className="bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-200 hover:border-[var(--color-accent-gold)] shadow-xs"
               >
                 <Accordion.Header className="flex">
                   <Accordion.Trigger
@@ -174,12 +178,12 @@ export function FAQSection() {
                   >
                     <div className="flex items-start gap-3.5 sm:gap-4 pr-4">
                       {/* Category Badge Icon */}
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0 group-hover:scale-105 transition-transform">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0 group-hover:scale-105 transition-transform">
                         <ItemIcon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.75]" />
                       </div>
 
                       <div className="space-y-1">
-                        <span className="text-[10px] uppercase tracking-[0.16em] font-semibold text-[#C5A059]">
+                        <span className="text-[10px] uppercase font-mono tracking-[0.16em] font-semibold text-[var(--color-accent-gold)]">
                           {item.category}
                         </span>
                         <h3 className="font-serif text-base sm:text-lg font-semibold text-[var(--color-ink-primary)] tracking-tight group-hover:text-[var(--color-accent-gold)] transition-colors">
@@ -188,7 +192,7 @@ export function FAQSection() {
                       </div>
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-ink-muted)] group-hover:text-[var(--color-accent-gold)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180">
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-ink-muted)] group-hover:text-[var(--color-accent-gold)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180">
                       <ChevronDown className="w-4 h-4" />
                     </div>
                   </Accordion.Trigger>
@@ -196,7 +200,7 @@ export function FAQSection() {
 
                 <Accordion.Content
                   data-testid={`faq-content-${item.id}`}
-                  className="px-5 sm:px-6 pb-6 pt-2 text-sm text-[var(--color-ink-secondary)] leading-relaxed border-t border-[var(--color-border-subtle)] animate-in fade-in duration-200"
+                  className="px-5 sm:px-6 pb-6 pt-2 text-sm text-[var(--color-ink-secondary)] leading-relaxed border-t border-dashed border-[var(--color-border-strong)]/40 animate-in fade-in duration-200"
                 >
                   <p className="font-medium text-[var(--color-ink-primary)] mb-3">
                     {item.shortAnswer}
@@ -206,8 +210,12 @@ export function FAQSection() {
                     {item.fullAnswer}
                   </p>
 
-                  {/* Technical Specs Strip */}
-                  <div className="bg-[var(--color-canvas-subtle)] rounded-xl p-3 sm:p-4 border border-[var(--color-border-subtle)] grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                  {/* Technical Specs Strip with Dashed Container */}
+                  <div className="bg-[var(--color-canvas-subtle)]/70 rounded-xl p-3.5 sm:p-4 border-2 border-dashed border-[var(--color-border-strong)]/50 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                    <div className="flex items-center justify-between col-span-1 sm:col-span-3 pb-2 mb-1 border-b border-dashed border-[var(--color-border-strong)]/40 text-[10px] font-mono text-[var(--color-accent-gold)]">
+                      <span>Technical Documentation & Reference Spec</span>
+                      <span className="text-[var(--color-ink-muted)]">Verified ISO Standard</span>
+                    </div>
                     {item.specs.map((spec, sIdx) => (
                       <div key={sIdx} className="space-y-0.5">
                         <span className="text-[10px] uppercase font-semibold text-[var(--color-ink-muted)] tracking-wider">
@@ -226,7 +234,7 @@ export function FAQSection() {
         </Accordion.Root>
 
         {/* Studio Concierge Callout */}
-        <div className="mt-10 p-6 rounded-2xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-xs">
+        <div className="mt-10 p-6 rounded-2xl bg-[var(--color-canvas-surface)] border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 transition-colors flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-xs">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0">
               <Headphones className="w-5 h-5" />

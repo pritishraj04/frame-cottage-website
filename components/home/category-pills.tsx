@@ -133,13 +133,13 @@ export function CategoryPills({
           </div>
         </div>
 
-        {/* Carousel Scroll Track */}
+        {/* PNG-Styled 6 Service Verticals Canvas Scroll Track */}
         <div
           ref={scrollContainerRef}
           data-testid="category-pills-scroll"
           role="tablist"
           aria-label="Service vertical discovery tabs"
-          className="flex items-center gap-6 sm:gap-8 overflow-x-auto pb-4 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory scroll-smooth"
+          className="flex items-stretch gap-5 sm:gap-6 overflow-x-auto pb-4 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none snap-x snap-mandatory scroll-smooth"
         >
           {CATEGORIES.map((category) => {
             const isSelected = selectedId === category.id;
@@ -152,43 +152,58 @@ export function CategoryPills({
                 aria-selected={isSelected}
                 aria-label={category.name}
                 data-testid={`category-pill-${category.id}`}
+                data-test-alias={`pill-category-${category.id}`}
                 onClick={() => handleSelect(category.id)}
-                className="group flex flex-col items-center flex-shrink-0 snap-center focus:outline-none cursor-pointer"
+                className={`group flex flex-col justify-between flex-shrink-0 snap-center focus:outline-none cursor-pointer aspect-[4/5] w-56 sm:w-64 p-4 sm:p-5 rounded-2xl border-2 border-dashed transition-all duration-500 text-left ${
+                  isSelected
+                    ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xl"
+                    : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 hover:border-[var(--color-accent-gold)]/60 hover:bg-[var(--color-canvas-subtle)]"
+                }`}
               >
-                {/* Circular Swatch */}
-                <div
-                  className={`relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full p-1 transition-all duration-300 ${
-                    isSelected
-                      ? "ring-2 ring-[var(--color-accent-gold)] ring-offset-2 ring-offset-[var(--background)] scale-105 shadow-md"
-                      : "ring-1 ring-[var(--color-border-subtle)] hover:ring-[var(--color-accent-gold)]/60 hover:scale-105 shadow-2xs"
-                  }`}
-                >
-                  <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[var(--color-canvas-surface)]">
-                    <CategorySwatch id={category.id} />
-                  </div>
+                {/* Top Row: Audience Tag & Canvas Aspect Ratio Badge */}
+                <div className="flex items-center justify-between gap-2 w-full z-10">
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/70">
+                    {category.clientBadge}
+                  </span>
+                  <span className="text-[10px] font-mono text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] px-2 py-0.5 rounded-full bg-[var(--color-canvas-base)]/40">
+                    4:5 Spatial Asset
+                  </span>
                 </div>
 
-                {/* Client Badge */}
-                <span className="mt-2 text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[#C5A059]">
-                  {category.clientBadge}
-                </span>
+                {/* Center Spatial Container: Dedicated Dashed Dropzone for Vertical PNG Render */}
+                <div className="w-full flex-1 my-3 rounded-xl border border-dashed border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-base)]/50 flex flex-col items-center justify-center p-3 relative overflow-hidden group-hover:border-[var(--color-accent-gold)]/50 transition-colors">
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 transition-transform duration-700 group-hover:scale-105">
+                    <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[var(--color-canvas-surface)]">
+                      <CategorySwatch id={category.id} />
+                    </div>
+                  </div>
+                  <span className="mt-2 text-[9px] font-mono text-[var(--color-ink-muted)]">
+                    PNG Render Zone
+                  </span>
+                </div>
 
-                {/* Category Name */}
-                <span
-                  data-testid={`category-pill-label-${category.id}`}
-                  className={`mt-1.5 text-xs sm:text-sm tracking-tight text-center transition-colors max-w-[120px] sm:max-w-[140px] line-clamp-2 ${
-                    isSelected
-                      ? "text-[var(--color-ink-primary)] font-bold"
-                      : "text-[var(--color-ink-secondary)] font-medium group-hover:text-[var(--color-ink-primary)]"
-                  }`}
-                >
-                  {category.name}
-                </span>
+                {/* Bottom Row: Vertical Title, Subtitle, and Specification Guide */}
+                <div className="w-full pt-1">
+                  <span
+                    data-testid={`category-pill-label-${category.id}`}
+                    className={`block font-serif text-sm sm:text-base tracking-tight transition-colors line-clamp-1 ${
+                      isSelected
+                        ? "text-[var(--color-accent-gold)] font-bold"
+                        : "text-[var(--color-ink-primary)] font-semibold group-hover:text-[var(--color-accent-gold)]"
+                    }`}
+                  >
+                    {category.name}
+                  </span>
 
-                {/* Subtitle / Count Tag */}
-                <span className="text-[11px] text-[#9E9E9E] tracking-normal mt-0.5 hidden sm:block max-w-[130px] truncate text-center">
-                  {category.subtitle}
-                </span>
+                  <span className="block text-xs font-sans text-[var(--color-ink-muted)] mt-1 line-clamp-1">
+                    {category.subtitle}
+                  </span>
+
+                  <div className="mt-2.5 pt-2 border-t border-dashed border-[var(--color-border-strong)]/40 flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)]">
+                    <span>{category.count}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-gold)]" />
+                  </div>
+                </div>
               </button>
             );
           })}

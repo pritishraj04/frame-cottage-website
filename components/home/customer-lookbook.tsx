@@ -231,14 +231,14 @@ export function CustomerLookbook() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
-            EDITORIAL SECTION HEADER
+            EDITORIAL SECTION HEADER WITH PNG SPATIAL BADGES
            ===================================================================== */}
         <div
           data-testid="lookbook-header"
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] text-xs font-mono font-medium uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
             <span>Living with Craft • Real Homes</span>
           </div>
 
@@ -249,6 +249,10 @@ export function CustomerLookbook() {
           <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
             Step inside real collector spaces and curated sanctuaries. Tap the interactive brass pins to discover the frame profiles, archival mats, and customer reviews.
           </p>
+
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
+            16:9 Full-Bleed Spatial Scene • PNG Asset Zone
+          </div>
         </div>
 
         {/* =====================================================================
@@ -265,10 +269,10 @@ export function CustomerLookbook() {
                 onClick={() => handleRoomSelect(room.id)}
                 aria-pressed={isSelected}
                 className={cn(
-                  "shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2 whitespace-nowrap",
+                  "shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border-2 cursor-pointer flex items-center gap-2 whitespace-nowrap",
                   isSelected
                     ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-md"
-                    : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink-primary)]"
+                    : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-dashed border-[var(--color-border-strong)]/60 hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink-primary)]"
                 )}
               >
                 <span>{room.name}</span>
@@ -294,9 +298,13 @@ export function CustomerLookbook() {
         </div>
 
         {/* =====================================================================
-            THE LOOKBOOK ROOM STAGE WITH INTERACTIVE HOTSPOT PINS
+            THE LOOKBOOK ROOM STAGE WITH INTERACTIVE HOTSPOT PINS & DASHED CANVAS
            ===================================================================== */}
-        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)] shadow-xl">
+        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)] shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-colors">
+          {/* Spatial Canvas Top Badge */}
+          <div className="absolute top-4 left-4 z-20 hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/85 text-[var(--color-accent-gold)] backdrop-blur-md">
+            <span>16:9 Spatial Installation Showcase</span>
+          </div>
           {/* Room Ambient Background */}
           <div
             className={cn(
@@ -457,7 +465,7 @@ export function CustomerLookbook() {
                     "--pin-y": `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
                   } as React.CSSProperties
                 }
-                className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border border-[var(--color-border-subtle)] transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
+                className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
               >
                 {/* Close Button */}
                 <button

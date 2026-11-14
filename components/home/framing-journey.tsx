@@ -109,14 +109,14 @@ export function FramingJourney() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* =========================================================================
-            SECTION HEADER
+            SECTION HEADER WITH PNG WORKFLOW SPATIAL BADGES
            ========================================================================= */}
         <div
           data-testid="framing-journey-header"
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] text-xs font-mono font-medium uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
             <span>End-to-End Studio Workflow</span>
           </div>
 
@@ -127,6 +127,10 @@ export function FramingJourney() {
           <p className="mt-4 text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed font-normal max-w-2xl mx-auto">
             From initial spatial consultation and 3D modeling to precision fabrication, museum curation, and white-glove turnkey installation.
           </p>
+
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
+            4-Stage Spatial Diagram & Process Spec PNG Zone
+          </div>
         </div>
 
         {/* =========================================================================
@@ -150,7 +154,7 @@ export function FramingJourney() {
                 <div
                   key={step.stepNumber}
                   data-testid={`framing-step-${idx + 1}`}
-                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)] transition-all duration-300 hover:-translate-y-1.5"
+                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 p-6 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 hover:-translate-y-1.5"
                 >
                   {/* Card Header & Badge row */}
                   <div>
@@ -165,31 +169,31 @@ export function FramingJourney() {
 
                       {/* Pill & Icon Tag */}
                       <div className="flex items-center gap-1.5">
-                        <span className="px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-[var(--color-border-subtle)] text-[10px] font-semibold uppercase tracking-wider">
+                        <span className="px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono font-semibold uppercase tracking-wider">
                           {step.pillTitle}
                         </span>
-                        <div className="w-7 h-7 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
+                        <div className="w-7 h-7 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
                           <StepIcon className="w-3.5 h-3.5" />
                         </div>
                       </div>
                     </div>
 
-                    {/* Step Visual Miniature Illustration */}
-                    <div className="mb-5 h-32 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] overflow-hidden flex items-center justify-center relative p-3 group-hover:border-[var(--color-accent-gold)]/40 transition-colors">
+                    {/* Step Dedicated Dashed Spatial Drop Zone Container for Process PNG / Diagram */}
+                    <div className="mb-5 h-36 rounded-xl bg-[var(--color-canvas-subtle)]/50 border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden flex items-center justify-center relative p-3 group-hover:border-[var(--color-accent-gold)]/60 transition-colors">
                       {idx === 0 && (
                         /* Step 1 Visual: 3D CAD Blueprint & Spatial Modeling */
                         <div className="relative w-full h-full flex items-center justify-around select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
                               <span className="text-[9px] font-mono text-[#C5A059]">CAD: Spatial Model</span>
-                              <span className="text-[8px] text-[var(--color-ink-muted)]">3D Revit / Rhino</span>
+                              <span className="text-[8px] font-mono text-[var(--color-ink-muted)]">3D Revit / Rhino</span>
                             </div>
                             <div className="grid grid-cols-3 gap-1 my-1">
                               <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Elevation</div>
                               <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Plan</div>
                               <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">3D Mesh</div>
                             </div>
-                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
                               <span>Spec: ±0.1mm</span>
                               <span className="text-[#10B981]">Verified</span>
                             </div>
@@ -200,10 +204,10 @@ export function FramingJourney() {
                       {idx === 1 && (
                         /* Step 2 Visual: 5-Axis CNC & Fiber Laser Fabrication */
                         <div className="relative w-full h-full flex items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
                               <span className="text-[9px] font-mono text-[#C5A059]">CNC: Fiber Laser 5-Axis</span>
-                              <span className="text-[8px] text-[#10B981]">Operating</span>
+                              <span className="text-[8px] font-mono text-[#10B981]">Operating</span>
                             </div>
                             <div className="flex items-center justify-center py-1">
                               <svg viewBox="0 0 80 40" className="w-20 h-10 text-[#C5A059]" fill="none">
@@ -213,7 +217,7 @@ export function FramingJourney() {
                                 <circle cx="40" cy="20" r="2" fill="#EF4444" />
                               </svg>
                             </div>
-                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
                               <span>Bed: 3000×1500mm</span>
                               <span>Brass / Timber</span>
                             </div>
@@ -224,23 +228,23 @@ export function FramingJourney() {
                       {idx === 2 && (
                         /* Step 3 Visual: Cleanroom Archival & ISO QC Inspection */
                         <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
                               <span className="text-[9px] font-mono text-[#C5A059]">Cleanroom QC</span>
-                              <span className="text-[8px] text-[#10B981]">ISO 9001:2015</span>
+                              <span className="text-[8px] font-mono text-[#10B981]">ISO 9001:2015</span>
                             </div>
                             <div className="flex items-center justify-around py-1 text-center">
                               <div>
                                 <ShieldCheck className="w-6 h-6 text-[#C5A059] mx-auto" />
-                                <span className="text-[7.5px] text-[var(--color-ink-muted)]">TruVue 99% UV</span>
+                                <span className="text-[7.5px] font-mono text-[var(--color-ink-muted)]">TruVue 99% UV</span>
                               </div>
                               <div className="w-px h-8 bg-[var(--color-border-subtle)]" />
                               <div>
                                 <Layers className="w-6 h-6 text-[#C5A059] mx-auto" />
-                                <span className="text-[7.5px] text-[var(--color-ink-muted)]">Acid-Free Cotton</span>
+                                <span className="text-[7.5px] font-mono text-[var(--color-ink-muted)]">Acid-Free Cotton</span>
                               </div>
                             </div>
-                            <div className="text-[8px] text-[var(--color-ink-muted)] text-center">
+                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] text-center">
                               100% Reversible Archival Barrier
                             </div>
                           </div>
@@ -250,10 +254,10 @@ export function FramingJourney() {
                       {idx === 3 && (
                         /* Step 4 Visual: Turnkey On-Site Rigging & Handover */
                         <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-1">
+                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
+                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
                               <span className="text-[9px] font-mono text-[#C5A059]">Turnkey Handover</span>
-                              <span className="text-[8px] text-[#C5A059]">GeM Certified</span>
+                              <span className="text-[8px] font-mono text-[#C5A059]">GeM Certified</span>
                             </div>
                             <div className="flex items-center justify-center gap-2 py-1">
                               <Building2 className="w-6 h-6 text-[#C5A059]" />
@@ -262,7 +266,7 @@ export function FramingJourney() {
                                 <div className="text-[7px] text-[var(--color-ink-muted)]">Structural Rigging & Electric</div>
                               </div>
                             </div>
-                            <div className="text-[8px] text-[var(--color-ink-muted)] flex justify-between">
+                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
                               <span>White-Glove Team</span>
                               <span className="text-[#10B981]">Complete</span>
                             </div>

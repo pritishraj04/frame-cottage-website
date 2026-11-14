@@ -19,7 +19,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
   return (
     <article
       data-testid={`frame-card-${product.id}`}
-      className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[var(--color-accent-gold)]/60"
+      className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[var(--color-accent-gold)]/60"
     >
       {/* Visual Presentation Container (Dual-State Swapper: Studio Rest -> In-Situ Room) */}
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-canvas-subtle)] select-none">
@@ -30,6 +30,10 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           data-testid={`frame-card-rest-${product.id}`}
           className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-b from-[#242424] via-[#202020] to-[#1A1A1A] transition-opacity duration-500 ease-in-out group-hover:opacity-0"
         >
+          {/* Spatial PNG Asset Zone Tag */}
+          <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-[var(--color-accent-gold)] backdrop-blur-xs">
+            <span>4:5 Asset Zone</span>
+          </div>
           {/* Subtle Studio Architectural Background Grid */}
           <div
             aria-hidden="true"

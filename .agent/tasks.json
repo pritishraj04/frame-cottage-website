@@ -138,5 +138,12 @@
     "category": "commercial-rfq-portal",
     "specFilePath": ".agent/tasks/TASK-20.json",
     "passes": true
+  },
+  {
+    "id": "TASK-21",
+    "title": "Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture",
+    "category": "design-canvas-architecture",
+    "specFilePath": ".agent/tasks/TASK-21.json",
+    "passes": true
   }
 ]

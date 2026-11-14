@@ -2,13 +2,53 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 20:16
-**Tasks Completed:** 20 / 20
-**Current Task:** TASK-20 Complete (Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals)
+**Last Updated:** 2026-11-14 22:56
+**Tasks Completed:** 21 / 21
+**Current Task:** TASK-21 Complete (Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-21: Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture
+- Context & Objective: Per user directive ("Actually i wanted the png styed to rest of the section instead of making the UI elements. Make the changes to the current sections and implement the png styled sections"), transformed all 8 remaining sections of the Frame Cottage storefront into the **PNG-styled spatial canvas architecture**.
+- Design Architecture & Core Philosophy:
+  - **Zero 'Agentic' Text**: Eliminated dense explanatory paragraphs and code-heavy UI widgets, replacing them with crisp editorial labels and spatial canvas containers.
+  - **Pure Design Canvas Containers**: Implemented dedicated spatial drop zones with dashed borders (`border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50 hover:border-[var(--color-accent-gold)]/60`) where graphic designers can drop in final transparent PNG renders.
+  - **Fluid Framer Motion**: Elevated transitions with viewport-triggered entries (`whileInView`, `fadeUp`, `staggerContainer`, `AnimatePresence`).
+  - **High-End Editorial Styling**: Playfair Display serif typography, clean Geist sans labels, audience badges (`B2C`, `B2B`, `Commercial`, `Corporate`, `Public Sector`), and dual-theme compatibility across Museum Dark (`#1A1A1A`) and Warm Museum Light (`#FAF8F5`).
+- Sections Transformed:
+  1. **Custom Frame Studio (`components/home/custom-frame-studio.tsx` & `components/hero/live-frame-switcher.tsx`)**:
+     - Converted into a PNG-styled Interactive Frame Visualizer.
+     - Centerpiece: 4:3 spatial container with dashed borders (`border-2 border-dashed`) for floating frame PNG renders with realistic drop shadows.
+     - Minimalist moulding chips and mat options with live dynamic price calculation pill and dashed trust cards.
+  2. **Core Service Verticals Discovery Navigator (`components/home/category-pills.tsx`)**:
+     - Converted into the PNG-styled 6 Service Verticals Canvas.
+     - 6 `aspect-[4/5]` cards with dashed drop zones for vertical PNG assets, hover scale (`group-hover:scale-105 duration-700`), and audience tags (`B2C`, `B2B`, `Commercial`, `Corporate`, `Public Sector`).
+  3. **Studio Capabilities & Trust Bar (`components/home/trust-bar.tsx`)**:
+     - Converted into 4 clean spatial containers with dashed borders (`border-2 border-dashed`) for capability badge graphics (CNC, Archival Standards, Turnkey, GeM/Tender).
+  4. **Curated Projects & Capabilities Grid (`components/home/curated-collections.tsx` & `components/home/frame-card.tsx`)**:
+     - Converted into a PNG-styled Curated Projects Showcase with dashed card borders, 4:5 asset drop zone badges, dashed category filter tabs, and dual-state rest/in-situ hover interaction.
+  5. **Featured Products & Capabilities Carousel (`components/home/featured-products-carousel.tsx`)**:
+     - Pure image-based carousel featuring large frame/spatial PNG drop zones (3:4 ratio), Apple-style circular blurred navigation buttons with dashed borders, dot pagination, and touch swipe.
+  6. **End-to-End Studio Execution Workflow (`components/home/framing-journey.tsx`)**:
+     - Converted into a PNG-styled 4-Stage Studio Execution Workflow.
+     - 4 visual step cards, each featuring a dedicated dashed spatial container (`border-2 border-dashed`) for the stage diagram / process PNG asset, step badge, and concise title.
+  7. **Client Case Studies Lookbook (`components/home/customer-lookbook.tsx`)**:
+     - Converted into a PNG-styled Spatial Installation Showcase with a 16:9 full-bleed spatial scene container with dashed border for interior/architectural PNG renders, interactive hotspot pins, and dashed client detail cards.
+  8. **Enterprise & Technical FAQ (`components/home/faq-section.tsx`)**:
+     - Converted into a sleek Technical FAQ canvas with clean minimal accordion cards having dashed borders (`border-2 border-dashed`) and dedicated dashed reference containers for technical specs.
+- Automated Verification:
+  - Playwright test suite passes 100% across all 52 tests (`npx playwright test` -> 52 passed, 0 failed).
+  - Next.js Turbopack build succeeds with 0 TypeScript/build errors (`npm run build`).
+  - Mobile responsiveness verified: zero horizontal overflow on 390x844 viewport (`scrollWidth <= clientWidth === 390`).
+- Verification Screenshots:
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-21-png-styled-dark.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-21-png-styled-light.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-21-png-styled-mobile.png`
+  - `.agent/screenshots/task-21-png-styled-dark.png`
+  - `.agent/screenshots/task-21-png-styled-light.png`
+  - `.agent/screenshots/task-21-png-styled-mobile.png`
 
 ### 2026-11-14 - TASK-20: Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals
 - Context & Objective: Per user request ("make the next most important page you decide"), built the enterprise-grade **Project Specification & RFQ / RFP Portal** at `app/rfq/page.tsx` (`"use client"`). The studio delivers end-to-end spatial, industrial, and aesthetic solutions across 6 Core Service Verticals for B2C, B2B, and public sector clients. The primary commercial conversion point referenced throughout the entire platform (announcement bar, mega-menu, mobile navigation drawer, framing journey, FAQ, and footer) is `/rfq`.

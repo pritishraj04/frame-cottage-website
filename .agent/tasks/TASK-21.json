@@ -1,0 +1,77 @@
+{
+  "id": "TASK-21",
+  "title": "Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture",
+  "category": "design-canvas-architecture",
+  "description": "Per user directive ('Actually i wanted the png styed to rest of the section instead of making the UI elements. Make the changes to the current sections and implement the png styled sections'), transformed all 8 remaining storefront sections into the PNG-styled spatial canvas architecture. Grounded in a zero-'agentic'-text philosophy, complex UI widgets and dense paragraphs were replaced with dedicated spatial containers having dashed borders (border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50) engineered for graphic designers to drop in high-resolution transparent PNG renders (frames, architectural signage, CNC metal panels, awards, infographics, room scenes, workflow steps). Seamlessly powered by Framer Motion fluid animations, Playfair Display serif titles, clean Geist sans labels, audience tags (B2C, B2B, Public Sector), and dual-theme compatibility across Museum Dark (#1A1A1A) and Warm Museum Light (#FAF8F5). Retained 100% of test IDs and interactive capabilities, achieving 52/52 Playwright test passes and 0 TypeScript/build errors.",
+  "acceptanceCriteria": [
+    "Transform Custom Frame Studio (components/home/custom-frame-studio.tsx & components/hero/live-frame-switcher.tsx) into a PNG-styled Interactive Frame Visualizer with dashed borders (border-2 border-dashed), 4:3 spatial canvas drop zone, minimalist moulding chips and mat options with dynamic price display, retaining all test IDs",
+    "Transform Core Service Verticals Discovery Navigator (components/home/category-pills.tsx) into the PNG-styled 6 Service Verticals Canvas with aspect-[4/5] cards, dashed drop zones, hover scale (group-hover:scale-105), audience tags (B2C, B2B, Commercial, Corporate, Public Sector), and crisp labels",
+    "Transform Studio Capabilities Trust Bar (components/home/trust-bar.tsx) into a PNG-styled Studio Capabilities Bar with 4 clean spatial containers with dashed borders (border-2 border-dashed) for capability badge graphics (CNC, Archival Standards, Turnkey, GeM/Tender)",
+    "Transform Curated Projects & Capabilities Grid (components/home/curated-collections.tsx & components/home/frame-card.tsx) into a PNG-styled Curated Projects Showcase with dashed card borders, 4:5 asset drop zones, hover scaling, and category filter tabs",
+    "Transform Featured Products & Capabilities Carousel (components/home/featured-products-carousel.tsx) into a pure image-based carousel featuring large frame/spatial PNG drop zones with Framer Motion slide transitions, Apple-style blurred navigation buttons, dot pagination, and mobile touch swipe",
+    "Transform End-to-End Studio Execution Workflow (components/home/framing-journey.tsx) into a PNG-styled 4-Stage Studio Execution Workflow with 4 visual step cards, each featuring a dedicated dashed spatial container (border-2 border-dashed) for the stage diagram / process PNG asset",
+    "Transform Client Case Studies Lookbook (components/home/customer-lookbook.tsx) into a PNG-styled Spatial Installation Showcase with 16:9 full-bleed spatial scene container with dashed border for interior/architectural PNG renders, with interactive hotspot pins and clean client detail cards",
+    "Transform Enterprise & Technical FAQ (components/home/faq-section.tsx) into a visual Technical FAQ canvas with clean minimal accordion cards and dashed reference containers",
+    "Full support for both Museum Dark Mode (#1A1A1A) and Warm Museum Light Mode (#FAF8F5)",
+    "Mobile-responsive (390px) with zero horizontal overflow (scrollWidth <= clientWidth)",
+    "Playwright test suite passes 100% (52/52 tests passing with 0 failures)",
+    "Next.js Turbopack build succeeds with 0 build / TypeScript errors",
+    "High-resolution screenshots captured in .agent/screenshots/ and brain directories for Desktop Dark, Desktop Light, and Mobile"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Transform Custom Frame Studio into PNG-styled Interactive Frame Visualizer",
+      "details": "Upgraded components/home/custom-frame-studio.tsx and components/hero/live-frame-switcher.tsx with border-2 border-dashed spatial containers, 4:3 frame canvas badge, dashed moulding and mat chips, and trust highlight cards with dashed borders.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Transform Core Service Verticals into PNG-styled 6 Service Verticals Canvas",
+      "details": "Upgraded components/home/category-pills.tsx with aspect-[4/5] cards, border-2 border-dashed spatial drop zones, audience badges (B2C, B2B, Commercial, Corporate, Public Sector), hover scaling, and full test ID preservation.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Transform Studio Capabilities into PNG-styled Capabilities Bar",
+      "details": "Upgraded components/home/trust-bar.tsx into 4 individual dashed spatial cards (border-2 border-dashed) with 1:1 capability graphic zones and exact copy matching all test assertions.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Transform Curated Projects Grid into PNG-styled Curated Projects Showcase",
+      "details": "Upgraded components/home/curated-collections.tsx and components/home/frame-card.tsx with dashed article borders, 4:5 asset drop zone tags, dashed category filter tabs, and dual-state rest/in-situ hover interaction.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Transform Featured Products Carousel into pure image-based spatial carousel",
+      "details": "Upgraded components/home/featured-products-carousel.tsx with dashed card borders, 3:4 spatial drop zones, Apple-style circular navigation buttons with dashed borders, and full test ID compatibility.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Transform 4-Stage Studio Execution Workflow into PNG-styled workflow cards",
+      "details": "Upgraded components/home/framing-journey.tsx with dashed step cards and dedicated h-36 border-2 border-dashed spatial drop zone containers for each process diagram / technical schematic.",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Transform Client Lookbook into 16:9 PNG-styled Spatial Installation Showcase",
+      "details": "Upgraded components/home/customer-lookbook.tsx with 16:9 full-bleed spatial scene container with dashed border (border-2 border-dashed), dashed room tabs, and dashed floating client review cards.",
+      "pass": true
+    },
+    {
+      "step": 8,
+      "description": "Transform Technical FAQ into visual canvas with dashed reference containers",
+      "details": "Upgraded components/home/faq-section.tsx with border-2 border-dashed accordion items, dashed technical spec containers, and dashed concierge callout card.",
+      "pass": true
+    },
+    {
+      "step": 9,
+      "description": "Run verification suite, build check, and capture visual proof screenshots",
+      "details": "Ran npm run build (0 errors) and npx playwright test (52/52 passed). Captured Desktop Dark, Desktop Light, and Mobile (390x844) full-page screenshots to .agent/screenshots/ and brain directories.",
+      "pass": true
+    }
+  ]
+}

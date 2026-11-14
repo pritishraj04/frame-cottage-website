@@ -39,14 +39,14 @@ export function LiveFrameSwitcher() {
   return (
     <div
       data-testid="live-frame-switcher"
-      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden transition-colors duration-250"
+      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden hover:border-[var(--color-accent-gold)]/60 transition-colors duration-300"
     >
       {/* Top Bar: Room Context Toggle & Live Spec Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]">
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-          <span className="text-xs font-semibold tracking-wider uppercase text-[var(--color-ink-muted)]">
-            Interactive Atelier Island
+          <span className="text-xs font-mono font-semibold tracking-wider uppercase text-[var(--color-accent-gold)]">
+            PNG Frame Visualizer Canvas
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export function LiveFrameSwitcher() {
         <div
           role="radiogroup"
           aria-label="Room context preview"
-          className="inline-flex p-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)]"
+          className="inline-flex p-1 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)]"
         >
           <button
             type="button"
@@ -91,7 +91,7 @@ export function LiveFrameSwitcher() {
         </div>
       </div>
 
-      {/* Main Display Stage: In-situ Wall Backdrop with Live Frame */}
+      {/* Main Display Stage: In-situ Wall Backdrop with Live Frame & Dashed Spatial Canvas */}
       <div
         data-testid="frame-display-container"
         className={cn(
@@ -101,6 +101,10 @@ export function LiveFrameSwitcher() {
             : "bg-gradient-to-b from-[#1E241F] via-[#161B17] to-[#111412] text-[#FAF7F2]"
         )}
       >
+        {/* Aspect Ratio & Asset Layer Tag at Top-Right */}
+        <div className="absolute top-4 right-4 sm:top-5 sm:right-5 hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-[var(--color-ink-muted)] backdrop-blur-sm z-10">
+          4:3 Spatial Canvas • PNG Drop Zone
+        </div>
         {/* Subtle Ambient Wall Background Grid & Light Gradients */}
         {!isRoom ? (
           <div
@@ -327,10 +331,10 @@ export function LiveFrameSwitcher() {
                   data-testid={`moulding-option-${m.id}`}
                   onClick={() => setMouldingId(m.id)}
                   className={cn(
-                    "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 group text-left cursor-pointer",
+                    "flex flex-col items-center justify-center p-2.5 rounded-xl border-2 text-center transition-all duration-200 group text-left cursor-pointer",
                     isSelected
                       ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
-                      : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/50 text-[var(--color-ink-secondary)] hover:bg-[var(--color-canvas-subtle)]"
+                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-secondary)] hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
                   {/* Swatch Pill with Realistic Gradient */}
@@ -389,10 +393,10 @@ export function LiveFrameSwitcher() {
                   data-testid={`mat-option-${mat.id}`}
                   onClick={() => setMatId(mat.id)}
                   className={cn(
-                    "flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border transition-all duration-200 cursor-pointer",
+                    "flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-2 transition-all duration-200 cursor-pointer",
                     isSelected
                       ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] ring-2 ring-[var(--color-accent-gold)]/40 font-medium"
-                      : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/50 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
+                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
                   )}
                 >
                   <span className="text-xs font-medium">{mat.name}</span>

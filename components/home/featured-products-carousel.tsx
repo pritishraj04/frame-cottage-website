@@ -253,12 +253,12 @@ export function FeaturedProductsCarousel() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
-            EDITORIAL HEADER WITH CONTROLS
+            EDITORIAL HEADER WITH SPATIAL BADGES AND APPLE CONTROLS
            ========================================================================= */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-gold)] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-[0.2em] text-[var(--color-accent-gold)] mb-3 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)]/60">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
               <span>Curated Atelier Gallery • 6 Core Service Verticals</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
@@ -268,6 +268,9 @@ export function FeaturedProductsCarousel() {
               Exquisite frame silhouettes, spatial signage pylons, and precision CNC metalworks precision-milled from sustainably sourced
               American hardwoods, structural metals, and glazed with TruVue® museum conservation acrylic.
             </p>
+            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
+              3:4 Full-Bleed PNG Asset Showcase
+            </div>
           </div>
 
           {/* Apple-style circular Prev / Next navigation buttons */}
@@ -277,7 +280,7 @@ export function FeaturedProductsCarousel() {
               onClick={handlePrev}
               aria-label="Previous frame"
               data-testid="carousel-prev-btn"
-              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]/60"
+              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -286,7 +289,7 @@ export function FeaturedProductsCarousel() {
               onClick={handleNext}
               aria-label="Next frame"
               data-testid="carousel-next-btn"
-              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]/60"
+              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -321,12 +324,12 @@ export function FeaturedProductsCarousel() {
                 >
                   <article
                     data-testid={`featured-product-card-${product.id}`}
-                    className="group relative flex flex-col h-full bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[var(--color-accent-gold)]/60"
+                    className="group relative flex flex-col h-full bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[var(--color-accent-gold)]/60"
                   >
                     {/* =========================================================================
-                        PURE IMAGE SHOWCASE STAGE
+                        PURE IMAGE SHOWCASE STAGE (PNG SPATIAL DROP ZONE)
                        ========================================================================= */}
-                    <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--color-canvas-subtle)] flex items-center justify-center p-5 select-none">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--color-canvas-subtle)] flex items-center justify-center p-5 select-none border-b border-dashed border-[var(--color-border-strong)]/50">
                       {/* Architectural grid texture */}
                       <div
                         aria-hidden="true"
@@ -398,14 +401,19 @@ export function FeaturedProductsCarousel() {
                         </div>
                       </div>
 
-                      {/* Subtle floating craft pills */}
-                      <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] shadow-xs backdrop-blur-md">
+                      {/* Floating craft pills */}
+                      <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
                         <span>{product.splineDetail}</span>
                       </div>
 
-                      <div className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)] shadow-xs backdrop-blur-md">
+                      <div className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
                         <span>{product.finishBadge}</span>
+                      </div>
+
+                      {/* PNG Spatial Asset Drop Zone Indicator */}
+                      <div className="absolute bottom-3 left-3 hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wide bg-[var(--color-canvas-base)]/80 text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] backdrop-blur-xs">
+                        <span>3:4 Spatial Drop Zone</span>
                       </div>
                     </div>
 

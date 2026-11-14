@@ -37,14 +37,14 @@ export function CuratedCollections() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
-            EDITORIAL SECTION HEADER
+            EDITORIAL SECTION HEADER WITH PNG SPATIAL BADGES
            ========================================================================= */}
         <div
           data-testid="curated-collections-header"
           className="max-w-3xl mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-ink-primary)] mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-[0.2em] text-[var(--color-accent-gold)] mb-3 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)]/60">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
             <span>Artisan Milling & Spatial Capabilities • Tru Vue® UV-Shield Acrylic</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
@@ -55,12 +55,15 @@ export function CuratedCollections() {
             commercial enterprises, and public sector tenders. Each project is precision-engineered
             from Appalachian hardwoods, structural metals, and conservation glazing.
           </p>
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
+            PNG Curated Showcase Matrix • 6 Service Verticals
+          </div>
         </div>
 
         {/* =========================================================================
             FILTER TABS: All Verticals, Bespoke Framing & Art, Spatial & Signage, Industrial CNC, Custom Gifting, Civic & Government
            ========================================================================= */}
-        <div className="flex items-center justify-between gap-4 border-b border-[var(--color-border-subtle)] pb-4 mb-8 overflow-x-auto scrollbar-none">
+        <div className="flex items-center justify-between gap-4 border-b border-dashed border-[var(--color-border-strong)]/40 pb-4 mb-8 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
             aria-label="Core service vertical tabs"
@@ -75,12 +78,13 @@ export function CuratedCollections() {
                   role="tab"
                   aria-selected={isActive}
                   data-testid={`collection-tab-${tab.id}`}
+                  data-test-alias={`collection-filter-${tab.id}`}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer",
+                    "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer border-2",
                     isActive
-                      ? "bg-[#6B1C23] text-[#F4F1EA] border border-[#6B1C23] shadow-sm"
-                      : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)]"
+                      ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-sm"
+                      : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border-dashed border-[var(--color-border-strong)]/60"
                   )}
                 >
                   <span>{tab.label}</span>
