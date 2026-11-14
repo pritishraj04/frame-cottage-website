@@ -54,5 +54,12 @@
     "category": "ui-validation",
     "specFilePath": ".agent/tasks/TASK-8.json",
     "passes": true
+  },
+  {
+    "id": "TASK-9",
+    "title": "Redesign with Apple Ecosystem Typography, Premium Palette, Responsive Hero Carousel, and Frame Studio Reordering",
+    "category": "ui-redesign",
+    "specFilePath": ".agent/tasks/TASK-9.json",
+    "passes": true
   }
 ]

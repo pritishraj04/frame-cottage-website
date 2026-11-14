@@ -1,0 +1,46 @@
+{
+  "id": "TASK-9",
+  "title": "Redesign with Apple Ecosystem Typography, Premium Palette, Responsive Hero Carousel, and Frame Studio Reordering",
+  "category": "ui-redesign",
+  "description": "Refactor global color tokens to Apple's signature luxury palette (#F5F5F7 canvas, #1D1D1F typography, #86868B secondary, #D2D2D7 borders), apply Apple SF Pro typography stack, build a responsive touch-enabled Hero Image Carousel, and position the Interactive Custom Frame Studio right below it.",
+  "acceptanceCriteria": [
+    "globals.css and layout.tsx updated with Apple ecosystem font stack (-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif) and premium ceramic palette (#F5F5F7, #1D1D1F, #86868B, #D2D2D7)",
+    "New Hero Carousel component built with high-definition responsive lifestyle imagery, mobile touch responsiveness, slide indicators, and next/prev controls",
+    "Current interactive custom frame visualizer section positioned directly beneath the hero carousel as 'The Custom Frame Studio'",
+    "All page components (Header, Pills, Trust Bar, Collections, Journey, Atelier, Lookbook, FAQ, Footer) updated with the new premium palette",
+    "All Playwright tests pass (updated to reflect the new layout and styling)",
+    "Full-page verification screenshot captured at .agent/screenshots/task-9-apple-redesign.png"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Update design tokens and Apple typography in globals.css and layout.tsx",
+      "details": "Switch palette to Apple ceramic #F5F5F7, ink #1D1D1F, muted #86868B, border #D2D2D7, and apply SF Pro font stack.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build responsive Hero Image Carousel",
+      "details": "Create components/hero/hero-carousel.tsx with high-res lifestyle frame slides, mobile responsive aspect ratios, auto-advance, and touch swipe.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Reposition Custom Frame Studio section below hero carousel",
+      "details": "Refactor hero-container.tsx into components/home/custom-frame-studio.tsx and place it beneath HeroCarousel in app/page.tsx.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Harmonize all page components with new Apple-inspired styling",
+      "details": "Ensure headers, buttons, cards, pills, and footer reflect clean Apple precision and typography.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Update and run Playwright verification tests",
+      "details": "Update test suites to verify hero carousel and reordered frame studio, run tests, and capture screenshots.",
+      "pass": true
+    }
+  ]
+}

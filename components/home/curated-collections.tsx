@@ -33,7 +33,7 @@ export function CuratedCollections() {
       id="curated-collections"
       data-testid="curated-collections"
       aria-label="Curated Framing Collections"
-      className="w-full bg-[#FAF7F2] py-14 sm:py-20 border-b border-[#E8E1D5]"
+      className="w-full bg-[#F5F5F7] py-14 sm:py-20 border-b border-[#D2D2D7]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
@@ -43,14 +43,14 @@ export function CuratedCollections() {
           data-testid="curated-collections-header"
           className="max-w-3xl mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#B45309] mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#1D1D1F] mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
             <span>Artisan Milling & Conservation Glazing</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#191614] tracking-tight leading-[1.15]">
+          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D1D1F] tracking-tight leading-[1.12]">
             Curated Framing Collections
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#5C554E] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-[#86868B] leading-relaxed">
             Each silhouette is custom-milled to the millimeter from sustainably sourced
             American hardwoods, hand-finished with organic oils or genuine gold leaf,
             and glazed with museum-grade Tru Vue® UV-shield acrylic.
@@ -60,7 +60,7 @@ export function CuratedCollections() {
         {/* =========================================================================
             FILTER TABS: All, Natural Timber, Heritage Gilded, Modern Metal, Gallery Sets
            ========================================================================= */}
-        <div className="flex items-center justify-between gap-4 border-b border-[#E8E1D5] pb-4 mb-8 overflow-x-auto scrollbar-none">
+        <div className="flex items-center justify-between gap-4 border-b border-[#D2D2D7] pb-4 mb-8 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
             aria-label="Collection categories"
@@ -79,8 +79,8 @@ export function CuratedCollections() {
                   className={cn(
                     "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer",
                     isActive
-                      ? "bg-[#191614] text-[#FAF7F2] shadow-sm"
-                      : "bg-[#FFFFFF] text-[#5C554E] hover:text-[#191614] hover:bg-[#F3ECE2] border border-[#E8E1D5]"
+                      ? "bg-[#1D1D1F] text-white shadow-sm"
+                      : "bg-[#FFFFFF] text-[#86868B] hover:text-[#1D1D1F] hover:bg-[#E8E8ED] border border-[#D2D2D7]"
                   )}
                 >
                   <span>{tab.label}</span>
@@ -89,7 +89,7 @@ export function CuratedCollections() {
                       "px-1.5 py-0.2 rounded-full text-[10px] font-semibold",
                       isActive
                         ? "bg-white/20 text-white"
-                        : "bg-[#F3ECE2] text-[#8F877E]"
+                        : "bg-[#E8E8ED] text-[#86868B]"
                     )}
                   >
                     {tab.count}
@@ -100,8 +100,8 @@ export function CuratedCollections() {
           </div>
 
           {/* Quick Stats Pill */}
-          <div className="hidden md:flex items-center gap-1.5 text-xs text-[#8F877E]">
-            <Layers className="w-3.5 h-3.5 text-[#B45309]" />
+          <div className="hidden md:flex items-center gap-1.5 text-xs text-[#86868B]">
+            <Layers className="w-3.5 h-3.5 text-[#1D1D1F]" />
             <span>{filteredProducts.length} Atelier Silhouettes</span>
           </div>
         </div>
@@ -125,16 +125,16 @@ export function CuratedCollections() {
         {/* =========================================================================
             BOTTOM CATALOG VALUE PROPOSITION FOOTER
            ========================================================================= */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-[#E8E1D5] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-14 sm:mt-18 pt-8 border-t border-[#D2D2D7] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#F3ECE2] flex items-center justify-center text-[#B45309]">
+            <div className="w-9 h-9 rounded-full bg-[#E8E8ED] flex items-center justify-center text-[#1D1D1F]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#191614]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]">
                 100-Year Archival Guarantee
               </p>
-              <p className="text-xs text-[#5C554E]">
+              <p className="text-xs text-[#86868B]">
                 Acid-free 4-ply cotton rag mats and Tru Vue® conservation glazing on all builds.
               </p>
             </div>
@@ -142,7 +142,7 @@ export function CuratedCollections() {
 
           <a
             href="/collections"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#B45309] hover:text-[#92400E] group transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] hover:text-[#86868B] group transition-colors"
           >
             <span>Explore All 48 Framing Profiles</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

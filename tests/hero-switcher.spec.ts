@@ -1,39 +1,84 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Hero Section & Interactive Live Frame Switcher Island", () => {
+test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders hero editorial typography, dual CTAs, and trust highlights", async ({ page }) => {
-    const heroSection = page.getByTestId("hero-section");
-    await expect(heroSection).toBeVisible();
+  test("renders responsive Hero Carousel with curated lifestyle slides and Apple typography", async ({
+    page,
+  }) => {
+    const heroCarousel = page.getByTestId("hero-carousel");
+    await expect(heroCarousel).toBeVisible();
+
+    // Slide 1 verification
+    const slide = page.getByTestId("hero-carousel-slide");
+    await expect(slide).toBeVisible();
 
     // Eyebrow tag
-    await expect(heroSection).toContainText("Bespoke Framing Atelier");
+    await expect(heroCarousel).toContainText("Bespoke Framing Atelier");
 
-    // Editorial Serif Headline
+    // Apple-styled headline
     const headline = page.getByTestId("hero-headline");
     await expect(headline).toBeVisible();
     await expect(headline).toHaveText(
-      "Museum-Grade Framing, Handcrafted for Life’s Masterpieces."
+      "Bespoke Framing. Crafted for Life's Masterpieces."
     );
 
     // Subheadline
     const subheadline = page.getByTestId("hero-subheadline");
     await expect(subheadline).toBeVisible();
     await expect(subheadline).toContainText(
-      "Every frame is precision-milled from sustainably harvested hardwoods"
+      "Every frame is precision-milled from sustainably harvested Appalachian hardwoods"
     );
 
     // Dual action buttons
-    const ctaStartFraming = page.getByTestId("cta-start-framing");
-    await expect(ctaStartFraming).toBeVisible();
-    await expect(ctaStartFraming).toHaveAttribute("href", "/customizer");
+    const ctaCustomise = page.getByTestId("cta-customise-frame");
+    await expect(ctaCustomise).toBeVisible();
+    await expect(ctaCustomise).toHaveAttribute("href", "/customizer");
 
     const ctaExplore = page.getByTestId("cta-explore-collections");
     await expect(ctaExplore).toBeVisible();
     await expect(ctaExplore).toHaveAttribute("href", "/ready-made");
+
+    // Carousel controls
+    await expect(page.getByTestId("hero-carousel-prev")).toBeVisible();
+    await expect(page.getByTestId("hero-carousel-next")).toBeVisible();
+    await expect(page.getByTestId("hero-carousel-indicators")).toBeVisible();
+
+    // Advance to Slide 2: The Gallery Wall, Reimagined
+    await page.getByTestId("hero-carousel-next").click();
+    await expect(headline).toHaveText("The Gallery Wall, Reimagined.");
+    await expect(heroCarousel).toContainText("The Salon Collection");
+
+    // Advance to Slide 3: Museum-Grade Preservation
+    await page.getByTestId("hero-carousel-next").click();
+    await expect(headline).toHaveText("Museum-Grade Preservation.");
+    await expect(heroCarousel).toContainText("TruVue® 99% UV-Shield Optical Acrylic");
+
+    // Click indicator 0 to return to Slide 1
+    await page.getByTestId("hero-carousel-indicator-0").click();
+    await expect(headline).toHaveText(
+      "Bespoke Framing. Crafted for Life's Masterpieces."
+    );
+  });
+
+  test("renders The Custom Frame Studio repositioned below hero carousel with trust highlights", async ({
+    page,
+  }) => {
+    const frameStudio = page.getByTestId("custom-frame-studio");
+    await expect(frameStudio).toBeVisible();
+
+    // Section title & subtitle
+    const title = page.getByTestId("frame-studio-title");
+    await expect(title).toBeVisible();
+    await expect(title).toHaveText("The Custom Frame Studio");
+
+    const subtitle = page.getByTestId("frame-studio-subtitle");
+    await expect(subtitle).toBeVisible();
+    await expect(subtitle).toHaveText(
+      "Choose your moulding, customize your matting, and preview your art in real time."
+    );
 
     // Trust highlights row
     const trustRow = page.getByTestId("trust-highlights");
@@ -125,7 +170,7 @@ test.describe("Hero Section & Interactive Live Frame Switcher Island", () => {
     await expect(priceAmount).toHaveText("$64");
     await expect(matBoard).toHaveCSS("padding", "0px");
 
-    // 2. Toggle to 3" Dramatic Gallery (36px padding, +$18, base $64 walnut = $82)
+    // 2. Toggle to 3\" Dramatic Gallery (36px padding, +$18, base $64 walnut = $82)
     await page.getByTestId("mat-option-gallery").click();
     await expect(page.getByTestId("mat-option-gallery")).toHaveAttribute("aria-checked", "true");
     await expect(priceAmount).toHaveText("$82");

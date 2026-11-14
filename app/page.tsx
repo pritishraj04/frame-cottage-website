@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/navigation/site-header";
-import { HeroContainer } from "@/components/hero/hero-container";
+import { HeroCarousel } from "@/components/hero/hero-carousel";
+import { CustomFrameStudio } from "@/components/home/custom-frame-studio";
 import { CategoryPills } from "@/components/home/category-pills";
 import { TrustBar } from "@/components/home/trust-bar";
 import { CuratedCollections } from "@/components/home/curated-collections";
@@ -11,10 +12,11 @@ import { SiteFooter } from "@/components/layout/site-footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#191614]">
+    <div className="min-h-screen flex flex-col bg-[#F5F5F7] text-[#1D1D1F]">
       <SiteHeader />
       <main className="flex-1 w-full flex flex-col">
-        <HeroContainer />
+        <HeroCarousel />
+        <CustomFrameStudio />
         <CategoryPills />
         <TrustBar />
         <CuratedCollections />

@@ -85,20 +85,20 @@ export function CategoryPills({
     <section
       aria-label="Visual Category Discovery"
       data-testid="category-pills"
-      className="w-full bg-[#FAF7F2] py-10 lg:py-14 border-b border-[#E8E1D5]"
+      className="w-full bg-[#F5F5F7] py-10 lg:py-14 border-b border-[#D2D2D7]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Title and Scroll Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#B45309] mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#1D1D1F] mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
               <span>Curated by Silhouette & Craft</span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-[#191614] tracking-tight">
+            <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               Visual Category Discovery
             </h2>
-            <p className="mt-1.5 text-xs sm:text-sm text-[#5C554E] max-w-xl">
+            <p className="mt-1.5 text-xs sm:text-sm text-[#86868B] max-w-xl">
               Explore bespoke mouldings across authentic North American hardwoods, spun metals, and heirloom arrangements.
             </p>
           </div>
@@ -110,7 +110,7 @@ export function CategoryPills({
               onClick={() => scroll("left")}
               data-testid="category-scroll-prev"
               aria-label="Scroll categories left"
-              className="w-9 h-9 rounded-full border border-[#DCD3C4] hover:border-[#191614] bg-[#FFFFFF] hover:bg-[#F3ECE2] flex items-center justify-center text-[#191614] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[#D2D2D7] hover:border-[#1D1D1F] bg-[#FFFFFF] hover:bg-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -119,7 +119,7 @@ export function CategoryPills({
               onClick={() => scroll("right")}
               data-testid="category-scroll-next"
               aria-label="Scroll categories right"
-              className="w-9 h-9 rounded-full border border-[#DCD3C4] hover:border-[#191614] bg-[#FFFFFF] hover:bg-[#F3ECE2] flex items-center justify-center text-[#191614] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[#D2D2D7] hover:border-[#1D1D1F] bg-[#FFFFFF] hover:bg-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -152,11 +152,11 @@ export function CategoryPills({
                 <div
                   className={`relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full p-1 transition-all duration-300 ${
                     isSelected
-                      ? "ring-2 ring-[#B45309] ring-offset-2 ring-offset-[#FAF7F2] scale-105 shadow-md"
-                      : "ring-1 ring-[#E8E1D5] hover:ring-[#C5A059] hover:scale-105 shadow-2xs"
+                      ? "ring-2 ring-[#1D1D1F] ring-offset-2 ring-offset-[#F5F5F7] scale-105 shadow-md"
+                      : "ring-1 ring-[#D2D2D7] hover:ring-[#86868B] hover:scale-105 shadow-2xs"
                   }`}
                 >
-                  <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[#F3ECE2]">
+                  <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[#E8E8ED]">
                     <CategorySwatch id={category.id} />
                   </div>
                 </div>
@@ -166,15 +166,15 @@ export function CategoryPills({
                   data-testid={`category-pill-label-${category.id}`}
                   className={`mt-3 text-xs sm:text-sm tracking-tight text-center transition-colors max-w-[110px] sm:max-w-[130px] line-clamp-1 ${
                     isSelected
-                      ? "text-[#B45309] font-bold"
-                      : "text-[#191614] font-medium group-hover:text-[#B45309]"
+                      ? "text-[#1D1D1F] font-bold"
+                      : "text-[#1D1D1F] font-medium group-hover:text-[#86868B]"
                   }`}
                 >
                   {category.name}
                 </span>
 
                 {/* Subtitle / Count Tag */}
-                <span className="text-[11px] text-[#8F877E] tracking-normal mt-0.5 hidden sm:block">
+                <span className="text-[11px] text-[#86868B] tracking-normal mt-0.5 hidden sm:block">
                   {category.count}
                 </span>
               </button>

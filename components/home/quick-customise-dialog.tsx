@@ -35,7 +35,7 @@ export function QuickCustomiseDialog({
       <Dialog.Portal>
         <Dialog.Overlay
           data-testid="dialog-overlay"
-          className="fixed inset-0 z-50 bg-[#191614]/70 backdrop-blur-sm transition-opacity duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+          className="fixed inset-0 z-50 bg-[#1D1D1F]/60 backdrop-blur-sm transition-opacity duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
         />
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           <QuickCustomiseContent key={product.id} product={product} />
@@ -64,21 +64,21 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
     <Dialog.Content
       data-testid="quick-customise-dialog"
       className={cn(
-        "relative w-full max-w-3xl rounded-2xl bg-[#FAF7F2] border border-[#E8E1D5] shadow-2xl p-6 sm:p-8 md:p-10",
-        "text-[#191614] overflow-hidden my-auto",
+        "relative w-full max-w-3xl rounded-2xl bg-[#F5F5F7] border border-[#D2D2D7] shadow-2xl p-6 sm:p-8 md:p-10",
+        "text-[#1D1D1F] overflow-hidden my-auto",
         "transition-all duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
       )}
     >
       {/* Top decorative badge & close button */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#E8E1D5]">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3ECE2] border border-[#E8E1D5] text-xs font-medium text-[#B45309]">
-          <Sparkles className="w-3.5 h-3.5" />
+      <div className="flex items-center justify-between pb-4 border-b border-[#D2D2D7]">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D2D2D7] text-xs font-semibold text-[#1D1D1F] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
           <span>Quick Atelier Customiser</span>
         </div>
         <Dialog.Close
           data-testid="dialog-close-button"
           aria-label="Close dialog"
-          className="rounded-full p-2 text-[#5C554E] hover:text-[#191614] hover:bg-[#E8E1D5]/60 transition-colors cursor-pointer"
+          className="rounded-full p-2 text-[#86868B] hover:text-[#1D1D1F] hover:bg-[#E8E8ED] transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </Dialog.Close>
@@ -88,13 +88,13 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
       <div className="mt-4">
         <Dialog.Title
           data-testid="dialog-title"
-          className="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-[#191614]"
+          className="font-sans text-2xl sm:text-3xl font-semibold tracking-tight text-[#1D1D1F]"
         >
           {product.name}
         </Dialog.Title>
         <Dialog.Description
           data-testid="dialog-description"
-          className="text-xs sm:text-sm text-[#5C554E] mt-1"
+          className="text-xs sm:text-sm text-[#86868B] mt-1"
         >
           {product.material} • Custom-milled to the millimeter with 99% UV conservation glazing.
         </Dialog.Description>
@@ -105,7 +105,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
         {/* Left Column: Live Frame Mockup Stage */}
         <div
           data-testid="dialog-frame-preview"
-          className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[#F4EFE6] border border-[#E8E1D5] relative overflow-hidden"
+          className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-xl bg-[#E8E8ED] border border-[#D2D2D7] relative overflow-hidden"
         >
           {/* Frame Outer Moulding */}
           <div
@@ -163,8 +163,8 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
           </div>
 
           {/* Subtext info under mockup */}
-          <div className="mt-4 flex items-center gap-1.5 text-[11px] font-medium text-[#5C554E]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#B45309]" />
+          <div className="mt-4 flex items-center gap-1.5 text-[11px] font-medium text-[#86868B]">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#1D1D1F]" />
             <span>Tru Vue® UV-Shield Acrylic Included</span>
           </div>
         </div>
@@ -176,11 +176,11 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
             <div className="flex items-center justify-between mb-2">
               <label
                 id="size-selector-label"
-                className="text-xs font-semibold uppercase tracking-wider text-[#191614]"
+                className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]"
               >
                 1. Standard Dimensions
               </label>
-              <span className="text-xs text-[#5C554E]">
+              <span className="text-xs text-[#86868B]">
                 {selectedSize.dimensions}
               </span>
             </div>
@@ -203,20 +203,20 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex items-center justify-between p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[#B45309] bg-[#FFFFFF] ring-2 ring-[#B45309]/20 shadow-xs"
-                        : "border-[#E8E1D5] bg-[#FAF7F2] hover:bg-[#FFFFFF] hover:border-[#D1C7B7]"
+                        ? "border-[#1D1D1F] bg-[#FFFFFF] ring-2 ring-[#1D1D1F]/15 shadow-xs"
+                        : "border-[#D2D2D7] bg-[#FFFFFF] hover:bg-[#F5F5F7] hover:border-[#86868B]"
                     )}
                   >
                     <div>
-                      <p className="text-xs font-semibold text-[#191614]">
+                      <p className="text-xs font-semibold text-[#1D1D1F]">
                         {size.label}
                       </p>
-                      <p className="text-[11px] text-[#5C554E]">
+                      <p className="text-[11px] text-[#86868B]">
                         {size.id === "8x10" ? "Standard" : `+$${size.priceDelta}`}
                       </p>
                     </div>
                     {isSelected && (
-                      <div className="w-4 h-4 rounded-full bg-[#B45309] text-white flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full bg-[#1D1D1F] text-white flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </div>
                     )}
@@ -231,11 +231,11 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
             <div className="flex items-center justify-between mb-2">
               <label
                 id="mat-selector-label"
-                className="text-xs font-semibold uppercase tracking-wider text-[#191614]"
+                className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]"
               >
                 2. Archival Mat Style
               </label>
-              <span className="text-xs text-[#5C554E]">
+              <span className="text-xs text-[#86868B]">
                 {currentMat.widthInches}
               </span>
             </div>
@@ -258,14 +258,14 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[#B45309] bg-[#FFFFFF] ring-2 ring-[#B45309]/20 shadow-xs"
-                        : "border-[#E8E1D5] bg-[#FAF7F2] hover:bg-[#FFFFFF] hover:border-[#D1C7B7]"
+                        ? "border-[#1D1D1F] bg-[#FFFFFF] ring-2 ring-[#1D1D1F]/15 shadow-xs"
+                        : "border-[#D2D2D7] bg-[#FFFFFF] hover:bg-[#F5F5F7] hover:border-[#86868B]"
                     )}
                   >
-                    <span className="text-xs font-semibold text-[#191614]">
+                    <span className="text-xs font-semibold text-[#1D1D1F]">
                       {mat.name.split(" ")[0]} {mat.name.split(" ")[1] || ""}
                     </span>
-                    <span className="text-[11px] text-[#5C554E] mt-0.5">
+                    <span className="text-[11px] text-[#86868B] mt-0.5">
                       {mat.price === 0 ? "Included" : `+$${mat.price}`}
                     </span>
                   </button>
@@ -275,19 +275,19 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
           </div>
 
           {/* Pricing & CTA Summary */}
-          <div className="mt-6 pt-4 border-t border-[#E8E1D5] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-6 pt-4 border-t border-[#D2D2D7] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#5C554E] block">
+              <span className="text-[11px] uppercase tracking-wider text-[#86868B] block">
                 Calculated Atelier Total
               </span>
               <div className="flex items-baseline gap-2">
                 <span
                   data-testid="dialog-total-price"
-                  className="font-serif text-3xl font-normal text-[#191614]"
+                  className="font-sans text-3xl font-semibold text-[#1D1D1F]"
                 >
                   ${calculatedPrice}
                 </span>
-                <span className="text-xs text-[#5C554E]">
+                <span className="text-xs text-[#86868B]">
                   (Base ${product.startingPrice}
                   {selectedSize.priceDelta > 0 && ` + Size $${selectedSize.priceDelta}`}
                   {currentMat.price > 0 && ` + Mat $${currentMat.price}`})
@@ -298,7 +298,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
             <a
               href={`/customise?moulding=${product.mouldingId}&size=${selectedSizeId}&mat=${selectedMatId}`}
               data-testid="dialog-cta-button"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#191614] hover:bg-[#B45309] text-[#FAF7F2] text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md group cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#1D1D1F] hover:bg-[#333336] text-white text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md group cursor-pointer"
             >
               <span>Proceed to Full Customiser</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

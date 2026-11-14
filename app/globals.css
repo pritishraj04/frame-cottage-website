@@ -1,23 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF7F2;
-  --foreground: #191614;
+  --background: #F5F5F7;
+  --foreground: #1D1D1F;
 
-  --color-canvas-base: #FAF7F2;
-  --color-canvas-subtle: #F3ECE2;
+  --color-canvas-base: #F5F5F7;
+  --color-canvas-subtle: #E8E8ED;
   --color-canvas-surface: #FFFFFF;
-  --color-ink-primary: #191614;
-  --color-ink-secondary: #5C554E;
-  --color-ink-muted: #8F877E;
-  --color-border-subtle: #E8E1D5;
-  --color-terracotta: #B45309;
-  --color-terracotta-hover: #92400E;
-  --color-brass: #C5A059;
+  --color-ink-primary: #1D1D1F;
+  --color-ink-secondary: #86868B;
+  --color-ink-muted: #A1A1A6;
+  --color-border-subtle: #D2D2D7;
+  --color-terracotta: #1D1D1F;
+  --color-terracotta-hover: #333336;
+  --color-brass: #B88E56;
 
-  --shadow-frame-resting: 0 18px 36px -10px rgba(25, 22, 20, 0.22), 0 6px 14px -3px rgba(25, 22, 20, 0.1);
-  --shadow-frame-room: 0 26px 54px -12px rgba(15, 10, 5, 0.38), 0 8px 20px -4px rgba(15, 10, 5, 0.2);
-  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.18), inset 0 0 1px rgba(0, 0, 0, 0.3);
+  --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.12), 0 6px 14px -3px rgba(0, 0, 0, 0.06);
+  --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.28), 0 8px 20px -4px rgba(0, 0, 0, 0.14);
+  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.12), inset 0 0 1px rgba(0, 0, 0, 0.2);
+
+  --font-apple-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
@@ -39,15 +44,22 @@
   --shadow-frame-room: var(--shadow-frame-room);
   --shadow-frame-inner-mat: var(--shadow-frame-inner-mat);
 
-  --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-playfair-display);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.022em;
 }
 
 @keyframes accordion-down {
@@ -79,4 +91,3 @@ body {
 .accordion-content[data-state="closed"] {
   animation: accordion-up 220ms cubic-bezier(0.87, 0, 0.13, 1);
 }
-

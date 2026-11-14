@@ -227,7 +227,7 @@ export function CustomerLookbook() {
       id="customer-lookbook"
       data-testid="customer-lookbook"
       aria-label="Customer Homes & Gallery Wall Lookbook"
-      className="w-full bg-[#FAF7F2] py-16 sm:py-24 border-b border-[#E8E1D5]"
+      className="w-full bg-[#F5F5F7] py-16 sm:py-24 border-b border-[#D2D2D7]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
@@ -237,16 +237,16 @@ export function CustomerLookbook() {
           data-testid="lookbook-header"
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3ECE2] border border-[#E8E1D5] text-[#B45309] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D2D2D7] text-[#1D1D1F] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
             <span>Living with Craft • Real Homes</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#191614] tracking-tight leading-[1.18]">
+          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D1D1F] tracking-tight leading-[1.12]">
             Customer Homes & Gallery Wall Lookbook
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#5C554E] leading-relaxed font-sans max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed font-normal max-w-2xl mx-auto">
             Step inside real collector spaces and curated sanctuaries. Tap the interactive brass pins to discover the frame profiles, archival mats, and customer reviews.
           </p>
         </div>
@@ -267,15 +267,15 @@ export function CustomerLookbook() {
                 className={cn(
                   "px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2",
                   isSelected
-                    ? "bg-[#191614] text-white border-[#191614] shadow-md"
-                    : "bg-[#FFFFFF] text-[#5C554E] border-[#E8E1D5] hover:bg-[#F3ECE2] hover:text-[#191614]"
+                    ? "bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-md"
+                    : "bg-[#FFFFFF] text-[#86868B] border-[#D2D2D7] hover:bg-[#E8E8ED] hover:text-[#1D1D1F]"
                 )}
               >
                 <span>{room.name}</span>
                 <span
                   className={cn(
                     "w-1.5 h-1.5 rounded-full",
-                    isSelected ? "bg-[#C5A059]" : "bg-[#8F877E]/50"
+                    isSelected ? "bg-[#B88E56]" : "bg-[#86868B]/50"
                   )}
                 />
               </button>
@@ -285,10 +285,10 @@ export function CustomerLookbook() {
 
         {/* Room Description Strip */}
         <div className="text-center max-w-xl mx-auto mb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B45309]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D1D1F]">
             {currentRoom.subtitle}
           </p>
-          <p className="text-xs sm:text-sm text-[#5C554E] mt-1 font-sans">
+          <p className="text-xs sm:text-sm text-[#86868B] mt-1 font-normal">
             {currentRoom.description}
           </p>
         </div>
@@ -518,7 +518,7 @@ export function CustomerLookbook() {
                   <Link
                     href={activeHotspot.shopUrl}
                     data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#B45309] hover:bg-[#92400E] text-white text-xs font-semibold tracking-wide shadow-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1D1D1F] hover:bg-[#333336] text-white text-xs font-semibold tracking-wide shadow-sm transition-colors"
                   >
                     <span>Shop Frame</span>
                     <ArrowRight className="w-3 h-3" />
@@ -529,17 +529,17 @@ export function CustomerLookbook() {
           </div>
 
           {/* Lookbook Stage Footer Toolbar */}
-          <div className="bg-[#191614] px-4 sm:px-6 py-3 border-t border-[#2A2420] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#FAF7F2]/80">
+          <div className="bg-[#1D1D1F] px-4 sm:px-6 py-3 border-t border-[#333336] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/80">
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-[#10B981]" />
-              <span className="font-medium text-[#FAF7F2]">
+              <span className="font-medium text-white">
                 Interactive Hotspots Active:
               </span>
               <span>
                 {currentRoom.hotspots.length} custom frame profiles tagged in this setting
               </span>
             </div>
-            <div className="text-[11px] text-[#C5A059] flex items-center gap-1">
+            <div className="text-[11px] text-[#B88E56] flex items-center gap-1">
               <Maximize2 className="w-3.5 h-3.5" />
               <span>Tap pins on the artwork to inspect joinery & finishes</span>
             </div>
@@ -560,34 +560,34 @@ export function CustomerLookbook() {
                 className={cn(
                   "p-4 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isCardActive
-                    ? "bg-[#FFFFFF] border-[#B45309] shadow-md ring-1 ring-[#B45309]"
-                    : "bg-[#FFFFFF]/70 border-[#E8E1D5] hover:bg-[#FFFFFF] hover:border-[#C5A059]"
+                    ? "bg-[#FFFFFF] border-[#1D1D1F] shadow-md ring-1 ring-[#1D1D1F]"
+                    : "bg-[#FFFFFF]/80 border-[#D2D2D7] hover:bg-[#FFFFFF] hover:border-[#1D1D1F]"
                 )}
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#B45309]">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#1D1D1F]">
                       {pin.frameStyle.replace("-", " ")}
                     </span>
-                    <span className="font-serif font-bold text-sm text-[#191614]">
+                    <span className="font-sans font-bold text-sm text-[#1D1D1F]">
                       {pin.price}
                     </span>
                   </div>
-                  <h5 className="font-serif text-sm font-medium text-[#191614] mb-1">
+                  <h5 className="font-sans text-sm font-semibold text-[#1D1D1F] mb-1">
                     {pin.frameTitle}
                   </h5>
-                  <p className="text-xs text-[#5C554E] line-clamp-2 italic font-serif">
+                  <p className="text-xs text-[#86868B] line-clamp-2 italic font-normal">
                     {pin.review}
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-[#E8E1D5] flex items-center justify-between text-xs">
-                  <span className="text-[#8F877E] text-[11px]">
+                <div className="mt-3 pt-2 border-t border-[#D2D2D7] flex items-center justify-between text-xs">
+                  <span className="text-[#86868B] text-[11px]">
                     {pin.customerName} • {pin.location}
                   </span>
                   <Link
                     href={pin.shopUrl}
-                    className="text-[#B45309] font-medium hover:underline inline-flex items-center gap-1 text-[11px]"
+                    className="text-[#1D1D1F] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
                   >
                     Shop <ArrowRight className="w-3 h-3" />
                   </Link>

@@ -7,7 +7,7 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
     await page.goto("/");
   });
 
-  test("renders all 10 core sections in seamless end-to-end page hierarchy", async ({
+  test("renders all core sections in seamless end-to-end page hierarchy with Apple redesign", async ({
     page,
   }) => {
     // 1. Site Header & Announcement Bar
@@ -15,41 +15,45 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
     await expect(header).toBeVisible();
     await expect(page.getByTestId("brand-wordmark")).toBeVisible();
 
-    // 2. Hero Container & Live Frame Switcher
-    const heroSection = page.getByTestId("hero-section");
-    await expect(heroSection).toBeVisible();
+    // 2. Hero Carousel (Responsive touch-enabled image carousel)
+    const heroCarousel = page.getByTestId("hero-carousel");
+    await expect(heroCarousel).toBeVisible();
+
+    // 3. Custom Frame Studio (Interactive Frame Switcher moved below Hero)
+    const customFrameStudio = page.getByTestId("custom-frame-studio");
+    await expect(customFrameStudio).toBeVisible();
     await expect(page.getByTestId("live-frame-switcher")).toBeVisible();
 
-    // 3. Category Pills
+    // 4. Category Pills
     const categoryPills = page.getByTestId("category-pills");
     await expect(categoryPills).toBeVisible();
 
-    // 4. Trust Bar
+    // 5. Trust Bar
     const trustBar = page.getByTestId("trust-bar");
     await expect(trustBar).toBeVisible();
 
-    // 5. Curated Collections
+    // 6. Curated Collections
     const curatedCollections = page.getByTestId("curated-collections");
     await expect(curatedCollections).toBeVisible();
 
-    // 6. Framing Journey
+    // 7. Framing Journey
     const framingJourney = page.getByTestId("framing-journey");
     await expect(framingJourney).toBeVisible();
 
-    // 7. Atelier Materials & Glazing Slider
+    // 8. Atelier Materials & Glazing Slider
     const atelierMaterials = page.getByTestId("atelier-materials");
     await expect(atelierMaterials).toBeVisible();
     await expect(page.getByTestId("glass-comparison-slider")).toBeVisible();
 
-    // 8. Customer Lookbook
+    // 9. Customer Lookbook
     const customerLookbook = page.getByTestId("customer-lookbook");
     await expect(customerLookbook).toBeVisible();
 
-    // 9. FAQ Section
+    // 10. FAQ Section
     const faqSection = page.getByTestId("faq-section");
     await expect(faqSection).toBeVisible();
 
-    // 10. Site Footer
+    // 11. Site Footer
     const siteFooter = page.getByTestId("site-footer");
     await expect(siteFooter).toBeVisible();
   });
@@ -225,7 +229,7 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
     await expect(successAlert).toContainText("ATELIER10");
   });
 
-  test("captures comprehensive full-page screenshot of the complete Home experience", async ({
+  test("captures comprehensive full-page screenshot of the complete Apple-redesigned Home experience", async ({
     page,
   }) => {
     // Scroll through the entire page smoothly to trigger any lazy effects
@@ -243,18 +247,22 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
       fs.mkdirSync(screenshotsDir, { recursive: true });
     }
 
-    const screenshotPath = path.join(
-      screenshotsDir,
-      "task-8-full-home-page.png"
-    );
-
+    // Task 8 baseline screenshot
+    const task8Path = path.join(screenshotsDir, "task-8-full-home-page.png");
     await page.screenshot({
-      path: screenshotPath,
+      path: task8Path,
       fullPage: true,
     });
 
-    expect(fs.existsSync(screenshotPath)).toBe(true);
-    const stats = fs.statSync(screenshotPath);
+    // Task 9 Apple redesign verification screenshot
+    const task9Path = path.join(screenshotsDir, "task-9-apple-redesign.png");
+    await page.screenshot({
+      path: task9Path,
+      fullPage: true,
+    });
+
+    expect(fs.existsSync(task9Path)).toBe(true);
+    const stats = fs.statSync(task9Path);
     expect(stats.size).toBeGreaterThan(50000); // Verify rich non-empty image
   });
 });
