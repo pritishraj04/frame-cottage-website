@@ -2,13 +2,56 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 22:56
-**Tasks Completed:** 21 / 21
-**Current Task:** TASK-21 Complete (Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture)
+**Last Updated:** 2026-11-14 23:46
+**Tasks Completed:** 22 / 22
+**Current Task:** TASK-22 Complete (Build Individual Vertical Detail Pages Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-22: Build Individual Vertical Detail Pages Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture
+- Context & Objective: Per user directive, engineered and delivered the complete individual vertical detail pages (`/services/[id]`) across all 6 Core Service Verticals:
+  1. `retail-framing`: Retail & Standard Framing (B2C Residential)
+  2. `bespoke-framing`: Bespoke Art & Custom Framing (B2C / B2B Curation)
+  3. `spatial-signage`: Spatial Design & Signage (B2B Architecture & Commercial)
+  4. `industrial-cnc`: Industrial Fabrication & CNC Metalworks (Commercial & Industrial)
+  5. `custom-gifting`: Custom Gifting & Mementos (Corporate & Institutional)
+  6. `civic-projects`: Government & Civic Projects (Public Sector & GeM Tenders)
+- Design Architecture & System Highlights:
+  - **PNG-Styled Spatial Canvas Architecture**: Built with dedicated spatial containers with dashed borders (`border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50 hover:border-[var(--color-accent-gold)]/60 transition-colors`) engineered for graphic designers to drop in transparent high-res PNG renders.
+  - **Museum Aesthetic**: Playfair Display serif typography, clean Geist sans UI text, `#C5A059` gold accents, dual-theme support for Museum Dark (`#1A1A1A`) and Warm Museum Light (`#FAF8F5`).
+  - **Static Site Generation (SSG)**: `generateStaticParams()` prerenders all 6 routes at build time with dynamic `generateMetadata()` for SEO.
+  - **Deep-linking into RFQ Portal**: Primary CTA buttons linking directly to `/rfq?vertical=${id}` with pre-filled vertical parameters and client tier mappings.
+  - **Interactive Quick Estimator Island**: `"use client"` calculator allowing dimension and substrate tier selection, finishing addons, dynamic price computation, and seamless transfer to `/rfq`.
+- Modular Component Architecture:
+  - `data/services-data.ts` & `data/services/`: Fully typed vertical datasets (types, retail-framing, bespoke-framing, spatial-signage, industrial-cnc, custom-gifting, civic-projects, index).
+  - `components/services/service-hero.tsx`: Spatial hero with breadcrumb, audience badge, dashed hero PNG canvas with depth shadow, and primary CTAs.
+  - `components/services/service-highlights.tsx`: Key highlight metrics and trust points.
+  - `components/services/service-capabilities.tsx`: 4-6 capability cards with dashed containers for machine/sample PNGs.
+  - `components/services/material-specs-matrix.tsx`: Technical material specifications matrix with verified tolerances.
+  - `components/services/service-estimator.tsx`: Interactive Quick Estimator Island (`"use client"`).
+  - `components/services/service-case-studies.tsx`: Client showcase with 16:9 full-bleed dashed project PNG containers.
+  - `components/services/service-workflow.tsx`: 4-Stage Studio Execution Workflow with dashed diagram drop zones.
+  - `components/services/service-faq.tsx`: Expandable dashed accordion FAQ section.
+  - `components/services/related-services.tsx`: Complementary verticals navigation grid.
+  - `components/services/service-cta-banner.tsx`: Atelier conversion banner with RFQ deep-links.
+  - `app/services/[id]/page.tsx`: Server component composing all modular sections with `generateStaticParams()` and `generateMetadata()`.
+  - `app/services/page.tsx`: Services index redirecting to `/services/retail-framing`.
+  - `app/rfq/page.tsx`: Upgraded with a Suspense-wrapped `SearchParamsHandler` to read and pre-populate URL query parameters.
+- Verification & Test Results:
+  - `npm run build`: Compiled with 0 errors; generated 13/13 static routes.
+  - `tests/services-pages.spec.ts`: 11/11 tests passed in 8.8s.
+  - Full Playwright suite: 64/64 tests passed with 100% pass rate.
+  - Mobile responsiveness verified (390x844): zero horizontal overflow (`scrollWidth <= clientWidth === 390`).
+  - Theme switching verified: clean transitions between Museum Dark and Warm Light modes.
+- Visual Proof Screenshots:
+  - `.agent/screenshots/task-22-service-detail-dark.png` (1.2MB)
+  - `.agent/screenshots/task-22-service-detail-light.png` (1.3MB)
+  - `.agent/screenshots/task-22-service-detail-mobile.png` (1.1MB)
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-22-service-detail-dark.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-22-service-detail-light.png`
+  - `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/task-22-service-detail-mobile.png`
 
 ### 2026-11-14 - TASK-21: Transform All Storefront Sections into PNG-Styled Spatial Canvas Architecture
 - Context & Objective: Per user directive ("Actually i wanted the png styed to rest of the section instead of making the UI elements. Make the changes to the current sections and implement the png styled sections"), transformed all 8 remaining sections of the Frame Cottage storefront into the **PNG-styled spatial canvas architecture**.

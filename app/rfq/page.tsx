@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import {
   ShieldCheck,
@@ -74,6 +75,38 @@ const STEPS = [
   { step: 5, title: "Review & Submit", short: "Submit" },
 ];
 
+function SearchParamsHandler({
+  onSelectVertical,
+  onOpenConsultation,
+}: {
+  onSelectVertical: (vert: VerticalId) => void;
+  onOpenConsultation: () => void;
+}) {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const vertical = searchParams.get("vertical") as VerticalId | null;
+    if (
+      vertical &&
+      [
+        "retail-framing",
+        "bespoke-framing",
+        "spatial-signage",
+        "industrial-cnc",
+        "custom-gifting",
+        "civic-projects",
+      ].includes(vertical)
+    ) {
+      onSelectVertical(vertical);
+    }
+    if (searchParams.get("consultation") === "true") {
+      onOpenConsultation();
+    }
+  }, [searchParams, onSelectVertical, onOpenConsultation]);
+
+  return null;
+}
+
 export default function RFQPortalPage() {
   // Navigation & Step State
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -85,6 +118,21 @@ export default function RFQPortalPage() {
     "spatial-signage",
     "industrial-cnc",
   ]);
+
+  const handleUrlVertical = React.useCallback((vertical: VerticalId) => {
+    setSelectedVerticals([vertical]);
+    if (vertical === "civic-projects") {
+      setClientTier("public");
+    } else if (vertical === "retail-framing" || vertical === "bespoke-framing") {
+      setClientTier("b2c");
+    } else {
+      setClientTier("b2b");
+    }
+  }, []);
+
+  const handleOpenConsultation = React.useCallback(() => {
+    setIsConsultationModalOpen(true);
+  }, []);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([
     "architectural-metals",
     "appalachian-hardwoods",
@@ -283,6 +331,12 @@ export default function RFQPortalPage() {
     <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--color-accent-gold)]/20 selection:text-[var(--color-accent-gold)]">
       {/* 1. Sticky Navigation Header */}
       <SiteHeader />
+      <Suspense fallback={null}>
+        <SearchParamsHandler
+          onSelectVertical={handleUrlVertical}
+          onOpenConsultation={handleOpenConsultation}
+        />
+      </Suspense>
 
       <main className="flex-1 w-full flex flex-col overflow-x-hidden">
         {/* Editorial Portal Header */}

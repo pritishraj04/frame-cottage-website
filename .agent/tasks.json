@@ -145,5 +145,12 @@
     "category": "design-canvas-architecture",
     "specFilePath": ".agent/tasks/TASK-21.json",
     "passes": true
+  },
+  {
+    "id": "TASK-22",
+    "title": "Build Individual Vertical Detail Pages (/services/[id]) Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture",
+    "category": "vertical-detail-spatial-canvas",
+    "specFilePath": ".agent/tasks/TASK-22.json",
+    "passes": true
   }
 ]

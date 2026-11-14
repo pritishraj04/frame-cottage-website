@@ -1,0 +1,86 @@
+{
+  "id": "TASK-22",
+  "title": "Build Individual Vertical Detail Pages (/services/[id]) Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture",
+  "category": "vertical-detail-spatial-canvas",
+  "description": "Engineered and delivered the comprehensive suite of individual vertical detail pages (/services/[id]) for all 6 Core Service Verticals (Retail & Standard Framing, Bespoke Art & Custom Framing, Spatial Design & Signage, Industrial Fabrication & CNC Metalworks, Custom Gifting & Mementos, and Government & Civic Projects). Fully grounded in Frame Cottage's PNG-styled spatial canvas architecture with zero dense agentic text, dedicated dashed spatial containers (border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50) for transparent high-resolution PNG renders, Playfair Display serif headings, Geist sans UI labels, and #C5A059 gold accents across Museum Dark (#1A1A1A) and Warm Museum Light (#FAF8F5). Implemented static prerendering via generateStaticParams(), dynamic SEO metadata via generateMetadata(), interactive Quick Estimator Island with RFQ deep-linking, Technical Capabilities & Machinery Canvas, Material Specifications Matrix, 4-Stage Studio Execution Workflow, Client Case Studies, Technical FAQ, and Complementary Verticals Navigator.",
+  "acceptanceCriteria": [
+    "Comprehensive service data model in data/services-data.ts and data/services/ covering all 6 verticals with audience badges, highlights, machinery capabilities, material tolerances, 4-stage workflows, pricing estimators, case studies, and FAQs",
+    "Dynamic page at app/services/[id]/page.tsx prerendering all 6 service verticals at build time with generateStaticParams() and generateMetadata()",
+    "Spatial Hero with breadcrumbs (Home / Services / [Vertical Name]), audience badge (B2C, B2B Commercial, Corporate, GeM Public Sector), dashed hero PNG canvas with depth shadow, and primary CTAs ('Initiate RFQ Specification' and 'Technical Spec Sheet')",
+    "Capabilities & Machinery Canvas with 4-6 cards featuring dashed drop zones for machine/sample PNG assets",
+    "Material Specifications Matrix table with verified tolerances, finishes, and archival standards",
+    "Interactive Quick Estimator Island allowing dynamic dimension and substrate tier selection, finishing addons, live price calculation, and direct pre-filled link to /rfq",
+    "Client Showcase & Case Studies Canvas with 16:9 full-bleed dashed project PNG containers and verified project metrics",
+    "4-Stage Studio Execution Workflow with step cards and dedicated dashed process diagram containers",
+    "Technical FAQ section with expandable dashed accordion items",
+    "Complementary Verticals navigation grid linking to adjacent service routes",
+    "Atelier Conversion Banner with direct deep-links into /rfq",
+    "Full dual-theme support across Museum Dark (#1A1A1A) and Warm Museum Light (#FAF8F5)",
+    "Mobile-responsive (390x844) with zero horizontal overflow (scrollWidth <= clientWidth)",
+    "Comprehensive Playwright test suite (tests/services-pages.spec.ts) covering all 6 routes (200 OK), navigation flow, estimator interactivity, mobile layout, theme toggle, and screenshot capture",
+    "Next.js Turbopack production build succeeds with 0 errors and generates 13/13 static routes",
+    "High-resolution screenshots captured in .agent/screenshots/ and brain directories for Desktop Dark, Desktop Light, and Mobile"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Construct Core Service Verticals Data Repository",
+      "details": "Created data/services/types.ts, data/services/index.ts, data/services-data.ts, and individual vertical datasets for retail-framing, bespoke-framing, spatial-signage, industrial-cnc, custom-gifting, and civic-projects.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build Spatial Hero & Key Highlights Strip",
+      "details": "Implemented components/services/service-hero.tsx with breadcrumb navigation, audience tag, dashed hero PNG canvas, and primary CTAs, along with components/services/service-highlights.tsx for trust indicators.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Build Capabilities & Machinery Canvas",
+      "details": "Implemented components/services/service-capabilities.tsx with 4-6 dashed cards featuring machine parameters, specifications, and dedicated sample PNG drop zones.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Build Material Specifications Matrix",
+      "details": "Implemented components/services/material-specs-matrix.tsx providing a clean, responsive specifications table with substrates, tolerances, and archival standards.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Build Interactive Quick Estimator Island",
+      "details": "Implemented components/services/service-estimator.tsx ('use client') with dynamic dimension and material tier toggles, finishing options, real-time price calculation, and transfer to /rfq.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Build Client Showcase & Case Studies Canvas",
+      "details": "Implemented components/services/service-case-studies.tsx with 16:9 dashed drop zone containers, verified project metrics, client names, and scope outcomes.",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Build 4-Stage Workflow, Technical FAQ & Related Verticals",
+      "details": "Implemented components/services/service-workflow.tsx, components/services/service-faq.tsx, components/services/related-services.tsx, and components/services/service-cta-banner.tsx.",
+      "pass": true
+    },
+    {
+      "step": 8,
+      "description": "Implement Dynamic Service Route & Index Redirect",
+      "details": "Implemented app/services/[id]/page.tsx with generateStaticParams() and generateMetadata(), plus app/services/page.tsx redirecting to /services/retail-framing.",
+      "pass": true
+    },
+    {
+      "step": 9,
+      "description": "Integrate RFQ Query Parameter Deep-Linking",
+      "details": "Enhanced app/rfq/page.tsx with a Suspense-wrapped SearchParamsHandler that auto-selects the incoming service vertical and appropriate client tier.",
+      "pass": true
+    },
+    {
+      "step": 10,
+      "description": "Develop and Execute Playwright Verification Suite & Capture Screenshots",
+      "details": "Authored tests/services-pages.spec.ts (11 tests). Verified all 6 routes render with 200 status, navigation from homepage to /services/spatial-signage to /rfq, zero mobile overflow (390x844), theme switching, and captured Desktop Dark, Desktop Light, and Mobile screenshots.",
+      "pass": true
+    }
+  ]
+}
