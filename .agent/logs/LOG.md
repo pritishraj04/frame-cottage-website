@@ -2,13 +2,34 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 01:32
-**Tasks Completed:** 25 / 25
-**Current Task:** TASK-25 Complete (Full PNG Hero Carousel with Transparent Cutouts Placed)
+**Last Updated:** 2026-11-15 02:05
+**Tasks Completed:** 26 / 26
+**Current Task:** TASK-26 Complete (Fix Customer Lookbook Hotspot Card Bottom Clipping with Dynamic Directional Smart Popover Positioning)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-26: Fix Customer Lookbook Hotspot Card Bottom Clipping with Dynamic Directional Smart Popover Positioning
+- Context & Objective: Per user directive ("Living with Craft • Real Homes section when we click on some of the selection the info box gets cliiped at the bottom of the container fix that."), resolved bottom clipping of the hotspot info box in `CustomerLookbook` (`components/home/customer-lookbook.tsx`).
+- Root Cause: `lookbook-scene-dropzone` has `overflow-hidden`. Previously, `lookbook-card-*` was anchored with a static offset below the pin (`--pin-y: Math.min(65, activeHotspot.y + 14)%`). When pins in the middle or lower half of the scene dropzone were clicked (e.g. `salon-oak-mini` at y:56%, `credenza-natural-oak` at y:46%, and `bedside-deep-walnut` at y:52%), the card started at 60–65% of the container height. With a height of ~280px, the card extended past the 100% bottom boundary, causing `overflow-hidden` to clip the reviewer location, price, and "Shop Frame" CTA button.
+- Solution Implemented (`components/home/customer-lookbook.tsx`):
+  1. **Dynamic Directional Smart Popover Positioning**:
+     - Evaluated `const isLowerHalf = activeHotspot.y > 42;`.
+     - When `isLowerHalf`: Position card **ABOVE** the pin using `sm:bottom-[var(--pin-bottom)] sm:top-auto` with `--pin-bottom: calc(${100 - activeHotspot.y}% + 16px)`, completely eliminating bottom boundary collision.
+     - When `!isLowerHalf`: Position card **BELOW** the pin using `sm:top-[var(--pin-y)] sm:bottom-auto` with `--pin-y: calc(${activeHotspot.y}% + 16px)`.
+     - Clamped horizontal coordinate between 26% and 74% (`Math.min(74, Math.max(26, activeHotspot.x))`) with `sm:-translate-x-1/2` centering.
+  2. **Boundary & Safety Guards**:
+     - Added `max-h-[85%] sm:max-h-[calc(100%-24px)] overflow-y-auto` preventing any boundary bleed under any viewport or zoom level.
+     - Preserved mobile docking (`inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto`) and all existing `data-testid` attributes (`lookbook-card-*`, `lookbook-buyer-badge-*`, `lookbook-shop-link-*`, `lookbook-hotspot-pin-*`, `lookbook-room-tab-*`).
+- Verification & Test Results:
+  - `npm run build`: Compiled with 0 errors in 593ms; 13/13 static routes generated.
+  - Automated test spec: `tests/task-26-lookbook-clipping.spec.ts` created, cycling through all 3 rooms (`living-room`, `dining-credenza`, `minimalist-bedside`), verifying all 7 pins (specifically checking lower-half pins `salon-oak-mini` at y:56%, `bedside-deep-walnut` at y:52%, and `credenza-natural-oak` at y:46%), mathematically proving `cardBox.y >= containerBox.y` and `cardBox.y + cardBox.height <= containerBox.y + containerBox.height + 2`, and asserting "Shop Frame" link visibility inside the container.
+  - Complete Playwright test suite: **69/69 passed (100% pass rate)** in 43.6s.
+- Visual Proof Screenshots (saved to `.agent/screenshots/` and copied to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-26-lookbook-lower-pin-no-clipping-dark.png` (235 KB)
+  - `task-26-lookbook-lower-pin-no-clipping-light.png` (248 KB)
+  - `task-26-lookbook-all-rooms-verified.png` (258 KB)
 
 ### 2026-11-15 - TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed
 - Context & Objective: Per user directive ("hero section carousel should be full png. place the cutout for now."), re-architected `components/hero/hero-carousel.tsx` from a split two-column box into a unified, Apple-grade Full-Stage Full-PNG Hero Canvas (`min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh]`).

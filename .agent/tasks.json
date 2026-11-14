@@ -173,5 +173,12 @@
     "category": "ui-hero-full-png",
     "specFilePath": ".agent/tasks/TASK-25.json",
     "passes": true
+  },
+  {
+    "id": "TASK-26",
+    "title": "Fix Customer Lookbook Hotspot Card Bottom Clipping with Dynamic Directional Smart Popover Positioning",
+    "category": "ui-lookbook-fix",
+    "specFilePath": ".agent/tasks/TASK-26.json",
+    "passes": true
   }
 ]

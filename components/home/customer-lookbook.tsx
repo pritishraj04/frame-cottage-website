@@ -392,86 +392,92 @@ export function CustomerLookbook() {
             {/* =================================================================
                 FLOATING CARD (ANCHORED POPOVER OVER ACTIVE HOTSPOT)
                ================================================================= */}
-            {activeHotspot && (
-              <div
-                data-testid={`lookbook-card-${activeHotspot.id}`}
-                style={
-                  {
-                    "--pin-x": `${Math.min(78, Math.max(22, activeHotspot.x))}%`,
-                    "--pin-y": `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
-                  } as React.CSSProperties
-                }
-                className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:bottom-auto sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:-translate-x-1/2 w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
-              >
-                {/* Close Button */}
-                <button
-                  type="button"
-                  onClick={() => setActivePinId(null)}
-                  className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
-                  aria-label="Close card"
+            {activeHotspot && (() => {
+              const isLowerHalf = activeHotspot.y > 42;
+              const clampedX = Math.min(74, Math.max(26, activeHotspot.x));
+
+              return (
+                <div
+                  data-testid={`lookbook-card-${activeHotspot.id}`}
+                  style={
+                    {
+                      "--pin-x": `${clampedX}%`,
+                      "--pin-y": isLowerHalf ? "auto" : `calc(${activeHotspot.y}% + 16px)`,
+                      "--pin-bottom": isLowerHalf ? `calc(${100 - activeHotspot.y}% + 16px)` : "auto",
+                    } as React.CSSProperties
+                  }
+                  className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[85%] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
                 >
-                  <X className="w-4 h-4" />
-                </button>
-
-                {/* Customer & Verified Badge Row */}
-                <div className="flex items-center gap-2 mb-1.5 sm:mb-2 pr-6">
-                  <div
-                    data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
+                  {/* Close Button */}
+                  <button
+                    type="button"
+                    onClick={() => setActivePinId(null)}
+                    className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
+                    aria-label="Close card"
                   >
-                    <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
-                    <span>Verified Collector</span>
-                  </div>
-                  <div className="flex items-center text-[#C5A059]">
-                    {Array.from({ length: activeHotspot.rating }).map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-current text-[#C5A059]" />
-                    ))}
-                  </div>
-                </div>
+                    <X className="w-4 h-4" />
+                  </button>
 
-                {/* Customer Review Quote */}
-                <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-2 sm:mb-3 font-serif line-clamp-2 sm:line-clamp-none">
-                  {activeHotspot.review}
-                </p>
-
-                {/* Reviewer Name and Location */}
-                <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[var(--color-ink-secondary)] mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-[var(--color-border-subtle)]">
-                  <MapPin className="w-3 h-3 text-[#C5A059]" />
-                  <span className="font-semibold text-[var(--color-ink-primary)]">{activeHotspot.customerName}</span>
-                  <span className="text-[var(--color-ink-muted)]">•</span>
-                  <span>{activeHotspot.location}</span>
-                </div>
-
-                {/* Frame Title & Specs */}
-                <div className="mb-2 sm:mb-3">
-                  <h4 className="font-serif text-xs sm:text-sm font-semibold text-[var(--color-ink-primary)]">
-                    {activeHotspot.frameTitle}
-                  </h4>
-                  <p className="text-[10px] sm:text-[11px] text-[var(--color-ink-muted)] mt-0.5 truncate sm:whitespace-normal">{activeHotspot.specs}</p>
-                </div>
-
-                {/* Price and Action Button */}
-                <div className="flex items-center justify-between gap-3 pt-0.5 sm:pt-1">
-                  <div>
-                    <span className="text-[9px] sm:text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
-                      From
-                    </span>
-                    <span className="font-serif text-sm sm:text-base font-bold text-[var(--color-accent-gold)]">
-                      {activeHotspot.price}
-                    </span>
+                  {/* Customer & Verified Badge Row */}
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2 pr-6">
+                    <div
+                      data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
+                    >
+                      <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
+                      <span>Verified Collector</span>
+                    </div>
+                    <div className="flex items-center text-[#C5A059]">
+                      {Array.from({ length: activeHotspot.rating }).map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-current text-[#C5A059]" />
+                      ))}
+                    </div>
                   </div>
 
-                  <Link
-                    href={activeHotspot.shopUrl}
-                    data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
-                  >
-                    <span>Shop Frame</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
+                  {/* Customer Review Quote */}
+                  <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-2 sm:mb-3 font-serif line-clamp-2 sm:line-clamp-none">
+                    {activeHotspot.review}
+                  </p>
+
+                  {/* Reviewer Name and Location */}
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[var(--color-ink-secondary)] mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-[var(--color-border-subtle)]">
+                    <MapPin className="w-3 h-3 text-[#C5A059]" />
+                    <span className="font-semibold text-[var(--color-ink-primary)]">{activeHotspot.customerName}</span>
+                    <span className="text-[var(--color-ink-muted)]">•</span>
+                    <span>{activeHotspot.location}</span>
+                  </div>
+
+                  {/* Frame Title & Specs */}
+                  <div className="mb-2 sm:mb-3">
+                    <h4 className="font-serif text-xs sm:text-sm font-semibold text-[var(--color-ink-primary)]">
+                      {activeHotspot.frameTitle}
+                    </h4>
+                    <p className="text-[10px] sm:text-[11px] text-[var(--color-ink-muted)] mt-0.5 truncate sm:whitespace-normal">{activeHotspot.specs}</p>
+                  </div>
+
+                  {/* Price and Action Button */}
+                  <div className="flex items-center justify-between gap-3 pt-0.5 sm:pt-1">
+                    <div>
+                      <span className="text-[9px] sm:text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
+                        From
+                      </span>
+                      <span className="font-serif text-sm sm:text-base font-bold text-[var(--color-accent-gold)]">
+                        {activeHotspot.price}
+                      </span>
+                    </div>
+
+                    <Link
+                      href={activeHotspot.shopUrl}
+                      data-testid={`lookbook-shop-link-${activeHotspot.id}`}
+                      className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
+                    >
+                      <span>Shop Frame</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </div>
 
           {/* Lookbook Stage Footer Toolbar */}
