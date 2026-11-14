@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { Layers } from "lucide-react";
+import { Layers, UploadCloud } from "lucide-react";
 import { SiteHeader } from "@/components/navigation/site-header";
 import { HeroCarousel } from "@/components/hero/hero-carousel";
 import { CustomFrameStudio } from "@/components/home/custom-frame-studio";
@@ -103,22 +103,22 @@ export default function Home() {
             {/* Left Column: Aspect-Square Floating / Shadow Frame & CNC Drop Zone */}
             <div
               data-testid="featured-product-canvas-dropzone"
-              className="aspect-square w-full rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden group hover:border-[var(--color-accent-gold)]/60 transition-colors"
+              className="aspect-square w-full rounded-3xl border-4 border-dashed border-[var(--color-border-strong)]/70 bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden group hover:border-[var(--color-accent-gold)] transition-colors duration-300"
             >
-              <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-accent-gold)] mb-4 bg-[var(--color-canvas-base)]/50 group-hover:scale-105 transition-transform duration-500">
-                <Layers className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-accent-gold)] mb-4 bg-[var(--color-canvas-base)]/70 group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300 shadow-md">
+                <UploadCloud className="w-8 h-8 stroke-[1.5]" />
               </div>
-              <span className="text-xs uppercase tracking-[0.2em] font-mono text-[var(--color-accent-gold)] mb-1">
+              <span className="text-xs uppercase tracking-[0.2em] font-mono font-bold text-[var(--color-accent-gold)] mb-1">
                 Featured Asset Container
               </span>
               <h3 className="text-xl sm:text-2xl font-serif font-medium text-[var(--foreground)]">
-                Floating / Shadow Frame & CNC Design Drop Zone
+                Floating / Shadow Frame &amp; CNC Design Drop Zone
               </h3>
               <p className="text-xs sm:text-sm font-sans text-[var(--color-ink-muted)] mt-2 max-w-md">
-                Dedicated spatial canvas for transparent high-resolution PNG renders, 3D shadowbox assets, and architectural fabrication details.
+                Designer to place transparent high-resolution PNG render here (e.g. /public/images/featured-shadowbox.png, 1080×1080).
               </p>
-              <div className="mt-4 px-3 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40">
-                1:1 Aspect Ratio • Full-Bleed PNG Asset
+              <div className="mt-4 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[11px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/70 shadow-2xs">
+                1:1 Aspect Ratio • Full-Bleed PNG Asset (300 DPI)
               </div>
             </div>
 

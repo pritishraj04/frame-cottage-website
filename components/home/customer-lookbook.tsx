@@ -11,6 +11,8 @@ import {
   Eye,
   MapPin,
   Maximize2,
+  UploadCloud,
+  ImageIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -298,116 +300,50 @@ export function CustomerLookbook() {
         </div>
 
         {/* =====================================================================
-            THE LOOKBOOK ROOM STAGE WITH INTERACTIVE HOTSPOT PINS & DASHED CANVAS
+            THE LOOKBOOK ROOM STAGE: FULL-BLEED ARCHITECTURAL SCENE PNG DROP ZONE
            ===================================================================== */}
-        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)] shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-colors">
-          {/* Spatial Canvas Top Badge */}
-          <div className="absolute top-4 left-4 z-20 hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/85 text-[var(--color-accent-gold)] backdrop-blur-md">
-            <span>16:9 Spatial Installation Showcase</span>
-          </div>
-          {/* Room Ambient Background */}
+        <div className="relative w-full rounded-3xl overflow-hidden border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)] shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-colors">
           <div
-            className={cn(
-              "relative w-full h-[420px] sm:h-[560px] md:h-[620px] overflow-hidden select-none flex items-center justify-center transition-colors duration-500",
-              `bg-gradient-to-b ${currentRoom.wallTexture}`
-            )}
+            data-testid="lookbook-scene-dropzone"
+            className="relative w-full aspect-[16/9] min-h-[420px] sm:min-h-[520px] border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center text-center p-6 sm:p-10 overflow-hidden hover:border-[var(--color-accent-gold)] transition-colors duration-300 shadow-inner"
           >
-            {/* Architectural Room Perspective Elements (SVG Interior Scene) */}
-            <div className="absolute inset-0 pointer-events-none">
-              {/* Ceiling Crown Molding Shadow */}
-              <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-black/40 to-transparent" />
-
-              {/* Hardwood Flooring & Baseboard */}
-              <div className="absolute bottom-0 inset-x-0 h-28 sm:h-36 bg-gradient-to-b from-[#4A3222] via-[#3D281A] to-[#2D1B11] border-t-8 border-[#2A180E] shadow-2xl">
-                {/* Wood floor plank lines */}
-                <div className="w-full h-full opacity-30 bg-[linear-gradient(90deg,transparent_0%,rgba(0,0,0,0.4)_1px,transparent_2px)] [background-size:60px_100%]" />
-              </div>
-
-              {/* Room Lighting Overhead Cast */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-80 bg-radial from-white/15 via-white/5 to-transparent blur-2xl" />
-
-              {/* Render Room Specific Furniture Silhouettes */}
-              {currentRoom.id === "living-room" && (
-                <div className="absolute bottom-12 inset-x-6 sm:inset-x-28 h-24 sm:h-36 bg-gradient-to-t from-[#1F2922] to-[#2B3B30] rounded-t-3xl border-t border-[#3D5244] shadow-2xl flex items-center justify-around px-4 sm:px-8">
-                  {/* Velvet sofa cushions accent */}
-                  <div className="w-16 sm:w-28 h-10 sm:h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
-                  <div className="w-20 sm:w-36 h-12 sm:h-14 rounded-xl bg-[#26352C] border border-[#3D5244]/50 shadow-inner" />
-                  <div className="w-16 sm:w-28 h-10 sm:h-12 rounded-xl bg-[#233128] border border-[#3D5244]/50 shadow-inner" />
-                </div>
-              )}
-
-              {currentRoom.id === "dining-credenza" && (
-                <div className="absolute bottom-10 inset-x-8 sm:inset-x-32 h-20 sm:h-28 bg-[#5A3825] rounded-t-lg border-t-4 border-[#7A4D33] shadow-2xl flex items-end justify-between px-6 sm:px-10 pb-2">
-                  <div className="w-8 sm:w-10 h-12 sm:h-16 rounded-t-full bg-[#E5D7C3] opacity-90 shadow-md" />
-                  <div className="w-10 sm:w-14 h-10 sm:h-12 rounded-lg bg-[#3C2418] shadow-inner" />
-                  <div className="w-7 sm:w-8 h-16 sm:h-20 rounded-t-lg bg-[#B39B82] opacity-80 shadow-md" />
-                </div>
-              )}
-
-              {currentRoom.id === "minimalist-bedside" && (
-                <div className="absolute bottom-8 left-6 sm:left-24 w-28 sm:w-48 h-20 sm:h-28 bg-[#C8BCAB] rounded-t-md border-t-2 border-[#DFD6C7] shadow-xl flex items-center justify-center">
-                  <div className="w-8 sm:w-10 h-10 sm:h-14 rounded-t-sm bg-[#5C4D3C] shadow-sm" />
-                </div>
-              )}
-            </div>
-
-            {/* =================================================================
-                FRAMED ARTWORKS IN-SITU ON THE WALL
-               ================================================================= */}
-            {/* Artwork 1 */}
+            {/* Architectural Grid Overlay */}
             <div
-              style={{
-                left: `${currentRoom.hotspots[0]?.x ?? 30}%`,
-                top: `${currentRoom.hotspots[0]?.y ?? 30}%`,
-              }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            >
-              <div className="w-24 h-32 sm:w-44 sm:h-56 bg-[#FAF7F2] rounded-xs border-4 sm:border-8 border-[#3A2417] shadow-[0_20px_40px_rgba(0,0,0,0.55)] p-2 sm:p-4 flex flex-col items-center justify-between">
-                <div className="w-full h-full bg-[#EDE5D8] rounded-xs p-1.5 sm:p-3 flex items-center justify-center border border-[#D5C8B5]">
-                  <div className="w-12 h-16 sm:w-24 sm:h-32 bg-[#2D3F33] rounded-xs flex items-center justify-center text-[8px] sm:text-[10px] text-white/80 font-serif italic text-center p-0.5 sm:p-1">
-                    {currentRoom.hotspots[0]?.artTitle || "Art Piece"}
-                  </div>
-                </div>
-              </div>
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(var(--color-ink-primary)_1px,transparent_1px)] [background-size:24px_24px]"
+            />
+
+            {/* Spatial Canvas Top Badge */}
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10 flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wider bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
+                <Sparkles className="w-3.5 h-3.5" />
+                {currentRoom.name}
+              </span>
             </div>
 
-            {/* Artwork 2 */}
-            {currentRoom.hotspots[1] && (
-              <div
-                style={{
-                  left: `${currentRoom.hotspots[1].x}%`,
-                  top: `${currentRoom.hotspots[1].y}%`,
-                }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              >
-                <div className="w-20 h-28 sm:w-36 sm:h-48 bg-[#FAF7F2] rounded-xs border-4 sm:border-6 border-[#C5A059] shadow-[0_18px_36px_rgba(0,0,0,0.5)] p-1.5 sm:p-3 flex flex-col items-center justify-between">
-                  <div className="w-full h-full bg-[#FAF5EE] rounded-xs p-1 sm:p-2 flex items-center justify-center border border-[#D5C8B5]">
-                    <div className="w-10 h-14 sm:w-20 sm:h-26 bg-[#7C3F2A] rounded-xs flex items-center justify-center text-[8px] sm:text-[9px] text-white/90 font-serif italic text-center p-0.5 sm:p-1">
-                      {currentRoom.hotspots[1].artTitle}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-muted)] backdrop-blur-md">
+              16:9 • 1920×1080 Archival Scene
+            </div>
 
-            {/* Artwork 3 (if present in room) */}
-            {currentRoom.hotspots[2] && (
-              <div
-                style={{
-                  left: `${currentRoom.hotspots[2].x}%`,
-                  top: `${currentRoom.hotspots[2].y}%`,
-                }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              >
-                <div className="w-18 h-22 sm:w-32 sm:h-40 bg-[#FAF7F2] rounded-xs border-2 sm:border-4 border-[#D9C4A6] shadow-[0_16px_32px_rgba(0,0,0,0.45)] p-1 sm:p-2.5 flex flex-col items-center justify-between">
-                  <div className="w-full h-full bg-[#FFFFFF] rounded-xs p-1 sm:p-1.5 flex items-center justify-center border border-[#E5DACB]">
-                    <div className="w-9 h-11 sm:w-16 sm:h-20 bg-[#1E293B] rounded-xs flex items-center justify-center text-[7px] sm:text-[8px] text-white/80 font-serif italic text-center p-0.5 sm:p-1">
-                      {currentRoom.hotspots[2].artTitle}
-                    </div>
-                  </div>
-                </div>
+            {/* Center Drop Zone Focus */}
+            <div className="flex flex-col items-center justify-center my-auto z-10 space-y-3 max-w-lg pointer-events-none">
+              <div className="w-18 h-18 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-md group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300">
+                <UploadCloud className="w-9 h-9 stroke-[1.5]" />
               </div>
-            )}
+
+              <h3 className="font-mono text-base sm:text-xl font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
+                Architectural Interior Scene PNG Drop Zone (16:9 • 1920×1080)
+              </h3>
+
+              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed max-w-md font-sans">
+                Designer to place full-bleed interior / gallery installation PNG render here ({currentRoom.subtitle}).
+              </p>
+
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)]/80 text-[11px] font-mono text-[var(--color-ink-secondary)] shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
+                <span>Dimensions: 1920×1080 • Aspect Ratio: 16:9 • Ultra HD Archival Scene</span>
+              </div>
+            </div>
 
             {/* =================================================================
                 INTERACTIVE HOTSPOT PINS

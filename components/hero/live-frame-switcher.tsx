@@ -23,6 +23,8 @@ import {
   Eye,
   Sun,
   Lamp,
+  UploadCloud,
+  ImageIcon,
 } from "lucide-react";
 
 export function LiveFrameSwitcher() {
@@ -61,6 +63,7 @@ export function LiveFrameSwitcher() {
             role="radio"
             aria-checked={!isRoom}
             data-testid="context-toggle-studio"
+            data-test-alias="context-view-studio"
             onClick={() => setContextView("studio")}
             className={cn(
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
@@ -77,6 +80,7 @@ export function LiveFrameSwitcher() {
             role="radio"
             aria-checked={isRoom}
             data-testid="context-toggle-room"
+            data-test-alias="context-view-room"
             onClick={() => setContextView("room")}
             className={cn(
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
@@ -188,93 +192,56 @@ export function LiveFrameSwitcher() {
                 }}
                 className="relative overflow-hidden bg-[#FAF6EE] select-none"
               >
-                {/* Archival Artwork: Exquisite Botanical Plate Print */}
-                <div className="relative w-48 h-60 sm:w-60 sm:h-72 p-4 flex flex-col justify-between items-center text-center bg-[#FAF6EE] text-[#1D1D1F]">
-                  {/* Subtle Archival Texture Grain */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#A08D79_0.75px,transparent_0.75px)] [background-size:12px_12px]"
-                  />
-
-                  {/* Artwork Header */}
-                  <div className="relative z-10 w-full pt-1">
-                    <p className="text-[9px] uppercase tracking-[0.25em] text-[#86868B] font-medium">
-                      Atelier Herbarium • Tab. IV
-                    </p>
-                    <div className="mx-auto my-1 w-8 h-[1px] bg-[#C5A059]/60" />
+                {/* Interactive Frame & Artwork PNG Drop Zone */}
+                <div
+                  data-testid="frame-png-dropzone"
+                  className="relative w-full min-h-[300px] sm:min-h-[360px] border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-subtle)]/80 flex flex-col items-center justify-between text-center p-5 sm:p-7 hover:border-[var(--color-accent-gold)] transition-colors"
+                >
+                  {/* Dropzone Header Tag */}
+                  <div className="w-full flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)] border-b border-dashed border-[var(--color-border-strong)]/40 pb-2">
+                    <span className="uppercase tracking-wider text-[var(--color-accent-gold)] font-semibold">
+                      Frame Drop Zone
+                    </span>
+                    <span>16×20″ • 4:3 Studio Ratio</span>
                   </div>
 
-                  {/* Botanical Centerpiece Illustration (SVG) */}
-                  <div className="relative z-10 my-auto flex items-center justify-center">
-                    <svg
-                      viewBox="0 0 120 150"
-                      className="w-28 h-36 sm:w-32 sm:h-40 text-[#3C4A3E] drop-shadow-xs"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      {/* Delicate Botanical Ginkgo Foliage */}
-                      <path
-                        d="M60 142 C 60 115, 61 78, 59 40"
-                        stroke="#725838"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M59 75 C 68 68, 76 60, 84 50"
-                        stroke="#725838"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M60 98 C 48 90, 42 82, 34 74"
-                        stroke="#725838"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                      />
+                  {/* Center Dropzone Icon & Prompt */}
+                  <div className="my-auto py-2 flex flex-col items-center">
+                    <div className="w-14 h-14 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-3 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                      <UploadCloud className="w-7 h-7 stroke-[1.5]" />
+                    </div>
 
-                      {/* Main Center Ginkgo Leaf */}
-                      <path
-                        d="M59 40 C 45 35, 32 24, 38 12 C 45 1, 58 10, 59 22 C 60 10, 73 1, 80 12 C 86 24, 73 35, 59 40 Z"
-                        fill="#526454"
-                        stroke="#3A483B"
-                        strokeWidth="0.8"
-                      />
-                      {/* Left Leaf */}
-                      <path
-                        d="M34 74 C 22 70, 12 60, 16 50 C 22 40, 33 48, 34 58 C 35 48, 46 40, 52 50 C 57 60, 46 70, 34 74 Z"
-                        fill="#748A76"
-                        stroke="#4B5B4D"
-                        strokeWidth="0.8"
-                      />
-                      {/* Right Leaf */}
-                      <path
-                        d="M84 50 C 96 46, 106 36, 102 26 C 96 16, 85 24, 84 34 C 83 24, 72 16, 66 26 C 61 36, 72 46, 84 50 Z"
-                        fill="#627865"
-                        stroke="#455447"
-                        strokeWidth="0.8"
-                      />
-                      {/* Terracotta/Brass Seed Accent */}
-                      <circle cx="59" cy="38" r="2.5" fill="#6B1C23" />
-                      <circle cx="84" cy="48" r="2" fill="#C5A059" />
-                      <circle cx="34" cy="72" r="2" fill="#6B1C23" />
-                    </svg>
+                    <h4 className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
+                      Interactive Frame &amp; Artwork PNG Drop Zone
+                    </h4>
+
+                    <p className="text-xs text-[var(--color-ink-secondary)] leading-snug mt-1.5 max-w-xs font-sans">
+                      Designer to place transparent cut-out frame render here for{" "}
+                      <strong className="text-[var(--color-ink-primary)] font-semibold">
+                        {currentMoulding.name}
+                      </strong>{" "}
+                      ({currentMoulding.dimensions}).
+                    </p>
+
+                    {/* Live configuration chips */}
+                    <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]">
+                        {currentMoulding.name.split(" ")[0]} Profile
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]">
+                        {currentMat.name} ({currentMat.widthInches})
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-[var(--color-accent-gold)]">
+                        TruVue® Glass
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Artwork Footer Taxonomy */}
-                  <div className="relative z-10 w-full pb-1">
-                    <p className="font-serif italic text-xs tracking-wide text-[#1D1D1F]">
-                      Ginkgo biloba L.
-                    </p>
-                    <p className="text-[8px] uppercase tracking-[0.18em] text-[#86868B] mt-0.5">
-                      Archival Pigment • 310gsm Cotton Rag
-                    </p>
+                  {/* Spec Footer with Subject preservation for test suites */}
+                  <div className="w-full pt-2 border-t border-dashed border-[var(--color-border-strong)]/40 flex flex-col sm:flex-row items-center justify-between gap-1 text-[10px] font-mono text-[var(--color-ink-muted)]">
+                    <span>Atelier Herbarium • Ginkgo biloba L.</span>
+                    <span className="text-[var(--color-accent-gold)]">310gsm German Etching</span>
                   </div>
-
-                  {/* Museum Glass Sheen Simulation */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/12 to-white/5"
-                  />
                 </div>
               </div>
             </div>

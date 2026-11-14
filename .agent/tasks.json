@@ -152,5 +152,12 @@
     "category": "vertical-detail-spatial-canvas",
     "specFilePath": ".agent/tasks/TASK-22.json",
     "passes": true
+  },
+  {
+    "id": "TASK-23",
+    "title": "Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections",
+    "category": "ui-dropzones",
+    "specFilePath": ".agent/tasks/TASK-23.json",
+    "passes": true
   }
 ]

@@ -2,13 +2,46 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 23:46
-**Tasks Completed:** 22 / 22
-**Current Task:** TASK-22 Complete (Build Individual Vertical Detail Pages Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture)
+**Last Updated:** 2026-11-15 00:08
+**Tasks Completed:** 23 / 23
+**Current Task:** TASK-23 Complete (Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-23: Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections
+- Context & Objective: Per user directive ("hero section and other sections does not have png drop zones where we can place pngs to make my desiger place the pngs"), replaced all simulated SVGs, mock furniture drawings, and complex CSS mockups (e.g. simulated credenzas, SVG geometric abstract art, mock living room drawings) across the Hero Section and all storefront sections with unmistakable, prominent dashed PNG Drop Zones. Graphic designers can now clearly identify where to place their cut-out/transparent PNG renders with exact aspect ratios, file dimensions, and path specifications.
+- Section-by-Section Implementation:
+  1. **Hero Section (`components/hero/hero-carousel.tsx`)**:
+     - Replaced simulated living room credenza and SVG abstract artwork with a large, prominent dashed drop zone (`border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-3xl bg-[var(--color-canvas-subtle)]/60 min-h-[380px] sm:min-h-[460px]`).
+     - Added prominent `UploadCloud` icon in gold accent, bold uppercase title `Full Bleed PNG Hero Asset {index + 1}: {active.eyebrow}`, designer instructions text with target file path (`/public/images/hero-{slide.id}.png, 1200×900 or 1920×1080`), and specification badge `Format: Transparent PNG • High-Res 300 DPI`.
+     - Added `data-testid="hero-png-dropzone"` while retaining slide indicators, prev/next arrows, and CTAs.
+  2. **Custom Frame Studio (`components/hero/live-frame-switcher.tsx`)**:
+     - Replaced simulated botanical SVG inside the frame preview stage with an **Interactive Frame & Artwork PNG Drop Zone** (`border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-subtle)]/80 min-h-[300px] sm:min-h-[360px]`).
+     - Added live configuration chips for moulding profile, matting width, and optical glazing, with `data-testid="frame-png-dropzone"`. Preserved test assertions for `Atelier Herbarium` and `Ginkgo biloba L.` metadata.
+  3. **Customer Lookbook (`components/home/customer-lookbook.tsx`)**:
+     - Replaced simulated SVG armchair, sofa cushions, and wall art drawings with a **Full-Bleed Architectural Scene PNG Drop Zone (16:9 • 1920×1080)** with `border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl`.
+     - Retained interactive hotspot pins (`lookbook-hotspot-pin-*`) and cards (`lookbook-card-*`) floating on top of the dashed scene canvas, with `data-testid="lookbook-scene-dropzone"`.
+  4. **Curated Projects & Capabilities (`components/home/frame-card.tsx`)**:
+     - Replaced simulated SVG art inside each product card with a **Project PNG Drop Zone (800×600)** in rest state and an **In-Situ Scene PNG Drop Zone (1200×900)** in hover state (`data-testid="project-png-dropzone-${product.id}"`).
+  5. **Framing Journey Workflow (`components/home/framing-journey.tsx`)**:
+     - Replaced mini SVG diagrams in each of the 4 step cards with a clean **Process Step Diagram PNG Drop Zone** (`w-full h-32 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 my-3`) tagged with `data-testid="journey-step-dropzone-${step.stepNumber}"`.
+  6. **Featured Products Carousel (`components/home/featured-products-carousel.tsx`) & Highlight (`app/page.tsx`)**:
+     - Product cards upgraded with prominent 3:4 dashed drop zones (`border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl aspect-[3/4]`, `data-testid="featured-product-png-dropzone"`).
+     - Homepage featured highlight upgraded with `data-testid="featured-product-canvas-dropzone"` for 1:1 shadowbox PNG assets.
+  7. **Trust Bar (`components/home/trust-bar.tsx`)**:
+     - Upgraded all 4 capability cards with prominent dashed badge drop zones (`Badge / Certification PNG Drop Zone: Designer to place CNC / Archival / Turnkey / GeM badge PNG`).
+- Verification & Test Results:
+  - `npm run build`: Compiled with 0 errors in 1.1s; 13/13 static routes generated.
+  - Playwright test suite: **65/65 passed with 100% pass rate** in 45.1s.
+  - Test spec `tests/task-23-dropzones.spec.ts` executed and verified all drop zone elements.
+- High-Resolution Proof Screenshots (saved to `.agent/screenshots/` and copied to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-23-hero-png-dropzones-dark.png` (104 KB)
+  - `task-23-hero-png-dropzones-light.png` (115 KB)
+  - `task-23-all-sections-dropzones-dark.png` (2.3 MB)
+  - `task-23-all-sections-dropzones-light.png` (2.4 MB)
+  - `task-23-all-sections-dropzones-mobile.png` (2.1 MB)
 
 ### 2026-11-14 - TASK-22: Build Individual Vertical Detail Pages Across 6 Core Service Verticals Using PNG-Styled Spatial Canvas Architecture
 - Context & Objective: Per user directive, engineered and delivered the complete individual vertical detail pages (`/services/[id]`) across all 6 Core Service Verticals:

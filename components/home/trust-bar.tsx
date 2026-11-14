@@ -78,12 +78,23 @@ export function TrustBar() {
               >
                 {/* Top: Capability Badge Graphic Drop Zone */}
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-13 h-13 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-transform duration-300 shadow-2xs">
+                  <div className="w-full rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/70 p-3 mb-4 flex flex-col items-center justify-center text-center group-hover:border-[var(--color-accent-gold)] transition-colors">
+                    <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-2 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                       <Icon className="w-6 h-6 stroke-[1.75]" />
                     </div>
-                    <span className="text-[10px] font-mono text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] px-2 py-0.5 rounded-full bg-[var(--color-canvas-base)]/40">
-                      1:1 Graphic Zone
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
+                      Badge / Certification PNG Drop Zone
+                    </span>
+                    <span className="text-[9px] font-sans text-[var(--color-ink-muted)] mt-0.5">
+                      Designer to place{" "}
+                      {pillar.id === "precision-fabrication"
+                        ? "CNC"
+                        : pillar.id === "archival-industrial"
+                        ? "Archival"
+                        : pillar.id === "turnkey-execution"
+                        ? "Turnkey"
+                        : "GeM"}{" "}
+                      badge PNG
                     </span>
                   </div>
 

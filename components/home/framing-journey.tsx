@@ -12,6 +12,7 @@ import {
   Layers,
   Wrench,
   Building2,
+  UploadCloud,
 } from "lucide-react";
 
 export interface FramingStep {
@@ -178,101 +179,23 @@ export function FramingJourney() {
                       </div>
                     </div>
 
-                    {/* Step Dedicated Dashed Spatial Drop Zone Container for Process PNG / Diagram */}
-                    <div className="mb-5 h-36 rounded-xl bg-[var(--color-canvas-subtle)]/50 border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden flex items-center justify-center relative p-3 group-hover:border-[var(--color-accent-gold)]/60 transition-colors">
-                      {idx === 0 && (
-                        /* Step 1 Visual: 3D CAD Blueprint & Spatial Modeling */
-                        <div className="relative w-full h-full flex items-center justify-around select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
-                              <span className="text-[9px] font-mono text-[#C5A059]">CAD: Spatial Model</span>
-                              <span className="text-[8px] font-mono text-[var(--color-ink-muted)]">3D Revit / Rhino</span>
-                            </div>
-                            <div className="grid grid-cols-3 gap-1 my-1">
-                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Elevation</div>
-                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">Plan</div>
-                              <div className="h-10 rounded bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center text-[8px] font-mono">3D Mesh</div>
-                            </div>
-                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
-                              <span>Spec: ±0.1mm</span>
-                              <span className="text-[#10B981]">Verified</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {idx === 1 && (
-                        /* Step 2 Visual: 5-Axis CNC & Fiber Laser Fabrication */
-                        <div className="relative w-full h-full flex items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
-                              <span className="text-[9px] font-mono text-[#C5A059]">CNC: Fiber Laser 5-Axis</span>
-                              <span className="text-[8px] font-mono text-[#10B981]">Operating</span>
-                            </div>
-                            <div className="flex items-center justify-center py-1">
-                              <svg viewBox="0 0 80 40" className="w-20 h-10 text-[#C5A059]" fill="none">
-                                <rect x="5" y="5" width="70" height="30" rx="3" stroke="#C5A059" strokeWidth="1" strokeDasharray="3 3" />
-                                <circle cx="40" cy="20" r="10" stroke="#FAF7F2" strokeWidth="1.5" />
-                                <line x1="20" y1="20" x2="60" y2="20" stroke="#EF4444" strokeWidth="1" />
-                                <circle cx="40" cy="20" r="2" fill="#EF4444" />
-                              </svg>
-                            </div>
-                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
-                              <span>Bed: 3000×1500mm</span>
-                              <span>Brass / Timber</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {idx === 2 && (
-                        /* Step 3 Visual: Cleanroom Archival & ISO QC Inspection */
-                        <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
-                              <span className="text-[9px] font-mono text-[#C5A059]">Cleanroom QC</span>
-                              <span className="text-[8px] font-mono text-[#10B981]">ISO 9001:2015</span>
-                            </div>
-                            <div className="flex items-center justify-around py-1 text-center">
-                              <div>
-                                <ShieldCheck className="w-6 h-6 text-[#C5A059] mx-auto" />
-                                <span className="text-[7.5px] font-mono text-[var(--color-ink-muted)]">TruVue 99% UV</span>
-                              </div>
-                              <div className="w-px h-8 bg-[var(--color-border-subtle)]" />
-                              <div>
-                                <Layers className="w-6 h-6 text-[#C5A059] mx-auto" />
-                                <span className="text-[7.5px] font-mono text-[var(--color-ink-muted)]">Acid-Free Cotton</span>
-                              </div>
-                            </div>
-                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] text-center">
-                              100% Reversible Archival Barrier
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {idx === 3 && (
-                        /* Step 4 Visual: Turnkey On-Site Rigging & Handover */
-                        <div className="relative w-full h-full flex flex-col items-center justify-center select-none">
-                          <div className="w-full h-full rounded-lg bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] shadow-xs p-2 flex flex-col justify-between">
-                            <div className="flex items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-1">
-                              <span className="text-[9px] font-mono text-[#C5A059]">Turnkey Handover</span>
-                              <span className="text-[8px] font-mono text-[#C5A059]">GeM Certified</span>
-                            </div>
-                            <div className="flex items-center justify-center gap-2 py-1">
-                              <Building2 className="w-6 h-6 text-[#C5A059]" />
-                              <div className="text-left">
-                                <div className="text-[8px] font-bold text-[var(--color-ink-primary)]">On-Site Commissioning</div>
-                                <div className="text-[7px] text-[var(--color-ink-muted)]">Structural Rigging & Electric</div>
-                              </div>
-                            </div>
-                            <div className="text-[8px] font-mono text-[var(--color-ink-muted)] flex justify-between">
-                              <span>White-Glove Team</span>
-                              <span className="text-[#10B981]">Complete</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                    {/* Process Step Diagram PNG Drop Zone */}
+                    <div
+                      data-testid={`journey-step-dropzone-${step.stepNumber}`}
+                      className="w-full h-32 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 my-3 flex flex-col items-center justify-center text-center p-3 hover:border-[var(--color-accent-gold)] transition-colors group/stepdrop relative overflow-hidden"
+                    >
+                      <div className="w-8 h-8 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-1.5 shadow-2xs group-hover/stepdrop:scale-105 transition-transform">
+                        <UploadCloud className="w-4 h-4 stroke-[1.5]" />
+                      </div>
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
+                        Step {step.stepNumber} Diagram PNG Drop Zone
+                      </span>
+                      <p className="text-[10px] text-[var(--color-ink-muted)] mt-0.5 line-clamp-1 max-w-[220px]">
+                        Designer to place workflow illustration PNG here ({step.title})
+                      </p>
+                      <div className="mt-1.5 px-2 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[9px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                        PNG Diagram • 600×400
+                      </div>
                     </div>
 
                     {/* Step Title & Description */}

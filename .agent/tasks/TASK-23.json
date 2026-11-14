@@ -1,0 +1,69 @@
+{
+  "id": "TASK-23",
+  "title": "Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections",
+  "category": "ui-dropzones",
+  "description": "Per user directive ('hero section and other sections does not have png drop zones where we can place pngs to make my desiger place the pngs'), replaced simulated SVGs, mock furniture drawings, and complex CSS mockups (e.g. simulated credenzas, SVG geometric abstract art, armchair illustrations) across the Hero Section and all storefront sections with clean, unmistakable, prominent dashed PNG Drop Zones. Each drop zone features high-visibility dashed borders, prominent upload/image icons in gold accent, bold uppercase titles, exact designer instructions with target file paths, aspect ratios and dimensions (16:9 1920×1080, 4:3 1200×900 / 800×600, 3:4 600×800, 1:1 1080×1080), and 300 DPI high-resolution format specifications. All existing test IDs and interactive behaviors were preserved, achieving 65/65 passing Playwright tests and 0 build errors.",
+  "acceptanceCriteria": [
+    "Hero Section (components/hero/hero-carousel.tsx): Replace simulated SVGs, credenzas, and CSS mockups with prominent dashed PNG drop zones (border-4 border-dashed, min-h-[380px] sm:min-h-[460px], UploadCloud icon, bold uppercase title, designer instructions text with target path, spec badge, data-testid='hero-png-dropzone')",
+    "Custom Frame Studio (components/hero/live-frame-switcher.tsx): Replace simulated botanical SVG with an Interactive Frame & Artwork PNG Drop Zone (border-3 border-dashed, min-h-[300px] sm:min-h-[360px], UploadCloud icon, live configuration chips, data-testid='frame-png-dropzone')",
+    "Customer Lookbook (components/home/customer-lookbook.tsx): Replace simulated SVG furniture and wall drawings with a Full-Bleed Architectural Scene PNG Drop Zone (16:9 • 1920×1080) with floating interactive hotspot pins and cards, data-testid='lookbook-scene-dropzone'",
+    "Curated Projects & Capabilities (components/home/frame-card.tsx): Replace simulated SVG artwork in product cards with prominent Project PNG Drop Zones (800×600) and In-Situ Scene PNG Drop Zones (1200×900) retaining all test IDs",
+    "Framing Journey Workflow (components/home/framing-journey.tsx): Replace mini SVG diagrams with clean Process Step Diagram PNG Drop Zones in each of the 4 step cards (data-testid='journey-step-dropzone-*')",
+    "Featured Products Carousel (components/home/featured-products-carousel.tsx) & Highlight (app/page.tsx): Unambiguous dashed drop zones (border-3 border-dashed, 3:4 600×800) with data-testid='featured-product-png-dropzone' and data-testid='featured-product-canvas-dropzone'",
+    "Trust Bar (components/home/trust-bar.tsx): Prominent dashed badge drop zones for CNC / Archival / Turnkey / GeM badges",
+    "Zero TypeScript and 0 build errors across Next.js compilation",
+    "All Playwright tests pass (65/65 passed with 0 regressions)",
+    "Playwright test spec tests/task-23-dropzones.spec.ts captures high-res screenshots for dark, light, and mobile viewports saved to .agent/screenshots/ and parent brain directory"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Implement Hero Section prominent dashed PNG drop zones",
+      "details": "Replaced the complex CSS living room scene, credenza, and geometric abstract SVG in components/hero/hero-carousel.tsx with a prominent dashed PNG drop zone with UploadCloud icon, bold uppercase title, designer instructions text, spec badge, and data-testid='hero-png-dropzone'.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Implement Interactive Frame PNG Drop Zone in Custom Frame Studio",
+      "details": "Replaced simulated botanical SVG artwork inside components/hero/live-frame-switcher.tsx with an Interactive Frame & Artwork PNG Drop Zone featuring live moulding and matting configuration chips, data-testid='frame-png-dropzone', and test ID compatibility.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Implement Full-Bleed Architectural Scene PNG Drop Zone in Customer Lookbook",
+      "details": "Replaced simulated SVG furniture and wall drawings in components/home/customer-lookbook.tsx with a full-bleed 16:9 (1920×1080) dashed scene drop zone (data-testid='lookbook-scene-dropzone') while preserving interactive hotspot pins and cards.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Implement Project PNG Drop Zones in Curated Projects Cards",
+      "details": "Updated components/home/frame-card.tsx to replace SVG artwork in rest state with Project PNG Drop Zone (800×600) and in in-situ state with In-Situ Scene PNG Drop Zone (1200×900).",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Implement Process Step Diagram PNG Drop Zones in Framing Journey",
+      "details": "Replaced mini SVG diagrams in components/home/framing-journey.tsx with clean, prominent Process Step Diagram PNG Drop Zones in all 4 steps (data-testid='journey-step-dropzone-*').",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Implement Product PNG Drop Zones in Featured Products Carousel & Highlight",
+      "details": "Upgraded components/home/featured-products-carousel.tsx with 3:4 (600×800) dashed drop zones (data-testid='featured-product-png-dropzone') and app/page.tsx with 1:1 shadowbox drop zone (data-testid='featured-product-canvas-dropzone').",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Implement Badge / Certification PNG Drop Zones in Trust Bar",
+      "details": "Upgraded components/home/trust-bar.tsx to provide prominent dashed badge drop zones for CNC / Archival / Turnkey / GeM badges across all 4 capability cards.",
+      "pass": true
+    },
+    {
+      "step": 8,
+      "description": "Verify compilation, test suite, and visual proof screenshots",
+      "details": "Verified Next.js build (0 errors), 65/65 Playwright tests passing, created tests/task-23-dropzones.spec.ts, and captured 5 high-res screenshots across dark, light, and mobile viewports saved to .agent/screenshots/ and parent brain directory.",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

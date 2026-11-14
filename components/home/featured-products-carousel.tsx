@@ -9,6 +9,8 @@ import {
   ShieldCheck,
   Layers,
   ArrowRight,
+  UploadCloud,
+  ImageIcon,
 } from "lucide-react";
 import {
   CURATED_PRODUCTS,
@@ -327,93 +329,44 @@ export function FeaturedProductsCarousel() {
                     className="group relative flex flex-col h-full bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[var(--color-accent-gold)]/60"
                   >
                     {/* =========================================================================
-                        PURE IMAGE SHOWCASE STAGE (PNG SPATIAL DROP ZONE)
+                        PURE IMAGE SHOWCASE STAGE: PRODUCT PNG DROP ZONE (3:4, 600×800)
                        ========================================================================= */}
-                    <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--color-canvas-subtle)] flex items-center justify-center p-5 select-none border-b border-dashed border-[var(--color-border-strong)]/50">
-                      {/* Architectural grid texture */}
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:18px_18px]"
-                      />
+                    <div
+                      data-testid="featured-product-png-dropzone"
+                      className="relative aspect-[3/4] w-full overflow-hidden border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-base)]/70 flex flex-col items-center justify-between p-5 select-none hover:border-[var(--color-accent-gold)] transition-colors group/fcard"
+                    >
+                      {/* Top Bar with Floating craft pills */}
+                      <div className="w-full flex items-center justify-between z-10">
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                          <span>{product.splineDetail}</span>
+                        </div>
 
-                      {/* Ambient radial highlight */}
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.12)_0%,transparent_70%)]"
-                      />
-
-                      {/* Prominent Realistic Frame with Multi-Layer Drop Shadow */}
-                      <div
-                        style={{
-                          background: currentMoulding.frameGradient,
-                          borderColor: currentMoulding.borderColor,
-                          boxShadow:
-                            "0 22px 45px -10px rgba(0, 0, 0, 0.45), 0 8px 18px -4px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35)",
-                        }}
-                        className="relative w-44 h-56 sm:w-48 sm:h-60 p-3.5 rounded-xs border border-t-[rgba(255,255,255,0.4)] border-b-[rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-[1.03]"
-                      >
-                        {/* Mitered Corner Splines Key Indicators */}
-                        <div
-                          aria-hidden="true"
-                          className="absolute -top-px -left-px w-2 h-2 border-t-2 border-l-2 border-[#C5A059]/70 pointer-events-none"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute -top-px -right-px w-2 h-2 border-t-2 border-r-2 border-[#C5A059]/70 pointer-events-none"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute -bottom-px -left-px w-2 h-2 border-b-2 border-l-2 border-[#C5A059]/70 pointer-events-none"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute -bottom-px -right-px w-2 h-2 border-b-2 border-r-2 border-[#C5A059]/70 pointer-events-none"
-                        />
-
-                        {/* Inner lip moulding detail */}
-                        <div
-                          style={{ borderColor: currentMoulding.innerLipColor }}
-                          className="w-full h-full border border-black/35 p-0.5 rounded-xs"
-                        >
-                          {/* 4-Ply Archival Bevel-Cut Mat Board */}
-                          <div
-                            style={{
-                              backgroundColor: "#F4F1EA",
-                            }}
-                            className="w-full h-full relative p-3 sm:p-3.5 border border-[#DFD8CC] shadow-[inset_0_1px_3px_rgba(0,0,0,0.14)]"
-                          >
-                            {/* Artwork Window with Inner Bevel Cut Shadow */}
-                            <div
-                              style={{
-                                boxShadow: "inset 0 2px 4px rgba(0, 0, 0, 0.25)",
-                              }}
-                              className="w-full h-full relative overflow-hidden bg-[#FAF6EE]"
-                            >
-                              <FrameArtwork type={product.artworkType} />
-
-                              {/* Optical Glaze Reflection Highlight */}
-                              <div
-                                aria-hidden="true"
-                                className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/16 to-transparent"
-                              />
-                            </div>
-                          </div>
+                        <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
+                          <span>{product.finishBadge}</span>
                         </div>
                       </div>
 
-                      {/* Floating craft pills */}
-                      <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
-                        <span>{product.splineDetail}</span>
+                      {/* Center Drop Zone Focus */}
+                      <div className="my-auto py-2 flex flex-col items-center justify-center text-center">
+                        <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-2.5 shadow-2xs group-hover/fcard:scale-105 transition-transform duration-300">
+                          <UploadCloud className="w-6 h-6 stroke-[1.5]" />
+                        </div>
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
+                          Product PNG Drop Zone (600×800)
+                        </span>
+                        <p className="text-[11px] text-[var(--color-ink-muted)] mt-1 max-w-[200px] leading-snug font-sans">
+                          Designer to place floating transparent frame render with depth shadow
+                        </p>
+                        <div className="mt-2.5 px-2.5 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                          3:4 • Transparent PNG 300 DPI
+                        </div>
                       </div>
 
-                      <div className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
-                        <span>{product.finishBadge}</span>
-                      </div>
-
-                      {/* PNG Spatial Asset Drop Zone Indicator */}
-                      <div className="absolute bottom-3 left-3 hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wide bg-[var(--color-canvas-base)]/80 text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] backdrop-blur-xs">
-                        <span>3:4 Spatial Drop Zone</span>
+                      {/* Bottom Spec Footer */}
+                      <div className="w-full pt-2 border-t border-dashed border-[var(--color-border-strong)]/40 flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)] z-10">
+                        <span>{product.dimensions}</span>
+                        <span className="text-[var(--color-accent-gold)] font-medium">300 DPI Cutout</span>
                       </div>
                     </div>
 

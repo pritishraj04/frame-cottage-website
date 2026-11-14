@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, Sliders, Eye } from "lucide-react";
+import { Heart, Sliders, Eye, UploadCloud, ImageIcon } from "lucide-react";
 import { CuratedFrameProduct } from "@/lib/constants/collections";
 import { MOULDINGS } from "@/lib/constants/frames";
 import { FrameArtwork } from "./frame-artworks";
@@ -68,19 +68,28 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                 }}
                 className="w-full h-full relative border border-[#E0DACE] shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)]"
               >
-                {/* Artwork Window with Inner Mat Bevel Shadow */}
+                {/* Artwork Window with Inner Mat Bevel Shadow: Project PNG Drop Zone */}
                 <div
+                  data-testid={`project-png-dropzone-${product.id}`}
                   style={{
                     boxShadow: "var(--shadow-frame-inner-mat)",
                   }}
-                  className="w-full h-full relative overflow-hidden bg-[#FAF6EE]"
+                  className="w-full h-full relative overflow-hidden bg-[#FAF6EE] flex flex-col items-center justify-center p-2 text-center"
                 >
-                  <FrameArtwork type={product.artworkType} />
-                  {/* Studio Specular Glazing Light Glare */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/15 to-transparent"
-                  />
+                  <div className="w-full h-full rounded-lg border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 flex flex-col items-center justify-center text-center p-2 hover:border-[var(--color-accent-gold)] transition-colors">
+                    <div className="w-6 h-6 rounded-md border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-1 shadow-2xs">
+                      <UploadCloud className="w-3.5 h-3.5 stroke-[1.5]" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)] leading-tight">
+                      Project PNG Drop Zone (800×600)
+                    </span>
+                    <p className="text-[8.5px] text-[var(--color-ink-muted)] mt-0.5 line-clamp-2 max-w-[140px] leading-tight">
+                      Designer to place project photo or transparent frame render here
+                    </p>
+                    <div className="mt-1 px-1.5 py-0.2 rounded-full border border-dashed border-[var(--color-border-strong)] text-[8px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                      4:3 • Format: PNG
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -147,14 +156,22 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                     style={{
                       boxShadow: "var(--shadow-frame-inner-mat)",
                     }}
-                    className="w-full h-full relative overflow-hidden bg-[#FAF6EE]"
+                    className="w-full h-full relative overflow-hidden bg-[#FAF6EE] flex flex-col items-center justify-center p-2 text-center"
                   >
-                    <FrameArtwork type={product.artworkType} />
-                    {/* Living Room Warm Lamp Reflection */}
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-amber-200/10 to-transparent"
-                    />
+                    <div className="w-full h-full rounded-lg border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/80 flex flex-col items-center justify-center text-center p-2 hover:border-[var(--color-accent-gold)] transition-colors">
+                      <div className="w-6 h-6 rounded-md border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-1">
+                        <ImageIcon className="w-3.5 h-3.5 stroke-[1.5]" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)] leading-tight">
+                        In-Situ Scene PNG Drop Zone (1200×900)
+                      </span>
+                      <p className="text-[8.5px] text-[var(--color-ink-muted)] mt-0.5 line-clamp-2 max-w-[140px] leading-tight">
+                        Designer to place {product.roomContext.title} PNG render here
+                      </p>
+                      <div className="mt-1 px-1.5 py-0.2 rounded-full border border-dashed border-[var(--color-border-strong)] text-[8px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                        In Situ • 1200×900
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
