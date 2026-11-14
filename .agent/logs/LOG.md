@@ -2,13 +2,37 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 19:18
-**Tasks Completed:** 18 / 18
-**Current Task:** TASK-18 Complete (Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers)
+**Last Updated:** 2026-11-14 20:05
+**Tasks Completed:** 19 / 19
+**Current Task:** TASK-19 Complete (Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-19: Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers
+- Context & Objective: Per user feedback ("where is rest of the sections. its too less now."), restored the complete, rich, multi-disciplinary studio homepage experience on `app/page.tsx` with all 11 core sections plus sticky header and footer, elevated with Framer Motion fluid scroll-entry animations (`motion.div` with `initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={fadeUp}`), AnimatePresence crossfade & scale on the Hero Carousel, and spatial designer drop zones.
+- Complete Section Order on `app/page.tsx`:
+  1. `<SiteHeader />`: Sticky header with 6-vertical mega-menu, search, cart, and theme toggle.
+  2. `<HeroCarousel />`: Full-image PNG hero carousel with Framer Motion `AnimatePresence`, crossfade & subtle scale, autoplay with hover pause, indicator dots, and spatial designer drop zones (16:9 full-bleed canvas, dashed border).
+  3. `<CustomFrameStudio />`: Flagship interactive live frame & canvas switcher island with 5 mouldings, 3 mats, live pricing, studio/room context toggle, and 4 trust highlights.
+  4. `<CategoryPills />`: The 6 Core Service Verticals discovery navigator with audience tags (`B2C`, `B2B`, `Public Sector`, `Commercial`, `Corporate`).
+  5. `<TrustBar />`: 4 Studio Capabilities (In-House CNC Fabrication, Museum Archival Standards, Turnkey Execution, GeM/Tender Scale).
+  6. `<CuratedCollections />`: Curated projects & capabilities grid with 6 vertical filter tabs, in-situ hover cards, and Quick Customise modal.
+  7. `<FeaturedProductsCarousel />`: Pure image-based 8-product carousel with Apple-style blurred navigation buttons, dot pagination, and mobile touch swipe.
+  8. **Featured Product & Capability Highlight**: Designer spatial container section with 2-column layout (left aspect-square floating frame drop zone with dashed border, right h-12 title graphic container, h-32 details container, and rounded-full gold CTA button).
+  9. `<FramingJourney />`: 4-Stage End-to-End Studio Execution Workflow with fluid motion cards and Lifetime Studio Guarantee banner.
+  10. `<CustomerLookbook />`: Real-world client installations with interactive hotspot pins across Tech Enterprise HQ, Contemporary Collector Residence, and Municipal City Hall.
+  11. `<FAQSection />`: Technical Radix accordion FAQ covering B2C custom framing, B2B commercial spatial design, CNC tolerances, GeM tenders, and corporate gifting.
+  12. `<SiteFooter />`: 4-column studio footer with FSC, ISO, GeM certifications and newsletter validation.
+- Verification & Quality:
+  - All 43 Playwright automated tests pass (43/43 tests, 100% pass rate) across `tests/full-home-e2e.spec.ts`, `tests/hero-switcher.spec.ts`, `tests/curated-collections.spec.ts`, `tests/merchandising.spec.ts`, `tests/storytelling.spec.ts`, `tests/mobile-responsiveness.spec.ts`, `tests/theme-toggle.spec.ts`, `tests/navigation.spec.ts`, and `tests/task-19-screenshots.spec.ts`.
+  - Next.js Turbopack build succeeds with 0 TypeScript / build errors (`npm run build`).
+  - Captured full-page visual screenshots in `.agent/screenshots/` and parent brain directory:
+    - Desktop Dark Mode: `task-19-complete-home-dark.png` (2.5MB)
+    - Desktop Light Mode: `task-19-complete-home-light.png` (2.6MB)
+    - Mobile (390x844): `task-19-complete-home-mobile.png` (2.1MB)
+  - Zero horizontal overflow across mobile viewports (`scrollWidth <= clientWidth`, 390px).
 
 ### 2026-11-14 - TASK-18: Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers
 - Context & Objective: Per user explicit instruction: "To give it that fluid, high-end feel without over-engineering the text, we will drop in Framer Motion for elegant entry animations and smooth carousel transitions. The structure below strips out the heavy text blocks and leaves dedicated, empty spatial containers (dashed borders) where your designer can drop in the final PNG assets, typography, and visual flourishes. The Animated Storefront Structure (Next.js + Tailwind + Framer Motion)".

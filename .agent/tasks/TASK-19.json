@@ -1,0 +1,59 @@
+{
+  "id": "TASK-19",
+  "title": "Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers",
+  "category": "ui-restoration-animation",
+  "description": "Per user feedback ('where is rest of the sections. its too less now.'), restored the complete, rich, multi-disciplinary studio homepage experience on `app/page.tsx` across all 11 core sections plus sticky header and footer, elevated with Framer Motion fluid scroll-entry animations (fadeUp variants, whileInView with viewport margin), AnimatePresence crossfade & scale on the Hero Carousel, and spatial designer drop zones. The full restored section hierarchy includes: 1. SiteHeader (sticky header with 6-vertical mega-menu, search, cart, theme toggle); 2. HeroCarousel (elevated with Framer Motion AnimatePresence crossfade & subtle scale, autoplay with hover pause, indicator dots, and 16:9 full-bleed spatial designer drop zones); 3. CustomFrameStudio (interactive live frame & canvas switcher island with 5 mouldings, 3 mats, live pricing, studio/room context toggle, and 4 trust highlights); 4. CategoryPills (6 Core Service Verticals discovery navigator with audience tags B2C, B2B, Commercial, Corporate, Public Sector); 5. TrustBar (4 Studio Capabilities: In-House CNC Fabrication, Museum Archival Standards, Turnkey Execution, GeM/Tender Scale); 6. CuratedCollections (curated projects & capabilities grid with 6 vertical filter tabs, in-situ hover cards, and Quick Customise modal); 7. FeaturedProductsCarousel (pure image-based 8-product carousel with Apple-style blurred navigation buttons, dot pagination, and mobile touch swipe); 8. Featured Product & Capability Highlight (designer spatial container section with 2-column layout: left aspect-square floating frame drop zone with dashed border, right title graphic, details box, and CTA button); 9. FramingJourney (4-stage end-to-end studio execution workflow with fluid motion cards); 10. CustomerLookbook (real-world client installations with interactive hotspot pins across Tech Enterprise HQ, Contemporary Collector Residence, and Municipal City Hall); 11. FAQSection (Radix accordion FAQ covering B2C custom framing, B2B commercial spatial design, CNC tolerances, GeM tenders, and corporate gifting); 12. SiteFooter (4-column studio footer with FSC, ISO, GeM certifications). Full test suite passes 100% (43/43 tests) and Next.js Turbopack build succeeds with 0 errors.",
+  "acceptanceCriteria": [
+    "Restored complete suite of 11 studio sections + SiteHeader + SiteFooter on app/page.tsx",
+    "Section 1: SiteHeader with 6-vertical mega-menu, search, cart, and theme toggle",
+    "Section 2: HeroCarousel with Framer Motion AnimatePresence, crossfade & scale, autoplay, indicator dots, and spatial designer drop zones",
+    "Section 3: CustomFrameStudio with interactive live frame & canvas switcher island (5 mouldings, 3 mats, live pricing, studio/room context toggle)",
+    "Section 4: CategoryPills with 6 Core Service Verticals discovery navigator and audience tags (B2C, B2B, Public Sector)",
+    "Section 5: TrustBar with 4 studio capabilities (In-House CNC Fabrication, Museum Archival Standards, Turnkey Execution, GeM/Tender Scale)",
+    "Section 6: CuratedCollections with 6 vertical filter tabs, in-situ hover cards, and Quick Customise modal",
+    "Section 7: FeaturedProductsCarousel with Apple-style blurred controls, dot pagination, and 8 handcrafted products",
+    "Section 8: Featured Product & Capability Highlight with 2-column layout, left aspect-square dashed drop zone, right title graphic, details box, and CTA button",
+    "Section 9: FramingJourney with 4-stage end-to-end studio execution workflow",
+    "Section 10: CustomerLookbook with 3 room settings and interactive hotspot pins",
+    "Section 11: FAQSection with Radix accordion covering technical queries across verticals",
+    "Section 12: SiteFooter with 4 columns, guild seals, newsletter validation, and certifications",
+    "Sections wrapped with Framer Motion fluid entry animations (motion.div with whileInView and fadeUp variants)",
+    "Seamless rendering in both Museum Dark Mode (#1A1A1A) and Warm Museum Light Mode (#FAF8F5)",
+    "Zero horizontal overflow across mobile viewports (scrollWidth <= clientWidth, 390px)",
+    "All Playwright automated tests pass (43/43 tests) with 100% pass rate",
+    "Next.js production build succeeds with 0 errors",
+    "Visual screenshots captured for Desktop Dark, Desktop Light, and Mobile in .agent/screenshots/ and brain directories"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Restore full section suite in app/page.tsx with Framer Motion containers",
+      "details": "Engineered 'use client' app/page.tsx restoring all 11 studio sections plus SiteHeader and SiteFooter in the exact requested order, wrapped in Framer Motion motion.div animation containers with fadeUp variants and whileInView scroll triggers.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Elevate HeroCarousel with Framer Motion AnimatePresence and spatial drop zones",
+      "details": "Upgraded components/hero/hero-carousel.tsx with AnimatePresence crossfade & scale transitions, 16:9 full-bleed spatial designer container, dashed border drop zones, and verified controls.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Integrate Featured Product & Capability Highlight designer spatial container section",
+      "details": "Integrated the 2-column spatial designer container section into Section 8 with aspect-square floating frame drop zone, title graphic container (h-12), details container (h-32), and rounded-full gold CTA button.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Restore and verify comprehensive Playwright test suite",
+      "details": "Restored and updated test specs across tests/full-home-e2e.spec.ts, tests/hero-switcher.spec.ts, tests/curated-collections.spec.ts, tests/merchandising.spec.ts, tests/storytelling.spec.ts, tests/mobile-responsiveness.spec.ts, tests/theme-toggle.spec.ts, and tests/navigation.spec.ts. All 43 tests pass with 100% pass rate.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Verify Next.js Turbopack build and capture visual screenshots",
+      "details": "Verified npm run build exits code 0 with 0 TypeScript/build errors. Captured Desktop Dark, Desktop Light, and Mobile (390x844) full-page screenshots into .agent/screenshots/ and brain directory.",
+      "pass": true
+    }
+  ]
+}

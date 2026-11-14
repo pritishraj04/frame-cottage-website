@@ -124,5 +124,12 @@
     "category": "ui-animation-storefront",
     "specFilePath": ".agent/tasks/TASK-18.json",
     "passes": true
+  },
+  {
+    "id": "TASK-19",
+    "title": "Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers",
+    "category": "ui-restoration-animation",
+    "specFilePath": ".agent/tasks/TASK-19.json",
+    "passes": true
   }
 ]

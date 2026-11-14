@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,6 +14,7 @@ import {
   Building2,
   ShieldCheck,
   CheckCircle2,
+  Maximize2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -345,6 +347,7 @@ export function HeroCarousel() {
     <section
       aria-label="Frame Cottage Studio Showcase"
       data-testid="hero-carousel"
+      id="hero-image-carousel"
       className="relative w-full bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -353,66 +356,99 @@ export function HeroCarousel() {
       onTouchEnd={handleTouchEnd}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div
-          data-testid="hero-carousel-slide"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-        >
-          {/* Left Column: Editorial Headline & Actions */}
-          <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs">
-              <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>{active.eyebrow}</span>
-            </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            data-testid="hero-carousel-slide"
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          >
+            {/* Left Column: Editorial Headline & Actions */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              {/* Eyebrow Pill */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs">
+                <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
+                <span>{active.eyebrow}</span>
+              </div>
 
-            {/* Apple-grade Display Typography */}
-            <h1
-              data-testid="hero-headline"
-              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
-            >
-              {active.title}
-            </h1>
-
-            {/* Subheadline */}
-            <p
-              data-testid="hero-subheadline"
-              className="text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-2xl"
-            >
-              {active.subtitle}
-            </p>
-
-            {/* Dual CTA Button Group */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-              <Link
-                href={active.primaryCtaLink}
-                data-testid="cta-customise-frame"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+              {/* Apple-grade Display Typography */}
+              <h1
+                data-testid="hero-headline"
+                className="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
               >
-                <span>{active.primaryCtaText}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+                {active.title}
+              </h1>
 
-              <Link
-                href={active.secondaryCtaLink}
-                data-testid="cta-explore-collections"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] font-medium text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer shadow-2xs"
+              {/* Subheadline */}
+              <p
+                data-testid="hero-subheadline"
+                className="text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-2xl"
               >
-                <span>{active.secondaryCtaText}</span>
-              </Link>
+                {active.subtitle}
+              </p>
+
+              {/* Dual CTA Button Group */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+                <Link
+                  href={active.primaryCtaLink}
+                  data-testid="cta-customise-frame"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                >
+                  <span>{active.primaryCtaText}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <Link
+                  href={active.secondaryCtaLink}
+                  data-testid="cta-explore-collections"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] font-medium text-xs sm:text-sm tracking-wide transition-all duration-200 cursor-pointer shadow-2xs"
+                >
+                  <span>{active.secondaryCtaText}</span>
+                </Link>
+              </div>
+
+              {/* Trust Micro-Badge */}
+              <div className="pt-2 flex items-center gap-2 text-xs text-[var(--color-ink-secondary)] font-medium">
+                <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>{active.badgeText}</span>
+              </div>
             </div>
 
-            {/* Trust Micro-Badge */}
-            <div className="pt-2 flex items-center gap-2 text-xs text-[var(--color-ink-secondary)] font-medium">
-              <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
-              <span>{active.badgeText}</span>
-            </div>
-          </div>
+            {/* Right Column: Spatial Designer Container Stage */}
+            <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+              <div className="w-full border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50 p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden backdrop-blur-xs group hover:border-[var(--color-accent-gold)]/60 transition-colors duration-500">
+                {/* Top Bar with Badge and Aspect Ratio Tag */}
+                <div className="flex items-center justify-between gap-3 mb-4 z-10">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wider bg-[var(--color-canvas-base)]/80 text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)]">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    {active.eyebrow}
+                  </span>
+                  <div className="text-[11px] font-mono text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-base)]/40">
+                    16:9 Full-Bleed Spatial Canvas
+                  </div>
+                </div>
 
-          {/* Right Column: Visual Stage */}
-          <div className="lg:col-span-5 relative w-full flex items-center justify-center">
-            {active.renderVisual()}
-          </div>
-        </div>
+                {/* Center Visual / Artwork Canvas */}
+                <div className="relative w-full flex flex-col items-center justify-center">
+                  {active.renderVisual()}
+                  <span className="sr-only">Designer Canvas Drop Zone</span>
+                </div>
+
+                {/* Bottom Bar: Specifications & Drop Zone Guides */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 mt-3 border-t border-dashed border-[var(--color-border-strong)]/40 z-10 text-[11px] font-mono text-[var(--color-ink-muted)]">
+                  <span className="truncate">{active.badgeText}</span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
+                    <span>PNG Full-Bleed Asset Layer</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Carousel Navigation Bar (Bottom Controls) */}
         <div

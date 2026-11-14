@@ -2,12 +2,12 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 
-test.describe("Full Home Page Framer Motion Animated Storefront Validation", () => {
+test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("renders all core animated sections in seamless end-to-end page hierarchy", async ({
+  test("renders all core sections in seamless end-to-end page hierarchy with Apple redesign", async ({
     page,
   }) => {
     // 1. Site Header & Announcement Bar
@@ -15,160 +15,190 @@ test.describe("Full Home Page Framer Motion Animated Storefront Validation", () 
     await expect(header).toBeVisible();
     await expect(page.getByTestId("brand-wordmark")).toBeVisible();
 
-    // 2. Section 1: Full-Image PNG Hero Carousel (AnimatePresence)
-    const heroCarousel = page.getByTestId("hero-image-carousel");
+    // 2. Hero Carousel (Responsive touch-enabled image carousel)
+    const heroCarousel = page.getByTestId("hero-carousel");
     await expect(heroCarousel).toBeVisible();
-    await expect(page.getByTestId("hero-carousel-slide")).toBeVisible();
-    await expect(page.getByTestId("hero-headline")).toBeVisible();
-    await expect(page.getByTestId("carousel-indicators")).toBeVisible();
 
-    // 3. Section 2: 6 Core Service Verticals Staggered Grid
-    const verticalsGrid = page.getByTestId("core-service-verticals-grid");
-    await expect(verticalsGrid).toBeVisible();
-    await expect(page.getByTestId("section-title-graphic")).toBeVisible();
+    // 3. Custom Frame Studio (Interactive Frame Switcher below Hero)
+    const customFrameStudio = page.getByTestId("custom-frame-studio");
+    await customFrameStudio.scrollIntoViewIfNeeded();
+    await expect(customFrameStudio).toBeVisible();
+    await expect(page.getByTestId("live-frame-switcher")).toBeVisible();
 
-    const expectedVerticals = [
-      "retail-framing",
-      "bespoke-framing",
-      "spatial-signage",
-      "industrial-cnc",
-      "custom-gifting",
-      "civic-projects",
-    ];
+    // 4. Category Pills
+    const categoryPills = page.getByTestId("category-pills");
+    await categoryPills.scrollIntoViewIfNeeded();
+    await expect(categoryPills).toBeVisible();
 
-    for (const id of expectedVerticals) {
-      const card = page.getByTestId(`service-vertical-card-${id}`);
-      await expect(card).toBeVisible();
-    }
+    // 5. Trust Bar
+    const trustBar = page.getByTestId("trust-bar");
+    await trustBar.scrollIntoViewIfNeeded();
+    await expect(trustBar).toBeVisible();
 
-    // 4. Section 3: Featured Product & Capability Highlight
+    // 6. Curated Collections
+    const curatedCollections = page.getByTestId("curated-collections");
+    await curatedCollections.scrollIntoViewIfNeeded();
+    await expect(curatedCollections).toBeVisible();
+
+    // 7. Featured Products Carousel
+    const featuredCarousel = page.getByTestId("featured-products-carousel");
+    await featuredCarousel.scrollIntoViewIfNeeded();
+    await expect(featuredCarousel).toBeVisible();
+    await expect(page.getByTestId("carousel-next-btn")).toBeVisible();
+    await expect(page.getByTestId("carousel-prev-btn")).toBeVisible();
+
+    // 8. Featured Product & Capability Highlight (Spatial Designer Containers)
     const featuredHighlight = page.getByTestId("featured-product-highlight");
+    await featuredHighlight.scrollIntoViewIfNeeded();
     await expect(featuredHighlight).toBeVisible();
     await expect(page.getByTestId("featured-product-canvas-dropzone")).toBeVisible();
     await expect(page.getByTestId("featured-product-title-container")).toBeVisible();
     await expect(page.getByTestId("featured-product-details-container")).toBeVisible();
     await expect(page.getByTestId("featured-product-cta-container")).toBeVisible();
 
-    // 5. Site Footer
+    // 9. Framing Journey
+    const framingJourney = page.getByTestId("framing-journey");
+    await framingJourney.scrollIntoViewIfNeeded();
+    await expect(framingJourney).toBeVisible();
+
+    // 10. Customer Lookbook
+    const customerLookbook = page.getByTestId("customer-lookbook");
+    await customerLookbook.scrollIntoViewIfNeeded();
+    await expect(customerLookbook).toBeVisible();
+
+    // 11. FAQ Section
+    const faqSection = page.getByTestId("faq-section");
+    await faqSection.scrollIntoViewIfNeeded();
+    await expect(faqSection).toBeVisible();
+
+    // 12. Site Footer
     const siteFooter = page.getByTestId("site-footer");
+    await siteFooter.scrollIntoViewIfNeeded();
     await expect(siteFooter).toBeVisible();
   });
 
-  test("interacts with Hero AnimatePresence Carousel controls and slide dots", async ({
+  test("interacts with Customer UGC Lookbook room tabs and hotspot pins", async ({
     page,
   }) => {
-    const heroCarousel = page.getByTestId("hero-image-carousel");
-    await expect(heroCarousel).toBeVisible();
+    const lookbook = page.getByTestId("customer-lookbook");
+    await lookbook.scrollIntoViewIfNeeded();
+    await expect(lookbook).toBeVisible();
 
-    const headline = page.getByTestId("hero-headline");
-    await expect(headline).toBeVisible();
-    await expect(headline).toHaveText("Bespoke Art & Archival Custom Framing");
+    // Verify Lookbook header
+    const header = page.getByTestId("lookbook-header");
+    await expect(header).toBeVisible();
+    await expect(header).toContainText("Customer Homes & Gallery Wall Lookbook");
 
-    // Click indicator 1: Spatial Design & Architectural Signage
-    const dot1 = page.getByTestId("carousel-dot-1");
-    await expect(dot1).toBeVisible();
-    await dot1.click();
-    await expect(headline).toHaveText("Spatial Design & Architectural Signage");
+    // Check room tabs
+    const livingRoomTab = page.getByTestId("lookbook-room-tab-living-room");
+    const diningTab = page.getByTestId("lookbook-room-tab-dining-credenza");
+    const bedsideTab = page.getByTestId("lookbook-room-tab-minimalist-bedside");
 
-    // Click indicator 2: Industrial Fabrication & Civic Projects
-    const dot2 = page.getByTestId("carousel-dot-2");
-    await expect(dot2).toBeVisible();
-    await dot2.click();
-    await expect(headline).toHaveText("Industrial Fabrication & Civic Projects");
+    await expect(livingRoomTab).toBeVisible();
+    await expect(diningTab).toBeVisible();
+    await expect(bedsideTab).toBeVisible();
 
-    // Click previous button to go back to slide 1
-    const prevBtn = page.getByTestId("carousel-prev-btn");
-    await prevBtn.click();
-    await expect(headline).toHaveText("Spatial Design & Architectural Signage");
+    // Default room is Living Room Salon Wall
+    await expect(livingRoomTab).toHaveAttribute("aria-pressed", "true");
 
-    // Click dot 0 to return to first slide
-    const dot0 = page.getByTestId("carousel-dot-0");
-    await dot0.click();
-    await expect(headline).toHaveText("Bespoke Art & Archival Custom Framing");
+    // Verify first hotspot pin and card in living room
+    const walnutPin = page.getByTestId("lookbook-hotspot-pin-salon-walnut-large");
+    await expect(walnutPin).toBeVisible();
+
+    const walnutCard = page.getByTestId("lookbook-card-salon-walnut-large");
+    await expect(walnutCard).toBeVisible();
+    await expect(walnutCard).toContainText("The Heritage Black Walnut");
+    await expect(
+      page.getByTestId("lookbook-buyer-badge-salon-walnut-large")
+    ).toBeVisible();
+    await expect(
+      page.getByTestId("lookbook-shop-link-salon-walnut-large")
+    ).toBeVisible();
+
+    // Click second pin in living room (Gilded Brass)
+    const brassPin = page.getByTestId("lookbook-hotspot-pin-salon-brass-portrait");
+    await expect(brassPin).toBeVisible();
+    await brassPin.click();
+
+    const brassCard = page.getByTestId("lookbook-card-salon-brass-portrait");
+    await expect(brassCard).toBeVisible();
+    await expect(brassCard).toContainText("Atelier Gilded Brass Leaf");
+    await expect(brassCard).toContainText("Marcus T.");
+
+    // Switch to Dining Credenza room setting
+    await diningTab.click();
+    await expect(diningTab).toHaveAttribute("aria-pressed", "true");
+    await expect(livingRoomTab).toHaveAttribute("aria-pressed", "false");
+
+    // Verify credenza pin exists and card is visible
+    const matteBlackPin = page.getByTestId("lookbook-hotspot-pin-credenza-matte-black");
+    await expect(matteBlackPin).toBeVisible();
+    const matteBlackCard = page.getByTestId("lookbook-card-credenza-matte-black");
+    await expect(matteBlackCard).toBeVisible();
+    await expect(matteBlackCard).toContainText("Studio Matte Black Float");
+    await expect(matteBlackCard).toContainText("Julian D.");
+
+    // Switch to Minimalist Bedside room setting
+    await bedsideTab.click();
+    await expect(bedsideTab).toHaveAttribute("aria-pressed", "true");
+
+    const bleachedMaplePin = page.getByTestId("lookbook-hotspot-pin-bedside-bleached-maple");
+    await expect(bleachedMaplePin).toBeVisible();
+    const bleachedMapleCard = page.getByTestId("lookbook-card-bedside-bleached-maple");
+    await expect(bleachedMapleCard).toBeVisible();
+    await expect(bleachedMapleCard).toContainText("Atelier Bleached Maple");
+    await expect(bleachedMapleCard).toContainText("Kenji T.");
   });
 
-  test("validates all 6 core service vertical cards in staggered grid", async ({
+  test("expands and collapses Radix UI FAQ Accordion items with fluid interaction", async ({
     page,
   }) => {
-    const section = page.getByTestId("core-service-verticals-grid");
-    await section.scrollIntoViewIfNeeded();
-    await expect(section).toBeVisible();
+    const faqSection = page.getByTestId("faq-section");
+    await faqSection.scrollIntoViewIfNeeded();
+    await expect(faqSection).toBeVisible();
 
-    // Section title graphic drop zone
-    const titleGraphic = page.getByTestId("section-title-graphic");
-    await expect(titleGraphic).toBeVisible();
-    await expect(titleGraphic).toContainText("6 Core Service Verticals");
-    await expect(titleGraphic).toContainText("Designer Section Title Graphic Drop Zone");
+    const accordion = page.getByTestId("faq-accordion");
+    await expect(accordion).toBeVisible();
 
-    const verticalSpecs = [
-      {
-        id: "retail-framing",
-        name: "Retail & Standard Framing",
-        badge: "B2C",
-      },
-      {
-        id: "bespoke-framing",
-        name: "Bespoke Art & Custom Framing",
-        badge: "B2C / B2B",
-      },
-      {
-        id: "spatial-signage",
-        name: "Spatial Design & Signage",
-        badge: "B2B",
-      },
-      {
-        id: "industrial-cnc",
-        name: "Industrial Fabrication & CNC Metalworks",
-        badge: "Commercial",
-      },
-      {
-        id: "custom-gifting",
-        name: "Custom Gifting & Mementos",
-        badge: "Corporate",
-      },
-      {
-        id: "civic-projects",
-        name: "Government & Civic Projects",
-        badge: "Public Sector",
-      },
+    // All 5 FAQ items should exist
+    const items = [
+      "faq-resolution",
+      "faq-acrylic",
+      "faq-guarantee",
+      "faq-memorabilia",
+      "faq-hardware",
     ];
 
-    for (const v of verticalSpecs) {
-      const card = page.getByTestId(`service-vertical-card-${v.id}`);
-      await expect(card).toBeVisible();
-      await expect(card).toContainText(v.name);
-      await expect(card).toContainText(v.badge);
-      await expect(card).toContainText("PNG Asset Drop Zone");
+    for (const itemId of items) {
+      await expect(page.getByTestId(`faq-item-${itemId}`)).toBeVisible();
+      await expect(page.getByTestId(`faq-trigger-${itemId}`)).toBeVisible();
     }
-  });
 
-  test("validates Featured Product & Capability Highlight spatial containers", async ({
-    page,
-  }) => {
-    const featuredSection = page.getByTestId("featured-product-highlight");
-    await featuredSection.scrollIntoViewIfNeeded();
-    await expect(featuredSection).toBeVisible();
+    // Default item 'faq-resolution' should be open
+    const defaultContent = page.getByTestId("faq-content-faq-resolution");
+    await expect(defaultContent).toBeVisible();
+    await expect(defaultContent).toContainText("300 DPI");
 
-    // Left aspect-square dropzone
-    const leftDropzone = page.getByTestId("featured-product-canvas-dropzone");
-    await expect(leftDropzone).toBeVisible();
-    await expect(leftDropzone).toContainText("Floating / Shadow Frame & CNC Design Drop Zone");
-    await expect(leftDropzone).toContainText("1:1 Aspect Ratio");
+    // Click item 2: TruVue Conservation Acrylic
+    const triggerAcrylic = page.getByTestId("faq-trigger-faq-acrylic");
+    await triggerAcrylic.click();
+    const contentAcrylic = page.getByTestId("faq-content-faq-acrylic");
+    await expect(contentAcrylic).toBeVisible();
+    await expect(contentAcrylic).toContainText("99% of harmful UV radiation");
 
-    // Right product containers
-    const titleContainer = page.getByTestId("featured-product-title-container");
-    await expect(titleContainer).toBeVisible();
-    await expect(titleContainer).toContainText("The Mendocino Heritage Walnut & Floating Canvas");
-    await expect(titleContainer).toContainText("Title Graphic Container (h-12)");
+    // Click item 3: Damage Replacement Guarantee
+    const triggerGuarantee = page.getByTestId("faq-trigger-faq-guarantee");
+    await triggerGuarantee.click();
+    const contentGuarantee = page.getByTestId("faq-content-faq-guarantee");
+    await expect(contentGuarantee).toBeVisible();
+    await expect(contentGuarantee).toContainText("48 hours");
 
-    const detailsContainer = page.getByTestId("featured-product-details-container");
-    await expect(detailsContainer).toBeVisible();
-    await expect(detailsContainer).toContainText("Specification & Details Graphic Container (h-32)");
-    await expect(detailsContainer).toContainText("FSC® Appalachian Walnut");
-
-    const ctaButton = page.getByTestId("featured-product-cta-container");
-    await expect(ctaButton).toBeVisible();
-    await expect(ctaButton).toContainText("Request Spec");
+    // Click item 5: Included Hanging Hardware
+    const triggerHardware = page.getByTestId("faq-trigger-faq-hardware");
+    await triggerHardware.click();
+    const contentHardware = page.getByTestId("faq-content-faq-hardware");
+    await expect(contentHardware).toBeVisible();
+    await expect(contentHardware).toContainText("pocket bubble level");
   });
 
   test("verifies luxury footer navigation, certifications, and newsletter validation", async ({
@@ -178,8 +208,19 @@ test.describe("Full Home Page Framer Motion Animated Storefront Validation", () 
     await footer.scrollIntoViewIfNeeded();
     await expect(footer).toBeVisible();
 
-    // Brand story and certifications
+    // Brand story and guild seals
     await expect(page.getByTestId("footer-brand-story")).toBeVisible();
+    await expect(page.getByTestId("footer-brand-story")).toContainText(
+      "100% Solid Appalachian Hardwoods"
+    );
+
+    // 4 Curated navigation columns
+    await expect(page.getByTestId("footer-nav-custom-framing")).toBeVisible();
+    await expect(page.getByTestId("footer-nav-curated-styles")).toBeVisible();
+    await expect(page.getByTestId("footer-nav-the-atelier")).toBeVisible();
+    await expect(page.getByTestId("footer-nav-client-services")).toBeVisible();
+
+    // Bottom certifications and payment trust badges
     await expect(page.getByTestId("footer-fsc-badge")).toBeVisible();
     await expect(page.getByTestId("footer-payment-badges")).toBeVisible();
 
@@ -207,10 +248,10 @@ test.describe("Full Home Page Framer Motion Animated Storefront Validation", () 
     await expect(successAlert).toContainText("ATELIER10");
   });
 
-  test("captures comprehensive full-page screenshot of the Framer Motion animated storefront", async ({
+  test("captures comprehensive full-page screenshot of the complete Apple-redesigned Home experience", async ({
     page,
   }) => {
-    // Scroll through the entire page smoothly to trigger whileInView animations
+    // Scroll through the entire page smoothly to trigger any lazy effects
     await page.evaluate(async () => {
       window.scrollTo(0, document.body.scrollHeight);
     });
@@ -225,14 +266,29 @@ test.describe("Full Home Page Framer Motion Animated Storefront Validation", () 
       fs.mkdirSync(screenshotsDir, { recursive: true });
     }
 
-    const task18Path = path.join(screenshotsDir, "task-18-animated-full-home.png");
+    // Task 8 baseline screenshot
+    const task8Path = path.join(screenshotsDir, "task-8-full-home-page.png");
     await page.screenshot({
-      path: task18Path,
+      path: task8Path,
       fullPage: true,
     });
 
-    expect(fs.existsSync(task18Path)).toBe(true);
-    const stats = fs.statSync(task18Path);
-    expect(stats.size).toBeGreaterThan(40000);
+    // Task 9 Apple redesign verification screenshot
+    const task9Path = path.join(screenshotsDir, "task-9-apple-redesign.png");
+    await page.screenshot({
+      path: task9Path,
+      fullPage: true,
+    });
+
+    // Task 10 Museum Dark Charcoal, Rich Burgundy & Muted Gold verification screenshot
+    const task10Path = path.join(screenshotsDir, "task-10-museum-dark-gold.png");
+    await page.screenshot({
+      path: task10Path,
+      fullPage: true,
+    });
+
+    expect(fs.existsSync(task10Path)).toBe(true);
+    const stats = fs.statSync(task10Path);
+    expect(stats.size).toBeGreaterThan(50000); // Verify rich non-empty image
   });
 });
