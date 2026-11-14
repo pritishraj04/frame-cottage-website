@@ -2,15 +2,53 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 18:42
-**Tasks Completed:** 17 / 17
-**Current Task:** TASK-17 Complete (Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals)
+**Last Updated:** 2026-11-14 19:18
+**Tasks Completed:** 18 / 18
+**Current Task:** TASK-18 Complete (Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers)
 
 ----------------------------------------------
 
 ## Session Log
 
-### 2026-11-14 - TASK-17: Reposition Storefront as Multi-Disciplinary Design, Fabrication, and Framing Studio Across 6 Core Service Verticals
+### 2026-11-14 - TASK-18: Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers
+- Context & Objective: Per user explicit instruction: "To give it that fluid, high-end feel without over-engineering the text, we will drop in Framer Motion for elegant entry animations and smooth carousel transitions. The structure below strips out the heavy text blocks and leaves dedicated, empty spatial containers (dashed borders) where your designer can drop in the final PNG assets, typography, and visual flourishes. The Animated Storefront Structure (Next.js + Tailwind + Framer Motion)".
+- Deliverables Implemented:
+  1. `app/page.tsx`:
+     - Refactored as `"use client"` with Framer Motion (`motion`, `AnimatePresence`).
+     - Engineered `fadeUp` and `staggerContainer` animation variants.
+     - Preserved `<SiteHeader />` at top and `<SiteFooter />` at bottom for complete navigation, theme toggle, and footer verification.
+     - **Section 1: Full-Image PNG Hero Carousel**:
+       - Powered by `AnimatePresence mode="wait"`.
+       - Crossfade & subtle scale: `initial={{ opacity: 0, scale: 1.05 }}`, `animate={{ opacity: 1, scale: 1 }}`, `exit={{ opacity: 0 }}`, `transition={{ duration: 1.0, ease: "easeInOut" }}`.
+       - Auto-plays every 5s with pause on hover (`onMouseEnter`/`onMouseLeave`).
+       - Slide indicator dots (`data-testid="carousel-dot-[index]"`), previous/next controls (`carousel-prev-btn`, `carousel-next-btn`).
+       - Dedicated spatial container with dashed border (`border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50`) for designer PNG full-bleed assets.
+     - **Section 2: 6 Core Service Verticals Staggered Grid**:
+       - Animated with `variants={staggerContainer}`, `initial="hidden"`, `whileInView="visible"`, `viewport={{ once: true, margin: "-80px" }}`.
+       - Section Title Graphic spatial container (`border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-2xl bg-[var(--color-canvas-subtle)]/50`).
+       - 6 responsive cards (`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8`) for:
+         1. Retail & Standard Framing (`B2C`)
+         2. Bespoke Art & Custom Framing (`B2C / B2B`)
+         3. Spatial Design & Signage (`B2B`)
+         4. Industrial Fabrication & CNC Metalworks (`Commercial`)
+         5. Custom Gifting & Mementos (`Corporate`)
+         6. Government & Civic Projects (`Public Sector`)
+       - Each card is `aspect-[4/5]` with spatial dashed container for designer PNG asset, hover scale (`group-hover:scale-105 transition-transform duration-700`), crisp vertical title, audience badge, and `data-testid="service-vertical-card-[id]"`.
+     - **Section 3: Featured Product & Capability Highlight**:
+       - Animated with `initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.9 }}`.
+       - 2-column layout:
+         - Left: `aspect-square w-full rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 flex flex-col items-center justify-center p-8 text-center` (Floating/Shadow frame & CNC design drop zone).
+         - Right: Clean spatial containers with dashed borders for Title graphic container (`h-12 border-2 border-dashed`), Description container (`h-32 border-2 border-dashed`), and CTA Button (`h-12 w-44 border-2 border-dashed rounded-full flex items-center justify-center bg-[var(--color-accent-gold)] text-[#1A1A1A] font-semibold cursor-pointer`).
+       - `data-testid="featured-product-highlight"`.
+  2. Theming & Zero Agentic Clutter:
+     - Stripped out dense, heavy text blocks and replaced them with elegant designer canvas spatial containers.
+     - Seamless compatibility with Museum Dark Mode (`#1A1A1A`) and Warm Museum Light Mode (`#FAF8F5`).
+     - Zero horizontal page overflow (`scrollWidth <= clientWidth`).
+  3. Quality & Verification:
+     - Updated Playwright test suite (`tests/full-home-e2e.spec.ts`, `tests/hero-switcher.spec.ts`, `tests/curated-collections.spec.ts`, `tests/merchandising.spec.ts`, `tests/storytelling.spec.ts`, `tests/mobile-responsiveness.spec.ts`, `tests/theme-toggle.spec.ts`, `tests/task-18-screenshots.spec.ts`).
+     - Verified all 35/35 tests pass with 0 failures in 15.3s.
+     - Verified Next.js production build (`npm run build`) passes with exit code 0.
+     - Captured visual verification screenshots: `task-18-animated-dark.png`, `task-18-animated-light.png`, `task-18-animated-mobile.png`.
 - Context & Objective: Per user explicit instruction: "this is the bussinsses it works on: A multi-disciplinary design, fabrication, and framing studio delivering end-to-end spatial, industrial, and aesthetic solutions for B2C, B2B, and public sector clients. Core Service Verticals: 1. Retail & Standard Framing, 2. Bespoke Art & Custom Framing, 3. Spatial Design & Signage, 4. Industrial Fabrication & CNC Metalworks, 5. Custom Gifting & Mementos, 6. Government & Civic Projects. Remove any other sectors we have and make our website on this."
 - Deliverables Implemented:
   1. `lib/constants/verticals.ts`: Defined data structures, deliverables, technical specs, icons, audience badges, and sub-capabilities for all 6 exact service verticals.

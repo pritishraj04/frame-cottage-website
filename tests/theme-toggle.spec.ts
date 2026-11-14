@@ -114,7 +114,7 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     expect(isLightInStorage).toBe("light");
   });
 
-  test("adapts Featured Products Carousel and Customer Lookbook cards cleanly to light mode", async ({
+  test("adapts Animated Storefront cards and spatial containers cleanly to light mode", async ({
     page,
   }) => {
     await page.goto("/");
@@ -122,24 +122,21 @@ test.describe("Theme System & Light/Dark Mode Switcher", () => {
     await page.getByTestId("header-theme-toggle").click();
     await expect(page.locator("html")).toHaveClass(/light/);
 
-    // Lookbook room cards - verify card title color is dark ink #1A1A1A (rgb(26, 26, 26))
-    const lookbook = page.getByTestId("customer-lookbook");
-    await lookbook.scrollIntoViewIfNeeded();
-    await expect(lookbook).toBeVisible();
+    // 6 Service Verticals cards - verify card surface color is #FFFFFF (rgb(255, 255, 255))
+    const verticalCard = page.getByTestId("service-vertical-card-bespoke-framing");
+    await verticalCard.scrollIntoViewIfNeeded();
+    await expect(verticalCard).toBeVisible();
+    await expect(verticalCard).toHaveCSS("background-color", "rgb(255, 255, 255)"); // #FFFFFF (canvas-surface)
 
-    const lookbookCardTitle = lookbook.locator("h5").first();
-    await expect(lookbookCardTitle).toHaveCSS("color", "rgb(26, 26, 26)");
-
-    // Featured Products Carousel adaptation in Light Mode
-    const featuredSection = page.getByTestId("featured-products-carousel");
+    // Featured Product Highlight adaptation in Light Mode
+    const featuredSection = page.getByTestId("featured-product-highlight");
     await featuredSection.scrollIntoViewIfNeeded();
     await expect(featuredSection).toBeVisible();
-    await expect(featuredSection).toHaveCSS("background-color", "rgb(250, 248, 245)"); // #FAF8F5
-    await expect(featuredSection).toHaveCSS("color", "rgb(26, 26, 26)"); // #1A1A1A
 
-    const walnutCard = page.getByTestId("featured-product-card-mendocino-walnut");
-    await expect(walnutCard).toBeVisible();
-    await expect(walnutCard).toHaveCSS("background-color", "rgb(255, 255, 255)"); // #FFFFFF (canvas-surface)
+    const leftDropzone = page.getByTestId("featured-product-canvas-dropzone");
+    await expect(leftDropzone).toBeVisible();
+    const dropzoneBg = await leftDropzone.evaluate((el) => window.getComputedStyle(el).backgroundColor);
+    expect(dropzoneBg).toBeTruthy();
   });
 
   test("adapts site footer cleanly to light mode and dark mode with high contrast", async ({

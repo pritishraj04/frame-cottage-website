@@ -117,5 +117,12 @@
     "category": "brand-repositioning-studio",
     "specFilePath": ".agent/tasks/TASK-17.json",
     "passes": true
+  },
+  {
+    "id": "TASK-18",
+    "title": "Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers",
+    "category": "ui-animation-storefront",
+    "specFilePath": ".agent/tasks/TASK-18.json",
+    "passes": true
   }
 ]

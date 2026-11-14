@@ -1,0 +1,51 @@
+{
+  "id": "TASK-18",
+  "title": "Implement Framer Motion Animated Storefront with Full-Image Carousel, Staggered Category Grid, and Designer Canvas Containers",
+  "category": "ui-animation-storefront",
+  "description": "Per user explicit instruction, refactored `app/page.tsx` into a fluid, high-end Framer Motion animated storefront. Stripped out heavy text blocks and replaced them with dedicated, empty spatial containers (dashed borders) where designers can drop in final PNG assets, typography, and visual flourishes. Features: 1. Full-Image PNG Hero Carousel powered by AnimatePresence with crossfade & subtle scale (initial: { opacity: 0, scale: 1.05 }, animate: { opacity: 1, scale: 1 }, exit: { opacity: 0 }), auto-playing every 5s with pause on hover, manual indicator dots (carousel-dot-[index]), and prev/next controls; 2. 6 Core Service Verticals Staggered Grid with whileInView viewport trigger, Section Title Graphic spatial dashed container, and 6 responsive aspect-[4/5] cards with hover scale for Retail Framing (B2C), Bespoke Framing (B2C/B2B), Spatial Signage (B2B), Industrial CNC (Commercial), Custom Gifting (Corporate), and Civic Projects (Public Sector); 3. Featured Product & Capability Highlight with 2-column layout featuring an aspect-square drop zone on the left, and clean dashed containers on the right for Title Graphic (h-12), Details Graphic (h-32), and CTA Button (h-12 w-44 rounded-full in muted gold); 4. Maintained SiteHeader with sticky navigation, mega-menu, theme toggle, and SiteFooter with certifications; 5. Seamless compatibility with Museum Dark Mode and Warm Museum Light Mode; 6. Zero horizontal page overflow.",
+  "acceptanceCriteria": [
+    "Refactored app/page.tsx as 'use client' using Framer Motion (motion, AnimatePresence)",
+    "Defined fadeUp and staggerContainer animation variants",
+    "Section 1: Full-Image PNG Hero Carousel powered by AnimatePresence mode='wait', crossfade & subtle scale, auto-playing every 5s with pause on hover, manual indicator dots (carousel-dot-[index]), and dashed canvas container",
+    "Section 2: 6 Core Service Verticals Staggered Grid with whileInView viewport trigger, Section Title Graphic dashed container, and 6 responsive aspect-[4/5] cards (data-testid='service-vertical-card-[id]') with hover scale",
+    "Section 3: Featured Product & Capability Highlight with 2-column layout (left aspect-square dropzone, right h-12 title container, h-32 details container, h-12 w-44 gold CTA button container)",
+    "Maintained SiteHeader and SiteFooter with sticky navigation, mega-menu, theme toggle, and certifications",
+    "Seamless compatibility with both Museum Dark Mode and Warm Museum Light Mode",
+    "Zero horizontal overflow across mobile viewports (scrollWidth <= clientWidth)",
+    "All Playwright automated tests pass (35/35) with 0 failures",
+    "Next.js production build succeeds with 0 errors",
+    "Visual proof screenshots captured for Desktop Dark, Desktop Light, and Mobile viewports in .agent/screenshots/ and brain directories"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Refactor app/page.tsx with Framer Motion architecture",
+      "details": "Engineered 'use client' page with motion, AnimatePresence, fadeUp, and staggerContainer variants, integrating SiteHeader, Section 1 Hero Carousel, Section 2 Staggered Verticals Grid, Section 3 Featured Highlight, and SiteFooter.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Implement Section 1 Full-Image PNG Hero Carousel",
+      "details": "Built AnimatePresence hero carousel with crossfade and subtle scale transitions, auto-play 5s timer with pause on hover, slide indicator dots, next/prev controls, and dashed designer spatial drop zone.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Implement Section 2 6 Core Service Verticals Staggered Grid",
+      "details": "Constructed staggered grid with whileInView viewport trigger, Section Title Graphic dashed container, and 6 responsive aspect-[4/5] cards with hover scale, audience badges, and PNG asset drop zones.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Implement Section 3 Featured Product & Capability Highlight",
+      "details": "Created 2-column highlight section with left aspect-square drop zone, right h-12 title graphic container, h-32 details container, and h-12 w-44 rounded-full gold CTA button container.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Update Playwright test suite and run verification",
+      "details": "Updated tests across all test specs, validated 35/35 tests passing with 0 failures, verified npm run build succeeds with code 0, and captured visual screenshots in .agent/screenshots and brain directories.",
+      "pass": true
+    }
+  ]
+}
