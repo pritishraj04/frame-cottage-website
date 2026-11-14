@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -10,13 +11,7 @@ import {
   Sparkles,
   Compass,
   Cpu,
-  Layers,
-  Building2,
-  ShieldCheck,
   CheckCircle2,
-  Maximize2,
-  UploadCloud,
-  ImageIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +27,8 @@ export interface CarouselSlide {
   secondaryCtaLink: string;
   badgeText: string;
   theme: "light" | "dark";
-  renderVisual: () => React.ReactNode;
+  cutoutImage: string;
+  specs: string;
 }
 
 export function HeroCarousel() {
@@ -55,27 +51,8 @@ export function HeroCarousel() {
       secondaryCtaLink: "/services/bespoke-framing",
       badgeText: "Gallery-Quality Fine Art Printing & Archival Joinery",
       theme: "light",
-      renderVisual: () => (
-        <div className="w-full flex flex-col items-center justify-center">
-          <div className="w-20 h-20 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-md group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300 mb-4">
-            <UploadCloud className="w-10 h-10 stroke-[1.5]" />
-          </div>
-          <h3 className="font-mono text-base sm:text-lg font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
-            Full Bleed PNG Hero Asset 1: Bespoke Art &amp; Custom Framing
-          </h3>
-          <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed mt-2 max-w-sm font-sans">
-            Designer to place transparent or styled PNG render here (e.g.{" "}
-            <code className="px-1.5 py-0.5 rounded bg-[var(--color-canvas-base)] text-[var(--color-accent-gold)] font-mono text-[11px] border border-[var(--color-border-subtle)]">
-              /public/images/hero-slide-bespoke-framing.png
-            </code>
-            , 1200×900 or 1920×1080).
-          </p>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)]/80 text-[11px] font-mono text-[var(--color-ink-secondary)] shadow-2xs mt-4">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-            <span>Format: Transparent PNG • High-Res 300 DPI</span>
-          </div>
-        </div>
-      ),
+      cutoutImage: "/images/hero/hero-cutout-bespoke-framing.png",
+      specs: "Appalachian Walnut • 4-Ply Cotton Rag • Optium Glazing",
     },
     {
       id: "slide-spatial-signage",
@@ -90,27 +67,8 @@ export function HeroCarousel() {
       secondaryCtaLink: "/services/spatial-signage",
       badgeText: "Architectural Wayfinding & 3D Illuminated LED",
       theme: "light",
-      renderVisual: () => (
-        <div className="w-full flex flex-col items-center justify-center">
-          <div className="w-20 h-20 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-md group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300 mb-4">
-            <UploadCloud className="w-10 h-10 stroke-[1.5]" />
-          </div>
-          <h3 className="font-mono text-base sm:text-lg font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
-            Full Bleed PNG Hero Asset 2: Spatial Design &amp; Signage
-          </h3>
-          <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed mt-2 max-w-sm font-sans">
-            Designer to place transparent or styled PNG render here (e.g.{" "}
-            <code className="px-1.5 py-0.5 rounded bg-[var(--color-canvas-base)] text-[var(--color-accent-gold)] font-mono text-[11px] border border-[var(--color-border-subtle)]">
-              /public/images/hero-slide-spatial-signage.png
-            </code>
-            , 1200×900 or 1920×1080).
-          </p>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)]/80 text-[11px] font-mono text-[var(--color-ink-secondary)] shadow-2xs mt-4">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-            <span>Format: Transparent PNG • High-Res 300 DPI</span>
-          </div>
-        </div>
-      ),
+      cutoutImage: "/images/hero/hero-cutout-spatial-signage.png",
+      specs: "Grade 6061-T6 Aluminum • 3000K Halo LED • Standoff Mounts",
     },
     {
       id: "slide-industrial-civic",
@@ -125,27 +83,8 @@ export function HeroCarousel() {
       secondaryCtaLink: "/services/civic-projects",
       badgeText: "Precision CNC Metalworks & GeM Certified",
       theme: "light",
-      renderVisual: () => (
-        <div className="w-full flex flex-col items-center justify-center">
-          <div className="w-20 h-20 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-md group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300 mb-4">
-            <UploadCloud className="w-10 h-10 stroke-[1.5]" />
-          </div>
-          <h3 className="font-mono text-base sm:text-lg font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
-            Full Bleed PNG Hero Asset 3: Industrial Fabrication &amp; Civic Projects
-          </h3>
-          <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed mt-2 max-w-sm font-sans">
-            Designer to place transparent or styled PNG render here (e.g.{" "}
-            <code className="px-1.5 py-0.5 rounded bg-[var(--color-canvas-base)] text-[var(--color-accent-gold)] font-mono text-[11px] border border-[var(--color-border-subtle)]">
-              /public/images/hero-slide-industrial-civic.png
-            </code>
-            , 1200×900 or 1920×1080).
-          </p>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)]/80 text-[11px] font-mono text-[var(--color-ink-secondary)] shadow-2xs mt-4">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-            <span>Format: Transparent PNG • High-Res 300 DPI</span>
-          </div>
-        </div>
-      ),
+      cutoutImage: "/images/hero/hero-cutout-industrial-cnc.png",
+      specs: "5-Axis CNC Laser • 5.0mm Solid Brass • GeM Tender Certified",
     },
   ];
 
@@ -195,33 +134,39 @@ export function HeroCarousel() {
       aria-label="Frame Cottage Studio Showcase"
       data-testid="hero-carousel"
       id="hero-image-carousel"
-      className="relative w-full bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="relative w-full min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh] bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 flex flex-col justify-between"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      {/* Subtle Atmospheric Studio Glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,var(--color-accent-gold)/6%,transparent_70%)] blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,var(--background)_100%)] opacity-70" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14 w-full flex-1 flex flex-col justify-between relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
             data-testid="hero-carousel-slide"
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full flex-1 flex flex-col items-center justify-center text-center space-y-6 sm:space-y-8"
           >
-            {/* Left Column: Editorial Headline & Actions */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+            {/* Editorial Headline & Studio CTAs */}
+            <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-4">
               {/* Eyebrow Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] shadow-2xs">
                 <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>{active.eyebrow}</span>
               </div>
 
-              {/* Apple-grade Display Typography */}
+              {/* Apple-grade Serif Display Typography */}
               <h1
                 data-testid="hero-headline"
                 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--color-ink-primary)] leading-[1.08]"
@@ -232,13 +177,13 @@ export function HeroCarousel() {
               {/* Subheadline */}
               <p
                 data-testid="hero-subheadline"
-                className="text-base sm:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-2xl"
+                className="text-sm sm:text-base lg:text-lg text-[var(--color-ink-secondary)] leading-relaxed max-w-2xl font-sans"
               >
                 {active.subtitle}
               </p>
 
-              {/* Dual CTA Button Group */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              {/* Dual CTA Button Group + Trust Badge */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
                 <Link
                   href={active.primaryCtaLink}
                   data-testid="cta-customise-frame"
@@ -255,45 +200,65 @@ export function HeroCarousel() {
                 >
                   <span>{active.secondaryCtaText}</span>
                 </Link>
-              </div>
 
-              {/* Trust Micro-Badge */}
-              <div className="pt-2 flex items-center gap-2 text-xs text-[var(--color-ink-secondary)] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>{active.badgeText}</span>
+                {/* Trust Micro-Badge */}
+                <div className="sm:ml-2 inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[var(--color-canvas-subtle)]/60 border border-[var(--color-border-subtle)]/60 text-xs text-[var(--color-ink-secondary)] font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
+                  <span className="truncate max-w-[240px] sm:max-w-none">{active.badgeText}</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Spatial Designer Container Stage with Prominent Dashed Box */}
-            <div className="lg:col-span-5 relative w-full flex items-center justify-center">
-              <div
-                data-testid="hero-png-dropzone"
-                className="w-full min-h-[380px] sm:min-h-[460px] border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-3xl bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-between text-center p-6 sm:p-10 group hover:border-[var(--color-accent-gold)] transition-colors duration-300 relative overflow-hidden backdrop-blur-xs"
-              >
-                {/* Top Bar with Badge and Aspect Ratio Tag */}
-                <div className="flex items-center justify-between gap-3 w-full mb-4 z-10">
+            {/* Full-Stage Designer PNG Dropzone Canvas with Placed High-Resolution Transparent Cutout */}
+            <div
+              data-testid="hero-png-dropzone"
+              className="w-full relative border-2 border-dashed border-[var(--color-border-strong)]/40 rounded-3xl p-4 sm:p-6 bg-[var(--color-canvas-subtle)]/40 backdrop-blur-xs flex flex-col justify-between group hover:border-[var(--color-accent-gold)]/70 transition-colors duration-300 shadow-xl overflow-hidden"
+            >
+              {/* Top Specification Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-3 w-full pb-3 border-b border-dashed border-[var(--color-border-strong)]/30 text-xs font-mono">
+                <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wider bg-[var(--color-canvas-base)]/80 text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)]">
                     <Sparkles className="w-3.5 h-3.5" />
                     Hero Asset Drop Zone
                   </span>
-                  <div className="text-[11px] font-mono text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-base)]/40">
-                    16:9 Full Bleed • 1920×1080 / 1200×900
-                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--color-canvas-base)]/60 text-[var(--color-ink-secondary)] text-[11px] border border-[var(--color-border-subtle)]/60">
+                    Asset: <code className="text-[var(--color-accent-gold)]">{active.cutoutImage}</code>
+                  </span>
                 </div>
 
-                {/* Center Visual / Artwork Canvas */}
-                <div className="relative w-full flex flex-col items-center justify-center my-auto z-10">
-                  {active.renderVisual()}
-                  <span className="sr-only">Designer Canvas Drop Zone</span>
+                <div className="flex items-center gap-2 text-[11px] text-[var(--color-ink-muted)]">
+                  <span className="px-2.5 py-1 rounded-full bg-[var(--color-canvas-base)]/50 border border-dashed border-[var(--color-border-strong)]/50">
+                    Full Bleed Stage • 1400×1050 Master
+                  </span>
+                  <span className="hidden md:inline-block px-2.5 py-1 rounded-full bg-[var(--color-canvas-base)]/50 border border-[var(--color-border-subtle)]">
+                    {active.specs}
+                  </span>
                 </div>
+              </div>
 
-                {/* Bottom Bar: Specifications & Drop Zone Guides */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4 mt-4 border-t border-dashed border-[var(--color-border-strong)]/40 w-full z-10 text-[11px] font-mono text-[var(--color-ink-muted)]">
+              {/* Center Stage: High-Resolution Transparent Cutout PNG Showcase */}
+              <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[480px] flex items-center justify-center my-3 sm:my-5 overflow-visible">
+                <Image
+                  src={active.cutoutImage}
+                  alt={active.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  className="object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+                  priority
+                />
+              </div>
+
+              {/* Bottom Specification & Format Bar */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 border-t border-dashed border-[var(--color-border-strong)]/30 w-full text-[11px] font-mono text-[var(--color-ink-muted)]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
+                  <span>Format: Transparent PNG • High-Res 300 DPI</span>
+                </div>
+                <div className="flex items-center gap-3">
                   <span className="truncate">{active.badgeText}</span>
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-                    <span>Format: Transparent PNG • High-Res 300 DPI</span>
-                  </div>
+                  <span className="hidden sm:inline text-[var(--color-accent-gold)] font-medium">
+                    True Alpha Channel Cutout
+                  </span>
                 </div>
               </div>
             </div>
@@ -303,7 +268,7 @@ export function HeroCarousel() {
         {/* Carousel Navigation Bar (Bottom Controls) */}
         <div
           data-testid="hero-carousel-indicators"
-          className="mt-8 pt-6 border-t border-[var(--color-border-subtle)] flex items-center justify-between"
+          className="mt-6 pt-5 border-t border-[var(--color-border-subtle)] flex items-center justify-between w-full"
         >
           {/* Slide Indicator Dots */}
           <div className="flex items-center gap-2">
@@ -322,6 +287,13 @@ export function HeroCarousel() {
                 )}
               />
             ))}
+          </div>
+
+          {/* Slide Progress / Counter */}
+          <div className="text-xs font-mono text-[var(--color-ink-muted)] tracking-wider">
+            <span className="text-[var(--color-accent-gold)] font-bold">0{currentSlide + 1}</span>
+            <span className="mx-1 opacity-50">/</span>
+            <span>0{totalSlides}</span>
           </div>
 
           {/* Previous / Next Arrows */}

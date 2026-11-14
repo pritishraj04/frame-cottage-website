@@ -166,5 +166,12 @@
     "category": "ui-navigation-redesign",
     "specFilePath": ".agent/tasks/TASK-24.json",
     "passes": true
+  },
+  {
+    "id": "TASK-25",
+    "title": "Full PNG Hero Carousel with Transparent Cutouts Placed",
+    "category": "ui-hero-full-png",
+    "specFilePath": ".agent/tasks/TASK-25.json",
+    "passes": true
   }
 ]

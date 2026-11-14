@@ -2,13 +2,35 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 01:21
-**Tasks Completed:** 24 / 24
-**Current Task:** TASK-24 Complete (Redesign Site Header Navigation to Orthodox Luxury Studio Architecture)
+**Last Updated:** 2026-11-15 01:32
+**Tasks Completed:** 25 / 25
+**Current Task:** TASK-25 Complete (Full PNG Hero Carousel with Transparent Cutouts Placed)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed
+- Context & Objective: Per user directive ("hero section carousel should be full png. place the cutout for now."), re-architected `components/hero/hero-carousel.tsx` from a split two-column box into a unified, Apple-grade Full-Stage Full-PNG Hero Canvas (`min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh]`).
+- Transparent PNG Asset Generation (`scripts/generate-hero-cutouts.mjs`):
+  1. `public/images/hero/hero-cutout-bespoke-framing.png`: High-res (1440×1632) transparent alpha cutout of an archival Appalachian walnut frame with fine art giclée botanical print (*Ginkgo biloba L.*), 4-ply cotton rag mat, gold fillet, splined miter corners, and realistic drop shadow.
+  2. `public/images/hero/hero-cutout-spatial-signage.png`: High-res (1880×1280) transparent alpha cutout of 3D architectural signage with illuminated LED channel letters ("ATELIER STUDIO 01"), brushed aero-grade 6061-T6 aluminum finish, and architectural standoffs.
+  3. `public/images/hero/hero-cutout-industrial-cnc.png`: High-res (1720×1440) transparent alpha cutout of a precision CNC laser-cut architectural brass screen with intricate geometric lattice and countersunk hex fasteners.
+- Full-Stage Hero Re-architecture (`components/hero/hero-carousel.tsx`):
+  - Converted layout to a unified Full-Stage Canvas with atmospheric radial studio glow and responsive stage dimensions.
+  - Placed transparent cutout assets into `hero-png-dropzone` using Next.js `<Image fill priority />` with smooth hover scale (`hover:scale-[1.02]`) and drop shadow.
+  - Maintained clear designer labels: `Hero Asset Drop Zone`, asset file path badge, and `Format: Transparent PNG • High-Res 300 DPI` specifications.
+  - Beautifully integrated editorial typography: serif headline (`hero-headline`), studio subheadline (`hero-subheadline`), category eyebrow pills with icons (`Sparkles`, `Compass`, `Cpu`), dual CTAs (`cta-customise-frame`, `cta-explore-collections`), and craftsmanship trust badge.
+  - Retained carousel controls: `hero-carousel-prev`, `hero-carousel-next`, indicator dots (`hero-carousel-indicators`), touch swipe handlers, and Framer Motion `AnimatePresence`.
+- Verification & Test Results:
+  - `npm run build`: Compiled successfully in ~1s with 0 errors; 13/13 static routes generated.
+  - Automated test spec: `tests/task-25-hero.spec.ts` passing.
+  - Specific test suites: `tests/hero-switcher.spec.ts`, `tests/task-23-dropzones.spec.ts`, and `tests/task-24-header.spec.ts` passing.
+  - Full Playwright test suite: **67/67 tests passed (100% pass rate)** in 45.1s.
+- Visual Proof Screenshots (saved to `.agent/screenshots/` and copied to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-25-hero-full-png-dark.png` (205 KB)
+  - `task-25-hero-full-png-light.png` (221 KB)
+  - `task-25-hero-full-png-mobile.png` (127 KB)
 
 ### 2026-11-15 - TASK-24: Redesign Site Header Navigation to Orthodox Luxury Studio Architecture
 - Context & Objective: Per user directive ("The nav bar is so un orthodox the logo is pushed to the right. What to do? Fix it redesign it properly"), overhauled `components/navigation/site-header.tsx` to implement canonical, balanced luxury studio header architecture. Previously, the desktop navigation was wrapped in a left `flex-1` container, pushing the brand wordmark into the center-right of the viewport.
