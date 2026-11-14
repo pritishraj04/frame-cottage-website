@@ -131,5 +131,12 @@
     "category": "ui-restoration-animation",
     "specFilePath": ".agent/tasks/TASK-19.json",
     "passes": true
+  },
+  {
+    "id": "TASK-20",
+    "title": "Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals",
+    "category": "commercial-rfq-portal",
+    "specFilePath": ".agent/tasks/TASK-20.json",
+    "passes": true
   }
 ]

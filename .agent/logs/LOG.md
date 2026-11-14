@@ -2,13 +2,40 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 20:05
-**Tasks Completed:** 19 / 19
-**Current Task:** TASK-19 Complete (Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers)
+**Last Updated:** 2026-11-14 20:16
+**Tasks Completed:** 20 / 20
+**Current Task:** TASK-20 Complete (Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-20: Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals
+- Context & Objective: Per user request ("make the next most important page you decide"), built the enterprise-grade **Project Specification & RFQ / RFP Portal** at `app/rfq/page.tsx` (`"use client"`). The studio delivers end-to-end spatial, industrial, and aesthetic solutions across 6 Core Service Verticals for B2C, B2B, and public sector clients. The primary commercial conversion point referenced throughout the entire platform (announcement bar, mega-menu, mobile navigation drawer, framing journey, FAQ, and footer) is `/rfq`.
+- Deliverables Implemented:
+  1. `lib/constants/rfq.ts`:
+     - Typed models for Client Tiers (`b2c`, `b2b`, `public`), 6 Core Service Verticals, Substrate Materials (Solid Appalachian Hardwoods, Architectural Metals, TruVue® UV99 Acrylic, K9 Optical Crystal, Engineered Acrylics), Technical Capabilities (3D Spatial Modeling, CNC ±0.1mm, Fine Art Printing, On-Site Rigging, Institutional Crating), Volume Tiers (Prototype 1-10, Batch 10-100, Commercial 100-1,000, Enterprise/Tender 1,000-10,000+), and Delivery Timelines (<2w, 3-4w, Phased).
+  2. `app/rfq/page.tsx` (`"use client"`):
+     - Renders `<SiteHeader />` at top and `<SiteFooter />` at bottom with sticky navigation and theme support.
+     - Editorial header with Playfair Display serif title, breadcrumb navigation (`Home / Studio Services / Project Specification & RFQ Portal`), and quick tier filter badges (`B2C Residential`, `B2B Enterprise`, `Public Sector & GeM`).
+     - Framer Motion animated 5-step progress indicator and smooth `AnimatePresence` step containers:
+       - **Step 1: Client Category**: B2C Residential, B2B Enterprise & Architecture, Public Sector & GeM.
+       - **Step 2: Core Service Verticals Multi-Select**: Multi-card selection across all 6 verticals with validation.
+       - **Step 3: Materials & Technical Capabilities**: 5 substrate materials toggles + 5 studio capability toggles.
+       - **Step 4: Project Scope, Timeline & Blueprint Upload**: Volume selection, delivery schedule, optional GeM Tender Reference ID, and spatial dashed blueprint drop zone for CAD/DWG, PDF, STEP, TIFF, and PNG files with interactive file removal.
+       - **Step 5: Client Details & Submission**: Full name, organization, email, phone, location, and technical notes form with validation.
+     - **Live Project Scope Summary Sidebar**: Real-time updating sidebar reflecting selected tier, verticals, materials count, volume, timeline, attached blueprints, and 24-hour studio review guarantee.
+     - **Success State**: Displays generated Project RFQ Reference ID (`FC-RFQ-2026-XXXXX`), assigned Senior Studio Lead (Vikram Singhania), downloadable PDF/JSON specification summary, direct consultation booking confirmation, and form reset.
+  3. `tests/rfq-portal.spec.ts`:
+     - Automated test suite covering navigation, tier switching, multi-vertical selection, materials toggles, scope & blueprints, live summary updates, form submission with reference ID generation, mobile overflow check (390x844), and dark/light mode adaptability.
+- Verification & Quality:
+  - All 52 Playwright automated tests pass (52/52 tests, 100% pass rate) with 0 failures across the complete studio test suite.
+  - Next.js Turbopack production build succeeds with 0 errors (`npm run build`).
+  - Captured full-page visual screenshots in `.agent/screenshots/` and parent brain directory:
+    - Desktop Dark Mode: `task-20-rfq-portal-dark.png` (350KB)
+    - Desktop Light Mode: `task-20-rfq-portal-light.png` (390KB)
+    - Mobile (390x844): `task-20-rfq-portal-mobile.png` (303KB)
+  - Zero horizontal overflow across mobile viewports (`scrollWidth <= clientWidth`, 390px).
 
 ### 2026-11-14 - TASK-19: Restore Complete Suite of 11 Studio Sections with Framer Motion Fluid Animations and Spatial Designer Containers
 - Context & Objective: Per user feedback ("where is rest of the sections. its too less now."), restored the complete, rich, multi-disciplinary studio homepage experience on `app/page.tsx` with all 11 core sections plus sticky header and footer, elevated with Framer Motion fluid scroll-entry animations (`motion.div` with `initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} variants={fadeUp}`), AnimatePresence crossfade & scale on the Hero Carousel, and spatial designer drop zones.

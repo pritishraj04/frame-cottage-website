@@ -1,0 +1,54 @@
+{
+  "id": "TASK-20",
+  "title": "Build Project Specification & RFQ / RFP Portal Across 6 Service Verticals",
+  "category": "commercial-rfq-portal",
+  "description": "Per user request to build the next most important page ('make the next most important page you decide'), engineered the enterprise-grade Project Specification & RFQ / RFP Portal at `app/rfq/page.tsx` ('use client'). As the primary commercial conversion gateway linked across the announcement bar, mega-menu, mobile navigation drawer, framing journey, FAQ, and footer, this portal connects residential art collectors (B2C), commercial architects & enterprises (B2B), and public sector institutions (GeM compliant tenders) directly with Frame Cottage's engineering, fabrication, and archival framing capabilities. Features an interactive 5-step specification builder powered by Framer Motion: 1. Client Tier Selection (B2C, B2B, Public Sector); 2. Core Service Verticals Multi-Select across the 6 exact studio verticals; 3. Materials (Solid Appalachian Hardwoods, Architectural Metals, TruVue® UV99 Acrylic, K9 Optical Crystal, Engineered Acrylics) and Technical Capabilities (3D Spatial Modeling, CNC ±0.1mm, Fine Art Printing, On-Site Rigging, Institutional Crating); 4. Project Scope (Volume 1-10, 10-100, 100-1,000, 1,000-10,000+), Timeline (<2w, 3-4w, Phased), GeM Tender ID input, and Blueprint/Artwork CAD/DWG drop zone; 5. Client Details Form with a Live Project Scope Summary sidebar that updates dynamically. Upon submission, generates an official Project RFQ Reference ID, assigns Senior Studio Lead Vikram Singhania, provides client-side downloadable PDF/JSON summary, direct consultation booking, and complete reset capabilities. Full test suite passes 100% (52/52 tests) and Next.js Turbopack build succeeds with 0 errors.",
+  "acceptanceCriteria": [
+    "Dedicated interactive client route app/rfq/page.tsx marked 'use client' with SiteHeader and SiteFooter",
+    "Editorial header with Playfair Display typography, breadcrumbs (Home / Studio Services / RFQ Portal), and client tier badges (B2C Residential, B2B Enterprise, Public Sector & GeM)",
+    "Framer Motion animated 5-step progress indicator and smooth AnimatePresence transition containers",
+    "Step 1: Client Category selection across B2C Residential, B2B Enterprise, and Public Sector & GeM",
+    "Step 2: Core Service Verticals multi-select across all 6 studio verticals (Retail Framing, Bespoke Framing, Spatial Signage, Industrial CNC, Custom Gifting, Civic Projects)",
+    "Step 3: Substrate Materials (Appalachian Hardwoods, Architectural Metals, TruVue® UV99 Glazing, K9 Crystal, Engineered Acrylics) and Technical Capabilities (3D BIM Modeling, CNC ±0.1mm, Giclée Printing, On-Site Rigging, Institutional Crating)",
+    "Step 4: Scope volume scale (1-10, 10-100, 100-1,000, 1,000-10,000+), delivery timeline (<2w, 3-4w, Phased), optional GeM Tender Reference ID, and spatial dashed blueprint drop zone",
+    "Step 5: Client contact form with real-time updating Live Project Scope Summary sidebar",
+    "Interactive submission with loading state, generating official Project RFQ Reference ID (FC-RFQ-2026-XXXXX), assigned Senior Studio Lead, downloadable JSON/PDF summary, and consultation scheduler",
+    "Full compatibility with Museum Dark Mode (#1A1A1A) and Warm Museum Light Mode (#FAF8F5)",
+    "Zero horizontal overflow across mobile viewports (390x844)",
+    "Automated Playwright test suite in tests/rfq-portal.spec.ts passing 100% (9/9 tests, full suite 52/52 tests)",
+    "Next.js Turbopack build succeeds with 0 errors",
+    "High-resolution screenshots captured in .agent/screenshots/ and brain directories for Desktop Dark, Desktop Light, and Mobile"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Establish RFQ constants, types, and data models",
+      "details": "Created lib/constants/rfq.ts defining typed client tier options, core service verticals, substrate materials, technical capabilities, volume scales, and production timelines with Lucide icons.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build interactive multi-step RFQ portal at app/rfq/page.tsx",
+      "details": "Engineered 'use client' app/rfq/page.tsx with SiteHeader, SiteFooter, breadcrumbs, client tier badges, 5-step progress indicator, Framer Motion AnimatePresence step transitions, blueprint drop zone, live scope summary sidebar, and post-submission success state with consultation scheduler.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Author comprehensive Playwright automated test suite in tests/rfq-portal.spec.ts",
+      "details": "Authored tests/rfq-portal.spec.ts covering navigation, tier switching, multi-vertical selection, materials toggles, scope & blueprints, live summary updates, form submission with reference ID generation, mobile overflow check, and dark/light mode adaptability.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Execute Playwright test suite and verify build",
+      "details": "Ran npm run build (0 errors) and npx playwright test tests/rfq-portal.spec.ts (9/9 passed). Ran full Playwright test suite across all 52 tests with 100% pass rate.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Capture visual proof screenshots in .agent/screenshots and brain directory",
+      "details": "Captured Desktop Dark, Desktop Light, and Mobile (390x844) full-page screenshots to .agent/screenshots/ and /Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/.",
+      "pass": true
+    }
+  ]
+}
