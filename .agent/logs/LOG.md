@@ -2,13 +2,21 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-14 10:34
-**Tasks Completed:** 8 / 8
-**Current Task:** TASK-8 Complete (All Milestone Tasks Passing)
+**Last Updated:** 2026-11-14 11:44
+**Tasks Completed:** 9 / 9
+**Current Task:** TASK-9 Complete (Apple Redesign, Hero Carousel & Reordering)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-14 - TASK-9: Redesign with Apple Ecosystem Typography, Premium Palette, Responsive Hero Carousel, and Frame Studio Reordering
+- Applied Apple ecosystem design tokens: `#F5F5F7` clean ceramic surface, `#1D1D1F` off-black typography, `#86868B` secondary text, and `#D2D2D7` hairline borders.
+- Configured Apple system typography stack: `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", sans-serif` with tight headline tracking.
+- Built responsive `HeroCarousel` with 3 curated lifestyle slides, mobile swipe gesture support, glassmorphism frosted controls, and animated pill timer indicators.
+- Repositioned the interactive frame switcher directly below the hero carousel as `CustomFrameStudio`.
+- Harmonized all 10 page components to the Apple ceramic luxury standard.
+- 30/30 Playwright tests passing. Captured full-page verification screenshot: `.agent/screenshots/task-9-apple-redesign.png`.
 
 ### 2026-11-14 - TASK-8: Customer UGC Lookbook, Accessible FAQ Accordion, Footer and E2E Smoke Test
 - Built `components/home/customer-lookbook.tsx` with room tabs (Salon Wall, Dining Credenza, Minimalist Bedside) and interactive hotspot pins on framed art.
@@ -46,8 +54,8 @@
 - Playwright verified: 5/5 tests passing. Screenshot: `.agent/screenshots/task-3-header-megamenu.png`.
 
 ### 2026-11-14 - TASK-2: Artisanal Design Tokens and Typography Hierarchy
-- Updated `app/globals.css` with warm parchment palette (`#FAF7F2`), deep espresso ink (`#191614`), and frame shadow variables.
-- Configured Google Fonts (`Playfair Display` + `Geist Sans`) in `app/layout.tsx`.
+- Updated `app/globals.css` with warm parchment palette, deep espresso ink, and frame shadow variables.
+- Configured Google Fonts in `app/layout.tsx`.
 - Playwright verified: 1/1 test passing. Screenshot: `.agent/screenshots/task-2-design-tokens.png`.
 
 ### 2026-11-14 - TASK-1: Verify project prerequisites and setup dependencies
