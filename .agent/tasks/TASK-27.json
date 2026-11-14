@@ -1,0 +1,71 @@
+{
+  "id": "TASK-27",
+  "title": "Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge",
+  "category": "interactive-decision-concierge",
+  "description": "Per user directive ('add a whatsapp button at the bottom right corner and also i want to develop someting interactive to help user with the desisions'), built and integrated two flagship interactive capabilities: (1) Floating WhatsApp Studio Button (components/interactive/whatsapp-button.tsx) fixed at bottom-right (z-50) with emerald green/gold ambient pulse beacon, online consultant status indicator, quick consultation shortcuts, and instant link to WhatsApp (wa.me/919876543210); and (2) Interactive Project & Material Decision Concierge (components/interactive/decision-concierge.tsx) with a 3-step decision flow (Scope & Application, Environment & Lighting, Material & Aesthetic Tone) leading to a tailored specification blueprint card, dedicated dashed PNG drop zone container, direct RFQ portal transfer (/rfq?vertical=...), and WhatsApp consultation deep link. Integrated into app/layout.tsx and app/page.tsx. Full test suite (72/72 tests) passes with 100% pass rate and 0 build errors.",
+  "acceptanceCriteria": [
+    "Floating WhatsApp Studio Button fixed at bottom-right (fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50) with emerald green (#25D366) and gold accents (#C5A059)",
+    "Floating button features soft ambient pulse beacon ring and active status dot",
+    "Clicking or toggling button opens luxury studio consultation popover card (data-testid='whatsapp-popover') with 'Studio Consultant Online' and 'Average reply time: < 15 min'",
+    "Direct WhatsApp CTA links to https://wa.me/919876543210 with consultation query parameters and opens in new tab with secure attributes",
+    "Quick shortcuts provide one-tap links for Bespoke Framing, Spatial Signage & CNC, and smooth scrolling to Decision Concierge",
+    "WhatsAppButton added to app/layout.tsx to float gracefully across all site pages",
+    "Interactive Decision Concierge (components/interactive/decision-concierge.tsx) built with section id and testid 'decision-concierge'",
+    "Concierge features 3-step decision helper: Step 1 (Architectural Scope), Step 2 (Environmental Lighting & Exposure), and Step 3 (Tactile & Aesthetic Tone)",
+    "Step 4 Tailored Studio Recommendation displays matched service vertical, audience badge, substrate, glazing, joinery, budget range, and turnaround time",
+    "Tailored recommendation includes dedicated dashed PNG drop zone container (data-testid='concierge-dropzone') for 1:1 aspect ratio transparent PNG renders",
+    "Dual action buttons: 'Configure in RFQ Portal' transfers with pre-selected vertical (/rfq?vertical=...) and 'Consult on WhatsApp' deep-links with pre-filled quiz summary",
+    "'Retake Decision Quiz' resets state cleanly to Step 1",
+    "PNG-styled spatial canvas architecture with dashed borders (border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-3xl bg-[var(--color-canvas-subtle)]/50)",
+    "Integrated into app/page.tsx as a flagship storefront section",
+    "Comprehensive Playwright test spec tests/task-27-interactive.spec.ts verifies button visibility, popover interaction, link targets, multi-step concierge flow, RFQ transfer, theme adaptability, and mobile responsiveness (390x844)",
+    "High-res visual proof screenshots captured: task-27-whatsapp-and-concierge-dark.png, task-27-whatsapp-and-concierge-light.png, task-27-concierge-results-dark.png, and task-27-concierge-mobile.png saved in .agent/screenshots/ and parent brain directory",
+    "npm run build compiles with 0 TypeScript and 0 build errors across 13/13 static routes",
+    "Full Playwright test suite passes with 100% pass rate (72/72 passed in 56.2s)"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Design and build Floating WhatsApp Studio Button",
+      "details": "Created components/interactive/whatsapp-button.tsx with emerald green (#25D366) and gold (#C5A059) styling, ambient pulse rings, active presence beacon, accessible controls (data-testid='whatsapp-floating-btn'), and expandable studio popover card (data-testid='whatsapp-popover') with direct chat CTA and quick shortcuts.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Add WhatsAppButton to root layout",
+      "details": "Imported and integrated <WhatsAppButton /> into app/layout.tsx inside body so the luxury consultation floating action is available across every page.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Design and build Interactive Decision & Material Concierge",
+      "details": "Created components/interactive/decision-concierge.tsx with 3-step decision flow, AnimatePresence transitions, dynamic recommendation engine, tailored specification matrix, dedicated dashed PNG drop zone, RFQ portal link (/rfq?vertical=...), WhatsApp deep link, and retake quiz reset.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Integrate DecisionConcierge into storefront home page",
+      "details": "Imported and placed <DecisionConcierge /> in app/page.tsx with id='decision-concierge' and data-testid='decision-concierge' with Framer Motion whileInView fadeUp reveal.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Create automated Playwright test suite tests/task-27-interactive.spec.ts",
+      "details": "Wrote 3 comprehensive test specs covering floating button visibility and popover interaction, concierge multi-step decision flow, recommendation assertions, RFQ URL parameters, WhatsApp link targets, reset flow, dark/light theme switching, and mobile viewport zero horizontal overflow.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Capture high-resolution visual proof screenshots",
+      "details": "Captured task-27-whatsapp-and-concierge-dark.png, task-27-whatsapp-and-concierge-light.png, task-27-concierge-results-dark.png, and task-27-concierge-mobile.png to .agent/screenshots/ and copied to /Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/.",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Run quality gates: npm run build and full Playwright test suite",
+      "details": "Compiled production build with 0 errors across 13/13 static routes; ran full Playwright test suite with 100% pass rate (72/72 tests passed in 56.2s).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

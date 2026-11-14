@@ -2,13 +2,51 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 02:05
-**Tasks Completed:** 26 / 26
-**Current Task:** TASK-26 Complete (Fix Customer Lookbook Hotspot Card Bottom Clipping with Dynamic Directional Smart Popover Positioning)
+**Last Updated:** 2026-11-15 02:18
+**Tasks Completed:** 27 / 27
+**Current Task:** TASK-27 Complete (Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-27: Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge
+- Context & Objective: Per user directive ("add a whatsapp button at the bottom right corner and also i want to develop someting interactive to help user with the desisions"), designed, built, and verified two flagship interactive features:
+  1. **Floating WhatsApp Studio Consultation Button** (`components/interactive/whatsapp-button.tsx`):
+     - Anchored at bottom-right (`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50`).
+     - Emerald green (`#25D366`) and gold accent (`#C5A059`) studio styling with active pulse beacon rings.
+     - Accessible toggle button (`data-testid="whatsapp-floating-btn"`, `aria-label="Chat with Studio Consultant on WhatsApp"`).
+     - Studio consultation popover card (`data-testid="whatsapp-popover"`):
+       - "Studio Consultant Online" with pulsing active green beacon and "Average reply time: < 15 min".
+       - Master framer and fabrication consultant introductory bio.
+       - Direct WhatsApp CTA: "Open WhatsApp Chat" targeting `https://wa.me/919876543210?text=Hello%20Frame%20Cottage%20Studio%2C%20I%20would%20like%20to%20consult%20on%20a%20framing%20or%20spatial%20project.` with `target="_blank" rel="noopener noreferrer"`.
+       - Quick shortcuts: "Quick Inquire: Bespoke Framing", "Quick Inquire: Spatial Signage & CNC", and "Launch Decision Concierge" (smooth scrolls to `#decision-concierge`).
+     - Added `<WhatsAppButton />` to `app/layout.tsx` so it floats gracefully across every page of the application.
+  2. **Interactive Project & Material Decision Concierge** (`components/interactive/decision-concierge.tsx`):
+     - Section ID & Test ID: `decision-concierge`.
+     - Full PNG-styled spatial canvas architecture with dashed borders (`border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-3xl bg-[var(--color-canvas-subtle)]/50`).
+     - Framer Motion `AnimatePresence` directional transitions between steps.
+     - **Step 1: Project Scope & Application**: Options for Fine Art & Archival Heirlooms (`bespoke-framing`), Commercial Headquarters & Wayfinding (`spatial-signage`), Architectural Screens & Metalworks (`industrial-cnc`), Corporate Awards & Mementos (`custom-gifting`), and Municipal Tenders & Civic Memorials (`civic-projects`).
+     - **Step 2: Environment & Lighting Conditions**: Options for High Daylight/UV Sun (`TruVue® Conservation Clear 99% UV Acrylic`), Gallery Showcase (`TruVue® Optium Museum Acrylic Anti-Reflective`), Exterior Architectural (`316 Marine Stainless with Ceramic Clearcoat`), and Executive Suite (`Appalachian Hardwood with 4-Ply Cotton Rag`).
+     - **Step 3: Material & Aesthetic Tone**: Options for Warm Hardwoods (Walnut/Oak), Hand-Burnished Heritage Metals (Brass/Bronze), Minimalist Modern Metal (6061-T6 Aluminum), and CNC Perforated Lattice.
+     - **Step 4: Tailored Studio Recommendation**:
+       - Tailored Specification Matrix: Substrate, Glazing, Joinery, Quality Guarantee, Estimated Budget Range, and Turnaround Lead Time.
+       - Dedicated Dashed PNG Drop Zone Container (`data-testid="concierge-dropzone"`): 1:1 Aspect Ratio Full-Bleed PNG asset container.
+       - Dual Instant Action Buttons: "Configure in RFQ Portal" (`/rfq?vertical=${id}`), "Consult on WhatsApp" (pre-filled summary deep link), and "Retake Decision Quiz" reset button.
+     - Integrated into `app/page.tsx` as a prominent interactive storefront section with whileInView reveal.
+- Verification & Test Results:
+  - `npm run build`: Compiled with 0 errors across 13/13 static routes in ~3.6s.
+  - Test Suite (`tests/task-27-interactive.spec.ts`):
+    - Floating button visibility, aria-labels, popover toggle, link targets (`https://wa.me/919876543210`).
+    - Multi-step flow: Step 1 -> Step 2 -> Step 3 -> Step 4 recommendation card, specifications, RFQ link (`/rfq?vertical=...`), WhatsApp deep link with quiz summary, and retake quiz reset to Step 1.
+    - Mobile responsiveness: 390×844 zero horizontal scroll and touch-ready popover.
+    - Theme switching: Museum Dark and Warm Light modes.
+  - Complete Playwright test suite: **72/72 tests passed (100% pass rate)** in 56.2s.
+- High-Resolution Proof Screenshots (saved to `.agent/screenshots/` and copied to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-27-whatsapp-and-concierge-dark.png`
+  - `task-27-whatsapp-and-concierge-light.png`
+  - `task-27-concierge-results-dark.png`
+  - `task-27-concierge-mobile.png`
 
 ### 2026-11-15 - TASK-26: Fix Customer Lookbook Hotspot Card Bottom Clipping with Dynamic Directional Smart Popover Positioning
 - Context & Objective: Per user directive ("Living with Craft • Real Homes section when we click on some of the selection the info box gets cliiped at the bottom of the container fix that."), resolved bottom clipping of the hotspot info box in `CustomerLookbook` (`components/home/customer-lookbook.tsx`).

@@ -180,5 +180,12 @@
     "category": "ui-lookbook-fix",
     "specFilePath": ".agent/tasks/TASK-26.json",
     "passes": true
+  },
+  {
+    "id": "TASK-27",
+    "title": "Implement Floating WhatsApp Consultation Button and Interactive Project & Material Decision Concierge",
+    "category": "interactive-decision-concierge",
+    "specFilePath": ".agent/tasks/TASK-27.json",
+    "passes": true
   }
 ]

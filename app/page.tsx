@@ -13,6 +13,7 @@ import { FeaturedProductsCarousel } from "@/components/home/featured-products-ca
 import { FramingJourney } from "@/components/home/framing-journey";
 import { CustomerLookbook } from "@/components/home/customer-lookbook";
 import { FAQSection } from "@/components/home/faq-section";
+import { DecisionConcierge } from "@/components/interactive/decision-concierge";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 const fadeUp: Variants = {
@@ -171,7 +172,18 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* 9. 4-Stage End-to-End Studio Execution Workflow */}
+        {/* 9. Interactive Project & Material Decision Concierge */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeUp}
+          className="w-full"
+        >
+          <DecisionConcierge />
+        </motion.div>
+
+        {/* 10. 4-Stage End-to-End Studio Execution Workflow */}
         <motion.div
           initial="hidden"
           whileInView="visible"
