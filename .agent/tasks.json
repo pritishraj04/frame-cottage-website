@@ -46,7 +46,7 @@
     "title": "Build 3-Step Framing Journey and The Atelier Material Story",
     "category": "ui-storytelling",
     "specFilePath": ".agent/tasks/TASK-7.json",
-    "passes": false
+    "passes": true
   },
   {
     "id": "TASK-8",

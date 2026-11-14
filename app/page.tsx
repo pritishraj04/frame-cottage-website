@@ -3,6 +3,8 @@ import { HeroContainer } from "@/components/hero/hero-container";
 import { CategoryPills } from "@/components/home/category-pills";
 import { TrustBar } from "@/components/home/trust-bar";
 import { CuratedCollections } from "@/components/home/curated-collections";
+import { FramingJourney } from "@/components/home/framing-journey";
+import { AtelierMaterials } from "@/components/home/atelier-materials";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
         <CategoryPills />
         <TrustBar />
         <CuratedCollections />
+        <FramingJourney />
+        <AtelierMaterials />
       </main>
     </div>
   );

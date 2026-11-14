@@ -1,0 +1,32 @@
+{
+  "id": "TASK-7",
+  "title": "Build 3-Step Framing Journey and The Atelier Material Story",
+  "category": "ui-storytelling",
+  "description": "Create the illustrated 3-step custom framing journey and the Atelier craftsmanship showcase, featuring split material transparency and an interactive conservation glass comparison slider.",
+  "acceptanceCriteria": [
+    "3-Step Framing Journey clearly illustrates Upload/Send, Customise, and Ready-to-Hang with numbered steps",
+    "The Atelier section highlights corner spline joinery and FSC-certified sustainable timber sourcing",
+    "Interactive comparison slider demonstrates Standard Glare-Prone Glass vs TruVue Museum Conservation Acrylic",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Build FramingJourney visual steps",
+      "details": "Create components/home/framing-journey.tsx with elegant card anatomy and subtle step connectors.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build AtelierMaterials and GlassComparisonSlider",
+      "details": "Create components/home/atelier-materials.tsx with interactive before/after glare slider.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Verify slider and story sections in browser",
+      "details": "Run Playwright test and capture screenshot.",
+      "pass": true
+    }
+  ]
+}
