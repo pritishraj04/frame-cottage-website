@@ -1,0 +1,33 @@
+{
+  "id": "TASK-6",
+  "title": "Build Curated Collections with Dual-State In-Situ Product Cards",
+  "category": "ui-catalog",
+  "description": "Implement the Curated Collections product grid featuring dual-state cards inspired by India Circus: clean studio frame cutout on rest transitioning smoothly to styled living room in-situ photography on hover.",
+  "acceptanceCriteria": [
+    "Product cards render crisp studio cutout imagery on default rest state",
+    "Hovering smoothly cross-fades to a styled interior room view showing the frame hung in context",
+    "Cards display standard dimensions (8x10, 11x14, 16x20, 24x36), starting price tags, and Quick View trigger",
+    "Quick Customize drawer opens with pre-selected moulding for 1-click configuration",
+    "Verify in browser using Playwright"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Create FrameCard component with dual-state image swap",
+      "details": "Build components/home/frame-card.tsx with Next.js Image optimization and cross-fade transition.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Build CuratedCollections grid",
+      "details": "Create components/home/curated-collections.tsx displaying curated sets (The Minimalist, The Heritage, The Gallery Wall).",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Visual smoke check for card hover states",
+      "details": "Verify hover micro-interactions in Playwright and save screenshot.",
+      "pass": true
+    }
+  ]
+}

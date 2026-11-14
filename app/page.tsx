@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/navigation/site-header";
 import { HeroContainer } from "@/components/hero/hero-container";
 import { CategoryPills } from "@/components/home/category-pills";
 import { TrustBar } from "@/components/home/trust-bar";
+import { CuratedCollections } from "@/components/home/curated-collections";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <HeroContainer />
         <CategoryPills />
         <TrustBar />
+        <CuratedCollections />
       </main>
     </div>
   );

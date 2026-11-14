@@ -39,7 +39,7 @@
     "title": "Build Curated Collections with Dual-State In-Situ Product Cards",
     "category": "ui-catalog",
     "specFilePath": ".agent/tasks/TASK-6.json",
-    "passes": false
+    "passes": true
   },
   {
     "id": "TASK-7",
