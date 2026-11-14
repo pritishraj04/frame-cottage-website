@@ -350,7 +350,7 @@ export function HeroCarousel() {
       aria-label="Frame Cottage Bespoke Framing Hero Carousel"
       aria-roledescription="carousel"
       data-testid="hero-carousel"
-      className="relative w-full overflow-hidden bg-[#F5F5F7] border-b border-[#D2D2D7] h-[520px] sm:h-[600px] lg:h-[700px] flex items-center"
+      className="relative w-full overflow-hidden bg-[#1A1A1A] border-b border-[#333333] h-[520px] sm:h-[600px] lg:h-[700px] flex items-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -360,7 +360,7 @@ export function HeroCarousel() {
       {/* Background Subtle Ambient Lighting */}
       <div
         aria-hidden="true"
-        className="absolute top-0 right-1/4 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-[#E8E8ED] via-[#FFFFFF]/60 to-transparent blur-3xl pointer-events-none -z-10"
+        className="absolute top-0 right-1/4 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-[#6B1C23]/15 via-[#C5A059]/10 to-transparent blur-3xl pointer-events-none -z-10"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center relative z-10">
@@ -373,34 +373,34 @@ export function HeroCarousel() {
         >
           {/* Left Column: Editorial Headline, Subtitle, Dual CTAs & Trust Badge */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
-            {/* Apple-style Frosted Pill Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#D2D2D7] text-xs font-semibold uppercase tracking-[0.18em] text-[#1D1D1F] shadow-2xs backdrop-blur-md">
-              <EyebrowIcon className="w-3.5 h-3.5 text-[#B88E56]" />
+            {/* Museum-style Frosted Pill Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424]/90 border border-[#333333] text-xs font-semibold uppercase tracking-[0.18em] text-[#F4F1EA] shadow-2xs backdrop-blur-md">
+              <EyebrowIcon className="w-3.5 h-3.5 text-[#C5A059]" />
               <span>{activeSlide.eyebrow}</span>
             </div>
 
-            {/* Apple Ecosystem Clean Tight Headline */}
+            {/* Museum Serif Elegant Headline */}
             <h1
               data-testid="hero-headline"
-              className="font-sans text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.08]"
+              className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#F4F1EA] leading-[1.08]"
             >
               {activeSlide.title}
             </h1>
 
-            {/* Subheadline with Apple secondary tone */}
+            {/* Subheadline */}
             <p
               data-testid="hero-subheadline"
-              className="text-sm sm:text-base lg:text-lg text-[#86868B] leading-relaxed max-w-xl font-normal"
+              className="text-sm sm:text-base lg:text-lg text-[#E0E0E0] leading-relaxed max-w-xl font-normal"
             >
               {activeSlide.subtitle}
             </p>
 
-            {/* Dual CTAs in Apple signature style */}
+            {/* Dual CTAs in Museum Muted Gold and Rich Burgundy */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
               <Link
                 href={activeSlide.primaryCtaLink}
                 data-testid="cta-customise-frame"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1D1D1F] hover:bg-[#333336] text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow-md group cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md hover:shadow-lg group cursor-pointer"
               >
                 <span>{activeSlide.primaryCtaText}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -409,16 +409,16 @@ export function HeroCarousel() {
               <Link
                 href={activeSlide.secondaryCtaLink}
                 data-testid="cta-explore-collections"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#D2D2D7] hover:border-[#1D1D1F] bg-white/80 hover:bg-white text-[#1D1D1F] text-xs sm:text-sm font-medium backdrop-blur-md transition-all shadow-2xs cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#6B1C23] hover:border-[#C5A059] bg-[#6B1C23]/25 hover:bg-[#6B1C23]/40 text-[#F4F1EA] text-xs sm:text-sm font-medium backdrop-blur-md transition-all shadow-2xs cursor-pointer"
               >
                 <span>{activeSlide.secondaryCtaText}</span>
               </Link>
             </div>
 
             {/* Slide Sub-Badge Trust Signal */}
-            <div className="inline-flex items-center gap-2 pt-2 text-xs text-[#86868B]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#B88E56]" />
-              <span className="font-medium text-[#1D1D1F]">{activeSlide.badgeText}</span>
+            <div className="inline-flex items-center gap-2 pt-2 text-xs text-[#E0E0E0]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span className="font-medium text-[#F4F1EA]">{activeSlide.badgeText}</span>
               <span>• Handcrafted in 5–7 Days</span>
             </div>
           </div>
@@ -436,7 +436,7 @@ export function HeroCarousel() {
         onClick={prevSlide}
         aria-label="Previous slide"
         data-testid="hero-carousel-prev"
-        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/70 hover:bg-white text-[#1D1D1F] border border-[#D2D2D7]/80 backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#242424]/80 hover:bg-[#2A2A2A] text-[#F4F1EA] border border-[#333333] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
@@ -446,17 +446,17 @@ export function HeroCarousel() {
         onClick={nextSlide}
         aria-label="Next slide"
         data-testid="hero-carousel-next"
-        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/70 hover:bg-white text-[#1D1D1F] border border-[#D2D2D7]/80 backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#242424]/80 hover:bg-[#2A2A2A] text-[#F4F1EA] border border-[#333333] backdrop-blur-md flex items-center justify-center transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
 
-      {/* Apple-Style Bottom Pill Progress Indicators */}
+      {/* Museum-Style Bottom Pill Progress Indicators */}
       <div
         data-testid="hero-carousel-indicators"
         role="tablist"
         aria-label="Carousel slide pagination"
-        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-y-0 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#D2D2D7]/80 shadow-xs"
+        className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-y-0 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424]/80 backdrop-blur-md border border-[#333333] shadow-xs"
       >
         {slides.map((slide, index) => {
           const isActive = index === currentSlide;
@@ -472,8 +472,8 @@ export function HeroCarousel() {
               className={cn(
                 "transition-all duration-300 rounded-full cursor-pointer",
                 isActive
-                  ? "w-7 h-2 bg-[#1D1D1F]"
-                  : "w-2 h-2 bg-[#D2D2D7] hover:bg-[#86868B]"
+                  ? "w-7 h-2 bg-[#C5A059]"
+                  : "w-2 h-2 bg-[#444444] hover:bg-[#666666]"
               )}
             />
           );

@@ -39,13 +39,13 @@ export function LiveFrameSwitcher() {
   return (
     <div
       data-testid="live-frame-switcher"
-      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border border-[#D2D2D7] bg-[#FFFFFF] shadow-sm overflow-hidden"
+      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border border-[#333333] bg-[#242424] shadow-2xl overflow-hidden"
     >
       {/* Top Bar: Room Context Toggle & Live Spec Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-[#D2D2D7] bg-[#F5F5F7]/80">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-[#333333] bg-[#1F1F1F]">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[#1D1D1F] animate-pulse" />
-          <span className="text-xs font-semibold tracking-wider uppercase text-[#86868B]">
+          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[#C5A059] animate-pulse" />
+          <span className="text-xs font-semibold tracking-wider uppercase text-[#9E9E9E]">
             Interactive Atelier Island
           </span>
         </div>
@@ -54,7 +54,7 @@ export function LiveFrameSwitcher() {
         <div
           role="radiogroup"
           aria-label="Room context preview"
-          className="inline-flex p-1 rounded-full bg-[#E8E8ED] border border-[#D2D2D7]"
+          className="inline-flex p-1 rounded-full bg-[#141414] border border-[#333333]"
         >
           <button
             type="button"
@@ -65,11 +65,11 @@ export function LiveFrameSwitcher() {
             className={cn(
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
               !isRoom
-                ? "bg-[#FFFFFF] text-[#1D1D1F] shadow-xs"
-                : "text-[#86868B] hover:text-[#1D1D1F]"
+                ? "bg-[#2A2A2A] text-[#F4F1EA] shadow-xs"
+                : "text-[#9E9E9E] hover:text-[#F4F1EA]"
             )}
           >
-            <Sun className="w-3.5 h-3.5 text-[#1D1D1F]" />
+            <Sun className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Studio Neutral</span>
           </button>
           <button
@@ -82,10 +82,10 @@ export function LiveFrameSwitcher() {
               "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer",
               isRoom
                 ? "bg-[#2A332B] text-[#F5F5F7] shadow-xs"
-                : "text-[#86868B] hover:text-[#1D1D1F]"
+                : "text-[#9E9E9E] hover:text-[#F4F1EA]"
             )}
           >
-            <Lamp className="w-3.5 h-3.5 text-[#B88E56]" />
+            <Lamp className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Curated Living Room</span>
           </button>
         </div>
@@ -97,8 +97,8 @@ export function LiveFrameSwitcher() {
         className={cn(
           "relative min-h-[380px] sm:min-h-[440px] flex items-center justify-center p-6 sm:p-10 transition-colors duration-500 overflow-hidden",
           !isRoom
-            ? "bg-[#EFEFF4] text-[#1D1D1F]"
-            : "bg-gradient-to-b from-[#252C26] via-[#1E241F] to-[#161B17] text-[#FAF7F2]"
+            ? "bg-[#1A1A1A] text-[#F4F1EA]"
+            : "bg-gradient-to-b from-[#1E241F] via-[#161B17] to-[#111412] text-[#FAF7F2]"
         )}
       >
         {/* Subtle Ambient Wall Background Grid & Light Gradients */}
@@ -130,11 +130,11 @@ export function LiveFrameSwitcher() {
           className={cn(
             "absolute top-4 left-4 sm:top-5 sm:left-5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all backdrop-blur-sm",
             !isRoom
-              ? "bg-[#FFFFFF]/90 text-[#86868B] border border-[#D2D2D7]"
+              ? "bg-[#242424]/90 text-[#E0E0E0] border border-[#333333]"
               : "bg-[#2A332B]/90 text-[#D8CFBF] border border-[#3E4A3F]"
           )}
         >
-          <Eye className="w-3 h-3 text-[#1D1D1F] dark:text-[#B88E56]" />
+          <Eye className="w-3 h-3 text-[#C5A059]" />
           <span>{CONTEXT_VIEWS[contextView].tagline}</span>
         </div>
 
@@ -160,17 +160,17 @@ export function LiveFrameSwitcher() {
             }}
             className="relative p-0.5 border border-black/30 rounded-xs"
           >
-            {/* Mat Board Layer */}
+            {/* Mat Board Layer (Soft Ivory / Cream #F4F1EA) */}
             <div
               data-testid="frame-mat-board"
               style={{
                 padding: `${currentMat.widthPx}px`,
-                backgroundColor: "#FAF8F5",
+                backgroundColor: "#F4F1EA",
               }}
               className={cn(
                 "relative transition-all duration-300",
                 currentMat.id !== "none" &&
-                  "shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] border border-[#EBE4D8]"
+                  "shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)] border border-[#E0DACE]"
               )}
             >
               {/* Beveled 45-degree Rag Edge Shadow (when mat is present) */}
@@ -182,7 +182,7 @@ export function LiveFrameSwitcher() {
                       ? "var(--shadow-frame-inner-mat)"
                       : "inset 0 1px 3px rgba(0,0,0,0.25)",
                 }}
-                className="relative overflow-hidden bg-[#FBF9F4] select-none"
+                className="relative overflow-hidden bg-[#FAF6EE] select-none"
               >
                 {/* Archival Artwork: Exquisite Botanical Plate Print */}
                 <div className="relative w-48 h-60 sm:w-60 sm:h-72 p-4 flex flex-col justify-between items-center text-center bg-[#FAF6EE] text-[#1D1D1F]">
@@ -197,7 +197,7 @@ export function LiveFrameSwitcher() {
                     <p className="text-[9px] uppercase tracking-[0.25em] text-[#86868B] font-medium">
                       Atelier Herbarium • Tab. IV
                     </p>
-                    <div className="mx-auto my-1 w-8 h-[1px] bg-[#B88E56]/60" />
+                    <div className="mx-auto my-1 w-8 h-[1px] bg-[#C5A059]/60" />
                   </div>
 
                   {/* Botanical Centerpiece Illustration (SVG) */}
@@ -250,9 +250,9 @@ export function LiveFrameSwitcher() {
                         strokeWidth="0.8"
                       />
                       {/* Terracotta/Brass Seed Accent */}
-                      <circle cx="59" cy="38" r="2.5" fill="#1D1D1F" />
-                      <circle cx="84" cy="48" r="2" fill="#B88E56" />
-                      <circle cx="34" cy="72" r="2" fill="#1D1D1F" />
+                      <circle cx="59" cy="38" r="2.5" fill="#6B1C23" />
+                      <circle cx="84" cy="48" r="2" fill="#C5A059" />
+                      <circle cx="34" cy="72" r="2" fill="#6B1C23" />
                     </svg>
                   </div>
 
@@ -282,30 +282,30 @@ export function LiveFrameSwitcher() {
           className={cn(
             "absolute bottom-3 sm:bottom-4 px-3.5 py-1.5 rounded-full text-xs font-medium backdrop-blur-md transition-all flex items-center gap-2",
             !isRoom
-              ? "bg-[#FFFFFF]/90 text-[#1D1D1F] border border-[#D2D2D7] shadow-xs"
+              ? "bg-[#242424]/90 text-[#F4F1EA] border border-[#333333] shadow-md"
               : "bg-[#1E241F]/90 text-[#FAF7F2] border border-[#3E4A3F] shadow-md"
           )}
         >
           <span className="font-semibold">{currentMoulding.name}</span>
-          <span className="text-[#86868B]">•</span>
-          <span className="text-[#86868B] dark:text-[#D8CFBF]">
+          <span className="text-[#C5A059]">•</span>
+          <span className="text-[#E0E0E0] dark:text-[#D8CFBF]">
             {currentMat.name}
           </span>
         </div>
       </div>
 
       {/* Interactive Controls Island */}
-      <div className="p-5 sm:p-6 space-y-5 bg-[#FFFFFF]">
+      <div className="p-5 sm:p-6 space-y-5 bg-[#242424] text-[#F4F1EA]">
         {/* Row 1: Moulding Selection */}
         <div className="space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               id="moulding-picker-label"
-              className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]"
+              className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]"
             >
               1. Choose Solid Hardwood Moulding
             </label>
-            <span className="text-xs text-[#86868B]">
+            <span className="text-xs text-[#9E9E9E]">
               {currentMoulding.dimensions}
             </span>
           </div>
@@ -329,8 +329,8 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 group text-left cursor-pointer",
                     isSelected
-                      ? "border-[#1D1D1F] bg-[#F5F5F7] ring-2 ring-[#1D1D1F]/15 shadow-xs"
-                      : "border-[#D2D2D7] hover:border-[#86868B] bg-[#FFFFFF] hover:bg-[#F5F5F7]/50"
+                      ? "border-[#C5A059] bg-[#2A2A2A] ring-2 ring-[#C5A059]/40 shadow-xs text-[#F4F1EA]"
+                      : "border-[#333333] hover:border-[#C5A059]/60 bg-[#1F1F1F] text-[#E0E0E0] hover:bg-[#2A2A2A]"
                   )}
                 >
                   {/* Swatch Pill with Realistic Gradient */}
@@ -339,19 +339,19 @@ export function LiveFrameSwitcher() {
                       style={{ background: m.swatchGradient }}
                       className={cn(
                         "block w-7 h-7 rounded-full shadow-xs border border-black/15 transition-transform group-hover:scale-105",
-                        isSelected && "ring-2 ring-offset-1 ring-[#1D1D1F]"
+                        isSelected && "ring-2 ring-offset-1 ring-offset-[#242424] ring-[#C5A059]"
                       )}
                     />
                     {isSelected && (
-                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-3.5 h-3.5 rounded-full bg-[#1D1D1F] text-white">
+                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-3.5 h-3.5 rounded-full bg-[#C5A059] text-[#1A1A1A]">
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </span>
                     )}
                   </div>
-                  <span className="text-xs font-medium text-[#1D1D1F] leading-tight line-clamp-1">
+                  <span className="text-xs font-medium text-[#F4F1EA] leading-tight line-clamp-1">
                     {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
                   </span>
-                  <span className="text-[11px] text-[#86868B] mt-0.5 font-normal">
+                  <span className="text-[11px] text-[#9E9E9E] mt-0.5 font-normal">
                     ${m.basePrice}
                   </span>
                 </button>
@@ -365,11 +365,11 @@ export function LiveFrameSwitcher() {
           <div className="flex items-center justify-between">
             <label
               id="mat-picker-label"
-              className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]"
+              className="text-xs font-semibold uppercase tracking-wider text-[#F4F1EA]"
             >
               2. Select Archival Matting Margin
             </label>
-            <span className="text-xs text-[#86868B]">4-Ply Cotton Rag</span>
+            <span className="text-xs text-[#9E9E9E]">4-Ply Cotton Rag</span>
           </div>
 
           <div
@@ -391,12 +391,12 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border transition-all duration-200 cursor-pointer",
                     isSelected
-                      ? "border-[#1D1D1F] bg-[#F5F5F7] text-[#1D1D1F] ring-2 ring-[#1D1D1F]/15 font-medium"
-                      : "border-[#D2D2D7] hover:border-[#86868B] bg-[#FFFFFF] text-[#86868B] hover:text-[#1D1D1F]"
+                      ? "border-[#C5A059] bg-[#2A2A2A] text-[#F4F1EA] ring-2 ring-[#C5A059]/40 font-medium"
+                      : "border-[#333333] hover:border-[#C5A059]/60 bg-[#1F1F1F] text-[#9E9E9E] hover:text-[#F4F1EA]"
                   )}
                 >
                   <span className="text-xs font-medium">{mat.name}</span>
-                  <span className="text-[11px] text-[#86868B] mt-0.5">
+                  <span className="text-[11px] text-[#9E9E9E] mt-0.5">
                     {mat.price === 0 ? "Included" : `+$${mat.price}`}
                   </span>
                 </button>
@@ -406,20 +406,20 @@ export function LiveFrameSwitcher() {
         </div>
 
         {/* Row 3: Price Display & Action CTAs */}
-        <div className="pt-4 border-t border-[#D2D2D7] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="pt-4 border-t border-[#333333] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div data-testid="frame-price-display" className="space-y-0.5">
             <div className="flex items-baseline gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#86868B]">
+              <span className="text-xs uppercase tracking-wider text-[#9E9E9E]">
                 Total Price:
               </span>
               <span
                 data-testid="frame-price-amount"
-                className="font-sans text-2xl sm:text-3xl font-semibold text-[#1D1D1F]"
+                className="font-serif text-2xl sm:text-3xl font-bold text-[#C5A059]"
               >
                 ${totalPrice}
               </span>
             </div>
-            <p className="text-[11px] text-[#86868B]">
+            <p className="text-[11px] text-[#9E9E9E]">
               Includes {currentMoulding.name} (${currentMoulding.basePrice})
               {currentMat.price > 0 && ` + Mat ($${currentMat.price})`} + UV
               Acrylic
@@ -431,7 +431,7 @@ export function LiveFrameSwitcher() {
             <Link
               href={`/customizer?moulding=${mouldingId}&mat=${matId}`}
               data-testid="cta-customize"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#1D1D1F] hover:bg-[#333336] text-white text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-xs"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-xs"
             >
               <Sliders className="w-4 h-4" />
               <span>Customize This Frame</span>
@@ -440,22 +440,22 @@ export function LiveFrameSwitcher() {
             <Link
               href="/upload"
               data-testid="cta-upload"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#D2D2D7] hover:border-[#1D1D1F] bg-[#FFFFFF] hover:bg-[#F5F5F7] text-[#1D1D1F] text-xs sm:text-sm font-medium transition-colors"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#444444] hover:border-[#C5A059] bg-[#2A2A2A] hover:bg-[#333333] text-[#F4F1EA] text-xs sm:text-sm font-medium transition-colors"
             >
-              <Upload className="w-4 h-4 text-[#86868B]" />
+              <Upload className="w-4 h-4 text-[#C5A059]" />
               <span>Upload Your Photo</span>
             </Link>
           </div>
         </div>
 
         {/* Trust Note */}
-        <div className="flex items-center justify-between pt-1 text-[11px] text-[#86868B]">
+        <div className="flex items-center justify-between pt-1 text-[11px] text-[#9E9E9E]">
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#1D1D1F]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>99% UV-Shielding Museum Glass Included</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Handmade in 5–7 Days</span>
           </div>
         </div>

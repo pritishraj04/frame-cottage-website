@@ -19,27 +19,27 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
   return (
     <article
       data-testid={`frame-card-${product.id}`}
-      className="group relative flex flex-col bg-[#FFFFFF] rounded-2xl border border-[#D2D2D7] overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#86868B]"
+      className="group relative flex flex-col bg-[#242424] rounded-2xl border border-[#333333] overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#C5A059]/60"
     >
       {/* Visual Presentation Container (Dual-State Swapper: Studio Rest -> In-Situ Room) */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F5F5F7] select-none">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1A1A1A] select-none">
         {/* =========================================================================
-            STATE 1: DEFAULT REST STATE (Crisp studio frame cutout on ceramic base)
+            STATE 1: DEFAULT REST STATE (Crisp studio frame cutout on museum canvas)
            ========================================================================= */}
         <div
           data-testid={`frame-card-rest-${product.id}`}
-          className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-b from-[#F5F5F7] via-[#EDEDF2] to-[#E3E3E8] transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+          className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-b from-[#242424] via-[#202020] to-[#1A1A1A] transition-opacity duration-500 ease-in-out group-hover:opacity-0"
         >
           {/* Subtle Studio Architectural Background Grid */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#A99682_1px,transparent_1px)] [background-size:20px_20px]"
+            className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#C5A059_0.75px,transparent_0.75px)] [background-size:20px_20px]"
           />
 
           {/* Studio Radial Ambient Highlight */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_75%)]"
+            className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.08)_0%,transparent_75%)]"
           />
 
           {/* Studio Frame Cutout */}
@@ -56,13 +56,13 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
               style={{ borderColor: currentMoulding.innerLipColor }}
               className="w-full h-full border border-black/30 p-0.5 rounded-xs"
             >
-              {/* Archival Mat Board */}
+              {/* Archival Mat Board (Soft Ivory #F4F1EA) */}
               <div
                 style={{
                   padding: product.defaultMatId === "gallery" ? "14px" : "10px",
-                  backgroundColor: "#FAF8F5",
+                  backgroundColor: "#F4F1EA",
                 }}
-                className="w-full h-full relative border border-[#EBE4D8] shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)]"
+                className="w-full h-full relative border border-[#E0DACE] shadow-[inset_0_1px_2px_rgba(0,0,0,0.12)]"
               >
                 {/* Artwork Window with Inner Mat Bevel Shadow */}
                 <div
@@ -83,7 +83,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           </div>
 
           {/* Craft Badge Pill (Rest State subtle indicator) */}
-          <div className="absolute bottom-3 left-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide bg-white/90 text-[#86868B] border border-[#D2D2D7] shadow-2xs backdrop-blur-xs">
+          <div className="absolute bottom-3 left-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide bg-[#1A1A1A]/90 text-[#9E9E9E] border border-[#333333] shadow-2xs backdrop-blur-xs">
             <span>{currentMoulding.dimensions.split(" ")[0]} Moulding</span>
           </div>
         </div>
@@ -220,14 +220,14 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
               }}
               className={cn(
                 "inline-flex items-center gap-2 px-4 py-2.5 rounded-full",
-                "bg-[#1D1D1F]/90 hover:bg-[#1D1D1F] text-white",
+                "bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A]",
                 "text-xs font-semibold uppercase tracking-wider",
                 "shadow-xl border border-white/25 backdrop-blur-md",
                 "transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
                 "transition-all duration-300 ease-out cursor-pointer active:scale-95"
               )}
             >
-              <Sliders className="w-3.5 h-3.5 text-[#B88E56]" />
+              <Sliders className="w-3.5 h-3.5 text-[#1A1A1A]" />
               <span>Quick Customise</span>
             </button>
           </div>
@@ -246,14 +246,14 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
             className={cn(
               "p-2 rounded-full backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm",
               isWishlisted
-                ? "bg-[#1D1D1F] text-white hover:bg-[#333336] scale-105"
-                : "bg-white/85 text-[#86868B] hover:text-[#1D1D1F] hover:bg-white border border-[#D2D2D7]"
+                ? "bg-[#C5A059] text-[#1A1A1A] scale-105"
+                : "bg-[#242424]/90 text-[#F4F1EA] hover:bg-[#333333] border border-[#333333]"
             )}
           >
             <Heart
               className={cn(
                 "w-4 h-4 transition-transform",
-                isWishlisted && "fill-white stroke-white scale-110"
+                isWishlisted && "fill-[#1A1A1A] stroke-[#1A1A1A] scale-110"
               )}
             />
           </button>
@@ -263,12 +263,12 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
       {/* =========================================================================
           METADATA & EDITORIAL PRODUCT DETAILS
          ========================================================================= */}
-      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-[#FFFFFF]">
+      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-[#242424]">
         <div>
           {/* Frame Name (Serif Title) */}
           <h3
             data-testid={`frame-card-title-${product.id}`}
-            className="font-serif text-lg font-normal text-[#1D1D1F] group-hover:text-[#86868B] transition-colors leading-snug"
+            className="font-serif text-lg font-normal text-[#F4F1EA] group-hover:text-[#C5A059] transition-colors leading-snug"
           >
             {product.name}
           </h3>
@@ -276,26 +276,26 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           {/* Material Description */}
           <p
             data-testid={`frame-card-material-${product.id}`}
-            className="text-xs text-[#86868B] line-clamp-1 mt-1 font-normal"
+            className="text-xs text-[#9E9E9E] line-clamp-1 mt-1 font-normal"
           >
             {product.material}
           </p>
         </div>
 
         {/* Footer: Standard Sizes Badge & Starting Price Tag */}
-        <div className="mt-4 pt-3 border-t border-[#D2D2D7]/80 flex items-center justify-between gap-2">
+        <div className="mt-4 pt-3 border-t border-[#333333] flex items-center justify-between gap-2">
           {/* Standard Sizes Badge */}
           <span
             data-testid={`frame-card-size-${product.id}`}
-            className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#E8E8ED] text-[#86868B] border border-[#D2D2D7]"
+            className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-[#1F1F1F] text-[#E0E0E0] border border-[#333333]"
           >
             {product.sizeRange}
           </span>
 
-          {/* Starting Price Tag */}
+          {/* Starting Price Tag (Muted Gold) */}
           <span
             data-testid={`frame-card-price-${product.id}`}
-            className="text-sm font-semibold text-[#1D1D1F] tracking-tight"
+            className="text-sm font-semibold text-[#C5A059] tracking-tight"
           >
             From ${product.startingPrice}
           </span>

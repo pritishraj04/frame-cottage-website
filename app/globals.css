@@ -1,28 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5F5F7;
-  --foreground: #1D1D1F;
+  --background: #1A1A1A;
+  --foreground: #F4F1EA;
 
-  --color-canvas-base: #F5F5F7;
-  --color-canvas-subtle: #E8E8ED;
-  --color-canvas-surface: #FFFFFF;
-  --color-ink-primary: #1D1D1F;
-  --color-ink-secondary: #86868B;
-  --color-ink-muted: #A1A1A6;
-  --color-border-subtle: #D2D2D7;
-  --color-terracotta: #1D1D1F;
-  --color-terracotta-hover: #333336;
-  --color-brass: #B88E56;
+  --color-canvas-base: #1A1A1A;
+  --color-canvas-subtle: #2A2A2A;
+  --color-canvas-surface: #242424;
+  --color-canvas-card: #242424;
+  --color-canvas-card-elevated: #2A2A2A;
 
-  --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.12), 0 6px 14px -3px rgba(0, 0, 0, 0.06);
-  --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.28), 0 8px 20px -4px rgba(0, 0, 0, 0.14);
-  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.12), inset 0 0 1px rgba(0, 0, 0, 0.2);
+  --color-border-subtle: #333333;
+  --color-border-prominent: #444444;
 
-  --font-apple-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-burgundy: #6B1C23;
+  --color-burgundy-hover: #54161C;
+  --color-burgundy-subtle: rgba(107, 28, 35, 0.2);
+
+  --color-gold: #C5A059;
+  --color-gold-bright: #D4AF37;
+  --color-gold-hover: #B38F48;
+
+  --color-cream: #F4F1EA;
+  --color-ink-primary: #F4F1EA;
+  --color-ink-secondary: #E0E0E0;
+  --color-ink-muted: #9E9E9E;
+
+  --color-terracotta: #6B1C23;
+  --color-terracotta-hover: #54161C;
+  --color-brass: #C5A059;
+
+  --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.45), 0 6px 14px -3px rgba(0, 0, 0, 0.35);
+  --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.7), 0 8px 20px -4px rgba(0, 0, 0, 0.5);
+  --shadow-frame-inner-mat: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 1px rgba(0, 0, 0, 0.5);
+
+  --font-sans: var(--font-geist), "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-mono: monospace;
 }
 
 @theme inline {
@@ -32,10 +46,25 @@
   --color-canvas-base: var(--color-canvas-base);
   --color-canvas-subtle: var(--color-canvas-subtle);
   --color-canvas-surface: var(--color-canvas-surface);
+  --color-canvas-card: var(--color-canvas-card);
+  --color-canvas-card-elevated: var(--color-canvas-card-elevated);
+
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-prominent: var(--color-border-prominent);
+
+  --color-burgundy: var(--color-burgundy);
+  --color-burgundy-hover: var(--color-burgundy-hover);
+  --color-burgundy-subtle: var(--color-burgundy-subtle);
+
+  --color-gold: var(--color-gold);
+  --color-gold-bright: var(--color-gold-bright);
+  --color-gold-hover: var(--color-gold-hover);
+
+  --color-cream: var(--color-cream);
   --color-ink-primary: var(--color-ink-primary);
   --color-ink-secondary: var(--color-ink-secondary);
   --color-ink-muted: var(--color-ink-muted);
-  --color-border-subtle: var(--color-border-subtle);
+
   --color-terracotta: var(--color-terracotta);
   --color-terracotta-hover: var(--color-terracotta-hover);
   --color-brass: var(--color-brass);

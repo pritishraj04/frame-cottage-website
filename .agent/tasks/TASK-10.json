@@ -1,0 +1,53 @@
+{
+  "id": "TASK-10",
+  "title": "Implement Museum Dark Charcoal, Rich Burgundy & Muted Gold Design System with Serif/Sans Typography",
+  "category": "design-system-overhaul",
+  "description": "Overhaul the entire color palette and typography system: Foundation in Deep Charcoal (#1A1A1A to #2A2A2A) acting as a museum wall canvas, Primary Accent in Rich Burgundy (#6B1C23) for active navigation states and secondary elements, Highlights & CTAs in Muted Gold (#C5A059 / #D4AF37) for visual luxury, and Soft Ivory/Cream (#F4F1EA & #E0E0E0) for text to prevent eye strain. Apply Playfair Display serif for headings and Geist sans for body text across all components.",
+  "acceptanceCriteria": [
+    "globals.css and layout.tsx define Deep Charcoal (#1A1A1A, #242424, #2A2A2A), Rich Burgundy (#6B1C23), Muted Gold (#C5A059, #D4AF37), and Soft Ivory/Cream (#F4F1EA, #E0E0E0)",
+    "Headings configured with Playfair Display serif font, body and UI text configured with Geist sans",
+    "Sticky Header & India Circus Mega-Menu updated with charcoal background, burgundy active states, and gold highlights",
+    "Hero Carousel, Custom Frame Studio, and Category Pills updated to museum dark canvas with gold CTAs",
+    "Curated Collections, Framing Journey, The Atelier Glass Slider, Customer Lookbook, FAQ Accordion, and Site Footer fully styled in dark museum luxury",
+    "All Playwright tests updated and passing (30/30)",
+    "Full-page verification screenshot captured at .agent/screenshots/task-10-museum-dark-gold.png"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Establish Museum Dark Charcoal, Burgundy, Gold & Cream tokens in globals.css and layout.tsx",
+      "details": "Configure CSS variables, @theme inline, Playfair Display serif for headings, and Geist sans for body.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Update Navigation (Announcement Bar, Site Header, Mega-Menu, Mobile Nav)",
+      "details": "Apply burgundy announcement bar, charcoal sticky header, burgundy active states in mega-menu, and gold badges.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Update Hero Carousel and Custom Frame Studio",
+      "details": "Apply muted gold primary CTAs, dark charcoal framing stage, ivory typography, and rich burgundy secondary cues.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Update Category Pills, Trust Bar, Curated Collections, and Quick Customise Dialog",
+      "details": "Apply museum charcoal surfaces (#242424, #2A2A2A), gold active indicators, and cream text.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Update Framing Journey, Atelier Materials, Customer Lookbook, FAQ, and Footer",
+      "details": "Harmonize all remaining sections with burgundy accents, gold slider controls/pins, and archival footer.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Run Playwright test suite and capture full verification screenshot",
+      "details": "Ensure all tests pass and capture task-10-museum-dark-gold.png screenshot.",
+      "pass": true
+    }
+  ]
+}

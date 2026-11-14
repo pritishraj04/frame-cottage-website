@@ -61,5 +61,12 @@
     "category": "ui-redesign",
     "specFilePath": ".agent/tasks/TASK-9.json",
     "passes": true
+  },
+  {
+    "id": "TASK-10",
+    "title": "Implement Museum Dark Charcoal, Rich Burgundy & Muted Gold Design System with Serif/Sans Typography",
+    "category": "design-system-overhaul",
+    "specFilePath": ".agent/tasks/TASK-10.json",
+    "passes": true
   }
 ]

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Apple Ecosystem Design Tokens and Typography Hierarchy', () => {
-  test('loads Apple design tokens, SF Pro typography, and page correctly', async ({ page }) => {
+test.describe('Museum Dark Charcoal, Rich Burgundy & Muted Gold Design System', () => {
+  test('loads museum dark tokens, Playfair serif / Geist sans typography, and page correctly', async ({ page }) => {
     await page.goto('/');
 
     // Verify title
@@ -16,15 +16,15 @@ test.describe('Apple Ecosystem Design Tokens and Typography Hierarchy', () => {
       return {
         htmlClasses: doc.className,
         fontSans: computed.getPropertyValue('--font-sans').trim(),
-        fontAppleSystem: computed.getPropertyValue('--font-apple-system').trim(),
+        fontSerif: computed.getPropertyValue('--font-serif').trim(),
         bodyFontFamily: bodyComputed.fontFamily,
         background: computed.getPropertyValue('--background').trim(),
         foreground: computed.getPropertyValue('--foreground').trim(),
         colorCanvasBase: computed.getPropertyValue('--color-canvas-base').trim(),
         colorCanvasSubtle: computed.getPropertyValue('--color-canvas-subtle').trim(),
-        colorInkPrimary: computed.getPropertyValue('--color-ink-primary').trim(),
-        colorTerracotta: computed.getPropertyValue('--color-terracotta').trim(),
-        colorBrass: computed.getPropertyValue('--color-brass').trim(),
+        colorCanvasSurface: computed.getPropertyValue('--color-canvas-surface').trim(),
+        colorBurgundy: computed.getPropertyValue('--color-burgundy').trim(),
+        colorGold: computed.getPropertyValue('--color-gold').trim(),
         shadowFrameResting: computed.getPropertyValue('--shadow-frame-resting').trim(),
         shadowFrameInnerMat: computed.getPropertyValue('--shadow-frame-inner-mat').trim(),
         bodyBackgroundColor: bodyComputed.backgroundColor,
@@ -32,25 +32,27 @@ test.describe('Apple Ecosystem Design Tokens and Typography Hierarchy', () => {
       };
     });
 
-    // Verify Apple typography stack on body
-    expect(styles.bodyFontFamily.toLowerCase()).toContain('-apple-system');
+    // Verify typography tokens
+    expect(styles.fontSerif.toLowerCase()).toContain('playfair');
+    expect(styles.fontSans.toLowerCase()).toContain('geist');
 
-    // Verify Apple luxury ceramic palette tokens
-    expect(styles.background.toLowerCase()).toBe('#f5f5f7');
-    expect(styles.foreground.toLowerCase()).toBe('#1d1d1f');
-    expect(styles.colorCanvasBase.toLowerCase()).toBe('#f5f5f7');
-    expect(styles.colorCanvasSubtle.toLowerCase()).toBe('#e8e8ed');
-    expect(styles.colorInkPrimary.toLowerCase()).toBe('#1d1d1f');
-    expect(styles.colorTerracotta.toLowerCase()).toBe('#1d1d1f');
-    expect(styles.colorBrass.toLowerCase()).toBe('#b88e56');
+    // Verify Museum Dark Charcoal, Rich Burgundy & Muted Gold tokens
+    expect(styles.background.toLowerCase()).toBe('#1a1a1a');
+    expect(styles.foreground.toLowerCase()).toBe('#f4f1ea');
+    expect(styles.colorCanvasBase.toLowerCase()).toBe('#1a1a1a');
+    expect(styles.colorCanvasSubtle.toLowerCase()).toBe('#2a2a2a');
+    expect(styles.colorCanvasSurface.toLowerCase()).toBe('#242424');
+    expect(styles.colorBurgundy.toLowerCase()).toBe('#6b1c23');
+    expect(styles.colorGold.toLowerCase()).toBe('#c5a059');
     expect(styles.shadowFrameResting).toContain('0 18px 36px -10px');
     expect(styles.shadowFrameInnerMat).toContain('inset 0 2px 4px');
 
-    // Body background should match #F5F5F7 (rgb(245, 245, 247))
-    expect(styles.bodyBackgroundColor).toBe('rgb(245, 245, 247)');
-    expect(styles.bodyColor).toBe('rgb(29, 29, 31)');
+    // Body background should match #1A1A1A (rgb(26, 26, 26))
+    expect(styles.bodyBackgroundColor).toBe('rgb(26, 26, 26)');
+    // Body text color should match #F4F1EA (rgb(244, 241, 234))
+    expect(styles.bodyColor).toBe('rgb(244, 241, 234)');
 
     // Visual smoke check screenshot into .agent/screenshots/
-    await page.screenshot({ path: '.agent/screenshots/task-2-design-tokens.png', fullPage: true });
+    await page.screenshot({ path: '.agent/screenshots/task-10-museum-dark-gold.png', fullPage: true });
   });
 });

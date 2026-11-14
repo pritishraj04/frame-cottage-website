@@ -107,7 +107,7 @@ export function FAQSection() {
       id="faq-section"
       data-testid="faq-section"
       aria-label="Frequently Asked Questions & Care"
-      className="w-full bg-[#F5F5F7] py-16 sm:py-24 border-b border-[#D2D2D7]"
+      className="w-full bg-[#1A1A1A] py-16 sm:py-24 border-b border-[#333333] text-[#F4F1EA]"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
@@ -117,16 +117,16 @@ export function FAQSection() {
           data-testid="faq-header"
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D2D2D7] text-[#1D1D1F] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>The Atelier Knowledge Base</span>
           </div>
 
-          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D1D1F] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
             Curating, Crafting & Caring for Your Frames
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed font-normal">
+          <p className="mt-4 text-base sm:text-lg text-[#E0E0E0] leading-relaxed font-normal">
             Clear, transparent answers on digital resolution, museum-grade TruVue® acrylic, damage replacement guarantees, and included hanging suites.
           </p>
         </div>
@@ -149,29 +149,29 @@ export function FAQSection() {
                 key={item.id}
                 value={item.id}
                 data-testid={`faq-item-${item.id}`}
-                className="bg-[#FFFFFF] border border-[#D2D2D7] rounded-2xl overflow-hidden shadow-xs hover:border-[#1D1D1F]/50 transition-colors group data-[state=open]:border-[#1D1D1F] data-[state=open]:shadow-md"
+                className="bg-[#222222] border border-[#333333] rounded-2xl overflow-hidden shadow-xs hover:border-[#C5A059]/50 transition-colors group data-[state=open]:border-[#C5A059]/70 data-[state=open]:shadow-md"
               >
                 <Accordion.Header className="flex">
                   <Accordion.Trigger
                     data-testid={`faq-trigger-${item.id}`}
-                    className="flex flex-1 items-center justify-between p-5 sm:p-6 text-left cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D1D1F] group transition-all"
+                    className="flex flex-1 items-center justify-between p-5 sm:p-6 text-left cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] group transition-all"
                   >
                     <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 pr-4">
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F] flex items-center justify-center shrink-0 group-data-[state=open]:bg-[#1D1D1F] group-data-[state=open]:text-white transition-colors">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#2A2A2A] border border-[#333333] text-[#C5A059] flex items-center justify-center shrink-0 group-data-[state=open]:bg-[#6B1C23] group-data-[state=open]:text-[#F4F1EA] transition-colors">
                         <ItemIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
 
                       <div>
-                        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[#86868B] block mb-0.5">
+                        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider font-semibold text-[#C5A059] block mb-0.5">
                           {item.category}
                         </span>
-                        <h3 className="font-sans text-base sm:text-lg text-[#1D1D1F] font-semibold leading-snug group-hover:text-[#86868B] transition-colors">
+                        <h3 className="font-serif text-base sm:text-lg text-[#F4F1EA] font-semibold leading-snug group-hover:text-[#C5A059] transition-colors">
                           {item.question}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-[#F5F5F7] border border-[#D2D2D7] flex items-center justify-center shrink-0 text-[#86868B] group-data-[state=open]:bg-[#1D1D1F] group-data-[state=open]:text-white group-data-[state=open]:border-[#1D1D1F] transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-[#2A2A2A] border border-[#333333] flex items-center justify-center shrink-0 text-[#C5A059] group-data-[state=open]:bg-[#6B1C23] group-data-[state=open]:text-[#F4F1EA] group-data-[state=open]:border-[#6B1C23] transition-colors">
                       <ChevronDown className="w-4 h-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                     </div>
                   </Accordion.Trigger>
@@ -179,27 +179,27 @@ export function FAQSection() {
 
                 <Accordion.Content
                   data-testid={`faq-content-${item.id}`}
-                  className="accordion-content overflow-hidden text-sm px-5 sm:px-6 pb-6 pt-1 text-[#86868B]"
+                  className="accordion-content overflow-hidden text-sm px-5 sm:px-6 pb-6 pt-1 text-[#E0E0E0]"
                 >
-                  <div className="border-t border-[#D2D2D7]/60 pt-4">
+                  <div className="border-t border-[#333333] pt-4">
                     {/* Short Summary Highlight */}
-                    <p className="font-semibold text-xs sm:text-sm text-[#1D1D1F] mb-3 leading-relaxed">
+                    <p className="font-semibold text-xs sm:text-sm text-[#F4F1EA] mb-3 leading-relaxed">
                       {item.shortAnswer}
                     </p>
 
                     {/* Extended Technical Explanation */}
-                    <p className="text-xs sm:text-sm text-[#86868B] leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-[#E0E0E0] leading-relaxed mb-4">
                       {item.fullAnswer}
                     </p>
 
                     {/* Technical Specs Grid */}
-                    <div className="bg-[#F5F5F7] rounded-xl border border-[#D2D2D7] p-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                    <div className="bg-[#1A1A1A] rounded-xl border border-[#333333] p-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                       {item.specs.map((spec, sIdx) => (
                         <div key={sIdx} className="flex flex-col">
-                          <span className="text-[10px] uppercase tracking-wider text-[#86868B] font-medium">
+                          <span className="text-[10px] uppercase tracking-wider text-[#9E9E9E] font-medium">
                             {spec.label}
                           </span>
-                          <span className="font-semibold text-[#1D1D1F] mt-0.5">
+                          <span className="font-semibold text-[#F4F1EA] mt-0.5">
                             {spec.value}
                           </span>
                         </div>
@@ -215,16 +215,16 @@ export function FAQSection() {
         {/* =====================================================================
             CONCIERGE HELP FOOTNOTE CARD
            ===================================================================== */}
-        <div className="mt-10 sm:mt-12 bg-[#FFFFFF] rounded-2xl border border-[#D2D2D7] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="mt-10 sm:mt-12 bg-[#222222] rounded-2xl border border-[#333333] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-[#E8E8ED] border border-[#D2D2D7] text-[#1D1D1F] flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#2A2A2A] border border-[#333333] text-[#C5A059] flex items-center justify-center shrink-0">
               <Headphones className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-sans text-base sm:text-lg font-semibold text-[#1D1D1F]">
+              <h4 className="font-serif text-base sm:text-lg font-semibold text-[#F4F1EA]">
                 Have a bespoke framing inquiry or oversized installation?
               </h4>
-              <p className="text-xs sm:text-sm text-[#86868B] mt-0.5">
+              <p className="text-xs sm:text-sm text-[#E0E0E0] mt-0.5">
                 Our Master Guild framing advisors provide complimentary layout styling consultations.
               </p>
             </div>
@@ -232,7 +232,7 @@ export function FAQSection() {
 
           <Link
             href="/contact"
-            className="shrink-0 px-6 py-3 rounded-full bg-[#1D1D1F] text-white hover:bg-[#333336] text-xs font-semibold tracking-wider uppercase transition-colors shadow-xs"
+            className="shrink-0 px-6 py-3 rounded-full bg-[#C5A059] text-[#1A1A1A] hover:bg-[#B38F48] text-xs font-semibold tracking-wider uppercase transition-colors shadow-xs"
           >
             Speak with an Advisor
           </Link>

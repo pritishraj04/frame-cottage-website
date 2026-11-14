@@ -227,7 +227,7 @@ export function CustomerLookbook() {
       id="customer-lookbook"
       data-testid="customer-lookbook"
       aria-label="Customer Homes & Gallery Wall Lookbook"
-      className="w-full bg-[#F5F5F7] py-16 sm:py-24 border-b border-[#D2D2D7]"
+      className="w-full bg-[#1A1A1A] py-16 sm:py-24 border-b border-[#333333] text-[#F4F1EA]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =====================================================================
@@ -237,16 +237,16 @@ export function CustomerLookbook() {
           data-testid="lookbook-header"
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D2D2D7] text-[#1D1D1F] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#B88E56]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#333333] text-[#F4F1EA] text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Living with Craft • Real Homes</span>
           </div>
 
-          <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1D1D1F] tracking-tight leading-[1.12]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#F4F1EA] tracking-tight leading-[1.12]">
             Customer Homes & Gallery Wall Lookbook
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed font-normal max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[#E0E0E0] leading-relaxed font-normal max-w-2xl mx-auto">
             Step inside real collector spaces and curated sanctuaries. Tap the interactive brass pins to discover the frame profiles, archival mats, and customer reviews.
           </p>
         </div>
@@ -267,15 +267,15 @@ export function CustomerLookbook() {
                 className={cn(
                   "px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border cursor-pointer flex items-center gap-2",
                   isSelected
-                    ? "bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-md"
-                    : "bg-[#FFFFFF] text-[#86868B] border-[#D2D2D7] hover:bg-[#E8E8ED] hover:text-[#1D1D1F]"
+                    ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-md"
+                    : "bg-[#242424] text-[#9E9E9E] border-[#333333] hover:bg-[#2A2A2A] hover:text-[#F4F1EA]"
                 )}
               >
                 <span>{room.name}</span>
                 <span
                   className={cn(
                     "w-1.5 h-1.5 rounded-full",
-                    isSelected ? "bg-[#B88E56]" : "bg-[#86868B]/50"
+                    isSelected ? "bg-[#C5A059]" : "bg-[#9E9E9E]/50"
                   )}
                 />
               </button>
@@ -285,10 +285,10 @@ export function CustomerLookbook() {
 
         {/* Room Description Strip */}
         <div className="text-center max-w-xl mx-auto mb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1D1D1F]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A059]">
             {currentRoom.subtitle}
           </p>
-          <p className="text-xs sm:text-sm text-[#86868B] mt-1 font-normal">
+          <p className="text-xs sm:text-sm text-[#E0E0E0] mt-1 font-normal">
             {currentRoom.description}
           </p>
         </div>
@@ -296,7 +296,7 @@ export function CustomerLookbook() {
         {/* =====================================================================
             THE LOOKBOOK ROOM STAGE WITH INTERACTIVE HOTSPOT PINS
            ===================================================================== */}
-        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-[#E8E1D5] bg-[#191614] shadow-xl">
+        <div className="relative w-full rounded-2xl overflow-hidden border-2 border-[#333333] bg-[#141414] shadow-xl">
           {/* Room Ambient Background */}
           <div
             className={cn(
@@ -434,11 +434,11 @@ export function CustomerLookbook() {
                     className={cn(
                       "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold shadow-lg transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C5A059]",
                       isActive
-                        ? "bg-[#B45309] text-white scale-110 border-2 border-white ring-4 ring-[#C5A059]/50"
-                        : "bg-[#191614]/90 text-[#FAF7F2] hover:bg-[#B45309] border border-[#C5A059] hover:scale-105"
+                        ? "bg-[#C5A059] text-[#1A1A1A] scale-110 border-2 border-white ring-4 ring-[#C5A059]/50"
+                        : "bg-[#1A1A1A]/90 text-[#F4F1EA] hover:bg-[#C5A059] border border-[#C5A059] hover:scale-105"
                     )}
                   >
-                    <Eye className="w-4 h-4 text-[#C5A059]" />
+                    <Eye className="w-4 h-4 text-current" />
                     <span className="sr-only">Toggle {pin.frameTitle} card</span>
                   </button>
                 </div>
@@ -455,13 +455,13 @@ export function CustomerLookbook() {
                   left: `${Math.min(78, Math.max(22, activeHotspot.x))}%`,
                   top: `${Math.min(65, Math.max(25, activeHotspot.y + 14))}%`,
                 }}
-                className="absolute z-40 -translate-x-1/2 w-[280px] sm:w-[320px] max-w-[90vw] bg-[#FFFFFF] rounded-2xl p-4 sm:p-5 shadow-2xl border border-[#E8E1D5] transition-all duration-300 animate-in fade-in zoom-in-95"
+                className="absolute z-40 -translate-x-1/2 w-[280px] sm:w-[320px] max-w-[90vw] bg-[#242424] rounded-2xl p-4 sm:p-5 shadow-2xl border border-[#333333] transition-all duration-300 animate-in fade-in zoom-in-95 text-[#F4F1EA]"
               >
                 {/* Close Button */}
                 <button
                   type="button"
                   onClick={() => setActivePinId(null)}
-                  className="absolute top-3 right-3 p-1 rounded-full text-[#8F877E] hover:text-[#191614] hover:bg-[#FAF7F2] transition-colors"
+                  className="absolute top-3 right-3 p-1 rounded-full text-[#9E9E9E] hover:text-[#F4F1EA] hover:bg-[#333333] transition-colors"
                   aria-label="Close card"
                 >
                   <X className="w-4 h-4" />
@@ -471,46 +471,46 @@ export function CustomerLookbook() {
                 <div className="flex items-center gap-2 mb-2 pr-6">
                   <div
                     data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-[#065F46] text-[10px] font-semibold tracking-wide border border-[#A7F3D0]"
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#2A2A2A] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
                   >
                     <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
                     <span>Verified Collector</span>
                   </div>
-                  <div className="flex items-center text-[#B45309]">
+                  <div className="flex items-center text-[#C5A059]">
                     {Array.from({ length: activeHotspot.rating }).map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-current text-[#F59E0B]" />
+                      <Star key={i} className="w-3 h-3 fill-current text-[#C5A059]" />
                     ))}
                   </div>
                 </div>
 
                 {/* Customer Review Quote */}
-                <p className="text-xs italic text-[#191614] leading-relaxed mb-3 font-serif">
+                <p className="text-xs italic text-[#F4F1EA] leading-relaxed mb-3 font-serif">
                   {activeHotspot.review}
                 </p>
 
                 {/* Reviewer Name and Location */}
-                <div className="flex items-center gap-1.5 text-[11px] text-[#5C554E] mb-3 pb-3 border-b border-[#E8E1D5]">
-                  <MapPin className="w-3 h-3 text-[#B45309]" />
-                  <span className="font-semibold text-[#191614]">{activeHotspot.customerName}</span>
-                  <span className="text-[#8F877E]">•</span>
+                <div className="flex items-center gap-1.5 text-[11px] text-[#E0E0E0] mb-3 pb-3 border-b border-[#333333]">
+                  <MapPin className="w-3 h-3 text-[#C5A059]" />
+                  <span className="font-semibold text-[#F4F1EA]">{activeHotspot.customerName}</span>
+                  <span className="text-[#9E9E9E]">•</span>
                   <span>{activeHotspot.location}</span>
                 </div>
 
                 {/* Frame Title & Specs */}
                 <div className="mb-3">
-                  <h4 className="font-serif text-sm font-semibold text-[#191614]">
+                  <h4 className="font-serif text-sm font-semibold text-[#F4F1EA]">
                     {activeHotspot.frameTitle}
                   </h4>
-                  <p className="text-[11px] text-[#8F877E] mt-0.5">{activeHotspot.specs}</p>
+                  <p className="text-[11px] text-[#9E9E9E] mt-0.5">{activeHotspot.specs}</p>
                 </div>
 
                 {/* Price and Action Button */}
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <div>
-                    <span className="text-[10px] text-[#8F877E] uppercase tracking-wider block">
+                    <span className="text-[10px] text-[#9E9E9E] uppercase tracking-wider block">
                       From
                     </span>
-                    <span className="font-serif text-base font-bold text-[#191614]">
+                    <span className="font-serif text-base font-bold text-[#C5A059]">
                       {activeHotspot.price}
                     </span>
                   </div>
@@ -518,7 +518,7 @@ export function CustomerLookbook() {
                   <Link
                     href={activeHotspot.shopUrl}
                     data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1D1D1F] hover:bg-[#333336] text-white text-xs font-semibold tracking-wide shadow-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-semibold tracking-wide shadow-sm transition-colors"
                   >
                     <span>Shop Frame</span>
                     <ArrowRight className="w-3 h-3" />
@@ -529,17 +529,17 @@ export function CustomerLookbook() {
           </div>
 
           {/* Lookbook Stage Footer Toolbar */}
-          <div className="bg-[#1D1D1F] px-4 sm:px-6 py-3 border-t border-[#333336] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/80">
+          <div className="bg-[#1A1A1A] px-4 sm:px-6 py-3 border-t border-[#333333] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#E0E0E0]">
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-[#10B981]" />
-              <span className="font-medium text-white">
+              <span className="font-medium text-[#F4F1EA]">
                 Interactive Hotspots Active:
               </span>
               <span>
                 {currentRoom.hotspots.length} custom frame profiles tagged in this setting
               </span>
             </div>
-            <div className="text-[11px] text-[#B88E56] flex items-center gap-1">
+            <div className="text-[11px] text-[#C5A059] flex items-center gap-1">
               <Maximize2 className="w-3.5 h-3.5" />
               <span>Tap pins on the artwork to inspect joinery & finishes</span>
             </div>
@@ -560,34 +560,34 @@ export function CustomerLookbook() {
                 className={cn(
                   "p-4 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isCardActive
-                    ? "bg-[#FFFFFF] border-[#1D1D1F] shadow-md ring-1 ring-[#1D1D1F]"
-                    : "bg-[#FFFFFF]/80 border-[#D2D2D7] hover:bg-[#FFFFFF] hover:border-[#1D1D1F]"
+                    ? "bg-[#242424] border-[#C5A059] shadow-md ring-1 ring-[#C5A059]"
+                    : "bg-[#242424]/80 border-[#333333] hover:bg-[#242424] hover:border-[#C5A059]/60"
                 )}
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#1D1D1F]">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#C5A059]">
                       {pin.frameStyle.replace("-", " ")}
                     </span>
-                    <span className="font-sans font-bold text-sm text-[#1D1D1F]">
+                    <span className="font-serif font-bold text-sm text-[#C5A059]">
                       {pin.price}
                     </span>
                   </div>
-                  <h5 className="font-sans text-sm font-semibold text-[#1D1D1F] mb-1">
+                  <h5 className="font-serif text-sm font-semibold text-[#F4F1EA] mb-1">
                     {pin.frameTitle}
                   </h5>
-                  <p className="text-xs text-[#86868B] line-clamp-2 italic font-normal">
+                  <p className="text-xs text-[#E0E0E0] line-clamp-2 italic font-normal">
                     {pin.review}
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-[#D2D2D7] flex items-center justify-between text-xs">
-                  <span className="text-[#86868B] text-[11px]">
+                <div className="mt-3 pt-2 border-t border-[#333333] flex items-center justify-between text-xs">
+                  <span className="text-[#9E9E9E] text-[11px]">
                     {pin.customerName} • {pin.location}
                   </span>
                   <Link
                     href={pin.shopUrl}
-                    className="text-[#1D1D1F] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
+                    className="text-[#C5A059] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
                   >
                     Shop <ArrowRight className="w-3 h-3" />
                   </Link>

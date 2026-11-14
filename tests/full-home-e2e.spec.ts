@@ -261,8 +261,15 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
       fullPage: true,
     });
 
-    expect(fs.existsSync(task9Path)).toBe(true);
-    const stats = fs.statSync(task9Path);
+    // Task 10 Museum Dark Charcoal, Rich Burgundy & Muted Gold verification screenshot
+    const task10Path = path.join(screenshotsDir, "task-10-museum-dark-gold.png");
+    await page.screenshot({
+      path: task10Path,
+      fullPage: true,
+    });
+
+    expect(fs.existsSync(task10Path)).toBe(true);
+    const stats = fs.statSync(task10Path);
     expect(stats.size).toBeGreaterThan(50000); // Verify rich non-empty image
   });
 });
