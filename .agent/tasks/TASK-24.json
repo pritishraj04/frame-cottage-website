@@ -1,0 +1,49 @@
+{
+  "id": "TASK-24",
+  "title": "Redesign Site Header Navigation to Orthodox Luxury Studio Architecture",
+  "category": "ui-navigation-redesign",
+  "description": "Per user directive ('The nav bar is so un orthodox the logo is pushed to the right. What to do? Fix it redesign it properly'), overhauled components/navigation/site-header.tsx to implement the orthodox, high-end luxury studio navigation layout. Previously, placing desktop links in a left flex-1 container pushed the brand wordmark to the center-right. The redesign anchors the brand wordmark firmly to the left with an atelier sub-tagline, centers the desktop navigation links and mega-menu trigger with balanced flex distribution, and anchors utility actions (Request RFQ pill button, ThemeToggle, Search, Wishlist, Account, and Cart drawer trigger) firmly to the right. All 66/66 Playwright tests pass (100% pass rate) with zero horizontal overflow on mobile viewports and 0 build errors.",
+  "acceptanceCriteria": [
+    "Left (Brand Anchor): Firmly anchored to the left, containing MobileNav (visible on < lg), Brand Wordmark <Link href=\"/\" data-testid=\"brand-wordmark\">FRAME COTTAGE</Link> in serif bold typography, and atelier sub-tagline 'Design & Fabrication Studio' (hidden on mobile, visible on sm:)",
+    "Center (Desktop Navigation): Centered container (hidden lg:flex items-center justify-center gap-5 xl:gap-7 flex-1 px-4) with Service Verticals mega-menu trigger and direct links for Bespoke Framing, Spatial & Signage, Industrial CNC, and Government & Civic",
+    "Right (Actions & Utility): Firmly anchored to the right (flex items-center justify-end gap-1 sm:gap-2.5 shrink-0) containing Request RFQ pill button linking to /rfq (hidden xl:inline-flex), ThemeToggle, Quick Search button, Wishlist link, Account link, and Cart drawer button with badge",
+    "MegaMenu and MobileNav remain completely functional with all 6 core service verticals and RFQ triggers",
+    "Zero horizontal overflow across all mobile viewports (390px, 375px, 360px)",
+    "Next.js build completes with 0 errors (npm run build)",
+    "Full Playwright test suite passes (66/66 passed with 100% pass rate)",
+    "High-resolution screenshots captured for dark, light, and mobile viewports saved to .agent/screenshots/ and brain directory"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Reorganize site-header.tsx three-column architecture",
+      "details": "Restructured components/navigation/site-header.tsx to place MobileNav and brand wordmark with sub-tagline on the Left, desktop navigation with mega-menu trigger in the Center (flex-1), and utility actions with RFQ button on the Right (shrink-0).",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Refine mobile responsive touch ergonomics and eliminate horizontal overflow",
+      "details": "Optimized responsive gap and cart badge positioning (right-0 sm:-right-0.5) to ensure exactly 0 horizontal overflow (scrollWidth <= 390px) on mobile viewports.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Create automated Playwright verification test spec",
+      "details": "Created tests/task-24-header.spec.ts verifying Left, Center, and Right header elements across Desktop Dark, Desktop Light, and Mobile viewports.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Capture visual proof screenshots",
+      "details": "Captured task-24-header-redesign-dark.png, task-24-header-redesign-light.png, and task-24-header-redesign-mobile.png into .agent/screenshots/ and copied to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Verify Next.js build compilation and full test suite",
+      "details": "Verified npm run build compiles with 0 errors (13/13 static pages generated) and all 66/66 Playwright tests pass (100% pass rate).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

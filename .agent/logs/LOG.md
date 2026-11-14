@@ -2,15 +2,48 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 00:08
-**Tasks Completed:** 23 / 23
-**Current Task:** TASK-23 Complete (Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections)
+**Last Updated:** 2026-11-15 01:21
+**Tasks Completed:** 24 / 24
+**Current Task:** TASK-24 Complete (Redesign Site Header Navigation to Orthodox Luxury Studio Architecture)
 
 ----------------------------------------------
 
 ## Session Log
 
-### 2026-11-15 - TASK-23: Implement True PNG Asset Drop Zones Across the Hero Section and All Storefront Sections
+### 2026-11-15 - TASK-24: Redesign Site Header Navigation to Orthodox Luxury Studio Architecture
+- Context & Objective: Per user directive ("The nav bar is so un orthodox the logo is pushed to the right. What to do? Fix it redesign it properly"), overhauled `components/navigation/site-header.tsx` to implement canonical, balanced luxury studio header architecture. Previously, the desktop navigation was wrapped in a left `flex-1` container, pushing the brand wordmark into the center-right of the viewport.
+- Three-Column Studio Navigation Architecture:
+  1. **Left (Brand Anchor)**:
+     - Firmly anchored to the left (`flex items-center gap-1.5 sm:gap-4 shrink-0`).
+     - Contains `<MobileNav />` with hamburger trigger visible on `< lg` screens and cleanly hidden on `lg:`.
+     - Contains Brand Wordmark `<Link href="/" data-testid="brand-wordmark">FRAME COTTAGE</Link>` with exact text assertion compatibility in serif typography (`font-serif tracking-[0.18em] sm:tracking-[0.22em] text-base sm:text-xl font-bold`).
+     - Contains subtle atelier sub-tagline below the link: `<span className="text-[8.5px] uppercase tracking-[0.26em] font-mono text-[var(--color-accent-gold)] mt-1 hidden sm:block">Design & Fabrication Studio</span>`.
+  2. **Center (Desktop Navigation)**:
+     - Balanced center container (`hidden lg:flex items-center justify-center gap-5 xl:gap-7 flex-1 px-4`).
+     - Service Verticals mega-menu trigger button (`data-testid="nav-service-verticals"`).
+     - Core vertical direct links:
+       - `Bespoke Framing` (`data-testid="nav-bespoke-framing"`, `/services/bespoke-framing`)
+       - `Spatial & Signage` (`data-testid="nav-spatial-signage"`, `/services/spatial-signage`)
+       - `Industrial CNC` (`data-testid="nav-industrial-cnc"`, `/services/industrial-cnc`)
+       - `Government & Civic` (`data-testid="nav-civic-projects"`, `/services/civic-projects`)
+  3. **Right (Actions & Utility)**:
+     - Firmly anchored to the right (`flex items-center justify-end gap-1 sm:gap-2.5 shrink-0`).
+     - "Request RFQ" pill button (`hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium tracking-wider bg-[var(--color-accent-gold)] text-black hover:opacity-90 transition-opacity`, `/rfq`).
+     - `<ThemeToggle testId="header-theme-toggle" />`.
+     - Quick Search button (`data-testid="header-search-btn"`).
+     - Wishlist link (`data-testid="header-wishlist-link"`).
+     - Account link (`data-testid="header-account-link"`).
+     - Cart drawer trigger button (`data-testid="header-cart-btn"`) with `<span data-testid="cart-badge">{cartCount}</span>` adjusted to `right-0 sm:-right-0.5` preventing mobile sub-pixel overflow.
+- Mobile Responsiveness & Overflow Prevention:
+  - Ensured exactly 0 horizontal overflow (`scrollWidth <= 390px`) across mobile viewports (390px, 375px, 360px).
+- Verification & Test Results:
+  - `npm run build`: Compiled with 0 errors; 13/13 static routes generated.
+  - Playwright test suite: **66/66 passed with 100% pass rate** in 39.8s.
+  - Automated test spec `tests/task-24-header.spec.ts` created and verified.
+- Visual Proof Screenshots (saved to `.agent/screenshots/` and copied to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-24-header-redesign-dark.png` (18 KB)
+  - `task-24-header-redesign-light.png` (20 KB)
+  - `task-24-header-redesign-mobile.png` (5.1 KB)
 - Context & Objective: Per user directive ("hero section and other sections does not have png drop zones where we can place pngs to make my desiger place the pngs"), replaced all simulated SVGs, mock furniture drawings, and complex CSS mockups (e.g. simulated credenzas, SVG geometric abstract art, mock living room drawings) across the Hero Section and all storefront sections with unmistakable, prominent dashed PNG Drop Zones. Graphic designers can now clearly identify where to place their cut-out/transparent PNG renders with exact aspect ratios, file dimensions, and path specifications.
 - Section-by-Section Implementation:
   1. **Hero Section (`components/hero/hero-carousel.tsx`)**:

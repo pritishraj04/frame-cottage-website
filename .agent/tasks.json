@@ -159,5 +159,12 @@
     "category": "ui-dropzones",
     "specFilePath": ".agent/tasks/TASK-23.json",
     "passes": true
+  },
+  {
+    "id": "TASK-24",
+    "title": "Redesign Site Header Navigation to Orthodox Luxury Studio Architecture",
+    "category": "ui-navigation-redesign",
+    "specFilePath": ".agent/tasks/TASK-24.json",
+    "passes": true
   }
 ]
