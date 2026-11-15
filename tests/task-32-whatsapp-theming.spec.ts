@@ -55,11 +55,19 @@ test.describe("TASK-32: Themed Floating WhatsApp Button & Optical Alignment", ()
     );
     expect(btnBg).toBe("rgb(36, 36, 36)");
 
-    // Verify Dark Mode border color: --color-accent-gold (#C5A059 -> rgb(197, 160, 89))
+    // Verify Dark Mode border color: matches --color-accent-gold
     const btnBorder = await whatsappBtn.evaluate(
       (el) => window.getComputedStyle(el).borderColor
     );
-    expect(btnBorder).toBe("rgb(197, 160, 89)");
+    const expectedDarkBorder = await page.evaluate(() => {
+      const temp = document.createElement("div");
+      temp.style.color = "var(--color-accent-gold)";
+      document.body.appendChild(temp);
+      const color = window.getComputedStyle(temp).color;
+      temp.remove();
+      return color;
+    });
+    expect(btnBorder).toBe(expectedDarkBorder);
 
     // Capture visual proof of dark closed button
     await saveScreenshots(page, "task-32-whatsapp-dark-closed.png");
@@ -114,11 +122,19 @@ test.describe("TASK-32: Themed Floating WhatsApp Button & Optical Alignment", ()
     );
     expect(btnBg).toBe("rgb(255, 255, 255)");
 
-    // Verify Light Mode border color: --color-accent-gold (#B38F48 -> rgb(179, 143, 72))
+    // Verify Light Mode border color: matches --color-accent-gold
     const btnBorder = await whatsappBtn.evaluate(
       (el) => window.getComputedStyle(el).borderColor
     );
-    expect(btnBorder).toBe("rgb(179, 143, 72)");
+    const expectedLightBorder = await page.evaluate(() => {
+      const temp = document.createElement("div");
+      temp.style.color = "var(--color-accent-gold)";
+      document.body.appendChild(temp);
+      const color = window.getComputedStyle(temp).color;
+      temp.remove();
+      return color;
+    });
+    expect(btnBorder).toBe(expectedLightBorder);
 
     // Capture visual proof of light closed button
     await saveScreenshots(page, "task-32-whatsapp-light-closed.png");

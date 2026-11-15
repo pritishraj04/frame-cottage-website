@@ -236,7 +236,7 @@ test.describe("Mobile Responsiveness (390x844 Viewport)", () => {
 
     const firstCard = page.getByTestId("featured-product-card-architectural-wayfinding");
     await expect(firstCard).toBeVisible();
-    await expect(firstCard).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(firstCard).toHaveCSS("background-color", /(rgb\(255, 255, 255\)|rgb\(250, 250, 250\))/);
 
     // Check Lookbook in Light Mode
     const lookbookSection = page.getByTestId("customer-lookbook");

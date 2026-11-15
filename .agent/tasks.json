@@ -236,5 +236,12 @@
     "category": "design-token-robustness",
     "specFilePath": ".agent/tasks/TASK-34.json",
     "passes": true
+  },
+  {
+    "id": "TASK-35",
+    "title": "Implement Option 2: Rani Fuchsia (Bold & Textural) Accent Theme",
+    "category": "theme-accent-modernization",
+    "specFilePath": ".agent/tasks/TASK-35.json",
+    "passes": true
   }
 ]

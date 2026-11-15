@@ -30,11 +30,11 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
 
-  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
-  --color-accent: #078080;
-  --color-accent-hover: #055C5C;
-  --color-accent-light: rgba(7, 128, 128, 0.18);
-  --color-accent-tint: rgba(7, 128, 128, 0.08);
+  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
+  --color-accent: #D81159;
+  --color-accent-hover: #A30D43;
+  --color-accent-light: rgba(216, 17, 89, 0.18);
+  --color-accent-tint: rgba(216, 17, 89, 0.08);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -81,11 +81,11 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
 
-  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
-  --color-accent: #078080;
-  --color-accent-hover: #055C5C;
-  --color-accent-light: rgba(7, 128, 128, 0.18);
-  --color-accent-tint: rgba(7, 128, 128, 0.08);
+  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
+  --color-accent: #D81159;
+  --color-accent-hover: #A30D43;
+  --color-accent-light: rgba(216, 17, 89, 0.18);
+  --color-accent-tint: rgba(216, 17, 89, 0.08);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -128,11 +128,11 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #B38F48;
 
-  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
-  --color-accent: #078080;
-  --color-accent-hover: #055C5C;
-  --color-accent-light: #E6F2F2;
-  --color-accent-tint: rgba(7, 128, 128, 0.06);
+  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
+  --color-accent: #D81159;
+  --color-accent-hover: #A30D43;
+  --color-accent-light: #FDF0F4;
+  --color-accent-tint: rgba(216, 17, 89, 0.06);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -180,7 +180,7 @@
   --color-terracotta-hover: var(--color-terracotta-hover);
   --color-brass: var(--color-brass);
 
-  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
+  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
   --color-accent: var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
   --color-accent-light: var(--color-accent-light);

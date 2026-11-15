@@ -1,0 +1,46 @@
+{
+  "id": "TASK-35",
+  "title": "Implement Option 2: Rani Fuchsia (Bold & Textural) Accent Theme",
+  "category": "theme-accent-modernization",
+  "description": "Implemented Option 2: Rani Fuchsia (Bold & Textural) across the entire website via the robust variable system established in app/globals.css. Configured semantic tokens --color-accent (#D81159), --color-accent-hover (#A30D43), --color-accent-light (#FDF0F4 light, rgba(216, 17, 89, 0.18) dark), --color-accent-tint (rgba(216, 17, 89, 0.06) light, rgba(216, 17, 89, 0.08) dark), and --color-accent-contrast (#FFFFFF) across :root, .dark, and .light. Verified legacy aliases and inline theme bindings cascade immediately to buttons, indicators, and active states across Header, Footer, Cart, RFQ Portal, Category Pills, and Services. Authored tests/task-35-rani-fuchsia-theme.spec.ts (7/7 passing), verified Next.js production build (19/19 routes), and captured 9 visual proof screenshots in .agent/screenshots/ and synced to parent brain directory.",
+  "acceptanceCriteria": [
+    "Design tokens in app/globals.css define --color-accent: #D81159, --color-accent-hover: #A30D43, --color-accent-contrast: #FFFFFF across :root, .dark, and .light",
+    "--color-accent-light is set to #FDF0F4 in Light Mode and rgba(216, 17, 89, 0.18) in Dark Mode",
+    "--color-accent-tint is set to rgba(216, 17, 89, 0.06) in Light Mode and rgba(216, 17, 89, 0.08) in Dark Mode",
+    "Header 'Request RFQ' button has rgb(216, 17, 89) in both Dark and Light modes",
+    "Footer newsletter submit button has rgb(216, 17, 89) in both Dark and Light modes",
+    "Cart page checkout button has rgb(216, 17, 89) in both Dark and Light modes",
+    "RFQ Portal progression buttons have rgb(216, 17, 89) in both Dark and Light modes",
+    "Mobile responsiveness (390x844) verified with zero horizontal overflow",
+    "Zero TypeScript and build errors on npm run build across all 19 routes",
+    "100% pass rate across automated test suites",
+    "9 visual proof screenshots captured in .agent/screenshots/ and synced to /Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Update app/globals.css with Option 2 Rani Fuchsia semantic tokens",
+      "details": "Updated --color-accent to #D81159, --color-accent-hover to #A30D43, --color-accent-light to #FDF0F4 (light) / rgba(216, 17, 89, 0.18) (dark), and --color-accent-tint to rgba(216, 17, 89, 0.06) (light) / rgba(216, 17, 89, 0.08) (dark) in :root, .dark, and .light.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Author automated test suite tests/task-35-rani-fuchsia-theme.spec.ts",
+      "details": "Verified computed accent styles, Header RFQ button, Footer newsletter submit, Cart checkout, RFQ progression, and mobile viewport zero overflow.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Capture 9 visual proof screenshots across light, dark, and mobile viewports",
+      "details": "Captured task-35-fuchsia-home-light.png, task-35-fuchsia-home-dark.png, task-35-fuchsia-sections-light.png, task-35-fuchsia-sections-dark.png, task-35-fuchsia-footer-light.png, task-35-fuchsia-footer-dark.png, task-35-fuchsia-cart-light.png, task-35-fuchsia-rfq-light.png, and task-35-fuchsia-mobile.png in .agent/screenshots/ and synced to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Verify Next.js production build and full automated test suite",
+      "details": "npm run build passed with 0 errors across 19 static/dynamic routes. Automated test suites pass 100%.",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

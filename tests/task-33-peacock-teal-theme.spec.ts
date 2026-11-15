@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 
-test.describe("TASK-33: Implement Option 1: Peacock Teal ('India Circus' Classic) Theme", () => {
+test.describe.skip("TASK-33: Implement Option 1: Peacock Teal ('India Circus' Classic) Theme [Superseded by TASK-35 Rani Fuchsia]", () => {
   const screenshotsDir = path.resolve(process.cwd(), ".agent/screenshots");
   const parentBrainDir =
     "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af";

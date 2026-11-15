@@ -63,15 +63,15 @@ test.describe("TASK-20 Project Specification & RFQ Portal (/rfq)", () => {
 
     // Click B2C card
     await b2cCard.click();
-    await expect(b2cCard).toHaveClass(/border-\[#C5A059\]/);
+    await expect(b2cCard).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Click Public Sector card
     await publicCard.click();
-    await expect(publicCard).toHaveClass(/border-\[#C5A059\]/);
+    await expect(publicCard).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Click Header B2B badge to switch back
     await page.locator('[data-testid="header-tier-badge-b2b"]').click();
-    await expect(b2bCard).toHaveClass(/border-\[#C5A059\]/);
+    await expect(b2bCard).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
   });
 
   test("3. Multi-vertical selection across 6 core service verticals with validation", async ({
@@ -102,12 +102,12 @@ test.describe("TASK-20 Project Specification & RFQ Portal (/rfq)", () => {
     // Toggle custom-gifting
     const customGiftingCard = page.locator('[data-testid="vertical-card-custom-gifting"]');
     await customGiftingCard.click();
-    await expect(customGiftingCard).toHaveClass(/border-\[#C5A059\]/);
+    await expect(customGiftingCard).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Toggle bespoke-framing
     const bespokeCard = page.locator('[data-testid="vertical-card-bespoke-framing"]');
     await bespokeCard.click();
-    await expect(bespokeCard).toHaveClass(/border-\[#C5A059\]/);
+    await expect(bespokeCard).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
   });
 
   test("4. Material and Technical Capability toggles on Step 3", async ({ page }) => {
@@ -123,12 +123,12 @@ test.describe("TASK-20 Project Specification & RFQ Portal (/rfq)", () => {
     const museumGlazing = page.locator('[data-testid="material-toggle-museum-glazing"]');
     await expect(museumGlazing).toBeVisible();
     await museumGlazing.click();
-    await expect(museumGlazing).toHaveClass(/border-\[#C5A059\]/);
+    await expect(museumGlazing).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     const opticalCrystal = page.locator('[data-testid="material-toggle-optical-crystal"]');
     await expect(opticalCrystal).toBeVisible();
     await opticalCrystal.click();
-    await expect(opticalCrystal).toHaveClass(/border-\[#C5A059\]/);
+    await expect(opticalCrystal).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Capabilities check
     const fineArtPrinting = page.locator(
@@ -136,7 +136,7 @@ test.describe("TASK-20 Project Specification & RFQ Portal (/rfq)", () => {
     );
     await expect(fineArtPrinting).toBeVisible();
     await fineArtPrinting.click();
-    await expect(fineArtPrinting).toHaveClass(/border-\[#C5A059\]/);
+    await expect(fineArtPrinting).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
   });
 
   test("5. Scope volume, delivery timeline, tender ID, and blueprint dropzone on Step 4", async ({
@@ -155,13 +155,13 @@ test.describe("TASK-20 Project Specification & RFQ Portal (/rfq)", () => {
     const enterpriseVol = page.locator('[data-testid="volume-option-enterprise"]');
     await expect(enterpriseVol).toBeVisible();
     await enterpriseVol.click();
-    await expect(enterpriseVol).toHaveClass(/border-\[#C5A059\]/);
+    await expect(enterpriseVol).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Timeline selection
     const urgentTimeline = page.locator('[data-testid="timeline-option-urgent"]');
     await expect(urgentTimeline).toBeVisible();
     await urgentTimeline.click();
-    await expect(urgentTimeline).toHaveClass(/border-\[#C5A059\]/);
+    await expect(urgentTimeline).toHaveClass(/(border-\[#C5A059\]|border-accent)/);
 
     // Tender Reference ID input
     const tenderInput = page.locator('[data-testid="tender-id-input"]');
