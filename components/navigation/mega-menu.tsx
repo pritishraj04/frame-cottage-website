@@ -20,9 +20,10 @@ interface MegaMenuProps {
   isOpen: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClose?: () => void;
 }
 
-export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) {
+export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave, onClose }: MegaMenuProps) {
   if (!isOpen) return null;
 
   const verticalCol1 = SERVICE_VERTICALS.slice(0, 2); // Retail & Bespoke
@@ -62,6 +63,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
+                          onClick={onClose}
                           className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
                           <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
@@ -102,6 +104,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
+                          onClick={onClose}
                           className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
                           <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
@@ -142,6 +145,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
+                          onClick={onClose}
                           className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
                           <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
@@ -200,6 +204,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
             <div className="pt-6">
               <Link
                 href="/rfq"
+                onClick={onClose}
                 data-testid="mega-menu-rfq-btn"
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-semibold uppercase tracking-wider shadow-sm transition-all duration-200"
               >

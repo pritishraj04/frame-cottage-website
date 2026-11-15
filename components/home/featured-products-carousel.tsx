@@ -251,7 +251,7 @@ export function FeaturedProductsCarousel() {
       id="featured-products-carousel"
       data-testid="featured-products-carousel"
       aria-label="Featured Handcrafted Frames Carousel"
-      className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 overflow-hidden touch-pan-y"
+      className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 overflow-hidden touch-pan-y scroll-mt-28 sm:scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================

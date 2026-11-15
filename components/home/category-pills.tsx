@@ -90,10 +90,13 @@ export function CategoryPills({
 
   return (
     <section
+      id="services"
       aria-label="Core Service Verticals Discovery"
       data-testid="category-pills"
-      className="w-full bg-[var(--background)] py-10 lg:py-14 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-10 lg:py-14 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32 relative"
     >
+      <span id="categories" className="absolute -top-28 pointer-events-none" />
+      <span id="category-pills" className="absolute -top-28 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Title and Scroll Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">

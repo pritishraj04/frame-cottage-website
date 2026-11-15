@@ -12,7 +12,7 @@ export function ServiceWorkflow({ stages, verticalTitle }: ServiceWorkflowProps)
       id="workflow"
       data-testid="service-workflow"
       aria-label={`${verticalTitle} 4-Stage Execution Workflow`}
-      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

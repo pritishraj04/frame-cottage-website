@@ -126,8 +126,9 @@ export function FAQSection() {
       id="faq-section"
       data-testid="faq-section"
       aria-label="Frequently Asked Questions & Care"
-      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32 relative"
     >
+      <span id="faq" className="absolute -top-28 pointer-events-none" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
             SECTION HEADER WITH PNG TECHNICAL BADGES

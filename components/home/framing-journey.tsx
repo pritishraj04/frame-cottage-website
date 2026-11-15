@@ -100,7 +100,7 @@ export function FramingJourney() {
       id="framing-journey"
       data-testid="framing-journey"
       aria-label="End-to-End Studio Execution Workflow"
-      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] relative overflow-hidden text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-16 sm:py-24 border-b border-[var(--color-border-subtle)] relative overflow-hidden text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32"
     >
       {/* Decorative subtle background pattern */}
       <div

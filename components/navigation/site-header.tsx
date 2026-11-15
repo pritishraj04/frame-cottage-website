@@ -214,6 +214,7 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
           isOpen={isMegaMenuOpen}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClose={() => setIsMegaMenuOpen(false)}
         />
       </header>
 

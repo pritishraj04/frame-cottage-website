@@ -48,6 +48,8 @@ export const civicProjectsData: ServiceVerticalData = {
         "Full-penetration welds inspected via ultrasonic and radiography testing for high-traffic public installations.",
       badge: "Structural Fab",
       pngPlaceholderText: "Heavy Structural Welding Joint PNG",
+      hashSlug: "memorials",
+      aliases: ["submerged-welding", "monuments"],
     },
     {
       id: "anti-graffiti",
@@ -58,6 +60,8 @@ export const civicProjectsData: ServiceVerticalData = {
         "Permanent chemical shield preventing aerosol spray paints, permanent markers, and stickers from bonding to surfaces.",
       badge: "Anti-Graffiti",
       pngPlaceholderText: "Anti-Graffiti Coated Monolith PNG",
+      hashSlug: "municipal-wayfinding",
+      aliases: ["anti-graffiti", "park-signage"],
     },
     {
       id: "hydraulic-stamping",
@@ -68,6 +72,8 @@ export const civicProjectsData: ServiceVerticalData = {
         "High-definition cold coining of solid bronze and brass national emblems for judicial and civic facades.",
       badge: "Civic Coining",
       pngPlaceholderText: "Cast Bronze Civic Emblem PNG",
+      hashSlug: "official-framing",
+      aliases: ["hydraulic-stamping", "chamber-portraits"],
     },
     {
       id: "microclimate-casework",
@@ -78,6 +84,8 @@ export const civicProjectsData: ServiceVerticalData = {
         "Preserves original constitution copies, treaties, and historical civic declarations in sealed nitrogen atmospheres.",
       badge: "State Archives",
       pngPlaceholderText: "Hermetic Archive Vitrine PNG",
+      hashSlug: "tenders",
+      aliases: ["microclimate-casework", "tender-compliance"],
     },
   ],
   materialSpecs: [

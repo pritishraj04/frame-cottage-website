@@ -296,7 +296,7 @@ export function DecisionConcierge() {
     <section
       id="decision-concierge"
       data-testid="decision-concierge"
-      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-b border-[var(--color-border-subtle)] scroll-mt-24"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-b border-[var(--color-border-subtle)] scroll-mt-28 sm:scroll-mt-32"
       aria-label="Interactive Project & Material Decision Concierge"
     >
       {/* PNG-Styled Spatial Canvas Outer Box with Dashed Borders */}

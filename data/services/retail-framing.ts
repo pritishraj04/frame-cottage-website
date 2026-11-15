@@ -48,6 +48,8 @@ export const retailFramingData: ServiceVerticalData = {
         "High-pressure V-nail insertion ensuring unbreakable mechanical corners without surface staple marring.",
       badge: "Joining Station",
       pngPlaceholderText: "Underpinner / Corner Spline PNG",
+      hashSlug: "ready-made",
+      aliases: ["underpinner", "joinery"],
     },
     {
       id: "mat-cutter",
@@ -58,6 +60,8 @@ export const retailFramingData: ServiceVerticalData = {
         "Micro-stepper controlled cutter producing museum-grade multi-aperture gallery mats with sharp, clean corners.",
       badge: "Precision Cutting",
       pngPlaceholderText: "Valiani CMC Mat Sample PNG",
+      hashSlug: "archival-mats",
+      aliases: ["mat-cutter", "mats"],
     },
     {
       id: "glazing-cutter",
@@ -68,6 +72,8 @@ export const retailFramingData: ServiceVerticalData = {
         "Clean, chip-free scoring of TruVue conservation glass and Optium acrylic with zero optical distortion.",
       badge: "Optics Processing",
       pngPlaceholderText: "TruVue Glazing Sample PNG",
+      hashSlug: "tabletop",
+      aliases: ["glazing-cutter", "easel"],
     },
     {
       id: "cleanroom-assembly",
@@ -78,6 +84,8 @@ export const retailFramingData: ServiceVerticalData = {
         "Hermetic sealing with acid-free Tyvek dust covers prevents environmental particulate ingress for decades.",
       badge: "Preservation",
       pngPlaceholderText: "Cleanroom Assembly Bench PNG",
+      hashSlug: "gallery-kits",
+      aliases: ["cleanroom-assembly", "modular-kits"],
     },
   ],
   materialSpecs: [

@@ -15,7 +15,7 @@ export function CustomFrameStudio() {
       id="custom-frame-studio"
       aria-label="The Custom Frame Studio"
       data-testid="custom-frame-studio"
-      className="relative overflow-hidden bg-[var(--background)] py-16 sm:py-20 lg:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="relative overflow-hidden bg-[var(--background)] py-16 sm:py-20 lg:py-24 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32"
     >
       {/* Background Soft Museum Lighting Gradients */}
       <div

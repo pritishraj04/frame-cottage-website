@@ -12,7 +12,7 @@ export function ServiceCapabilities({ capabilities, verticalTitle }: ServiceCapa
       id="capabilities"
       data-testid="service-capabilities"
       aria-label={`${verticalTitle} Technical Capabilities and Machinery`}
-      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -39,9 +39,16 @@ export function ServiceCapabilities({ capabilities, verticalTitle }: ServiceCapa
           {capabilities.map((cap) => (
             <div
               key={cap.id}
+              id={cap.hashSlug || cap.id}
               data-testid={`capability-card-${cap.id}`}
-              className="p-5 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 flex flex-col justify-between group shadow-2xs"
+              className="p-5 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 flex flex-col justify-between group shadow-2xs scroll-mt-28 sm:scroll-mt-32 relative"
             >
+              {cap.aliases?.map((alias) => (
+                <span key={alias} id={alias} className="absolute -top-28 pointer-events-none" />
+              ))}
+              {cap.hashSlug && cap.hashSlug !== cap.id && (
+                <span id={cap.id} className="absolute -top-28 pointer-events-none" />
+              )}
               <div>
                 {/* Header Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">

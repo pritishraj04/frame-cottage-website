@@ -12,7 +12,7 @@ export function ServiceCaseStudies({ caseStudies, verticalTitle }: ServiceCaseSt
       id="case-studies"
       data-testid="service-case-studies"
       aria-label={`${verticalTitle} Case Studies & Client Showcase`}
-      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250"
+      className="w-full bg-[var(--background)] py-12 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 scroll-mt-28 sm:scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

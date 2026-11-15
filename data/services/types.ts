@@ -25,6 +25,8 @@ export interface TechnicalCapability {
   description: string;
   badge: string;
   pngPlaceholderText: string;
+  hashSlug?: string;
+  aliases?: string[];
 }
 
 export interface MaterialSpecItem {

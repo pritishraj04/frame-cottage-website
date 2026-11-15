@@ -48,6 +48,8 @@ export const customGiftingData: ServiceVerticalData = {
         "Micro-ablates metal without chemical etching, yielding razor-sharp corporate logos and typography on polished brass.",
       badge: "Laser Marking",
       pngPlaceholderText: "Engraved Brass Plaque Sample PNG",
+      hashSlug: "awards",
+      aliases: ["mopa-laser", "trophies"],
     },
     {
       id: "subsurface-laser",
@@ -58,6 +60,8 @@ export const customGiftingData: ServiceVerticalData = {
         "Creates interior 3D spatial models, architectural structures, and insignia inside solid K9 crystal without touching the surface.",
       badge: "3D Subsurface",
       pngPlaceholderText: "3D Crystal Sculpture Sample PNG",
+      hashSlug: "plaques",
+      aliases: ["subsurface-laser", "medallions"],
     },
     {
       id: "diamond-drag",
@@ -68,6 +72,8 @@ export const customGiftingData: ServiceVerticalData = {
         "Produces classic bright-cut faceted engraving lines with sparkling jewelry-level light reflection on silver and gold.",
       badge: "Diamond Cut",
       pngPlaceholderText: "Diamond Cut Metal Medal PNG",
+      hashSlug: "corporate-programs",
+      aliases: ["diamond-drag", "turnkey"],
     },
     {
       id: "case-maker",
@@ -78,6 +84,8 @@ export const customGiftingData: ServiceVerticalData = {
         "Hand-tailored presentation boxes lined in French velvet, bookbinding cloth, and heavy magnetic closure latches.",
       badge: "Luxury Packaging",
       pngPlaceholderText: "Debossed Velvet Gift Case PNG",
+      hashSlug: "presentation-boxes",
+      aliases: ["case-maker", "boxes", "velvet-cases"],
     },
   ],
   materialSpecs: [

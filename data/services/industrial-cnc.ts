@@ -48,6 +48,8 @@ export const industrialCncData: ServiceVerticalData = {
         "High-velocity nitrogen and oxygen assist gas cutting creating mirror-clean edges with zero dross formation.",
       badge: "Laser Profiling",
       pngPlaceholderText: "Laser Cut Metal Sample PNG",
+      hashSlug: "laser-cutting",
+      aliases: ["fiber-laser", "laser"],
     },
     {
       id: "cnc-router-5axis",
@@ -58,6 +60,8 @@ export const industrialCncData: ServiceVerticalData = {
         "Full simultaneous 5-axis contouring for organic sculptural wood columns, acoustic parametric grilles, and complex tooling.",
       badge: "5-Axis CNC",
       pngPlaceholderText: "5-Axis Milled Hardwood Part PNG",
+      hashSlug: "cnc-routing",
+      aliases: ["cnc-router-5axis", "timber-cnc"],
     },
     {
       id: "press-brake",
@@ -68,6 +72,8 @@ export const industrialCncData: ServiceVerticalData = {
         "Consistent acute and hem bending across heavy gauge aluminum and stainless architectural facade cassettes.",
       badge: "Brake Forming",
       pngPlaceholderText: "Formed Metal Cassette PNG",
+      hashSlug: "metalworks",
+      aliases: ["press-brake", "facades", "screens"],
     },
     {
       id: "powder-booth",
@@ -78,6 +84,8 @@ export const industrialCncData: ServiceVerticalData = {
         "Zinc-rich primer and architectural polyester topcoats yielding 2,000+ hour salt-spray corrosion resistance.",
       badge: "Surface Finishing",
       pngPlaceholderText: "Architectural Powder Finish PNG",
+      hashSlug: "finishes",
+      aliases: ["powder-booth", "coating"],
     },
   ],
   materialSpecs: [

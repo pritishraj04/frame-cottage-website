@@ -48,6 +48,8 @@ export const spatialSignageData: ServiceVerticalData = {
         "Computer-guided precision bending of channel letter returns with integrated clinching and notch points.",
       badge: "Channel Bending",
       pngPlaceholderText: "3D Channel Letterform PNG",
+      hashSlug: "wayfinding",
+      aliases: ["accu-bend", "branding", "acoustic"],
     },
     {
       id: "flatbed-uv",
@@ -58,6 +60,8 @@ export const spatialSignageData: ServiceVerticalData = {
         "Direct-to-substrate printing on acrylic, dibond, brushed aluminum, and glass with industrial outdoor adhesion.",
       badge: "UV Flatbed",
       pngPlaceholderText: "Direct UV Spatial Panel PNG",
+      hashSlug: "illuminated-led",
+      aliases: ["flatbed-uv", "led", "ada"],
     },
     {
       id: "vacuum-former",
@@ -68,6 +72,8 @@ export const spatialSignageData: ServiceVerticalData = {
         "Seamless curved 3D acrylic faces and light diffusers engineered for high-impact commercial outdoor signs.",
       badge: "Thermoforming",
       pngPlaceholderText: "Molded Acrylic Face PNG",
+      hashSlug: "pylons",
+      aliases: ["vacuum-former", "totems"],
     },
     {
       id: "tig-mig",
@@ -78,6 +84,8 @@ export const spatialSignageData: ServiceVerticalData = {
         "Seamless grind-and-polish corners for high-end hotel lobby totems and architectural entrance canopies.",
       badge: "Structural Welding",
       pngPlaceholderText: "Welded Monolith Totem PNG",
+      hashSlug: "metalworks",
+      aliases: ["tig-mig", "welding", "structural"],
     },
   ],
   materialSpecs: [

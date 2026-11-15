@@ -48,6 +48,8 @@ export const bespokeFramingData: ServiceVerticalData = {
         "Archival mineral pigment printing rendering ultra-wide gamut and subtle tonal gradations for fine art reproductions.",
       badge: "Master Printing",
       pngPlaceholderText: "Epson P20000 Giclée Print PNG",
+      hashSlug: "giclee",
+      aliases: ["epson-giclee", "prints"],
     },
     {
       id: "spline-joiner",
@@ -58,6 +60,8 @@ export const bespokeFramingData: ServiceVerticalData = {
         "Corner splines lock oversized gallery frames against torsional bowing and deflection under heavy glass weights.",
       badge: "Master Joinery",
       pngPlaceholderText: "Hardwood Corner Spline PNG",
+      hashSlug: "joinery",
+      aliases: ["spline-joiner", "hardwood-splines"],
     },
     {
       id: "canvas-tensioner",
@@ -68,6 +72,8 @@ export const bespokeFramingData: ServiceVerticalData = {
         "Uniform warp-and-weft tensioning on kiln-dried Baltic birch stretcher bars prevents canvas sagging over decades.",
       badge: "Canvas Atelier",
       pngPlaceholderText: "Canvas Floater Profile PNG",
+      hashSlug: "canvas-floater",
+      aliases: ["canvas-tensioner", "canvas", "floater"],
     },
     {
       id: "conservation-table",
@@ -78,6 +84,8 @@ export const bespokeFramingData: ServiceVerticalData = {
         "All mounting attachments can be safely dissolved and reversed with de-ionized water without contacting the art.",
       badge: "Conservation",
       pngPlaceholderText: "Japanese Paper Hinge PNG",
+      hashSlug: "conservation",
+      aliases: ["conservation-table", "museum-mounting"],
     },
   ],
   materialSpecs: [
