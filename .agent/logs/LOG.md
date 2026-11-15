@@ -2,13 +2,29 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 02:44
-**Tasks Completed:** 29 / 29
-**Current Task:** TASK-29 Complete (Developing Full Search Functionality - Global Command Palette Modal & Dedicated Search Page)
+**Last Updated:** 2026-11-15 10:15
+**Tasks Completed:** 30 / 30
+**Current Task:** TASK-30 Complete (Fixing Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-30: Fix Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y
+- Context & Objective: The user reported: "why the first scroll is stuck then after scrolling agian page scrolls. fix it".
+- Empirical Root Cause Analysis:
+  - `<main className="flex-1 w-full flex flex-col overflow-x-hidden">` in `app/page.tsx` line 34 and `app/rfq/page.tsx` line 341 triggered CSS Overflow Module Level 3 automatic computation: when one axis is hidden/non-visible, the other computes to `auto`.
+  - Browsers (Chromium/WebKit) computed `overflow-y: auto` on `<main>`, and because `<main>` had a 30px height mismatch (`scrollHeight: 14961px` vs `clientHeight: 14931px`), the browser sent the very first mouse wheel or touch gesture to `<main>`.
+  - `<main>` scrolled 30px (`main.scrollTop: 30`) while `window.scrollY` remained stuck at `0`. Only after `<main>` hit its 30px boundary did the second gesture bubble to `window`.
+- Implementation:
+  1. `app/globals.css`: Added global rules for `html`, `body` (`overflow-x: clip; max-width: 100vw;`) and `main` (`overflow-x: clip; overflow-y: visible;`) using modern CSS Overflow 3 `clip`, clipping horizontal overflow without creating an accidental vertical scroll container.
+  2. `app/page.tsx` & `app/rfq/page.tsx`: Replaced `overflow-x-hidden` with `overflow-x-clip` on `<main>`.
+  3. `components/hero/hero-carousel.tsx` & `components/home/featured-products-carousel.tsx`: Added `touch-pan-y` to carousel touch wrappers ensuring touch gestures prioritize vertical viewport panning.
+  4. Automated Test Suite (`tests/task-30-first-scroll.spec.ts`): Built 5 comprehensive Playwright tests verifying immediate window scrolling (`window.scrollY >= 50, main.scrollTop === 0`) on the first gesture across Home, RFQ, touch-pan-y on carousels, 390x844 mobile viewport zero overflow, and Light Mode.
+  5. High-Resolution Visual Proofs: Captured `task-30-home-first-scroll-desktop.png`, `task-30-rfq-first-scroll-desktop.png`, `task-30-home-first-scroll-mobile.png`, and `task-30-home-first-scroll-light.png` to `.agent/screenshots/` and parent brain directory.
+- Quality Gates Verified:
+  - `npm run build`: Compiled with 0 TypeScript and 0 build errors across all 19 static routes.
+  - `npx playwright test`: 100% pass rate (92/92 tests passing).
 
 ### 2026-11-15 - TASK-29: Developing Full Search Functionality (Global Command Palette Modal & Dedicated Search Page)
 - Context & Objective: Per user directive ("develop search functionality"), engineered a comprehensive multi-tier search ecosystem across the entire studio catalog, services, materials, machinery, and actions.

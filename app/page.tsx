@@ -31,7 +31,7 @@ export default function Home() {
       {/* 1. Sticky Header with 6-vertical mega-menu, search, cart, and theme toggle */}
       <SiteHeader />
 
-      <main className="flex-1 w-full flex flex-col overflow-x-hidden">
+      <main className="flex-1 w-full flex flex-col overflow-x-clip">
         {/* 2. Full-Image PNG Hero Carousel with Framer Motion AnimatePresence & Spatial Designer Drop Zones */}
         <HeroCarousel />
 

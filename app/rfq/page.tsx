@@ -338,7 +338,7 @@ export default function RFQPortalPage() {
         />
       </Suspense>
 
-      <main className="flex-1 w-full flex flex-col overflow-x-hidden">
+      <main className="flex-1 w-full flex flex-col overflow-x-clip">
         {/* Editorial Portal Header */}
         <section
           aria-label="RFQ Portal Header"

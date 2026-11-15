@@ -201,5 +201,12 @@
     "category": "search-functionality",
     "specFilePath": ".agent/tasks/TASK-29.json",
     "passes": true
+  },
+  {
+    "id": "TASK-30",
+    "title": "Fix Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y",
+    "category": "scroll-architecture-fix",
+    "specFilePath": ".agent/tasks/TASK-30.json",
+    "passes": true
   }
 ]

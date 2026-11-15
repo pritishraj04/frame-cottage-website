@@ -1,0 +1,62 @@
+{
+  "id": "TASK-30",
+  "title": "Fix Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y",
+  "category": "scroll-architecture-fix",
+  "description": "Per user directive ('why the first scroll is stuck then after scrolling agian page scrolls. fix it'), resolved the root cause of the initial scroll hitch where the first mouse wheel or touch swipe gesture appeared completely stuck before page scrolling activated. Root cause: <main className='flex-1 w-full flex flex-col overflow-x-hidden'> in app/page.tsx and app/rfq/page.tsx caused browsers (Chromium and WebKit) under CSS Overflow Module Level 3 to compute overflow-y: auto on <main>. Because <main> had an internal scrollable height delta (scrollHeight: 14961px vs clientHeight: 14931px), the first scroll delta was trapped and consumed by <main> (scrolling its internal scrollTop to 30px while window.scrollY remained stuck at 0). Resolved by updating app/globals.css with modern overflow-x: clip on html, body, and main, setting overflow-y: visible on main, updating app/page.tsx and app/rfq/page.tsx to use overflow-x-clip, and adding touch-pan-y to hero and featured carousels to prevent touch gesture conflicts. Verified via automated Playwright test suite (5/5 in task-30 suite, 92/92 across entire test suite), high-resolution proof screenshots, and 0 TypeScript/build errors across all 19 routes.",
+  "acceptanceCriteria": [
+    "Identify and verify root cause: overflow-x: hidden on <main> computes to overflow-y: auto per CSS Overflow 3 spec, trapping first scroll delta inside <main> (scrollTop: 30) instead of window",
+    "Update app/globals.css with rules for html and body (overflow-x: clip; max-width: 100vw;) and main (overflow-x: clip; overflow-y: visible;) to prevent accidental vertical scroll container creation",
+    "Update app/page.tsx line 34: change overflow-x-hidden to overflow-x-clip on <main>",
+    "Update app/rfq/page.tsx line 341: change overflow-x-hidden to overflow-x-clip on <main>",
+    "Update components/hero/hero-carousel.tsx and components/home/featured-products-carousel.tsx with touch-pan-y on carousel containers to ensure immediate vertical touch scroll recognition",
+    "Author comprehensive automated Playwright test suite tests/task-30-first-scroll.spec.ts verifying immediate window scroll (window.scrollY >= 50, main.scrollTop === 0) on the first gesture across Home (/), RFQ (/rfq), touch-pan-y on carousels, mobile 390x844 zero horizontal overflow, and Light Mode",
+    "Capture high-resolution visual proof screenshots: task-30-home-first-scroll-desktop.png, task-30-rfq-first-scroll-desktop.png, task-30-home-first-scroll-mobile.png, and task-30-home-first-scroll-light.png saved in .agent/screenshots/ and copied to parent brain directory",
+    "Compile production build with 0 TypeScript and 0 build errors across all 19 static routes",
+    "100% test pass rate across the full Playwright test suite (92/92 tests passing)"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Diagnose and empirically verify the initial scroll stuck root cause",
+      "details": "Conducted automated headless browser measurement showing <main> computed overflowX: hidden to overflowY: auto with a 30px scroll delta (scrollHeight: 14961px vs clientHeight: 14931px). First mouse wheel(0, 100) resulted in { mainScrollTop: 30, windowScrollY: 0 }, leaving window completely stuck on first scroll.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Modernize global scroll architecture in app/globals.css",
+      "details": "Added rules to app/globals.css for html, body (overflow-x: clip; max-width: 100vw;) and main (overflow-x: clip; overflow-y: visible;) using CSS Overflow Module Level 3 clip property which prevents horizontal bleed without establishing a vertical scroll container.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Refactor <main> containers in app/page.tsx and app/rfq/page.tsx",
+      "details": "Replaced legacy overflow-x-hidden with modern overflow-x-clip on <main> elements in app/page.tsx and app/rfq/page.tsx, guaranteeing <main> never computes overflow-y: auto.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Optimize carousel touch actions with touch-pan-y",
+      "details": "Added touch-pan-y to carousel touch interaction wrappers in components/hero/hero-carousel.tsx and components/home/featured-products-carousel.tsx so vertical swipe gestures immediately pass to the browser window without gesture delay or conflict.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Author automated Playwright test suite tests/task-30-first-scroll.spec.ts",
+      "details": "Constructed 5 automated tests covering desktop home initial scroll responsiveness, RFQ initial scroll responsiveness, carousel touch-pan-y verification, 390x844 mobile viewport zero overflow & scroll, and Warm Light Mode scroll responsiveness.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Capture visual proof screenshots",
+      "details": "Captured task-30-home-first-scroll-desktop.png, task-30-rfq-first-scroll-desktop.png, task-30-home-first-scroll-mobile.png, and task-30-home-first-scroll-light.png into .agent/screenshots/ and synced to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 7,
+      "description": "Execute quality gates: production build and complete test suite verification",
+      "details": "Executed npm run build (0 errors across 19/19 routes) and npx playwright test (100% pass rate, 92/92 tests passing).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

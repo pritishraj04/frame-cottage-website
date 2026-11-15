@@ -134,7 +134,7 @@ export function HeroCarousel() {
       aria-label="Frame Cottage Studio Showcase"
       data-testid="hero-carousel"
       id="hero-image-carousel"
-      className="relative w-full min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh] bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 flex flex-col justify-between"
+      className="relative w-full min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh] bg-[var(--background)] overflow-hidden border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 flex flex-col justify-between touch-pan-y"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}

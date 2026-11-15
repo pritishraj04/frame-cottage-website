@@ -251,7 +251,7 @@ export function FeaturedProductsCarousel() {
       id="featured-products-carousel"
       data-testid="featured-products-carousel"
       aria-label="Featured Handcrafted Frames Carousel"
-      className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 overflow-hidden"
+      className="w-full bg-[var(--background)] py-14 sm:py-20 border-b border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] transition-colors duration-250 overflow-hidden touch-pan-y"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
@@ -302,7 +302,7 @@ export function FeaturedProductsCarousel() {
             PURE IMAGE-BASED CAROUSEL WINDOW & TRACK
            ========================================================================= */}
         <div
-          className="relative w-full overflow-hidden"
+          className="relative w-full overflow-hidden touch-pan-y"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
