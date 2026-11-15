@@ -41,9 +41,6 @@ test.describe("TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed",
     // Verify Drop Zone & Placement for Slide 1
     const heroDropzone = page.getByTestId("hero-png-dropzone");
     await expect(heroDropzone).toBeVisible();
-    await expect(heroDropzone).toContainText("Hero Asset Drop Zone");
-    await expect(heroDropzone).toContainText("Format: Transparent PNG • High-Res 300 DPI");
-    await expect(heroDropzone).toContainText("/images/hero/hero-cutout-bespoke-framing.png");
 
     // Verify Next.js Image element with transparent cutout src
     const cutoutImg = heroDropzone.locator("img");
@@ -51,11 +48,11 @@ test.describe("TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed",
     const imgSrc = await cutoutImg.getAttribute("src");
     expect(imgSrc).toContain("hero-cutout-bespoke-framing.png");
 
-    // Verify Headline & CTAs
-    const headline = page.getByTestId("hero-headline");
-    await expect(headline).toHaveText("Bespoke Art & Archival Custom Framing");
-    await expect(page.getByTestId("cta-customise-frame")).toBeVisible();
-    await expect(page.getByTestId("cta-explore-collections")).toBeVisible();
+    // Verify no text overlays exist per user directive
+    await expect(page.getByTestId("hero-headline")).toHaveCount(0);
+    await expect(page.getByTestId("hero-subheadline")).toHaveCount(0);
+    await expect(page.getByTestId("cta-customise-frame")).toHaveCount(0);
+    await expect(page.getByTestId("cta-explore-collections")).toHaveCount(0);
 
     // Capture Desktop Dark Screenshot of Hero Section
     const darkAgentPath = path.join(screenshotsDir, "task-25-hero-full-png-dark.png");
@@ -67,23 +64,19 @@ test.describe("TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed",
 
     // Test Slide Navigation to Slide 2: Spatial Design & Signage
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("Spatial Design & Architectural Signage");
-    await expect(heroDropzone).toContainText("/images/hero/hero-cutout-spatial-signage.png");
     const cutoutImg2 = heroDropzone.locator("img");
-    const imgSrc2 = await cutoutImg2.getAttribute("src");
-    expect(imgSrc2).toContain("hero-cutout-spatial-signage.png");
+    await expect(cutoutImg2).toBeVisible();
+    await expect(cutoutImg2).toHaveAttribute("src", /hero-cutout-spatial-signage\.png/);
 
     // Test Slide Navigation to Slide 3: Industrial Fabrication & Civic Projects
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("Industrial Fabrication & Civic Projects");
-    await expect(heroDropzone).toContainText("/images/hero/hero-cutout-industrial-cnc.png");
     const cutoutImg3 = heroDropzone.locator("img");
-    const imgSrc3 = await cutoutImg3.getAttribute("src");
-    expect(imgSrc3).toContain("hero-cutout-industrial-cnc.png");
+    await expect(cutoutImg3).toBeVisible();
+    await expect(cutoutImg3).toHaveAttribute("src", /hero-cutout-industrial-cnc\.png/);
 
     // Return to Slide 1 via indicator dot
     await page.getByTestId("hero-carousel-indicator-0").click();
-    await expect(headline).toHaveText("Bespoke Art & Archival Custom Framing");
+    await expect(cutoutImg).toHaveAttribute("src", /hero-cutout-bespoke-framing\.png/);
 
     // 2. Desktop Light Mode (1440x900)
     await page.evaluate(() => {
@@ -116,8 +109,8 @@ test.describe("TASK-25: Full PNG Hero Carousel with Transparent Cutouts Placed",
     // Verify Hero elements visible on mobile
     await expect(heroSection).toBeVisible();
     await expect(heroDropzone).toBeVisible();
-    await expect(page.getByTestId("hero-headline")).toBeVisible();
-    await expect(page.getByTestId("cta-customise-frame")).toBeVisible();
+    await expect(heroDropzone.locator("img")).toBeVisible();
+    await expect(page.getByTestId("hero-headline")).toHaveCount(0);
 
     // Capture Mobile Screenshot of Hero Section
     const mobileAgentPath = path.join(screenshotsDir, "task-25-hero-full-png-mobile.png");

@@ -35,8 +35,9 @@ test.describe("TASK-23: True PNG Asset Drop Zones Across Storefront", () => {
     // Verify Drop Zone test IDs
     const heroDropzone = page.getByTestId("hero-png-dropzone");
     await expect(heroDropzone).toBeVisible();
-    await expect(heroDropzone).toContainText("Hero Asset Drop Zone");
-    await expect(heroDropzone).toContainText("Format: Transparent PNG • High-Res 300 DPI");
+    const heroCutoutImg = heroDropzone.locator("img");
+    await expect(heroCutoutImg).toBeVisible();
+    await expect(heroCutoutImg).toHaveAttribute("src", /hero-cutout-bespoke-framing\.png/);
 
     // Capture Hero specific screenshot in Dark Mode
     const heroSection = page.getByTestId("hero-carousel");

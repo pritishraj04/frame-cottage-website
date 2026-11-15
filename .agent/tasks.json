@@ -208,5 +208,12 @@
     "category": "scroll-architecture-fix",
     "specFilePath": ".agent/tasks/TASK-30.json",
     "passes": true
+  },
+  {
+    "id": "TASK-31",
+    "title": "Transform Hero Section into an All-Image Full-Width Showcase with No Text",
+    "category": "hero-transformation",
+    "specFilePath": ".agent/tasks/TASK-31.json",
+    "passes": true
   }
 ]

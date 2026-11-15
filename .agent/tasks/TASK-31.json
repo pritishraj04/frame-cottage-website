@@ -1,0 +1,57 @@
+{
+  "id": "TASK-31",
+  "title": "Transform Hero Section into an All-Image Full-Width Showcase with No Text",
+  "category": "hero-transformation",
+  "description": "Per user directive ('hero section will be all image full width if possible. no text'), transformed the hero section in components/hero/hero-carousel.tsx into a 100% viewport width edge-to-edge pure image showcase. Removed width-constraining containers (max-w-7xl, max-w-4xl), eliminated all visible text overlays (headline, subheadline, category eyebrows, action buttons, drop zone banners), while preserving semantic dropzone test IDs (hero-carousel, hero-carousel-slide, hero-png-dropzone) and sleek minimalist floating controls (glassmorphic prev/next arrows and bottom dot indicators). Updated existing test suites (tests/hero-switcher.spec.ts, tests/task-25-hero.spec.ts, tests/task-23-dropzones.spec.ts) and authored tests/task-31-pure-image-hero.spec.ts. Captured high-resolution proof screenshots for dark, light, and mobile viewports.",
+  "acceptanceCriteria": [
+    "Full edge-to-edge width pure image canvas (w-full h-[70vh] sm:h-[80vh] lg:h-[88vh]) with atmospheric radial studio glow",
+    "High-resolution transparent cutout PNGs filling the full width/height stage via Next.js <Image fill sizes='100vw' />",
+    "Complete removal of visible text overlays: no h1 headline, no subheadline, no category eyebrow, no CTA buttons, no drop zone spec text banners",
+    "Preserved semantic data-testid attributes (hero-carousel, hero-carousel-slide, hero-png-dropzone)",
+    "Sleek minimalist floating glassmorphic arrow controls and bottom dot indicators with smooth Framer Motion transitions",
+    "Updated existing test suites (hero-switcher.spec.ts, task-25-hero.spec.ts, task-23-dropzones.spec.ts) to verify pure image hero architecture without text overlays",
+    "Authored tests/task-31-pure-image-hero.spec.ts verifying 100% full-width span, image element visibility, zero text overlays, theme switching, and 390x844 mobile responsiveness",
+    "Captured high-resolution proof screenshots (task-31-hero-full-width-dark.png, task-31-hero-full-width-light.png, task-31-hero-full-width-mobile.png) in .agent/screenshots/ and synced to parent brain directory",
+    "Zero TypeScript and build errors on npm run build across all 19 static routes",
+    "100% test pass rate across the full Playwright test suite (93/93 passing)"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Transform HeroCarousel component into pure edge-to-edge full-width image canvas",
+      "details": "Refactored components/hero/hero-carousel.tsx to remove max-w-7xl and max-w-4xl constraining containers, eliminated all visible typography (h1, subheadline, eyebrow badges, CTA links, spec badges), and rendered Next.js Image with fill and sizes='100vw' inside a full-stage hero-png-dropzone.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Implement sleek floating minimalist navigation controls",
+      "details": "Added floating glassmorphic left/right Chevron buttons and sleek bottom pill indicator dots with backdrop-blur and accent gold active state, supporting mouse click, keyboard, and touch swipe navigation.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Update existing Playwright test suites to align with pure image hero architecture",
+      "details": "Updated tests/hero-switcher.spec.ts, tests/task-25-hero.spec.ts, and tests/task-23-dropzones.spec.ts to test the pure full-width image hero, verify transparent cutout switching, assert absence of text clutter, and maintain custom frame studio coverage.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Author dedicated automated Playwright test suite tests/task-31-pure-image-hero.spec.ts",
+      "details": "Created comprehensive test spec verifying boundingBox().width matches viewport width (1440px desktop, 390px mobile), cutout image visibility, strict absence of text elements, smooth slide transitions, theme switching, and mobile touch swiping.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Capture visual proof screenshots",
+      "details": "Generated task-31-hero-full-width-dark.png, task-31-hero-full-width-light.png, and task-31-hero-full-width-mobile.png in .agent/screenshots/ and synced to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 6,
+      "description": "Verify quality gates: production build and complete test suite",
+      "details": "Executed npm run build (0 errors across 19 static routes) and npx playwright test (100% pass rate, 93/93 passing tests).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

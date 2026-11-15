@@ -2,13 +2,51 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 10:15
-**Tasks Completed:** 30 / 30
-**Current Task:** TASK-30 Complete (Fixing Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y)
+**Last Updated:** 2026-11-15 10:30
+**Tasks Completed:** 31 / 31
+**Current Task:** TASK-31 Complete (Transform Hero Section into an All-Image Full-Width Showcase with No Text)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-31: Transform Hero Section into an All-Image Full-Width Showcase with No Text
+- Context & Objective: The user explicitly requested: "hero section will be all image full width if possible. no text".
+- Architectural Implementations (`components/hero/hero-carousel.tsx`):
+  1. **Full-Width Pure Image Canvas**:
+     - Removed all width-constraining containers (`max-w-7xl mx-auto px-4`, `max-w-4xl`).
+     - Set edge-to-edge full width canvas: `w-full h-[70vh] sm:h-[80vh] lg:h-[88vh] relative overflow-hidden bg-[var(--background)] border-b border-[var(--color-border-subtle)] touch-pan-y select-none`.
+     - Preserved atmospheric studio background with subtle radial gradient glow (`radial-gradient(ellipse_at_center,var(--color-accent-gold)/6%,transparent_70%)`).
+     - Rendered high-resolution transparent cutout PNGs via Next.js `<Image fill sizes="100vw" priority />` with `object-contain drop-shadow-2xl` and subtle hover micro-interaction (`hover:scale-[1.01]`).
+  2. **Complete Removal of Text Overlays**:
+     - Removed visible `h1` headline (`hero-headline`).
+     - Removed subheadline paragraph (`hero-subheadline`).
+     - Removed category eyebrow badge.
+     - Removed text action buttons (`cta-customise-frame`, `cta-explore-collections`).
+     - Removed dropzone specification text banners and chips.
+  3. **Minimalist Floating Carousel Controls**:
+     - Retained semantic data-testids for test automation and accessibility: `hero-carousel`, `hero-carousel-slide`, `hero-png-dropzone`.
+     - Left and right floating glassmorphic arrow buttons: `data-testid="hero-carousel-prev"`, `data-testid="hero-carousel-next"`.
+     - Bottom floating indicator dots: `data-testid="hero-carousel-indicators"` with `hero-carousel-indicator-0`, `1`, `2`.
+     - Preserved touch swipe interaction handlers and 8-second auto-rotation interval with hover/touch pause.
+- Test Suite Updates:
+  1. `tests/hero-switcher.spec.ts`: Updated to verify pure full-width image hero, image element visibility, slide advancement to Spatial Design and Industrial CNC cutouts, indicator dot navigation, and strict absence of text overlays.
+  2. `tests/task-25-hero.spec.ts`: Updated to assert full-width cutout stage, image source verification, slide navigation, and zero text clutter.
+  3. `tests/task-23-dropzones.spec.ts`: Updated dropzone test to verify `hero-png-dropzone` contains cutout image element without expecting text banners.
+  4. `tests/task-31-pure-image-hero.spec.ts`: Created new automated Playwright test suite verifying:
+     - 100% full viewport width canvas (`boundingBox().width === viewport.width`).
+     - High-res transparent cutouts filling the stage.
+     - Complete absence of text overlays (`h1`, `h2`, `h3`, `p`, `a` count === 0).
+     - Theme adaptability across Museum Dark and Warm Light modes.
+     - Mobile responsiveness on 390×844 with zero horizontal overflow and touch swipe support.
+- Visual Proof Screenshots:
+  - `.agent/screenshots/task-31-hero-full-width-dark.png`
+  - `.agent/screenshots/task-31-hero-full-width-light.png`
+  - `.agent/screenshots/task-31-hero-full-width-mobile.png`
+  - Synced to parent brain directory `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`.
+- Quality Gates Verified:
+  - `npm run build`: Compiled with 0 TypeScript and 0 build errors across all 19 static routes.
+  - `npx playwright test`: 100% pass rate (93/93 tests passing).
 
 ### 2026-11-15 - TASK-30: Fix Initial Scroll Hitch and First Scroll Stuck Issue via Modern overflow-x: clip and touch-pan-y
 - Context & Objective: The user reported: "why the first scroll is stuck then after scrolling agian page scrolls. fix it".

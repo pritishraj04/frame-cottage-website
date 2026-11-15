@@ -5,62 +5,54 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     await page.goto("/");
   });
 
-  test("renders responsive Hero Carousel with curated lifestyle slides and Apple typography", async ({
+  test("renders responsive Hero Carousel with pure full-width image showcase and no text", async ({
     page,
   }) => {
     const heroCarousel = page.getByTestId("hero-carousel");
     await expect(heroCarousel).toBeVisible();
 
-    // Slide 1 verification: Bespoke Art & Archival Custom Framing
+    // Verify hero carousel spans full viewport width
+    const heroBox = await heroCarousel.boundingBox();
+    const viewport = page.viewportSize();
+    expect(heroBox).not.toBeNull();
+    if (heroBox && viewport) {
+      expect(heroBox.width).toBe(viewport.width);
+    }
+
+    // Slide 1 verification: Pure full-stage image showcase
     const slide = page.getByTestId("hero-carousel-slide");
     await expect(slide).toBeVisible();
 
-    // Eyebrow tag
-    await expect(heroCarousel).toContainText("Bespoke Art & Custom Framing");
+    // Verify transparent cutout image is rendered and visible
+    const heroDropzone = page.getByTestId("hero-png-dropzone");
+    await expect(heroDropzone).toBeVisible();
+    const cutoutImg = heroDropzone.locator("img");
+    await expect(cutoutImg).toBeVisible();
+    const initialSrc = await cutoutImg.getAttribute("src");
+    expect(initialSrc).toContain("hero-cutout-bespoke-framing.png");
 
-    // Apple-styled headline
-    const headline = page.getByTestId("hero-headline");
-    await expect(headline).toBeVisible();
-    await expect(headline).toHaveText(
-      "Bespoke Art & Archival Custom Framing"
-    );
+    // Verify NO text overlays exist on the pure image hero
+    await expect(page.getByTestId("hero-headline")).toHaveCount(0);
+    await expect(page.getByTestId("hero-subheadline")).toHaveCount(0);
+    await expect(page.getByTestId("cta-customise-frame")).toHaveCount(0);
+    await expect(page.getByTestId("cta-explore-collections")).toHaveCount(0);
 
-    // Subheadline
-    const subheadline = page.getByTestId("hero-subheadline");
-    await expect(subheadline).toBeVisible();
-    await expect(subheadline).toContainText(
-      "Gallery-quality fine art printing, canvas stretching"
-    );
-
-    // Dual action buttons
-    const ctaCustomise = page.getByTestId("cta-customise-frame");
-    await expect(ctaCustomise).toBeVisible();
-    await expect(ctaCustomise).toHaveAttribute("href", "/customizer");
-
-    const ctaExplore = page.getByTestId("cta-explore-collections");
-    await expect(ctaExplore).toBeVisible();
-    await expect(ctaExplore).toHaveAttribute("href", "/services/bespoke-framing");
-
-    // Carousel controls
+    // Carousel minimalist controls are present
     await expect(page.getByTestId("hero-carousel-prev")).toBeVisible();
     await expect(page.getByTestId("hero-carousel-next")).toBeVisible();
     await expect(page.getByTestId("hero-carousel-indicators")).toBeVisible();
 
     // Advance to Slide 2: Spatial Design & Architectural Signage
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("Spatial Design & Architectural Signage");
-    await expect(heroCarousel).toContainText("Spatial Design & Signage");
+    await expect(cutoutImg).toHaveAttribute("src", /hero-cutout-spatial-signage\.png/);
 
     // Advance to Slide 3: Industrial Fabrication & Civic Projects
     await page.getByTestId("hero-carousel-next").click();
-    await expect(headline).toHaveText("Industrial Fabrication & Civic Projects");
-    await expect(heroCarousel).toContainText("Precision CNC Metalworks & GeM Certified");
+    await expect(cutoutImg).toHaveAttribute("src", /hero-cutout-industrial-cnc\.png/);
 
     // Click indicator 0 to return to Slide 1
     await page.getByTestId("hero-carousel-indicator-0").click();
-    await expect(headline).toHaveText(
-      "Bespoke Art & Archival Custom Framing"
-    );
+    await expect(cutoutImg).toHaveAttribute("src", /hero-cutout-bespoke-framing\.png/);
   });
 
   test("renders The Custom Frame Studio repositioned below hero carousel with trust highlights", async ({
