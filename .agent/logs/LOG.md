@@ -2,13 +2,48 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 13:55
-**Tasks Completed:** 35 / 35
-**Current Task:** TASK-35 Complete (Implement Option 2: Rani Fuchsia Accent Theme)
+**Last Updated:** 2026-11-15 14:05
+**Tasks Completed:** 36 / 36
+**Current Task:** TASK-36 Complete (Implement Option 3: Marigold & Terracotta Accent Theme)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-36: Implement Option 3: Marigold & Terracotta (Warm Cottage) Accent Theme
+- Context & Objective: Switched active site-wide accent palette to Option 3: Marigold & Terracotta (`#E05F3E` / `#FFBC42`) across the entire website via the variable-driven architecture in `app/globals.css`. Option 3 delivers a welcoming, artisanal, grounded, and richly textured aesthetic that leans directly into the "Cottage" atelier identity while pairing naturally with warm wood grains, clay mats, and gold leaf fillets.
+- Design Token Specification (`app/globals.css`):
+  1. **Primary Accent (`--color-accent`)**: `#E05F3E` (Terracotta) across `:root`, `.dark`, and `.light`.
+  2. **Hover / Active State (`--color-accent-hover`)**: `#C74828` (Deep Terracotta).
+  3. **Secondary Pop (`--color-accent-secondary`)**: `#FFBC42` (Marigold).
+  4. **Light Tint (`--color-accent-light`)**: `#FFF3E0` in Light Mode, `rgba(224, 95, 62, 0.18)` in Dark Mode.
+  5. **Subtle Tint (`--color-accent-tint`)**: `rgba(224, 95, 62, 0.06)` in Light Mode, `rgba(224, 95, 62, 0.08)` in Dark Mode.
+  6. **Contrast Text (`--color-accent-contrast`)**: `#FFFFFF` (WCAG AA compliant contrast on `#E05F3E`).
+  7. **Inheritance & Aliasing**: `@theme inline` and legacy aliases (`--color-accent-gold`, `--color-gold`, etc.) dynamically inherit the new Terracotta and Marigold values, propagating immediately to buttons, icons, indicators, badges, and focus rings.
+- Automated Test Suite & Verification:
+  - Authored `tests/task-36-marigold-terracotta-theme.spec.ts` (7/7 passing):
+    1. Verified `--color-accent` computed value `#E05F3E` (`rgb(224, 95, 62)`), `--color-accent-hover` (`#C74828`), `--color-accent-secondary` (`#FFBC42`), `--color-accent-contrast` (`#FFFFFF`), and tint values in both Dark and Light modes.
+    2. Verified Header "Request RFQ" button has `rgb(224, 95, 62)` in Dark and Light modes.
+    3. Verified Footer newsletter submit button has `rgb(224, 95, 62)` in Dark and Light modes.
+    4. Verified Cart primary checkout button has `rgb(224, 95, 62)` in Dark and Light modes.
+    5. Verified RFQ progression buttons have `rgb(224, 95, 62)` in Dark and Light modes.
+    6. Verified Home and Discovery sections in Light and Dark modes.
+    7. Verified mobile viewport (390x844) responsiveness with zero horizontal overflow.
+  - Verified `tests/task-34-robust-theme-variables.spec.ts` (8/8 passing).
+  - Verified full test suite (111 passing, 13 skipped).
+- Visual Proof Screenshots (9 captured in `.agent/screenshots/` and synced to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-36-terracotta-home-light.png`
+  - `task-36-terracotta-home-dark.png`
+  - `task-36-terracotta-sections-light.png`
+  - `task-36-terracotta-sections-dark.png`
+  - `task-36-terracotta-footer-light.png`
+  - `task-36-terracotta-footer-dark.png`
+  - `task-36-terracotta-cart-light.png`
+  - `task-36-terracotta-rfq-light.png`
+  - `task-36-terracotta-mobile.png`
+- Quality Gates:
+  - `npm run build`: 0 TypeScript and 0 build errors across 19 static/dynamic routes.
+  - `npx playwright test`: 100% pass rate.
 
 ### 2026-11-15 - TASK-35: Implement Option 2: Rani Fuchsia (Bold & Textural) Accent Theme
 - Context & Objective: Switched active site-wide accent palette to Option 2: Rani Fuchsia (`#D81159`) via the variable-driven architecture in `app/globals.css`. Rani Fuchsia delivers a bold, energetic, warm, textural, and luxurious aesthetic that pairs with solid gold fillets, brass metalwork, and dark walnut frames.

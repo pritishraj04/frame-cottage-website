@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 
-test.describe("TASK-35: Option 2: Rani Fuchsia (Bold & Textural) Theme System", () => {
+test.describe.skip("TASK-35: Option 2: Rani Fuchsia (Bold & Textural) Theme System [Superseded by TASK-36 Marigold & Terracotta]", () => {
   const screenshotsDir = path.resolve(process.cwd(), ".agent/screenshots");
   const parentBrainDir =
     "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af";

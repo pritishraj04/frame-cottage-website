@@ -30,11 +30,12 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
 
-  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
-  --color-accent: #D81159;
-  --color-accent-hover: #A30D43;
-  --color-accent-light: rgba(216, 17, 89, 0.18);
-  --color-accent-tint: rgba(216, 17, 89, 0.08);
+  /* Primary Semantic Accent Tokens (Option 3: Marigold & Terracotta) */
+  --color-accent: #E05F3E;
+  --color-accent-hover: #C74828;
+  --color-accent-secondary: #FFBC42;
+  --color-accent-light: rgba(224, 95, 62, 0.18);
+  --color-accent-tint: rgba(224, 95, 62, 0.08);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -81,11 +82,12 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
 
-  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
-  --color-accent: #D81159;
-  --color-accent-hover: #A30D43;
-  --color-accent-light: rgba(216, 17, 89, 0.18);
-  --color-accent-tint: rgba(216, 17, 89, 0.08);
+  /* Primary Semantic Accent Tokens (Option 3: Marigold & Terracotta) */
+  --color-accent: #E05F3E;
+  --color-accent-hover: #C74828;
+  --color-accent-secondary: #FFBC42;
+  --color-accent-light: rgba(224, 95, 62, 0.18);
+  --color-accent-tint: rgba(224, 95, 62, 0.08);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -128,11 +130,12 @@
   --color-terracotta-hover: #54161C;
   --color-brass: #B38F48;
 
-  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
-  --color-accent: #D81159;
-  --color-accent-hover: #A30D43;
-  --color-accent-light: #FDF0F4;
-  --color-accent-tint: rgba(216, 17, 89, 0.06);
+  /* Primary Semantic Accent Tokens (Option 3: Marigold & Terracotta) */
+  --color-accent: #E05F3E;
+  --color-accent-hover: #C74828;
+  --color-accent-secondary: #FFBC42;
+  --color-accent-light: #FFF3E0;
+  --color-accent-tint: rgba(224, 95, 62, 0.06);
   --color-accent-contrast: #FFFFFF;
 
   /* Legacy Token Aliases: Any component reading gold automatically updates! */
@@ -180,9 +183,10 @@
   --color-terracotta-hover: var(--color-terracotta-hover);
   --color-brass: var(--color-brass);
 
-  /* Primary Semantic Accent Tokens (Option 2: Rani Fuchsia) */
+  /* Primary Semantic Accent Tokens (Option 3: Marigold & Terracotta) */
   --color-accent: var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
+  --color-accent-secondary: var(--color-accent-secondary);
   --color-accent-light: var(--color-accent-light);
   --color-accent-tint: var(--color-accent-tint);
   --color-accent-contrast: var(--color-accent-contrast);

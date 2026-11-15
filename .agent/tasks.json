@@ -243,5 +243,12 @@
     "category": "theme-accent-modernization",
     "specFilePath": ".agent/tasks/TASK-35.json",
     "passes": true
+  },
+  {
+    "id": "TASK-36",
+    "title": "Implement Option 3: Marigold & Terracotta (Warm Cottage) Accent Theme",
+    "category": "theme-accent-modernization",
+    "specFilePath": ".agent/tasks/TASK-36.json",
+    "passes": true
   }
 ]
