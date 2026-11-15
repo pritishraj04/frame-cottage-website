@@ -160,7 +160,7 @@ export function ServiceEstimator({ config, verticalId, verticalTitle }: ServiceE
                           <span
                             className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
                               isChecked
-                                ? "bg-[var(--color-accent-gold)] border-[var(--color-accent-gold)] text-[#1A1A1A]"
+                                ? "bg-accent border-accent text-[var(--color-accent-contrast)]"
                                 : "border-[var(--color-border-strong)]"
                             }`}
                           >
@@ -235,7 +235,7 @@ export function ServiceEstimator({ config, verticalId, verticalTitle }: ServiceE
                   <Link
                     href={`/rfq?vertical=${verticalId}&tier=${selectedTier?.id}&dim=${selectedDim?.id}`}
                     data-testid="estimator-transfer-rfq"
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[var(--color-accent-gold)] hover:bg-[var(--color-gold-hover)] text-[#1A1A1A] font-semibold text-sm transition-all duration-200 cursor-pointer shadow-md group"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-semibold text-sm transition-all duration-200 cursor-pointer shadow-md group"
                   >
                     <span>Lock In Specs & Transfer to RFQ</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

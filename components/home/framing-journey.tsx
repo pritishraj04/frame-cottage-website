@@ -116,8 +116,8 @@ export function FramingJourney() {
           data-testid="framing-journey-header"
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] text-xs font-mono font-medium uppercase tracking-[0.2em] mb-4 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-accent text-xs font-mono font-medium uppercase tracking-[0.2em] mb-4 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>End-to-End Studio Workflow</span>
           </div>
 
@@ -144,7 +144,7 @@ export function FramingJourney() {
             aria-hidden="true"
             className="hidden xl:block absolute top-[132px] left-[12%] right-[12%] h-[2px] z-0"
           >
-            <div className="w-full h-full bg-gradient-to-r from-transparent via-[#C5A059]/40 to-transparent border-t border-dashed border-[#C5A059]/60" />
+            <div className="w-full h-full bg-gradient-to-r from-transparent via-accent/40 to-transparent border-t border-dashed border-accent/60" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
@@ -155,7 +155,7 @@ export function FramingJourney() {
                 <div
                   key={step.stepNumber}
                   data-testid={`framing-step-${idx + 1}`}
-                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 p-6 shadow-sm hover:shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 hover:-translate-y-1.5"
+                  className="group relative flex flex-col justify-between bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 p-6 shadow-sm hover:shadow-xl hover:border-accent/60 transition-all duration-300 hover:-translate-y-1.5"
                 >
                   {/* Card Header & Badge row */}
                   <div>
@@ -163,7 +163,7 @@ export function FramingJourney() {
                       {/* Numbered Badge */}
                       <div
                         data-testid={`framing-step-number-${idx + 1}`}
-                        className="w-11 h-11 rounded-xl bg-[var(--color-accent-gold)] text-[var(--background)] font-serif text-lg font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
+                        className="w-11 h-11 rounded-xl bg-accent text-white font-serif text-lg font-bold flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-200"
                       >
                         {step.stepNumber}
                       </div>
@@ -173,7 +173,7 @@ export function FramingJourney() {
                         <span className="px-2.5 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-ink-secondary)] border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono font-semibold uppercase tracking-wider">
                           {step.pillTitle}
                         </span>
-                        <div className="w-7 h-7 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] flex items-center justify-center">
+                        <div className="w-7 h-7 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] text-accent flex items-center justify-center">
                           <StepIcon className="w-3.5 h-3.5" />
                         </div>
                       </div>
@@ -182,9 +182,9 @@ export function FramingJourney() {
                     {/* Process Step Diagram PNG Drop Zone */}
                     <div
                       data-testid={`journey-step-dropzone-${step.stepNumber}`}
-                      className="w-full h-32 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 my-3 flex flex-col items-center justify-center text-center p-3 hover:border-[var(--color-accent-gold)] transition-colors group/stepdrop relative overflow-hidden"
+                      className="w-full h-32 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 my-3 flex flex-col items-center justify-center text-center p-3 hover:border-accent group-hover:border-accent group-hover:bg-accent-light/50 transition-all duration-300 group/stepdrop relative overflow-hidden"
                     >
-                      <div className="w-8 h-8 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-1.5 shadow-2xs group-hover/stepdrop:scale-105 transition-transform">
+                      <div className="w-8 h-8 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-1.5 shadow-2xs group-hover/stepdrop:scale-105 transition-transform">
                         <UploadCloud className="w-4 h-4 stroke-[1.5]" />
                       </div>
                       <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
@@ -193,14 +193,14 @@ export function FramingJourney() {
                       <p className="text-[10px] text-[var(--color-ink-muted)] mt-0.5 line-clamp-1 max-w-[220px]">
                         Designer to place workflow illustration PNG here ({step.title})
                       </p>
-                      <div className="mt-1.5 px-2 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[9px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                      <div className="mt-1.5 px-2 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[9px] font-mono text-accent bg-[var(--color-canvas-surface)]/80">
                         PNG Diagram • 600×400
                       </div>
                     </div>
 
                     {/* Step Title & Description */}
                     <div className="space-y-1.5 mb-3">
-                      <p className="text-[10px] uppercase tracking-[0.16em] text-[#C5A059] font-semibold">
+                      <p className="text-[10px] uppercase tracking-[0.16em] text-accent font-semibold">
                         {step.tagline}
                       </p>
                       <h3
@@ -221,7 +221,7 @@ export function FramingJourney() {
                     <ul className="space-y-2 pt-2 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-secondary)] mb-5">
                       {step.bullets.map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-1.5">
-                          <CheckCircle2 className="w-3 h-3 text-[#C5A059] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3 h-3 text-accent shrink-0 mt-0.5" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -232,7 +232,7 @@ export function FramingJourney() {
                   <div className="pt-2">
                     <a
                       href="#curated-collections"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent-gold)] hover:text-[#D4AF37] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-accent-hover transition-colors"
                     >
                       <span>{step.ctaLabel}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -249,7 +249,7 @@ export function FramingJourney() {
            ========================================================================= */}
         <div className="mt-12 sm:mt-16 bg-[var(--color-canvas-surface)] rounded-2xl border border-[var(--color-border-subtle)] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-[var(--color-accent-gold)] shrink-0">
+            <div className="w-12 h-12 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] flex items-center justify-center text-accent shrink-0">
               <Award className="w-6 h-6 stroke-[1.75]" />
             </div>
             <div>
@@ -265,7 +265,7 @@ export function FramingJourney() {
           <div className="flex items-center gap-4 shrink-0">
             <a
               href="/rfq"
-              className="px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-[var(--background)] text-xs sm:text-sm font-semibold hover:bg-[#B38F48] transition-all shadow-xs"
+              className="px-5 py-2.5 rounded-full bg-accent text-white text-xs sm:text-sm font-semibold hover:bg-accent-hover transition-all shadow-md shadow-accent/20"
             >
               Request Studio Consultation
             </a>

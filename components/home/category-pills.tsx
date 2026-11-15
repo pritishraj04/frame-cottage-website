@@ -99,7 +99,7 @@ export function CategoryPills({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink-primary)] mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+              <Sparkles className="w-3.5 h-3.5 text-accent" />
               <span>6 Core Service Verticals • End-to-End Solutions</span>
             </div>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
@@ -117,7 +117,7 @@ export function CategoryPills({
               onClick={() => scroll("left")}
               data-testid="category-scroll-prev"
               aria-label="Scroll categories left"
-              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-accent bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] hover:text-accent transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -126,7 +126,7 @@ export function CategoryPills({
               onClick={() => scroll("right")}
               data-testid="category-scroll-next"
               aria-label="Scroll categories right"
-              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-2xs"
+              className="w-9 h-9 rounded-full border border-[var(--color-border-subtle)] hover:border-accent bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] flex items-center justify-center text-[var(--color-ink-primary)] hover:text-accent transition-all duration-200 cursor-pointer shadow-2xs"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -156,28 +156,50 @@ export function CategoryPills({
                 onClick={() => handleSelect(category.id)}
                 className={`group flex flex-col justify-between flex-shrink-0 snap-center focus:outline-none cursor-pointer aspect-[4/5] w-56 sm:w-64 p-4 sm:p-5 rounded-2xl border-2 border-dashed transition-all duration-500 text-left ${
                   isSelected
-                    ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xl"
-                    : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 hover:border-[var(--color-accent-gold)]/60 hover:bg-[var(--color-canvas-subtle)]"
+                    ? "bg-accent text-white border-accent shadow-sm ring-2 ring-accent/30"
+                    : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 hover:border-accent/60 hover:bg-[var(--color-canvas-subtle)]"
                 }`}
               >
                 {/* Top Row: Audience Tag & Canvas Aspect Ratio Badge */}
                 <div className="flex items-center justify-between gap-2 w-full z-10">
-                  <span className="text-[10px] uppercase font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/70">
+                  <span
+                    className={`text-[10px] uppercase font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full border border-dashed ${
+                      isSelected
+                        ? "border-white/30 text-white bg-white/15"
+                        : "border-[var(--color-border-strong)] text-accent bg-[var(--color-canvas-base)]/70"
+                    }`}
+                  >
                     {category.clientBadge}
                   </span>
-                  <span className="text-[10px] font-mono text-[var(--color-ink-muted)] border border-dashed border-[var(--color-border-strong)] px-2 py-0.5 rounded-full bg-[var(--color-canvas-base)]/40">
+                  <span
+                    className={`text-[10px] font-mono border border-dashed px-2 py-0.5 rounded-full ${
+                      isSelected
+                        ? "border-white/20 text-white/80 bg-white/10"
+                        : "border-[var(--color-border-strong)] text-[var(--color-ink-muted)] bg-[var(--color-canvas-base)]/40"
+                    }`}
+                  >
                     4:5 Spatial Asset
                   </span>
                 </div>
 
                 {/* Center Spatial Container: Dedicated Dashed Dropzone for Vertical PNG Render */}
-                <div className="w-full flex-1 my-3 rounded-xl border border-dashed border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-base)]/50 flex flex-col items-center justify-center p-3 relative overflow-hidden group-hover:border-[var(--color-accent-gold)]/50 transition-colors">
+                <div
+                  className={`w-full flex-1 my-3 rounded-xl border border-dashed flex flex-col items-center justify-center p-3 relative overflow-hidden transition-colors ${
+                    isSelected
+                      ? "border-white/30 bg-white/10"
+                      : "border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-base)]/50 group-hover:border-accent/50"
+                  }`}
+                >
                   <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 transition-transform duration-700 group-hover:scale-105">
                     <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[var(--color-canvas-surface)]">
                       <CategorySwatch id={category.id} />
                     </div>
                   </div>
-                  <span className="mt-2 text-[9px] font-mono text-[var(--color-ink-muted)]">
+                  <span
+                    className={`mt-2 text-[9px] font-mono ${
+                      isSelected ? "text-white/80" : "text-[var(--color-ink-muted)]"
+                    }`}
+                  >
                     PNG Render Zone
                   </span>
                 </div>
@@ -188,20 +210,34 @@ export function CategoryPills({
                     data-testid={`category-pill-label-${category.id}`}
                     className={`block font-serif text-sm sm:text-base tracking-tight transition-colors line-clamp-1 ${
                       isSelected
-                        ? "text-[var(--color-accent-gold)] font-bold"
-                        : "text-[var(--color-ink-primary)] font-semibold group-hover:text-[var(--color-accent-gold)]"
+                        ? "text-white font-bold"
+                        : "text-[var(--color-ink-primary)] font-semibold group-hover:text-accent"
                     }`}
                   >
                     {category.name}
                   </span>
 
-                  <span className="block text-xs font-sans text-[var(--color-ink-muted)] mt-1 line-clamp-1">
+                  <span
+                    className={`block text-xs font-sans mt-1 line-clamp-1 ${
+                      isSelected ? "text-white/85" : "text-[var(--color-ink-muted)]"
+                    }`}
+                  >
                     {category.subtitle}
                   </span>
 
-                  <div className="mt-2.5 pt-2 border-t border-dashed border-[var(--color-border-strong)]/40 flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)]">
+                  <div
+                    className={`mt-2.5 pt-2 border-t border-dashed flex items-center justify-between text-[10px] font-mono ${
+                      isSelected
+                        ? "border-white/20 text-white/85"
+                        : "border-[var(--color-border-strong)]/40 text-[var(--color-ink-muted)]"
+                    }`}
+                  >
                     <span>{category.count}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-gold)]" />
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        isSelected ? "bg-white" : "bg-accent"
+                      }`}
+                    />
                   </div>
                 </div>
               </button>

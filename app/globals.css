@@ -21,11 +21,6 @@
   --color-burgundy-subtle: rgba(107, 28, 35, 0.2);
   --color-accent-burgundy: #6B1C23;
 
-  --color-gold: #C5A059;
-  --color-gold-bright: #D4AF37;
-  --color-gold-hover: #B38F48;
-  --color-accent-gold: #C5A059;
-
   --color-cream: #F4F1EA;
   --color-ink-primary: #F4F1EA;
   --color-ink-secondary: #E0E0E0;
@@ -34,6 +29,19 @@
   --color-terracotta: #6B1C23;
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
+
+  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
+  --color-accent: #078080;
+  --color-accent-hover: #055C5C;
+  --color-accent-light: rgba(7, 128, 128, 0.18);
+  --color-accent-tint: rgba(7, 128, 128, 0.08);
+  --color-accent-contrast: #FFFFFF;
+
+  /* Legacy Token Aliases: Any component reading gold automatically updates! */
+  --color-accent-gold: var(--color-accent);
+  --color-gold: var(--color-accent);
+  --color-gold-hover: var(--color-accent-hover);
+  --color-gold-bright: var(--color-accent);
 
   --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.45), 0 6px 14px -3px rgba(0, 0, 0, 0.35);
   --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.7), 0 8px 20px -4px rgba(0, 0, 0, 0.5);
@@ -64,11 +72,6 @@
   --color-burgundy-subtle: rgba(107, 28, 35, 0.2);
   --color-accent-burgundy: #6B1C23;
 
-  --color-gold: #C5A059;
-  --color-gold-bright: #D4AF37;
-  --color-gold-hover: #B38F48;
-  --color-accent-gold: #C5A059;
-
   --color-cream: #F4F1EA;
   --color-ink-primary: #F4F1EA;
   --color-ink-secondary: #E0E0E0;
@@ -77,6 +80,19 @@
   --color-terracotta: #6B1C23;
   --color-terracotta-hover: #54161C;
   --color-brass: #C5A059;
+
+  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
+  --color-accent: #078080;
+  --color-accent-hover: #055C5C;
+  --color-accent-light: rgba(7, 128, 128, 0.18);
+  --color-accent-tint: rgba(7, 128, 128, 0.08);
+  --color-accent-contrast: #FFFFFF;
+
+  /* Legacy Token Aliases: Any component reading gold automatically updates! */
+  --color-accent-gold: var(--color-accent);
+  --color-gold: var(--color-accent);
+  --color-gold-hover: var(--color-accent-hover);
+  --color-gold-bright: var(--color-accent);
 
   --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.45), 0 6px 14px -3px rgba(0, 0, 0, 0.35);
   --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.7), 0 8px 20px -4px rgba(0, 0, 0, 0.5);
@@ -89,7 +105,7 @@
 
   --color-canvas-base: #FAF8F5;
   --color-canvas-subtle: #F0ECE1;
-  --color-canvas-surface: #FFFFFF;
+  --color-canvas-surface: #FAFAFA;
   --color-canvas-card: #FFFFFF;
   --color-canvas-card-elevated: #F7F4EE;
   --color-canvas-elevated: #FFFFFF;
@@ -103,11 +119,6 @@
   --color-burgundy-subtle: rgba(107, 28, 35, 0.1);
   --color-accent-burgundy: #6B1C23;
 
-  --color-gold: #B38F48;
-  --color-gold-bright: #C5A059;
-  --color-gold-hover: #9E7D3B;
-  --color-accent-gold: #B38F48;
-
   --color-cream: #FAF8F5;
   --color-ink-primary: #1A1A1A;
   --color-ink-secondary: #5C554E;
@@ -116,6 +127,19 @@
   --color-terracotta: #6B1C23;
   --color-terracotta-hover: #54161C;
   --color-brass: #B38F48;
+
+  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
+  --color-accent: #078080;
+  --color-accent-hover: #055C5C;
+  --color-accent-light: #E6F2F2;
+  --color-accent-tint: rgba(7, 128, 128, 0.06);
+  --color-accent-contrast: #FFFFFF;
+
+  /* Legacy Token Aliases: Any component reading gold automatically updates! */
+  --color-accent-gold: var(--color-accent);
+  --color-gold: var(--color-accent);
+  --color-gold-hover: var(--color-accent-hover);
+  --color-gold-bright: var(--color-accent);
 
   --shadow-frame-resting: 0 18px 36px -10px rgba(0, 0, 0, 0.12), 0 6px 14px -3px rgba(0, 0, 0, 0.08);
   --shadow-frame-room: 0 26px 54px -12px rgba(0, 0, 0, 0.18), 0 8px 20px -4px rgba(0, 0, 0, 0.12);
@@ -155,6 +179,15 @@
   --color-terracotta: var(--color-terracotta);
   --color-terracotta-hover: var(--color-terracotta-hover);
   --color-brass: var(--color-brass);
+
+  /* Primary Semantic Accent Tokens (Option 1: Peacock Teal) */
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-tint: var(--color-accent-tint);
+  --color-accent-contrast: var(--color-accent-contrast);
+  --color-accent-gold: var(--color-accent-gold);
+  --color-surface: var(--color-canvas-surface);
 
   --shadow-frame-resting: var(--shadow-frame-resting);
   --shadow-frame-room: var(--shadow-frame-room);

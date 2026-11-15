@@ -48,7 +48,7 @@ export function MobileNav() {
         <button
           type="button"
           aria-label="Open mobile navigation menu"
-          className="p-2 text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] rounded-md transition-colors lg:hidden"
+          className="p-2 text-[var(--color-ink-primary)] hover:text-accent rounded-md transition-colors lg:hidden"
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -96,14 +96,14 @@ export function MobileNav() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search verticals, capabilities, specs..."
-                className="w-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-xl py-2.5 pl-9 pr-3 text-xs text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-[#C5A059]"
+                className="w-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-xl py-2.5 pl-9 pr-3 text-xs text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-accent"
               />
               <Search className="w-4 h-4 text-[var(--color-ink-muted)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </form>
 
             {/* 6 Core Service Verticals Navigation Accordion */}
             <div className="mt-6">
-              <div className="text-[10px] uppercase font-bold tracking-widest text-[#C5A059] mb-2 px-1">
+              <div className="text-[10px] uppercase font-bold tracking-widest text-accent mb-2 px-1">
                 Core Service Verticals
               </div>
               <nav className="space-y-1.5" aria-label="Mobile Service Verticals">
@@ -118,22 +118,22 @@ export function MobileNav() {
                       <button
                         type="button"
                         onClick={() => toggleVertical(vertical.id)}
-                        className="w-full flex items-center justify-between py-2 text-left text-xs font-semibold text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)]"
+                        className="w-full flex items-center justify-between py-2 text-left text-xs font-semibold text-[var(--color-ink-primary)] hover:text-accent"
                       >
                         <span className="flex items-center gap-2">
-                          <Icon className="w-4 h-4 text-[#C5A059]" />
+                          <Icon className="w-4 h-4 text-accent" />
                           <span>{vertical.name}</span>
                         </span>
                         <ChevronRight
                           className={`w-3.5 h-3.5 text-[var(--color-ink-muted)] transition-transform duration-200 ${
-                            isExpanded ? "rotate-90 text-[var(--color-accent-gold)]" : ""
+                            isExpanded ? "rotate-90 text-accent" : ""
                           }`}
                         />
                       </button>
 
                       {isExpanded && (
                         <div className="pl-6 py-2 space-y-2 text-xs text-[var(--color-ink-muted)] animate-in fade-in duration-150">
-                          <div className="text-[10px] text-[#C5A059] font-medium pb-1 border-b border-[var(--color-border-subtle)]/40">
+                          <div className="text-[10px] text-accent font-medium pb-1 border-b border-[var(--color-border-subtle)]/40">
                             {vertical.audienceBadge}
                           </div>
                           {vertical.subCapabilities.map((sub) => (
@@ -141,7 +141,7 @@ export function MobileNav() {
                               key={sub.title}
                               href={sub.href}
                               onClick={closeMenu}
-                              className="block py-1 hover:text-[var(--color-accent-gold)] transition-colors"
+                              className="block py-1 hover:text-accent transition-colors"
                             >
                               <div className="font-medium text-[var(--color-ink-primary)]">
                                 {sub.title}
@@ -154,7 +154,7 @@ export function MobileNav() {
                           <Link
                             href={vertical.href}
                             onClick={closeMenu}
-                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C5A059] pt-1"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-accent pt-1"
                           >
                             Explore Vertical <ArrowRight className="w-3 h-3" />
                           </Link>
@@ -169,7 +169,7 @@ export function MobileNav() {
             {/* Prominent RFQ Callout */}
             <div className="mt-6 p-4 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] space-y-2.5">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--color-ink-primary)]">
-                <FileText className="w-4 h-4 text-[#C5A059]" />
+                <FileText className="w-4 h-4 text-accent" />
                 <span>Request Project RFP / RFQ</span>
               </div>
               <p className="text-[11px] text-[var(--color-ink-muted)] leading-relaxed">
@@ -178,7 +178,7 @@ export function MobileNav() {
               <Link
                 href="/rfq"
                 onClick={closeMenu}
-                className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[var(--color-accent-gold)] text-[#1A1A1A] text-xs font-semibold tracking-wide"
+                className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-semibold tracking-wide transition-colors"
               >
                 <span>Submit RFQ</span>
                 <ArrowRight className="w-3 h-3" />
@@ -192,17 +192,17 @@ export function MobileNav() {
               <Link
                 href="/wishlist"
                 onClick={closeMenu}
-                className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] hover:border-[var(--color-accent-gold)] transition-colors"
+                className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] hover:border-accent transition-colors"
               >
-                <Heart className="w-4 h-4 text-[#C5A059]" />
+                <Heart className="w-4 h-4 text-accent" />
                 <span>Saved Items</span>
               </Link>
               <Link
                 href="/account"
                 onClick={closeMenu}
-                className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] hover:border-[var(--color-accent-gold)] transition-colors"
+                className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] hover:border-accent transition-colors"
               >
-                <User className="w-4 h-4 text-[#C5A059]" />
+                <User className="w-4 h-4 text-accent" />
                 <span>Account</span>
               </Link>
             </div>

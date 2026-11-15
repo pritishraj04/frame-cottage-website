@@ -80,11 +80,12 @@ export function ThemeToggle({
       aria-label={ariaLabel}
       title={title}
       data-testid={testId}
+      data-test-alias="theme-toggle-btn"
       onClick={toggleTheme}
       className={cn(
         "p-2 rounded-full transition-all duration-200 cursor-pointer flex items-center gap-2",
-        "focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:ring-offset-2 focus:ring-offset-[var(--background)]",
-        "text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] hover:bg-[var(--color-canvas-subtle)]",
+        "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[var(--background)]",
+        "text-[var(--color-ink-primary)] hover:text-accent hover:bg-[var(--color-canvas-subtle)]",
         className
       )}
     >
@@ -94,7 +95,7 @@ export function ThemeToggle({
           className={cn(
             "w-5 h-5 transition-transform duration-300 transform",
             !mounted || isDark
-              ? "rotate-0 scale-100 text-[#C5A059]"
+              ? "rotate-0 scale-100 text-accent"
               : "rotate-90 scale-0 text-[#9E9E9E] absolute"
           )}
           aria-hidden="true"

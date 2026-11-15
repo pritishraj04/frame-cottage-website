@@ -222,5 +222,19 @@
     "category": "interactive-theming",
     "specFilePath": ".agent/tasks/TASK-32.json",
     "passes": true
+  },
+  {
+    "id": "TASK-33",
+    "title": "Implement Option 1: Peacock Teal ('India Circus' Classic) Vibrant Accent System",
+    "category": "theme-accent-modernization",
+    "specFilePath": ".agent/tasks/TASK-33.json",
+    "passes": true
+  },
+  {
+    "id": "TASK-34",
+    "title": "Make Button and Accent Token System 100% Variable-Driven Across All Pages",
+    "category": "design-token-robustness",
+    "specFilePath": ".agent/tasks/TASK-34.json",
+    "passes": true
   }
 ]

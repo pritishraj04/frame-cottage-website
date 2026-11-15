@@ -207,7 +207,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               onClick={() => setSelectedCategory("all")}
               className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedCategory === "all"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -219,7 +219,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               onClick={() => setSelectedCategory("verticals")}
               className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedCategory === "verticals"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -231,7 +231,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               onClick={() => setSelectedCategory("products")}
               className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedCategory === "products"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -243,7 +243,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               onClick={() => setSelectedCategory("materials")}
               className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedCategory === "materials"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -255,7 +255,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
               onClick={() => setSelectedCategory("portals")}
               className={`px-3 py-1 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedCategory === "portals"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -284,7 +284,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                       type="button"
                       data-testid={`trending-pill-${term.toLowerCase().replace(/\s+/g, "-")}`}
                       onClick={() => setQuery(term)}
-                      className="px-3.5 py-1.5 rounded-full text-xs font-mono border border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-subtle)]/70 hover:bg-[var(--color-accent-gold)] hover:text-black hover:border-[var(--color-accent-gold)] transition-all cursor-pointer"
+                      className="px-3.5 py-1.5 rounded-full text-xs font-mono border border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-subtle)]/70 hover:bg-accent hover:text-[var(--color-accent-contrast)] hover:border-accent transition-all cursor-pointer"
                     >
                       {term}
                     </button>
@@ -350,7 +350,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                     key={tag}
                     type="button"
                     onClick={() => setQuery(tag)}
-                    className="px-3 py-1 rounded-full text-xs font-mono bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)] hover:bg-[var(--color-accent-gold)] hover:text-black transition-colors"
+                    className="px-3 py-1 rounded-full text-xs font-mono bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] border border-[var(--color-border-subtle)] hover:bg-accent hover:text-[var(--color-accent-contrast)] hover:border-accent transition-colors"
                   >
                     {tag}
                   </button>
@@ -569,7 +569,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
                         >
                           <div className="space-y-1 min-w-0 flex-1">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium tracking-wider bg-[var(--color-accent-gold)] text-black font-semibold">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-medium tracking-wider bg-accent text-[var(--color-accent-contrast)] font-semibold">
                                 {item.categoryLabel}
                               </span>
                             </div>
@@ -632,7 +632,7 @@ export function SearchModal({ isOpen, onClose, initialQuery = "" }: SearchModalP
             type="button"
             data-testid="view-all-results-btn"
             onClick={handleViewAllDedicated}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-medium tracking-wider bg-[var(--color-accent-gold)] text-black hover:opacity-90 transition-opacity cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-medium tracking-wider bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] transition-all duration-200 cursor-pointer shadow-sm"
           >
             <span>
               {query.trim()

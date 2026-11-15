@@ -342,9 +342,9 @@ export function DecisionConcierge() {
                   }}
                   className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-mono font-medium transition-all ${
                     step === s.num
-                      ? "bg-[var(--color-accent-gold)] text-[#1A1A1A] font-bold shadow-xs"
+                      ? "bg-accent text-white font-bold shadow-xs"
                       : step > s.num
-                      ? "border border-dashed border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)] hover:bg-[var(--color-accent-gold)]/10 cursor-pointer"
+                      ? "border border-dashed border-accent text-accent bg-[var(--color-canvas-base)] hover:bg-accent-light/30 cursor-pointer"
                       : "border border-dashed border-[var(--color-border-subtle)] text-[var(--color-ink-muted)] opacity-60 cursor-not-allowed"
                   }`}
                 >
@@ -374,7 +374,7 @@ export function DecisionConcierge() {
                 className="w-full"
               >
                 <div className="text-center mb-6">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-gold)]">
+                  <span className="text-xs font-mono uppercase tracking-wider text-accent">
                     Step 1 of 3: Architectural Scope
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[var(--foreground)] mt-1">
@@ -396,23 +396,23 @@ export function DecisionConcierge() {
                         onClick={() => handleSelectScope(opt.id)}
                         className={`text-left p-5 rounded-2xl border-2 border-dashed transition-all duration-300 group cursor-pointer flex flex-col justify-between ${
                           selectedScope === opt.id
-                            ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-card)] shadow-md"
-                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-[var(--color-accent-gold)] hover:bg-[var(--color-canvas-card)]"
+                            ? "border-accent bg-accent-light/40 ring-1 ring-accent shadow-md"
+                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-accent hover:bg-[var(--color-canvas-card)]"
                         }`}
                       >
                         <div>
                           <div className="flex items-center justify-between mb-3">
-                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-[var(--color-accent-gold)] group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all">
+                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-accent group-hover:scale-105 group-hover:border-accent transition-all">
                               <IconComponent className="w-5 h-5 stroke-[1.5]" />
                             </div>
-                            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-[var(--color-accent-gold)]">
+                            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-accent">
                               {opt.audienceBadge}
                             </span>
                           </div>
-                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-[var(--color-accent-gold)] transition-colors leading-snug">
+                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-accent transition-colors leading-snug">
                             {opt.title}
                           </h4>
-                          <span className="inline-block text-[11px] font-mono text-[var(--color-accent-gold)] mt-1">
+                          <span className="inline-block text-[11px] font-mono text-accent mt-1">
                             {opt.tagline}
                           </span>
                           <p className="text-xs text-[var(--color-ink-muted)] mt-2 font-sans line-clamp-3">
@@ -420,7 +420,7 @@ export function DecisionConcierge() {
                           </p>
                         </div>
 
-                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-[var(--color-accent-gold)]">
+                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-accent">
                           <span>Select Scope</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -443,7 +443,7 @@ export function DecisionConcierge() {
                 className="w-full"
               >
                 <div className="text-center mb-6">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-gold)]">
+                  <span className="text-xs font-mono uppercase tracking-wider text-accent">
                     Step 2 of 3: Environmental Conditions
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[var(--foreground)] mt-1">
@@ -465,23 +465,23 @@ export function DecisionConcierge() {
                         onClick={() => handleSelectEnv(opt.id)}
                         className={`text-left p-5 rounded-2xl border-2 border-dashed transition-all duration-300 group cursor-pointer flex flex-col justify-between ${
                           selectedEnv === opt.id
-                            ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-card)] shadow-md"
-                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-[var(--color-accent-gold)] hover:bg-[var(--color-canvas-card)]"
+                            ? "border-accent bg-accent-light/40 ring-1 ring-accent shadow-md"
+                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-accent hover:bg-[var(--color-canvas-card)]"
                         }`}
                       >
                         <div>
                           <div className="flex items-center justify-between mb-3">
-                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-[var(--color-accent-gold)] group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all">
+                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-accent group-hover:scale-105 group-hover:border-accent transition-all">
                               <IconComponent className="w-5 h-5 stroke-[1.5]" />
                             </div>
-                            <span className="text-[10px] font-mono text-[var(--color-accent-gold)] border border-dashed border-[var(--color-accent-gold)]/40 px-2.5 py-0.5 rounded-full bg-[var(--color-accent-gold)]/5">
+                            <span className="text-[10px] font-mono text-accent border border-dashed border-accent/40 px-2.5 py-0.5 rounded-full bg-accent/5">
                               Recommended Glazing Spec
                             </span>
                           </div>
-                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-[var(--color-accent-gold)] transition-colors leading-snug">
+                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-accent transition-colors leading-snug">
                             {opt.title}
                           </h4>
-                          <div className="mt-2 text-xs font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/80 border border-dashed border-[var(--color-border-subtle)] p-2 rounded-lg">
+                          <div className="mt-2 text-xs font-mono text-accent bg-[var(--color-canvas-base)]/80 border border-dashed border-[var(--color-border-subtle)] p-2 rounded-lg">
                             {opt.glazing}
                           </div>
                           <p className="text-xs text-[var(--color-ink-muted)] mt-2 font-sans">
@@ -489,7 +489,7 @@ export function DecisionConcierge() {
                           </p>
                         </div>
 
-                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-[var(--color-accent-gold)]">
+                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-accent">
                           <span>Apply Condition</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -503,7 +503,7 @@ export function DecisionConcierge() {
                     type="button"
                     data-testid="concierge-back-btn"
                     onClick={handlePrevStep}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-[var(--color-accent-gold)] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-accent transition-colors cursor-pointer"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     Back to Step 1 (Scope)
@@ -524,7 +524,7 @@ export function DecisionConcierge() {
                 className="w-full"
               >
                 <div className="text-center mb-6">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-accent-gold)]">
+                  <span className="text-xs font-mono uppercase tracking-wider text-accent">
                     Step 3 of 3: Tactile &amp; Aesthetic Tone
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif font-semibold text-[var(--foreground)] mt-1">
@@ -546,23 +546,23 @@ export function DecisionConcierge() {
                         onClick={() => handleSelectMaterial(opt.id)}
                         className={`text-left p-5 rounded-2xl border-2 border-dashed transition-all duration-300 group cursor-pointer flex flex-col justify-between ${
                           selectedMaterial === opt.id
-                            ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-card)] shadow-md"
-                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-[var(--color-accent-gold)] hover:bg-[var(--color-canvas-card)]"
+                            ? "border-accent bg-accent-light/40 ring-1 ring-accent shadow-md"
+                            : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-card)]/60 hover:border-accent hover:bg-[var(--color-canvas-card)]"
                         }`}
                       >
                         <div>
                           <div className="flex items-center justify-between mb-3">
-                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-[var(--color-accent-gold)] group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all">
+                            <div className="w-10 h-10 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-base)] flex items-center justify-center text-accent group-hover:scale-105 group-hover:border-accent transition-all">
                               <IconComponent className="w-5 h-5 stroke-[1.5]" />
                             </div>
-                            <span className="text-[10px] font-mono text-[var(--color-accent-gold)] border border-dashed border-[var(--color-accent-gold)]/40 px-2.5 py-0.5 rounded-full bg-[var(--color-accent-gold)]/5">
+                            <span className="text-[10px] font-mono text-accent border border-dashed border-accent/40 px-2.5 py-0.5 rounded-full bg-accent/5">
                               Substrate Blueprint
                             </span>
                           </div>
-                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-[var(--color-accent-gold)] transition-colors leading-snug">
+                          <h4 className="text-base font-serif font-bold text-[var(--foreground)] group-hover:text-accent transition-colors leading-snug">
                             {opt.title}
                           </h4>
-                          <div className="mt-2 text-xs font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/80 border border-dashed border-[var(--color-border-subtle)] p-2 rounded-lg">
+                          <div className="mt-2 text-xs font-mono text-accent bg-[var(--color-canvas-base)]/80 border border-dashed border-[var(--color-border-subtle)] p-2 rounded-lg">
                             {opt.substrate}
                           </div>
                           <p className="text-xs text-[var(--color-ink-muted)] mt-2 font-sans">
@@ -570,7 +570,7 @@ export function DecisionConcierge() {
                           </p>
                         </div>
 
-                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-[var(--color-accent-gold)]">
+                        <div className="mt-4 pt-3 border-t border-dashed border-[var(--color-border-subtle)] flex items-center justify-between text-xs font-mono text-accent">
                           <span>Generate Blueprint</span>
                           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -584,7 +584,7 @@ export function DecisionConcierge() {
                     type="button"
                     data-testid="concierge-back-btn"
                     onClick={handlePrevStep}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-[var(--color-accent-gold)] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-accent transition-colors cursor-pointer"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     Back to Step 2 (Environment)
@@ -603,12 +603,12 @@ export function DecisionConcierge() {
                 animate="center"
                 exit="exit"
                 data-testid="concierge-recommendation-card"
-                className="w-full bg-[var(--color-canvas-card)] rounded-2xl border-2 border-dashed border-[var(--color-accent-gold)]/80 p-6 sm:p-8 shadow-2xl relative"
+                className="w-full bg-[var(--color-canvas-card)] rounded-2xl border-2 border-dashed border-accent/80 p-6 sm:p-8 shadow-2xl relative"
               >
                 {/* Recommendation Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-dashed border-[var(--color-border-subtle)] pb-6 gap-4">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-dashed border-[var(--color-accent-gold)] text-[11px] font-mono font-semibold text-[var(--color-accent-gold)] mb-2 bg-[var(--color-canvas-base)]">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-dashed border-accent text-[11px] font-mono font-semibold text-accent mb-2 bg-[var(--color-canvas-base)]">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       Tailored Studio Specification &amp; Blueprint
                     </div>
@@ -626,14 +626,14 @@ export function DecisionConcierge() {
                   <div className="flex flex-wrap items-center gap-2">
                     <span
                       data-testid="concierge-recommended-badge"
-                      className="px-3 py-1 rounded-full border border-dashed border-[var(--color-accent-gold)] text-xs font-mono font-bold text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]"
+                      className="px-3 py-1 rounded-full border border-dashed border-accent text-xs font-mono font-bold text-accent bg-[var(--color-canvas-base)]"
                     >
                       {currentScope.audienceBadge}
                     </span>
                     <Link
                       href={`/services/${currentScope.id}`}
                       data-testid="concierge-recommended-link"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-[var(--color-accent-gold)] hover:underline py-1 px-2 rounded-md hover:bg-[var(--color-canvas-subtle)] transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-accent hover:underline py-1 px-2 rounded-md hover:bg-[var(--color-canvas-subtle)] transition-colors"
                     >
                       <span>Explore Vertical</span>
                       <ExternalLink className="w-3 h-3" />
@@ -691,11 +691,11 @@ export function DecisionConcierge() {
                     {/* Budget & Turnaround Badges */}
                     <div className="flex flex-wrap items-center gap-3 pt-2">
                       <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-dashed border-[var(--color-border-subtle)] bg-[var(--color-canvas-base)] text-xs font-mono text-[var(--foreground)]">
-                        <Coins className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
-                        <span>Estimated Budget: <strong className="text-[var(--color-accent-gold)]">{details.budgetRange}</strong></span>
+                        <Coins className="w-3.5 h-3.5 text-accent" />
+                        <span>Estimated Budget: <strong className="text-accent">{details.budgetRange}</strong></span>
                       </div>
                       <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-dashed border-[var(--color-border-subtle)] bg-[var(--color-canvas-base)] text-xs font-mono text-[var(--foreground)]">
-                        <Clock className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+                        <Clock className="w-3.5 h-3.5 text-accent" />
                         <span>Turnaround Lead Time: <strong>{details.leadTime}</strong></span>
                       </div>
                     </div>
@@ -705,12 +705,12 @@ export function DecisionConcierge() {
                   <div className="lg:col-span-5">
                     <div
                       data-testid="concierge-dropzone"
-                      className="aspect-square sm:aspect-4/3 w-full rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/80 bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group hover:border-[var(--color-accent-gold)] transition-colors duration-300"
+                      className="aspect-square sm:aspect-4/3 w-full rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/80 bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group hover:border-accent group-hover:border-accent group-hover:bg-accent-light/50 transition-all duration-300"
                     >
-                      <div className="w-14 h-14 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-accent-gold)] mb-3 bg-[var(--color-canvas-base)]/70 group-hover:scale-105 group-hover:border-[var(--color-accent-gold)] transition-all duration-300 shadow-md">
+                      <div className="w-14 h-14 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-accent mb-3 bg-[var(--color-canvas-base)]/70 group-hover:scale-105 group-hover:border-accent transition-all duration-300 shadow-md">
                         <UploadCloud className="w-7 h-7 stroke-[1.5]" />
                       </div>
-                      <span className="text-[10px] uppercase tracking-widest font-mono font-bold text-[var(--color-accent-gold)] mb-1">
+                      <span className="text-[10px] uppercase tracking-widest font-mono font-bold text-accent mb-1">
                         PNG Studio Drop Zone
                       </span>
                       <h5 className="text-sm sm:text-base font-serif font-medium text-[var(--foreground)]">
@@ -719,7 +719,7 @@ export function DecisionConcierge() {
                       <p className="text-[11px] font-sans text-[var(--color-ink-muted)] mt-1.5 max-w-xs">
                         Designer transparent PNG render container (e.g. /public/images/concierge/{currentScope.id}.png, 1080×1080).
                       </p>
-                      <div className="mt-3 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-base)]/70">
+                      <div className="mt-3 px-3 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono text-accent bg-[var(--color-canvas-base)]/70">
                         1:1 Aspect Ratio • Full-Bleed PNG Asset (300 DPI)
                       </div>
                     </div>
@@ -733,7 +733,7 @@ export function DecisionConcierge() {
                     <Link
                       href={`/rfq?vertical=${currentScope.id}`}
                       data-testid="concierge-rfq-btn"
-                      className="w-full sm:w-auto px-6 py-3 rounded-full bg-[var(--color-accent-gold)] hover:opacity-90 active:scale-[0.98] text-[#1A1A1A] font-semibold text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                      className="w-full sm:w-auto px-6 py-3 rounded-full bg-accent hover:bg-accent-hover active:scale-[0.98] text-[var(--color-accent-contrast)] font-semibold text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 shadow-md shadow-accent/25 transition-all cursor-pointer"
                     >
                       <span>Configure in RFQ Portal</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -763,7 +763,7 @@ export function DecisionConcierge() {
                     type="button"
                     data-testid="concierge-reset-btn"
                     onClick={handleReset}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-[var(--color-accent-gold)] transition-colors cursor-pointer w-full sm:w-auto justify-center"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-dashed border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-muted)] hover:text-[var(--foreground)] hover:border-accent hover:text-accent transition-colors cursor-pointer w-full sm:w-auto justify-center"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Retake Decision Quiz</span>

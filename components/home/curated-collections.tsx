@@ -43,8 +43,8 @@ export function CuratedCollections() {
           data-testid="curated-collections-header"
           className="max-w-3xl mb-10 sm:mb-14"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-[0.2em] text-[var(--color-accent-gold)] mb-3 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)]/60">
-            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-[0.2em] text-accent mb-3 px-3.5 py-1.5 rounded-full border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)]/60">
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>Artisan Milling & Spatial Capabilities • Tru Vue® UV-Shield Acrylic</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-[var(--color-ink-primary)] tracking-tight leading-[1.12]">
@@ -83,8 +83,8 @@ export function CuratedCollections() {
                   className={cn(
                     "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer border-2",
                     isActive
-                      ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-sm"
-                      : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border-dashed border-[var(--color-border-strong)]/60"
+                      ? "bg-accent text-white border-accent shadow-sm"
+                      : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-accent hover:bg-[var(--color-canvas-subtle)] border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60"
                   )}
                 >
                   <span>{tab.label}</span>
@@ -92,7 +92,7 @@ export function CuratedCollections() {
                     className={cn(
                       "px-1.5 py-0.2 rounded-full text-[10px] font-semibold",
                       isActive
-                        ? "bg-[#54161C] text-[#F4F1EA]"
+                        ? "bg-accent-hover text-white"
                         : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)]"
                     )}
                   >

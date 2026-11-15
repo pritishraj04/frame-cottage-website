@@ -72,7 +72,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
       {/* Top decorative badge & close button */}
       <div className="flex items-center justify-between pb-4 border-b border-[var(--color-border-subtle)]">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-xs font-semibold text-[var(--color-ink-primary)] shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+          <Sparkles className="w-3.5 h-3.5 text-accent" />
           <span>Quick Atelier Customiser</span>
         </div>
         <Dialog.Close
@@ -166,7 +166,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
 
           {/* Subtext info under mockup */}
           <div className="mt-4 flex items-center gap-1.5 text-[11px] font-medium text-[#9E9E9E]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-accent" />
             <span>Tru Vue® UV-Shield Acrylic Included</span>
           </div>
         </div>
@@ -205,8 +205,8 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex items-center justify-between p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
-                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50 text-[var(--color-ink-secondary)]"
+                        ? "border-accent bg-accent-light/40 ring-2 ring-accent/30 shadow-xs text-accent font-semibold"
+                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-accent/50 text-[var(--color-ink-secondary)]"
                     )}
                   >
                     <div>
@@ -218,7 +218,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                       </p>
                     </div>
                     {isSelected && (
-                      <div className="w-4 h-4 rounded-full bg-[#C5A059] text-[#1A1A1A] flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full bg-accent text-white flex items-center justify-center">
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </div>
                     )}
@@ -260,8 +260,8 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                     className={cn(
                       "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all duration-200 cursor-pointer",
                       isSelected
-                        ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
-                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50 text-[var(--color-ink-secondary)]"
+                        ? "border-accent bg-accent-light/40 ring-2 ring-accent/30 shadow-xs text-accent font-semibold"
+                        : "border-[var(--color-border-subtle)] bg-[var(--color-canvas-subtle)]/60 hover:bg-[var(--color-canvas-subtle)] hover:border-accent/50 text-[var(--color-ink-secondary)]"
                     )}
                   >
                     <span className="text-xs font-semibold text-[var(--color-ink-primary)]">
@@ -285,7 +285,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
               <div className="flex items-baseline gap-2">
                 <span
                   data-testid="dialog-dynamic-price"
-                  className="font-serif text-3xl font-bold text-[var(--color-accent-gold)]"
+                  className="font-serif text-3xl font-bold text-accent"
                 >
                   <span data-testid="dialog-total-price">${calculatedPrice}</span>
                 </span>
@@ -300,7 +300,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
             <a
               href={`/customise?moulding=${product.mouldingId}&size=${selectedSizeId}&mat=${selectedMatId}`}
               data-testid="dialog-cta-button"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md group cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-md shadow-accent/20 group cursor-pointer"
             >
               <span>Proceed to Full Customiser</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

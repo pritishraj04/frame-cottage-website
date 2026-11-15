@@ -41,13 +41,13 @@ export function LiveFrameSwitcher() {
   return (
     <div
       data-testid="live-frame-switcher"
-      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden hover:border-[var(--color-accent-gold)]/60 transition-colors duration-300"
+      className="relative flex flex-col w-full max-w-xl mx-auto lg:max-w-none rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden hover:border-accent/60 transition-colors duration-300"
     >
       {/* Top Bar: Room Context Toggle & Live Spec Indicator */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]">
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-          <span className="text-xs font-mono font-semibold tracking-wider uppercase text-[var(--color-accent-gold)]">
+          <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-xs font-mono font-semibold tracking-wider uppercase text-accent">
             PNG Frame Visualizer Canvas
           </span>
         </div>
@@ -300,8 +300,8 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center p-2.5 rounded-xl border-2 text-center transition-all duration-200 group text-left cursor-pointer",
                     isSelected
-                      ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] ring-2 ring-[var(--color-accent-gold)]/40 shadow-xs text-[var(--color-ink-primary)]"
-                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-secondary)] hover:bg-[var(--color-canvas-subtle)]"
+                      ? "border-accent bg-accent-light/40 ring-2 ring-accent/30 shadow-xs text-accent font-semibold"
+                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-secondary)] hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
                   {/* Swatch Pill with Realistic Gradient */}
@@ -310,11 +310,11 @@ export function LiveFrameSwitcher() {
                       style={{ background: m.swatchGradient }}
                       className={cn(
                         "block w-7 h-7 rounded-full shadow-xs border border-black/15 transition-transform group-hover:scale-105",
-                        isSelected && "ring-2 ring-offset-1 ring-offset-[var(--color-canvas-surface)] ring-[#C5A059]"
+                        isSelected && "ring-2 ring-offset-1 ring-offset-[var(--color-canvas-surface)] ring-accent"
                       )}
                     />
                     {isSelected && (
-                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-3.5 h-3.5 rounded-full bg-[#C5A059] text-[#1A1A1A]">
+                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-3.5 h-3.5 rounded-full bg-accent text-white">
                         <Check className="w-2.5 h-2.5 stroke-[3]" />
                       </span>
                     )}
@@ -362,8 +362,8 @@ export function LiveFrameSwitcher() {
                   className={cn(
                     "flex flex-col items-center justify-center py-2.5 px-3 rounded-xl border-2 transition-all duration-200 cursor-pointer",
                     isSelected
-                      ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] ring-2 ring-[var(--color-accent-gold)]/40 font-medium"
-                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
+                      ? "border-accent bg-accent-light/40 text-accent ring-2 ring-accent/30 font-semibold"
+                      : "border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 bg-[var(--color-canvas-subtle)]/40 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
                   )}
                 >
                   <span className="text-xs font-medium">{mat.name}</span>
@@ -385,7 +385,7 @@ export function LiveFrameSwitcher() {
               </span>
               <span
                 data-testid="frame-price-amount"
-                className="font-serif text-2xl sm:text-3xl font-bold text-[var(--color-accent-gold)]"
+                className="font-serif text-2xl sm:text-3xl font-bold text-accent"
               >
                 ${totalPrice}
               </span>
@@ -402,7 +402,7 @@ export function LiveFrameSwitcher() {
             <Link
               href={`/customizer?moulding=${mouldingId}&mat=${matId}`}
               data-testid="cta-customize"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-xs sm:text-sm font-semibold tracking-wide transition-colors shadow-xs"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-md shadow-accent/20 cursor-pointer"
             >
               <Sliders className="w-4 h-4" />
               <span>Customize This Frame</span>
@@ -411,9 +411,9 @@ export function LiveFrameSwitcher() {
             <Link
               href="/upload"
               data-testid="cta-upload"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[var(--color-border-strong)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] hover:bg-[var(--color-canvas-card-elevated)] text-[var(--color-ink-primary)] text-xs sm:text-sm font-medium transition-colors"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[var(--color-border-strong)] hover:border-accent bg-[var(--color-canvas-subtle)] hover:bg-[var(--color-canvas-card-elevated)] text-[var(--color-ink-primary)] text-xs sm:text-sm font-medium transition-colors"
             >
-              <Upload className="w-4 h-4 text-[#C5A059]" />
+              <Upload className="w-4 h-4 text-accent" />
               <span>Upload Your Photo</span>
             </Link>
           </div>
@@ -422,11 +422,11 @@ export function LiveFrameSwitcher() {
         {/* Trust Note */}
         <div className="flex items-center justify-between pt-1 text-[11px] text-[var(--color-ink-muted)]">
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-accent" />
             <span>99% UV-Shielding Museum Glass Included</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>Handmade in 5–7 Days</span>
           </div>
         </div>

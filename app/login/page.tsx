@@ -352,7 +352,7 @@ export default function LoginPage() {
                   data-testid="checkbox-remember"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#C5A059] focus:ring-[#C5A059] cursor-pointer"
+                  className="w-4 h-4 rounded text-accent focus:ring-accent cursor-pointer"
                 />
                 <label
                   htmlFor="checkbox-remember"
@@ -366,7 +366,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 data-testid="submit-auth-btn"
-                className="w-full py-3.5 px-4 rounded-full bg-[var(--color-accent-gold)] text-black font-mono font-bold text-xs tracking-wider uppercase hover:opacity-95 transition-opacity cursor-pointer shadow-md flex items-center justify-center gap-2 mt-4"
+                className="w-full py-3.5 px-4 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-mono font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-md flex items-center justify-center gap-2 mt-4"
               >
                 <Lock className="w-3.5 h-3.5" />
                 <span>

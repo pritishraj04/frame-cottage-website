@@ -161,7 +161,7 @@ export default function Home() {
                 <button
                   type="button"
                   data-testid="featured-product-cta-container"
-                  className="h-12 w-44 border-2 border-dashed border-[var(--color-border-strong)] rounded-full flex items-center justify-center bg-[var(--color-accent-gold)] text-[#1A1A1A] font-semibold cursor-pointer hover:opacity-95 transition-opacity shadow-sm"
+                  className="h-12 w-44 border-2 border-dashed border-[var(--color-border-strong)] rounded-full flex items-center justify-center bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-semibold cursor-pointer transition-all duration-200 shadow-sm"
                 >
                   <span className="text-xs uppercase tracking-wider font-mono font-bold">
                     Request Spec

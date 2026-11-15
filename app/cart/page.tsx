@@ -98,7 +98,7 @@ export default function CartPage() {
                 <span>Active Requisition</span>
                 <span
                   data-testid="cart-counter-badge"
-                  className="ml-1 px-2 py-0.2 rounded-full bg-[var(--color-accent-gold)] text-black text-[10px] font-bold"
+                  className="ml-1 px-2 py-0.2 rounded-full bg-accent text-[var(--color-accent-contrast)] text-[10px] font-bold"
                 >
                   {cartCount} {cartCount === 1 ? "Item" : "Items"}
                 </span>
@@ -131,7 +131,7 @@ export default function CartPage() {
               data-testid="cart-empty-state"
               className="my-16 p-8 sm:p-14 rounded-3xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 text-center flex flex-col items-center justify-center max-w-2xl mx-auto space-y-5"
             >
-              <div className="w-20 h-20 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-xs">
+              <div className="w-20 h-20 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent shadow-xs">
                 <ShoppingBag className="w-8 h-8 opacity-40" />
               </div>
 
@@ -149,7 +149,7 @@ export default function CartPage() {
                 <Link
                   href="/"
                   data-testid="cart-explore-btn"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold tracking-wider hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
                 >
                   <span>Explore Collections</span>
                   <ArrowRight className="w-4 h-4" />
@@ -190,7 +190,7 @@ export default function CartPage() {
                             <span className="text-[8px] font-mono text-[var(--color-accent-gold)] absolute top-1 left-1">
                               FC
                             </span>
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 border border-[#C5A059]/60 rounded-xs flex items-center justify-center">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 border border-accent/60 rounded-xs flex items-center justify-center">
                               <span className="text-[8px] font-mono text-[var(--color-ink-muted)] text-center leading-none">
                                 4:3
                               </span>
@@ -316,15 +316,15 @@ export default function CartPage() {
                       onClick={() => setDeliveryMethod("white-glove")}
                       className={`p-4 rounded-xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between ${
                         deliveryMethod === "white-glove"
-                          ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] shadow-xs"
-                          : "border-dashed border-[var(--color-border-strong)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-base)]/40"
+                          ? "border-accent bg-accent/10 shadow-xs"
+                          : "border-dashed border-[var(--color-border-strong)] hover:border-accent/60 bg-[var(--color-canvas-base)]/40"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-xs font-serif font-bold text-[var(--color-ink-primary)]">
                           Insured White-Glove Courier
                         </span>
-                        <span className="font-mono text-xs font-bold text-[var(--color-accent-gold)]">
+                        <span className="font-mono text-xs font-bold text-accent">
                           {cartSubtotal >= 2500 ? "FREE" : "$120"}
                         </span>
                       </div>
@@ -340,8 +340,8 @@ export default function CartPage() {
                       onClick={() => setDeliveryMethod("atelier")}
                       className={`p-4 rounded-xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between ${
                         deliveryMethod === "atelier"
-                          ? "border-[var(--color-accent-gold)] bg-[var(--color-canvas-subtle)] shadow-xs"
-                          : "border-dashed border-[var(--color-border-strong)] hover:border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-base)]/40"
+                          ? "border-accent bg-accent/10 shadow-xs"
+                          : "border-dashed border-[var(--color-border-strong)] hover:border-accent/60 bg-[var(--color-canvas-base)]/40"
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
@@ -407,7 +407,7 @@ export default function CartPage() {
                           data-testid="cart-tax-toggle"
                           checked={isTaxExempt}
                           onChange={toggleTaxExempt}
-                          className="w-4 h-4 rounded text-[#C5A059] focus:ring-[#C5A059] cursor-pointer"
+                          className="w-4 h-4 rounded text-accent focus:ring-accent cursor-pointer"
                         />
                       </div>
                       <div className="flex items-center justify-between mt-1 text-[11px]">
@@ -494,7 +494,7 @@ export default function CartPage() {
                       type="button"
                       data-testid="checkout-btn"
                       onClick={handleCheckoutOpen}
-                      className="w-full py-3.5 px-4 rounded-full bg-[var(--color-accent-gold)] text-black font-mono font-bold text-xs tracking-wider uppercase hover:opacity-95 transition-opacity cursor-pointer shadow-md flex items-center justify-center gap-2"
+                      className="w-full py-3.5 px-4 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-mono font-bold text-xs tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-md flex items-center justify-center gap-2"
                     >
                       <Lock className="w-3.5 h-3.5" />
                       <span>Proceed to White-Glove Checkout</span>
@@ -503,9 +503,9 @@ export default function CartPage() {
                     <Link
                       href="/rfq?proforma=true"
                       data-testid="proforma-btn"
-                      className="w-full py-2.5 px-4 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] hover:border-[var(--color-accent-gold)] text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)] font-mono text-xs text-center transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full py-2.5 px-4 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] hover:border-accent text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)] font-mono text-xs text-center transition-colors flex items-center justify-center gap-1.5"
                     >
-                      <FileText className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+                      <FileText className="w-3.5 h-3.5 text-accent" />
                       <span>Request Proforma Invoice (B2B / GeM Tender)</span>
                     </Link>
                   </div>
@@ -590,7 +590,7 @@ export default function CartPage() {
                 <Link
                   href="/account"
                   onClick={() => setIsCheckoutModalOpen(false)}
-                  className="w-full py-3 px-4 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-bold tracking-wider text-center uppercase hover:opacity-95 transition-opacity"
+                  className="w-full py-3 px-4 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wider text-center uppercase transition-all duration-200 cursor-pointer shadow-md"
                 >
                   View in Account Dashboard →
                 </Link>

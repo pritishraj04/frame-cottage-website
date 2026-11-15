@@ -54,8 +54,8 @@ export function TrustBar() {
         {/* Section Spatial Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-dashed border-[var(--color-border-strong)]/40">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse" />
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--color-accent-gold)] font-semibold">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent font-semibold">
               Studio Capabilities & Trust Specifications
             </span>
           </div>
@@ -74,12 +74,12 @@ export function TrustBar() {
                 key={pillar.id}
                 data-testid={pillar.testId}
                 data-test-item={`trust-item-${index}`}
-                className="flex flex-col justify-between p-6 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)]/80 hover:border-[var(--color-accent-gold)]/60 hover:bg-[var(--color-canvas-surface)] transition-all duration-300 group relative overflow-hidden shadow-2xs"
+                className="flex flex-col justify-between p-6 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)]/80 hover:border-accent/60 hover:bg-accent-light/10 transition-all duration-300 group relative overflow-hidden shadow-2xs"
               >
                 {/* Top: Capability Badge Graphic Drop Zone */}
                 <div>
-                  <div className="w-full rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/70 p-3 mb-4 flex flex-col items-center justify-center text-center group-hover:border-[var(--color-accent-gold)] transition-colors">
-                    <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-2 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-full rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/70 p-3 mb-4 flex flex-col items-center justify-center text-center group-hover:border-accent transition-colors">
+                    <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-2 shadow-2xs group-hover:scale-105 transition-transform duration-300">
                       <Icon className="w-6 h-6 stroke-[1.75]" />
                     </div>
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
@@ -102,7 +102,7 @@ export function TrustBar() {
                   <div className="space-y-1.5 text-left">
                     <h3
                       data-testid={`trust-title-${pillar.id}`}
-                      className="font-serif text-base sm:text-lg font-semibold text-[var(--color-ink-primary)] tracking-tight leading-snug group-hover:text-[var(--color-accent-gold)] transition-colors"
+                      className="font-serif text-base sm:text-lg font-semibold text-[var(--color-ink-primary)] tracking-tight leading-snug group-hover:text-accent transition-colors"
                     >
                       {pillar.title}
                     </h3>
@@ -118,7 +118,7 @@ export function TrustBar() {
                 {/* Bottom Spec Footer Pill */}
                 <div className="mt-5 pt-3 border-t border-dashed border-[var(--color-border-strong)]/40 flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)]">
                   <span>Pillar 0{index + 1} Spec</span>
-                  <span className="text-[var(--color-accent-gold)]">Verified</span>
+                  <span className="text-accent font-medium">Verified</span>
                 </div>
               </div>
             );

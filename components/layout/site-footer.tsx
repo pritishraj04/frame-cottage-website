@@ -53,7 +53,7 @@ export function SiteFooter() {
             {/* Newsletter Hook */}
             <div className="lg:col-span-6 space-y-2">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] text-[11px] font-semibold uppercase tracking-widest shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+                <Sparkles className="w-3.5 h-3.5 text-accent" />
                 <span>The Atelier Circle</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--color-ink-primary)] tracking-tight">
@@ -85,14 +85,14 @@ export function SiteFooter() {
                       placeholder="Enter your email address..."
                       data-testid="footer-newsletter-input"
                       aria-label="Email address for newsletter"
-                      className="w-full pl-10 pr-4 py-3 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:border-[var(--color-accent-gold)] focus:ring-1 focus:ring-[var(--color-accent-gold)] transition-colors shadow-2xs"
+                      className="w-full pl-10 pr-4 py-3 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors shadow-2xs"
                     />
                   </div>
 
                   <button
                     type="submit"
                     data-testid="footer-newsletter-submit"
-                    className="px-6 py-3 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
+                    className="px-6 py-3 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs uppercase tracking-wider font-semibold shadow-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -140,7 +140,7 @@ export function SiteFooter() {
           <div data-testid="footer-brand-story" className="lg:col-span-4 space-y-4">
             <Link
               href="/"
-              className="font-serif tracking-[0.2em] text-xl font-semibold text-[var(--color-ink-primary)] hover:text-[var(--color-accent-gold)] transition-colors inline-block"
+              className="font-serif tracking-[0.2em] text-xl font-semibold text-[var(--color-ink-primary)] hover:text-accent transition-colors inline-block"
             >
               FRAME COTTAGE
             </Link>
@@ -152,15 +152,15 @@ export function SiteFooter() {
             {/* Guild Accreditations */}
             <div className="space-y-2 pt-2">
               <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
-                <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <TreePine className="w-4 h-4 text-accent shrink-0" />
                 <span>FSC® Certified Timber • 100% Solid Appalachian Hardwoods</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
-                <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
                 <span>ISO 9001:2015 Certified & GeM Registered Public Sector Vendor</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]">
-                <Sparkles className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <Sparkles className="w-4 h-4 text-accent shrink-0" />
                 <span>100-Year Generational Archival Craftsmanship Guarantee</span>
               </div>
             </div>
@@ -176,32 +176,32 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/services/retail-framing" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/retail-framing" className="hover:text-accent transition-colors">
                   Retail & Standard Framing
                 </Link>
               </li>
               <li>
-                <Link href="/services/bespoke-framing" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/bespoke-framing" className="hover:text-accent transition-colors">
                   Bespoke Custom Framing
                 </Link>
               </li>
               <li>
-                <Link href="/services/bespoke-framing#giclee" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/bespoke-framing#giclee" className="hover:text-accent transition-colors">
                   Archival Giclée Fine Art
                 </Link>
               </li>
               <li>
-                <Link href="/services/bespoke-framing#canvas" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/bespoke-framing#canvas" className="hover:text-accent transition-colors">
                   Canvas Floater Frames
                 </Link>
               </li>
               <li>
-                <Link href="/truvue" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/truvue" className="hover:text-accent transition-colors">
                   TruVue® Conservation Acrylic
                 </Link>
               </li>
               <li>
-                <Link href="/mail-in" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/mail-in" className="hover:text-accent transition-colors">
                   Mail-In Archival Art Service
                 </Link>
               </li>
@@ -218,32 +218,32 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/services/spatial-signage" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage" className="hover:text-accent transition-colors">
                   Architectural Wayfinding
                 </Link>
               </li>
               <li>
-                <Link href="/services/spatial-signage#branding" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage#branding" className="hover:text-accent transition-colors">
                   Environmental Branding
                 </Link>
               </li>
               <li>
-                <Link href="/services/spatial-signage#led" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage#led" className="hover:text-accent transition-colors">
                   3D Illuminated LED Signs
                 </Link>
               </li>
               <li>
-                <Link href="/services/spatial-signage#pylons" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage#pylons" className="hover:text-accent transition-colors">
                   Exterior Commercial Pylons
                 </Link>
               </li>
               <li>
-                <Link href="/services/spatial-signage#ada" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage#ada" className="hover:text-accent transition-colors">
                   ADA Compliance Signage
                 </Link>
               </li>
               <li>
-                <Link href="/services/spatial-signage#acoustic" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/spatial-signage#acoustic" className="hover:text-accent transition-colors">
                   Acoustic Spatial Panels
                 </Link>
               </li>
@@ -260,32 +260,32 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/services/industrial-cnc" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/industrial-cnc" className="hover:text-accent transition-colors">
                   5-Axis Precision CNC Routing
                 </Link>
               </li>
               <li>
-                <Link href="/services/industrial-cnc#laser" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/industrial-cnc#laser" className="hover:text-accent transition-colors">
                   Fiber Laser Metal Cutting
                 </Link>
               </li>
               <li>
-                <Link href="/services/industrial-cnc#screens" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/industrial-cnc#screens" className="hover:text-accent transition-colors">
                   Architectural Metal Screens
                 </Link>
               </li>
               <li>
-                <Link href="/services/industrial-cnc#metalworks" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/industrial-cnc#metalworks" className="hover:text-accent transition-colors">
                   Custom Brass & Aluminum
                 </Link>
               </li>
               <li>
-                <Link href="/services/industrial-cnc#finishes" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/industrial-cnc#finishes" className="hover:text-accent transition-colors">
                   Powder Coat & Patinas
                 </Link>
               </li>
               <li>
-                <Link href="/rfq" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/rfq" className="hover:text-accent transition-colors">
                   Engineering CAD/BIM Specs
                 </Link>
               </li>
@@ -302,32 +302,32 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-[var(--color-ink-secondary)]">
               <li>
-                <Link href="/services/custom-gifting" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/custom-gifting" className="hover:text-accent transition-colors">
                   Custom Gifting & Mementos
                 </Link>
               </li>
               <li>
-                <Link href="/services/custom-gifting#awards" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/custom-gifting#awards" className="hover:text-accent transition-colors">
                   Corporate Awards & Plaques
                 </Link>
               </li>
               <li>
-                <Link href="/services/civic-projects" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/civic-projects" className="hover:text-accent transition-colors">
                   Government & Civic Projects
                 </Link>
               </li>
               <li>
-                <Link href="/services/civic-projects#tenders" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/services/civic-projects#tenders" className="hover:text-accent transition-colors">
                   Public Sector Tenders (GeM)
                 </Link>
               </li>
               <li>
-                <Link href="/rfq" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/rfq" className="hover:text-accent transition-colors">
                   Request Project RFP / RFQ
                 </Link>
               </li>
               <li>
-                <Link href="/installation" className="hover:text-[#C5A059] transition-colors">
+                <Link href="/installation" className="hover:text-accent transition-colors">
                   White-Glove Installation
                 </Link>
               </li>
@@ -351,7 +351,7 @@ export function SiteFooter() {
                 data-testid="footer-fsc-badge"
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
               >
-                <TreePine className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <TreePine className="w-4 h-4 text-accent shrink-0" />
                 <span>
                   <strong className="text-[var(--color-ink-primary)]">FSC® C104829 Certified:</strong> Appalachian Timber
                 </span>
@@ -361,7 +361,7 @@ export function SiteFooter() {
                 data-testid="footer-gem-badge"
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] shadow-2xs"
               >
-                <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
                 <span>
                   <strong className="text-[var(--color-ink-primary)]">ISO 9001:2015 & GeM:</strong> Tender Certified
                 </span>
@@ -374,7 +374,7 @@ export function SiteFooter() {
               className="flex flex-wrap items-center gap-2 text-[11px] text-[var(--color-ink-secondary)]"
             >
               <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)]">
-                <CreditCard className="w-3.5 h-3.5 text-[#C5A059]" />
+                <CreditCard className="w-3.5 h-3.5 text-accent" />
                 <span className="font-medium text-[var(--color-ink-primary)]">Visa • Mastercard • Amex</span>
               </div>
               <div className="px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] font-medium text-[var(--color-ink-primary)]">
@@ -386,7 +386,7 @@ export function SiteFooter() {
               <div className="px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] font-medium text-[var(--color-ink-primary)]">
                 Klarna / Affirm
               </div>
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[#C5A059]">
+              <div className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-accent">
                 <Lock className="w-3 h-3" />
                 <span className="text-[10px] font-semibold text-[var(--color-ink-primary)]">256-Bit SSL Encrypted</span>
               </div>
@@ -398,19 +398,19 @@ export function SiteFooter() {
             <p>© 2026 Frame Cottage Atelier Ltd. All rights reserved. Handcrafted in the USA.</p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="/privacy" className="hover:text-[#C5A059] transition-colors">
+              <Link href="/privacy" className="hover:text-accent transition-colors">
                 Privacy Policy
               </Link>
               <span className="text-[var(--color-ink-muted)]">•</span>
-              <Link href="/terms" className="hover:text-[#C5A059] transition-colors">
+              <Link href="/terms" className="hover:text-accent transition-colors">
                 Terms of Service
               </Link>
               <span className="text-[var(--color-ink-muted)]">•</span>
-              <Link href="/accessibility" className="hover:text-[#C5A059] transition-colors">
+              <Link href="/accessibility" className="hover:text-accent transition-colors">
                 Accessibility Statement
               </Link>
               <span className="text-[var(--color-ink-muted)]">•</span>
-              <Link href="/cookies" className="hover:text-[#C5A059] transition-colors">
+              <Link href="/cookies" className="hover:text-accent transition-colors">
                 Cookie Preferences
               </Link>
             </div>

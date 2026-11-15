@@ -251,7 +251,8 @@ export function FAQSection() {
 
           <Link
             href="/rfq"
-            className="px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-[#1A1A1A] text-xs font-semibold hover:bg-[#B38F48] transition-colors shrink-0"
+            data-testid="faq-submit-rfq-cta"
+            className="px-5 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-semibold transition-colors shrink-0"
           >
             Submit Project RFQ
           </Link>

@@ -273,15 +273,15 @@ export function CustomerLookbook() {
                 className={cn(
                   "shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border-2 cursor-pointer flex items-center gap-2 whitespace-nowrap",
                   isSelected
-                    ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23] shadow-md"
-                    : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-dashed border-[var(--color-border-strong)]/60 hover:bg-[var(--color-canvas-subtle)] hover:text-[var(--color-ink-primary)]"
+                    ? "bg-accent text-[var(--color-accent-contrast)] border-accent shadow-md"
+                    : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-dashed border-[var(--color-border-strong)]/60 hover:bg-[var(--color-canvas-subtle)] hover:text-accent hover:border-accent/60"
                 )}
               >
                 <span>{room.name}</span>
                 <span
                   className={cn(
                     "w-1.5 h-1.5 rounded-full",
-                    isSelected ? "bg-[#C5A059]" : "bg-[#9E9E9E]/50"
+                    isSelected ? "bg-[var(--color-accent-contrast)]" : "bg-[#9E9E9E]/50"
                   )}
                 />
               </button>
@@ -291,7 +291,7 @@ export function CustomerLookbook() {
 
         {/* Room Description Strip */}
         <div className="text-center max-w-xl mx-auto mb-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-accent-gold)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             {currentRoom.subtitle}
           </p>
           <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] mt-1 font-normal">
@@ -363,8 +363,8 @@ export function CustomerLookbook() {
                     className={cn(
                       "absolute -inset-2 rounded-full transition-all duration-300 pointer-events-none",
                       isActive
-                        ? "bg-[#C5A059]/40 animate-ping"
-                        : "bg-white/20 group-hover:bg-[#C5A059]/30"
+                        ? "bg-accent/40 animate-ping"
+                        : "bg-white/20 group-hover:bg-accent/30"
                     )}
                   />
 
@@ -376,10 +376,10 @@ export function CustomerLookbook() {
                     aria-expanded={isActive}
                     onClick={() => setActivePinId(isActive ? null : pin.id)}
                     className={cn(
-                      "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold shadow-lg transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C5A059]",
+                      "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold shadow-lg transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent",
                       isActive
-                        ? "bg-[#C5A059] text-[#1A1A1A] scale-110 border-2 border-white ring-4 ring-[#C5A059]/50"
-                        : "bg-[#1A1A1A]/90 text-[#F4F1EA] hover:bg-[#C5A059] border border-[#C5A059] hover:scale-105"
+                        ? "bg-accent text-[var(--color-accent-contrast)] scale-110 border-2 border-[var(--color-accent-contrast)] ring-4 ring-accent/50"
+                        : "bg-[#1A1A1A]/90 text-[#F4F1EA] hover:bg-accent hover:text-[var(--color-accent-contrast)] border border-accent hover:scale-105"
                     )}
                   >
                     <Eye className="w-4 h-4 text-current" />
@@ -406,7 +406,7 @@ export function CustomerLookbook() {
                       "--pin-bottom": isLowerHalf ? `calc(${100 - activeHotspot.y}% + 16px)` : "auto",
                     } as React.CSSProperties
                   }
-                  className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[85%] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
+                  className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[85%] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
                 >
                   {/* Close Button */}
                   <button
@@ -461,7 +461,7 @@ export function CustomerLookbook() {
                       <span className="text-[9px] sm:text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
                         From
                       </span>
-                      <span className="font-serif text-sm sm:text-base font-bold text-[var(--color-accent-gold)]">
+                      <span className="font-serif text-sm sm:text-base font-bold text-accent">
                         {activeHotspot.price}
                       </span>
                     </div>
@@ -469,7 +469,7 @@ export function CustomerLookbook() {
                     <Link
                       href={activeHotspot.shopUrl}
                       data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                      className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[var(--background)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
                     >
                       <span>Shop Frame</span>
                       <ArrowRight className="w-3 h-3" />
@@ -491,7 +491,7 @@ export function CustomerLookbook() {
                 {currentRoom.hotspots.length} custom frame profiles tagged in this setting
               </span>
             </div>
-            <div className="text-[11px] text-[#C5A059] flex items-center gap-1">
+            <div className="text-[11px] text-accent flex items-center gap-1">
               <Maximize2 className="w-3.5 h-3.5" />
               <span>Tap pins on the artwork to inspect joinery & finishes</span>
             </div>
@@ -512,16 +512,16 @@ export function CustomerLookbook() {
                 className={cn(
                   "p-4 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isCardActive
-                    ? "bg-[var(--color-canvas-surface)] border-[var(--color-accent-gold)] shadow-md ring-1 ring-[var(--color-accent-gold)]"
-                    : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)]/60 text-[var(--color-ink-primary)]"
+                    ? "bg-[var(--color-canvas-surface)] border-accent shadow-md ring-1 ring-accent"
+                    : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-accent/60 text-[var(--color-ink-primary)]"
                 )}
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[var(--color-accent-gold)]">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-accent">
                       {pin.frameStyle.replace("-", " ")}
                     </span>
-                    <span className="font-serif font-bold text-sm text-[var(--color-accent-gold)]">
+                    <span className="font-serif font-bold text-sm text-accent">
                       {pin.price}
                     </span>
                   </div>
@@ -539,7 +539,7 @@ export function CustomerLookbook() {
                   </span>
                   <Link
                     href={pin.shopUrl}
-                    className="text-[var(--color-accent-gold)] font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
+                    className="text-accent font-semibold hover:underline inline-flex items-center gap-1 text-[11px]"
                   >
                     Shop <ArrowRight className="w-3 h-3" />
                   </Link>

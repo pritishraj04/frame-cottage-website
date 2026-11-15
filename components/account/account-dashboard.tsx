@@ -395,7 +395,7 @@ export function AccountDashboard() {
                 <Link
                   href="/rfq"
                   data-testid="new-rfq-btn"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold tracking-wider hover:opacity-90 transition-opacity self-start sm:self-auto"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold tracking-wider transition-all duration-200 self-start sm:self-auto shadow-sm"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Submit New RFQ</span>
@@ -478,7 +478,7 @@ export function AccountDashboard() {
                   type="button"
                   data-testid="add-address-btn"
                   onClick={() => setIsAddAddressOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold tracking-wider hover:opacity-90 transition-opacity self-start sm:self-auto cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold tracking-wider transition-all duration-200 self-start sm:self-auto cursor-pointer shadow-sm"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add New Address</span>
@@ -580,7 +580,7 @@ export function AccountDashboard() {
                       type="checkbox"
                       checked={smsNotifications}
                       onChange={(e) => setSmsNotifications(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#C5A059] focus:ring-[#C5A059] cursor-pointer"
+                      className="w-4 h-4 rounded text-accent focus:ring-accent cursor-pointer"
                     />
                   </label>
 
@@ -592,7 +592,7 @@ export function AccountDashboard() {
                       type="checkbox"
                       checked={dispatchAlerts}
                       onChange={(e) => setDispatchAlerts(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#C5A059] focus:ring-[#C5A059] cursor-pointer"
+                      className="w-4 h-4 rounded text-accent focus:ring-accent cursor-pointer"
                     />
                   </label>
 
@@ -604,7 +604,7 @@ export function AccountDashboard() {
                       type="checkbox"
                       checked={quarterlyJournal}
                       onChange={(e) => setQuarterlyJournal(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#C5A059] focus:ring-[#C5A059] cursor-pointer"
+                      className="w-4 h-4 rounded text-accent focus:ring-accent cursor-pointer"
                     />
                   </label>
                 </div>
@@ -718,7 +718,7 @@ export function AccountDashboard() {
                 <button
                   type="button"
                   onClick={() => alert(`Simulated Download of Spec Sheet ${selectedOrder.id}.pdf`)}
-                  className="px-4 py-2 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold hover:opacity-90 transition-opacity cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 shadow-sm"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Spec (PDF)</span>
@@ -789,7 +789,7 @@ export function AccountDashboard() {
                 </button>
                 <Link
                   href={`/rfq?tender=${selectedRfq.tenderId}`}
-                  className="px-4 py-2 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold hover:opacity-90 transition-opacity"
+                  className="px-4 py-2 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold transition-all duration-200 cursor-pointer shadow-sm"
                 >
                   Open in RFQ Studio →
                 </Link>
@@ -840,7 +840,7 @@ export function AccountDashboard() {
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
                     placeholder="e.g. Tribeca Penthouse Gallery"
-                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                   />
                 </div>
 
@@ -854,7 +854,7 @@ export function AccountDashboard() {
                     value={newStreet}
                     onChange={(e) => setNewStreet(e.target.value)}
                     placeholder="e.g. 110 Franklin St, Ste 4B"
-                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                   />
                 </div>
 
@@ -867,7 +867,7 @@ export function AccountDashboard() {
                       value={newCity}
                       onChange={(e) => setNewCity(e.target.value)}
                       placeholder="New York"
-                      className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+                      className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                     />
                   </div>
                   <div>
@@ -877,7 +877,7 @@ export function AccountDashboard() {
                       value={newStateVal}
                       onChange={(e) => setNewStateVal(e.target.value)}
                       placeholder="NY"
-                      className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+                      className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                     />
                   </div>
                 </div>
@@ -891,7 +891,7 @@ export function AccountDashboard() {
                     value={newNotes}
                     onChange={(e) => setNewNotes(e.target.value)}
                     placeholder="e.g. Freight elevator key with doorman"
-                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-gold)]"
+                    className="w-full bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl px-3 py-2 text-xs text-[var(--color-ink-primary)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
                   />
                 </div>
 
@@ -905,7 +905,7 @@ export function AccountDashboard() {
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold hover:opacity-90 transition-opacity cursor-pointer"
+                    className="px-4 py-2 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold transition-all duration-200 cursor-pointer shadow-sm"
                   >
                     Save Address
                   </button>

@@ -19,7 +19,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
   return (
     <article
       data-testid={`frame-card-${product.id}`}
-      className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[var(--color-accent-gold)]/60"
+      className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-accent/60"
     >
       {/* Visual Presentation Container (Dual-State Swapper: Studio Rest -> In-Situ Room) */}
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-canvas-subtle)] select-none">
@@ -31,7 +31,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-b from-[#242424] via-[#202020] to-[#1A1A1A] transition-opacity duration-500 ease-in-out group-hover:opacity-0"
         >
           {/* Spatial PNG Asset Zone Tag */}
-          <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-[var(--color-accent-gold)] backdrop-blur-xs">
+          <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-accent backdrop-blur-xs">
             <span>4:5 Asset Zone</span>
           </div>
           {/* Subtle Studio Architectural Background Grid */}
@@ -76,8 +76,8 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                   }}
                   className="w-full h-full relative overflow-hidden bg-[#FAF6EE] flex flex-col items-center justify-center p-2 text-center"
                 >
-                  <div className="w-full h-full rounded-lg border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 flex flex-col items-center justify-center text-center p-2 hover:border-[var(--color-accent-gold)] transition-colors">
-                    <div className="w-6 h-6 rounded-md border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-1 shadow-2xs">
+                  <div className="w-full h-full rounded-lg border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/60 flex flex-col items-center justify-center text-center p-2 group-hover:border-accent group-hover:bg-accent-light/50 transition-all duration-300">
+                    <div className="w-6 h-6 rounded-md border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-1 shadow-2xs">
                       <UploadCloud className="w-3.5 h-3.5 stroke-[1.5]" />
                     </div>
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)] leading-tight">
@@ -86,7 +86,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                     <p className="text-[8.5px] text-[var(--color-ink-muted)] mt-0.5 line-clamp-2 max-w-[140px] leading-tight">
                       Designer to place project photo or transparent frame render here
                     </p>
-                    <div className="mt-1 px-1.5 py-0.2 rounded-full border border-dashed border-[var(--color-border-strong)] text-[8px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                    <div className="mt-1 px-1.5 py-0.2 rounded-full border border-dashed border-[var(--color-border-strong)] text-[8px] font-mono text-accent bg-[var(--color-canvas-surface)]/80">
                       4:3 • Format: PNG
                     </div>
                   </div>
@@ -241,14 +241,14 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
               }}
               className={cn(
                 "inline-flex items-center gap-2 px-4 py-2.5 rounded-full",
-                "bg-[#C5A059] hover:bg-[#B38F48] text-[#1A1A1A]",
+                "bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)]",
                 "text-xs font-semibold uppercase tracking-wider",
                 "shadow-xl border border-white/25 backdrop-blur-md",
                 "transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
                 "transition-all duration-300 ease-out cursor-pointer active:scale-95"
               )}
             >
-              <Sliders className="w-3.5 h-3.5 text-[#1A1A1A]" />
+              <Sliders className="w-3.5 h-3.5 text-[var(--color-accent-contrast)]" />
               <span>Quick Customise</span>
             </button>
           </div>
@@ -267,14 +267,14 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
             className={cn(
               "p-2 rounded-full backdrop-blur-md transition-all duration-200 cursor-pointer shadow-sm",
               isWishlisted
-                ? "bg-[#C5A059] text-[#1A1A1A] scale-105"
-                : "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)]"
+                ? "bg-accent text-white scale-105"
+                : "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] hover:border-accent"
             )}
           >
             <Heart
               className={cn(
                 "w-4 h-4 transition-transform",
-                isWishlisted && "fill-[#1A1A1A] stroke-[#1A1A1A] scale-110"
+                isWishlisted && "fill-white stroke-white scale-110"
               )}
             />
           </button>
@@ -289,7 +289,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           {/* Frame Name (Serif Title) */}
           <h3
             data-testid={`frame-card-title-${product.id}`}
-            className="font-serif text-lg font-normal text-[var(--color-ink-primary)] group-hover:text-[var(--color-accent-gold)] transition-colors leading-snug"
+            className="font-serif text-lg font-normal text-[var(--color-ink-primary)] group-hover:text-accent transition-colors leading-snug"
           >
             {product.name}
           </h3>
@@ -313,10 +313,10 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
             {product.sizeRange}
           </span>
 
-          {/* Starting Price Tag (Muted Gold) */}
+          {/* Starting Price Tag (Peacock Teal) */}
           <span
             data-testid={`frame-card-price-${product.id}`}
-            className="text-sm font-semibold text-[var(--color-accent-gold)] tracking-tight"
+            className="text-sm font-semibold text-accent tracking-tight"
           >
             From ${product.startingPrice}
           </span>

@@ -347,7 +347,7 @@ export default function RFQPortalPage() {
           {/* Subtle Ambient Studio Glow */}
           <div
             aria-hidden="true"
-            className="absolute top-0 right-1/4 w-[500px] h-[350px] rounded-full bg-gradient-to-br from-[#C5A059]/10 via-[#6B1C23]/10 to-transparent blur-3xl pointer-events-none -z-10"
+            className="absolute top-0 right-1/4 w-[500px] h-[350px] rounded-full bg-gradient-to-br from-accent/10 via-[#6B1C23]/10 to-transparent blur-3xl pointer-events-none -z-10"
           />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -379,7 +379,7 @@ export default function RFQPortalPage() {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
               <div className="max-w-3xl space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-ink-primary)] shadow-2xs">
-                  <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <Sparkles className="w-3.5 h-3.5 text-accent" />
                   <span>Commercial & Institutional Gateway</span>
                 </div>
 
@@ -414,7 +414,7 @@ export default function RFQPortalPage() {
                       }}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 cursor-pointer ${
                         isActive
-                          ? "bg-[var(--color-accent-gold)]/15 border-[#C5A059] text-[var(--color-accent-gold)] font-semibold shadow-xs"
+                          ? "bg-accent/15 border-accent text-accent font-semibold shadow-xs"
                           : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] text-[var(--color-ink-secondary)] hover:border-[var(--color-border-strong)]"
                       }`}
                     >
@@ -442,7 +442,7 @@ export default function RFQPortalPage() {
                   <div className="relative mb-6">
                     <div className="w-full h-1.5 bg-[var(--color-canvas-subtle)] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-[#C5A059] to-[#D4AF37] transition-all duration-500 ease-out"
+                        className="h-full bg-accent transition-all duration-500 ease-out"
                         style={{ width: `${((currentStep - 1) / 4) * 100}%` }}
                       />
                     </div>
@@ -471,9 +471,9 @@ export default function RFQPortalPage() {
                           <div
                             className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold mb-2 transition-all duration-300 ${
                               isComplete
-                                ? "bg-[#C5A059] text-[#1A1A1A]"
+                                ? "bg-accent text-[var(--color-accent-contrast)]"
                                 : isCurrent
-                                ? "bg-[var(--color-canvas-subtle)] border-2 border-[#C5A059] text-[var(--color-accent-gold)] shadow-sm"
+                                ? "bg-[var(--color-canvas-subtle)] border-2 border-accent text-accent shadow-sm"
                                 : "bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] text-[var(--color-ink-muted)] group-hover:border-[var(--color-border-strong)]"
                             }`}
                           >
@@ -488,7 +488,7 @@ export default function RFQPortalPage() {
                               isCurrent
                                 ? "text-[var(--color-ink-primary)] font-semibold"
                                 : isComplete
-                                ? "text-[var(--color-accent-gold)]"
+                                ? "text-accent"
                                 : "text-[var(--color-ink-muted)]"
                             }`}
                           >
@@ -535,7 +535,7 @@ export default function RFQPortalPage() {
                                 onClick={() => setClientTier(tier.id)}
                                 className={`relative rounded-2xl p-6 sm:p-7 border-2 transition-all duration-300 flex flex-col justify-between cursor-pointer group ${
                                   isSelected
-                                    ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-lg ring-1 ring-[#C5A059]/40"
+                                    ? "bg-[var(--color-canvas-card)] border-accent shadow-lg ring-1 ring-accent/40"
                                     : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)] hover:shadow-md"
                                 }`}
                               >
@@ -544,7 +544,7 @@ export default function RFQPortalPage() {
                                     <div
                                       className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
                                         isSelected
-                                          ? "bg-[#C5A059]/20 text-[var(--color-accent-gold)]"
+                                          ? "bg-accent/20 text-accent"
                                           : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] group-hover:text-[var(--color-ink-primary)]"
                                       }`}
                                     >
@@ -554,16 +554,16 @@ export default function RFQPortalPage() {
                                     <div
                                       className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                                         isSelected
-                                          ? "border-[#C5A059] bg-[#C5A059]"
+                                          ? "border-accent bg-accent"
                                           : "border-[var(--color-border-strong)] bg-transparent"
                                       }`}
                                     >
-                                      {isSelected && <Check className="w-3.5 h-3.5 text-[#1A1A1A] stroke-[3]" />}
+                                      {isSelected && <Check className="w-3.5 h-3.5 text-[var(--color-accent-contrast)] stroke-[3]" />}
                                     </div>
                                   </div>
 
                                   <div>
-                                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--color-accent-gold)]">
+                                    <span className="text-[11px] font-semibold uppercase tracking-wider text-accent">
                                       {tier.badge}
                                     </span>
                                     <h3 className="font-serif text-xl font-semibold text-[var(--color-ink-primary)] mt-1">
@@ -584,7 +584,7 @@ export default function RFQPortalPage() {
                                           key={i}
                                           className="flex items-center gap-2 text-xs text-[var(--color-ink-secondary)]"
                                         >
-                                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+                                          <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
                                           <span>{h}</span>
                                         </li>
                                       ))}
@@ -643,7 +643,7 @@ export default function RFQPortalPage() {
                                 onClick={() => toggleVertical(vertical.id)}
                                 className={`rounded-2xl p-6 border-2 transition-all duration-300 flex flex-col justify-between cursor-pointer group ${
                                   isSelected
-                                    ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-md ring-1 ring-[#C5A059]/40"
+                                    ? "bg-[var(--color-canvas-card)] border-accent shadow-md ring-1 ring-accent/40"
                                     : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)] hover:shadow-xs"
                                 }`}
                               >
@@ -652,7 +652,7 @@ export default function RFQPortalPage() {
                                     <div
                                       className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                                         isSelected
-                                          ? "bg-[#C5A059]/20 text-[var(--color-accent-gold)]"
+                                          ? "bg-accent/20 text-accent"
                                           : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] group-hover:text-[var(--color-ink-primary)]"
                                       }`}
                                     >
@@ -663,11 +663,11 @@ export default function RFQPortalPage() {
                                       data-testid={`vertical-checkbox-${vertical.id}`}
                                       className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
                                         isSelected
-                                          ? "border-[#C5A059] bg-[#C5A059]"
+                                          ? "border-accent bg-accent"
                                           : "border-[var(--color-border-strong)] bg-transparent"
                                       }`}
                                     >
-                                      {isSelected && <Check className="w-3.5 h-3.5 text-[#1A1A1A] stroke-[3]" />}
+                                      {isSelected && <Check className="w-3.5 h-3.5 text-[var(--color-accent-contrast)] stroke-[3]" />}
                                     </div>
                                   </div>
 
@@ -724,7 +724,7 @@ export default function RFQPortalPage() {
                         {/* Sub-Group 1: Architectural & Archival Materials */}
                         <div className="space-y-4">
                           <div className="flex items-center gap-2">
-                            <Layers className="w-4 h-4 text-[#C5A059]" />
+                            <Layers className="w-4 h-4 text-accent" />
                             <h3 className="font-serif text-lg font-semibold text-[var(--color-ink-primary)]">
                               1. Architectural & Conservation Materials
                             </h3>
@@ -742,7 +742,7 @@ export default function RFQPortalPage() {
                                   onClick={() => toggleMaterial(material.id)}
                                   className={`rounded-xl p-4 sm:p-5 border-2 transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                                     isSelected
-                                      ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-xs"
+                                      ? "bg-[var(--color-canvas-card)] border-accent shadow-xs"
                                       : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)]"
                                   }`}
                                 >
@@ -751,14 +751,14 @@ export default function RFQPortalPage() {
                                       <div
                                         className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
                                           isSelected
-                                            ? "bg-[#C5A059]/20 text-[var(--color-accent-gold)]"
+                                            ? "bg-accent/20 text-accent"
                                             : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)]"
                                         }`}
                                       >
                                         <Icon className="w-4 h-4" />
                                       </div>
                                       <div>
-                                        <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-accent-gold)]">
+                                        <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">
                                           {material.badge}
                                         </span>
                                         <h4 className="font-semibold text-sm text-[var(--color-ink-primary)]">
@@ -770,11 +770,11 @@ export default function RFQPortalPage() {
                                     <div
                                       className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 mt-1 ${
                                         isSelected
-                                          ? "border-[#C5A059] bg-[#C5A059]"
+                                          ? "border-accent bg-accent"
                                           : "border-[var(--color-border-strong)] bg-transparent"
                                       }`}
                                     >
-                                      {isSelected && <Check className="w-3 h-3 text-[#1A1A1A] stroke-[3]" />}
+                                      {isSelected && <Check className="w-3 h-3 text-[var(--color-accent-contrast)] stroke-[3]" />}
                                     </div>
                                   </div>
                                   <p className="text-xs text-[var(--color-ink-secondary)] mt-3 leading-relaxed">
@@ -789,7 +789,7 @@ export default function RFQPortalPage() {
                         {/* Sub-Group 2: Capabilities Required */}
                         <div className="space-y-4 pt-4 border-t border-[var(--color-border-subtle)]">
                           <div className="flex items-center gap-2">
-                            <Briefcase className="w-4 h-4 text-[#C5A059]" />
+                            <Briefcase className="w-4 h-4 text-accent" />
                             <h3 className="font-serif text-lg font-semibold text-[var(--color-ink-primary)]">
                               2. Required Studio Capabilities & Engineering Services
                             </h3>
@@ -807,7 +807,7 @@ export default function RFQPortalPage() {
                                   onClick={() => toggleCapability(cap.id)}
                                   className={`rounded-xl p-4 sm:p-5 border-2 transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                                     isSelected
-                                      ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-xs"
+                                      ? "bg-[var(--color-canvas-card)] border-accent shadow-xs"
                                       : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)]"
                                   }`}
                                 >
@@ -816,14 +816,14 @@ export default function RFQPortalPage() {
                                       <div
                                         className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
                                           isSelected
-                                            ? "bg-[#C5A059]/20 text-[var(--color-accent-gold)]"
+                                            ? "bg-accent/20 text-accent"
                                             : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)]"
                                         }`}
                                       >
                                         <Icon className="w-4 h-4" />
                                       </div>
                                       <div>
-                                        <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-accent-gold)]">
+                                        <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">
                                           {cap.badge}
                                         </span>
                                         <h4 className="font-semibold text-sm text-[var(--color-ink-primary)]">
@@ -835,11 +835,11 @@ export default function RFQPortalPage() {
                                     <div
                                       className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 mt-1 ${
                                         isSelected
-                                          ? "border-[#C5A059] bg-[#C5A059]"
+                                          ? "border-accent bg-accent"
                                           : "border-[var(--color-border-strong)] bg-transparent"
                                       }`}
                                     >
-                                      {isSelected && <Check className="w-3 h-3 text-[#1A1A1A] stroke-[3]" />}
+                                      {isSelected && <Check className="w-3 h-3 text-[var(--color-accent-contrast)] stroke-[3]" />}
                                     </div>
                                   </div>
                                   <p className="text-xs text-[var(--color-ink-secondary)] mt-3 leading-relaxed">
@@ -888,7 +888,7 @@ export default function RFQPortalPage() {
                                   onClick={() => setVolume(vol.id)}
                                   className={`rounded-xl p-4 border-2 transition-all duration-200 cursor-pointer ${
                                     isSelected
-                                      ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-xs"
+                                      ? "bg-[var(--color-canvas-card)] border-accent shadow-xs"
                                       : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)]"
                                   }`}
                                 >
@@ -896,7 +896,7 @@ export default function RFQPortalPage() {
                                     <span className="text-xs font-semibold text-[var(--color-ink-primary)]">
                                       {vol.label}
                                     </span>
-                                    <span className="text-[11px] font-bold text-[var(--color-accent-gold)]">
+                                    <span className="text-[11px] font-bold text-accent">
                                       {vol.range}
                                     </span>
                                   </div>
@@ -924,7 +924,7 @@ export default function RFQPortalPage() {
                                   onClick={() => setTimeline(time.id)}
                                   className={`rounded-xl p-4 border-2 transition-all duration-200 cursor-pointer ${
                                     isSelected
-                                      ? "bg-[var(--color-canvas-card)] border-[#C5A059] shadow-xs"
+                                      ? "bg-[var(--color-canvas-card)] border-accent shadow-xs"
                                       : "bg-[var(--color-canvas-surface)] border-[var(--color-border-subtle)] hover:border-[var(--color-border-strong)]"
                                   }`}
                                 >
@@ -932,7 +932,7 @@ export default function RFQPortalPage() {
                                     <span className="text-xs font-semibold text-[var(--color-ink-primary)]">
                                       {time.label}
                                     </span>
-                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[var(--color-accent-gold)] font-medium">
+                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-accent font-medium">
                                       {time.duration}
                                     </span>
                                   </div>
@@ -966,7 +966,7 @@ export default function RFQPortalPage() {
                               value={tenderId}
                               onChange={(e) => setTenderId(e.target.value)}
                               placeholder="e.g. GeM-2026-B-89104 or RFP-ARCH-442"
-                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:border-[#C5A059] transition-colors"
+                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                             />
                             <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[var(--color-ink-muted)]">
                               <Landmark className="w-4 h-4" />
@@ -991,7 +991,7 @@ export default function RFQPortalPage() {
                           <div
                             data-testid="blueprint-dropzone"
                             onClick={() => fileInputRef.current?.click()}
-                            className="border-2 border-dashed border-[var(--color-border-strong)]/70 hover:border-[#C5A059] rounded-2xl p-8 sm:p-10 text-center bg-[var(--color-canvas-subtle)]/30 hover:bg-[var(--color-canvas-subtle)]/50 transition-all cursor-pointer group"
+                            className="border-2 border-dashed border-[var(--color-border-strong)]/70 hover:border-accent rounded-2xl p-8 sm:p-10 text-center bg-[var(--color-canvas-subtle)]/30 hover:bg-[var(--color-canvas-subtle)]/50 transition-all cursor-pointer group"
                           >
                             <input
                               ref={fileInputRef}
@@ -1003,7 +1003,7 @@ export default function RFQPortalPage() {
                               accept=".dwg,.dxf,.pdf,.step,.stp,.tiff,.tif,.png,.jpg,.jpeg,.ai"
                             />
 
-                            <div className="w-14 h-14 rounded-2xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] group-hover:border-[#C5A059] mx-auto flex items-center justify-center text-[var(--color-accent-gold)] transition-colors shadow-2xs mb-4">
+                            <div className="w-14 h-14 rounded-2xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] group-hover:border-accent mx-auto flex items-center justify-center text-accent transition-colors shadow-2xs mb-4">
                               <UploadCloud className="w-7 h-7" />
                             </div>
 
@@ -1039,7 +1039,7 @@ export default function RFQPortalPage() {
                                     className="flex items-center justify-between p-3 rounded-xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-xs"
                                   >
                                     <div className="flex items-center gap-2.5 truncate pr-2">
-                                      <FileText className="w-4 h-4 text-[#C5A059] shrink-0" />
+                                      <FileText className="w-4 h-4 text-accent shrink-0" />
                                       <div className="truncate">
                                         <p className="font-medium text-[var(--color-ink-primary)] truncate">
                                           {file.name}
@@ -1116,7 +1116,7 @@ export default function RFQPortalPage() {
                                     className={`w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors ${
                                       formErrors.clientName
                                         ? "border-red-400 focus:border-red-400"
-                                        : "border-[var(--color-border-subtle)] focus:border-[#C5A059]"
+                                        : "border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent"
                                     }`}
                                   />
                                   <User className="w-4 h-4 text-[var(--color-ink-muted)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -1138,7 +1138,7 @@ export default function RFQPortalPage() {
                                     value={organization}
                                     onChange={(e) => setOrganization(e.target.value)}
                                     placeholder="e.g. Studio Morphogenesis / CPWD"
-                                    className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-[#C5A059] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors"
+                                    className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors"
                                   />
                                   <Building2 className="w-4 h-4 text-[var(--color-ink-muted)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                                 </div>
@@ -1161,7 +1161,7 @@ export default function RFQPortalPage() {
                                     className={`w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors ${
                                       formErrors.clientEmail
                                         ? "border-red-400 focus:border-red-400"
-                                        : "border-[var(--color-border-subtle)] focus:border-[#C5A059]"
+                                        : "border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent"
                                     }`}
                                   />
                                   <Mail className="w-4 h-4 text-[var(--color-ink-muted)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -1186,7 +1186,7 @@ export default function RFQPortalPage() {
                                     className={`w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors ${
                                       formErrors.clientPhone
                                         ? "border-red-400 focus:border-red-400"
-                                        : "border-[var(--color-border-subtle)] focus:border-[#C5A059]"
+                                        : "border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent"
                                     }`}
                                   />
                                   <Phone className="w-4 h-4 text-[var(--color-ink-muted)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -1209,7 +1209,7 @@ export default function RFQPortalPage() {
                                   value={projectLocation}
                                   onChange={(e) => setProjectLocation(e.target.value)}
                                   placeholder="e.g. Aerocity HQ, New Delhi / BKC, Mumbai"
-                                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-[#C5A059] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors"
+                                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors"
                                 />
                                 <MapPin className="w-4 h-4 text-[var(--color-ink-muted)] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                               </div>
@@ -1226,7 +1226,7 @@ export default function RFQPortalPage() {
                                 value={projectNotes}
                                 onChange={(e) => setProjectNotes(e.target.value)}
                                 placeholder="Detail any non-standard tolerances, seismic rigging considerations, custom bronze patinas, or archival glazing specifications..."
-                                className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-[#C5A059] text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors resize-none"
+                                className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-subtle)] focus:border-accent focus:ring-1 focus:ring-accent text-sm text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none transition-colors resize-none"
                               />
                             </div>
 
@@ -1236,7 +1236,7 @@ export default function RFQPortalPage() {
                                   type="checkbox"
                                   checked={gemComplianceRequired}
                                   onChange={(e) => setGemComplianceRequired(e.target.checked)}
-                                  className="w-4 h-4 rounded border-[var(--color-border-strong)] text-[#C5A059] focus:ring-[#C5A059]"
+                                  className="w-4 h-4 rounded border-[var(--color-border-strong)] text-accent focus:ring-accent"
                                 />
                                 <span className="text-xs text-[var(--color-ink-secondary)]">
                                   Issue formal GeM tender compliance certificate & official GST proforma invoice
@@ -1259,11 +1259,11 @@ export default function RFQPortalPage() {
                                 type="submit"
                                 data-testid="rfq-submit-btn"
                                 disabled={isSubmitting}
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer disabled:opacity-50"
+                                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer disabled:opacity-50"
                               >
                                 {isSubmitting ? (
                                   <>
-                                    <div className="w-4 h-4 border-2 border-[#1A1A1A] border-t-transparent rounded-full animate-spin" />
+                                    <div className="w-4 h-4 border-2 border-[var(--color-accent-contrast)] border-t-transparent rounded-full animate-spin" />
                                     <span>Registering Specification...</span>
                                   </>
                                 ) : (
@@ -1280,16 +1280,16 @@ export default function RFQPortalPage() {
                           <div className="lg:col-span-5 sticky top-28 space-y-4">
                             <div
                               data-testid="live-scope-summary"
-                              className="rounded-2xl p-6 bg-[var(--color-canvas-surface)] border-2 border-[#C5A059]/40 shadow-md space-y-5"
+                              className="rounded-2xl p-6 bg-[var(--color-canvas-surface)] border-2 border-accent/40 shadow-md space-y-5"
                             >
                               <div className="flex items-center justify-between border-b border-[var(--color-border-subtle)] pb-3">
                                 <div className="flex items-center gap-2">
-                                  <ShieldCheck className="w-5 h-5 text-[#C5A059]" />
+                                  <ShieldCheck className="w-5 h-5 text-accent" />
                                   <h3 className="font-serif text-base font-semibold text-[var(--color-ink-primary)]">
                                     Project Scope Summary
                                   </h3>
                                 </div>
-                                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#C5A059]/15 text-[var(--color-accent-gold)]">
+                                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-accent/15 text-accent">
                                   Live Spec
                                 </span>
                               </div>
@@ -1400,7 +1400,7 @@ export default function RFQPortalPage() {
                                   data-testid="summary-turnaround"
                                   className="mt-4 p-3 rounded-xl bg-[var(--color-canvas-subtle)]/70 border border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-secondary)] flex items-center gap-2"
                                 >
-                                  <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
+                                  <Clock className="w-4 h-4 text-accent shrink-0" />
                                   <span>
                                     <strong className="text-[var(--color-ink-primary)]">Studio Guarantee: </strong>
                                     Feasibility analysis & BOQ quote within 24 business hours.
@@ -1437,7 +1437,7 @@ export default function RFQPortalPage() {
                       type="button"
                       data-testid="rfq-next-btn"
                       onClick={handleNext}
-                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-200 cursor-pointer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-200 cursor-pointer"
                     >
                       <span>
                         {currentStep === 1 && "Proceed to Verticals"}
@@ -1460,12 +1460,12 @@ export default function RFQPortalPage() {
                 data-testid="rfq-success-container"
                 className="max-w-3xl mx-auto py-8 text-center space-y-8"
               >
-                <div className="w-20 h-20 rounded-full bg-[#C5A059]/20 border-2 border-[#C5A059] mx-auto flex items-center justify-center text-[var(--color-accent-gold)] shadow-xl animate-in zoom-in-75 duration-300">
+                <div className="w-20 h-20 rounded-full bg-accent/20 border-2 border-accent mx-auto flex items-center justify-center text-accent shadow-xl animate-in zoom-in-75 duration-300">
                   <CheckCircle2 className="w-10 h-10 stroke-[2.2]" />
                 </div>
 
                 <div className="space-y-3">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full bg-[#C5A059]/15 border border-[#C5A059]/40 text-[var(--color-accent-gold)]">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full bg-accent/15 border border-accent/40 text-accent">
                     Specification Registered
                   </span>
                   <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-[var(--color-ink-primary)]">
@@ -1485,7 +1485,7 @@ export default function RFQPortalPage() {
                       </span>
                       <div
                         data-testid="rfq-reference-id"
-                        className="font-mono text-xl sm:text-2xl font-bold text-[var(--color-accent-gold)] mt-0.5 tracking-wider"
+                        className="font-mono text-xl sm:text-2xl font-bold text-accent mt-0.5 tracking-wider"
                       >
                         {submittedReferenceId}
                       </div>
@@ -1505,7 +1505,7 @@ export default function RFQPortalPage() {
                       VS
                     </div>
                     <div className="space-y-1">
-                      <span className="text-[10px] uppercase tracking-wider text-[var(--color-accent-gold)] font-semibold">
+                      <span className="text-[10px] uppercase tracking-wider text-accent font-semibold">
                         Assigned Senior Studio Lead
                       </span>
                       <h4
@@ -1528,15 +1528,15 @@ export default function RFQPortalPage() {
                     <p className="font-semibold text-[var(--color-ink-primary)]">Next Execution Milestones:</p>
                     <ul className="space-y-1 text-[11px]">
                       <li className="flex items-center gap-2">
-                        <Check className="w-3 h-3 text-[#C5A059]" />
+                        <Check className="w-3 h-3 text-accent" />
                         CAD drawing & 3D STEP tolerance analysis (±0.1mm review).
                       </li>
                       <li className="flex items-center gap-2">
-                        <Check className="w-3 h-3 text-[#C5A059]" />
+                        <Check className="w-3 h-3 text-accent" />
                         Formal Bill of Quantities (BOQ) and itemized pricing quote generated.
                       </li>
                       <li className="flex items-center gap-2">
-                        <Check className="w-3 h-3 text-[#C5A059]" />
+                        <Check className="w-3 h-3 text-accent" />
                         {gemComplianceRequired
                           ? "GeM portal documentation and compliance certificate issued."
                           : "Studio material sample kit dispatched to project site."}
@@ -1549,9 +1549,9 @@ export default function RFQPortalPage() {
                 {isConsultationModalOpen && (
                   <div
                     data-testid="consultation-scheduled-banner"
-                    className="p-4 rounded-xl bg-[var(--color-accent-gold)]/10 border border-[#C5A059] text-left text-xs text-[var(--color-ink-primary)] space-y-1 animate-in fade-in"
+                    className="p-4 rounded-xl bg-accent/10 border border-accent text-left text-xs text-[var(--color-ink-primary)] space-y-1 animate-in fade-in"
                   >
-                    <div className="flex items-center gap-2 font-semibold text-[var(--color-accent-gold)]">
+                    <div className="flex items-center gap-2 font-semibold text-accent">
                       <BadgeCheck className="w-4 h-4" />
                       <span>Studio Consultation Reserved</span>
                     </div>
@@ -1567,9 +1567,9 @@ export default function RFQPortalPage() {
                     type="button"
                     data-testid="download-summary-btn"
                     onClick={handleDownloadSummary}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-strong)] hover:border-[#C5A059] text-xs font-semibold text-[var(--color-ink-primary)] transition-all cursor-pointer shadow-xs"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--color-canvas-surface)] border border-[var(--color-border-strong)] hover:border-accent text-xs font-semibold text-[var(--color-ink-primary)] transition-all cursor-pointer shadow-xs"
                   >
-                    <Download className="w-4 h-4 text-[#C5A059]" />
+                    <Download className="w-4 h-4 text-accent" />
                     <span>Download Specification Summary (PDF/JSON)</span>
                   </button>
 
@@ -1577,7 +1577,7 @@ export default function RFQPortalPage() {
                     type="button"
                     data-testid="schedule-consultation-btn"
                     onClick={() => setIsConsultationModalOpen(true)}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Schedule Direct Consultation</span>

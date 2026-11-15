@@ -49,7 +49,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                   <div className="border-b border-[var(--color-border-subtle)] pb-2 flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)] tracking-wide flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-[#C5A059]" />
+                        <Icon className="w-4 h-4 text-accent" />
                         {vertical.name}
                       </h3>
                       <p className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
@@ -62,11 +62,11 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
-                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-[var(--color-border-subtle)] transition-all"
+                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
-                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-[var(--color-accent-gold)] flex items-center justify-between transition-colors">
+                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
                             {sub.title}
-                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--color-accent-gold)]" />
+                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
                           </span>
                           <span className="text-[11px] text-[var(--color-ink-muted)] leading-tight mt-0.5">
                             {sub.description}
@@ -89,7 +89,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                   <div className="border-b border-[var(--color-border-subtle)] pb-2 flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)] tracking-wide flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-[#C5A059]" />
+                        <Icon className="w-4 h-4 text-accent" />
                         {vertical.name}
                       </h3>
                       <p className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
@@ -102,11 +102,11 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
-                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-[var(--color-border-subtle)] transition-all"
+                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
-                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-[var(--color-accent-gold)] flex items-center justify-between transition-colors">
+                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
                             {sub.title}
-                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--color-accent-gold)]" />
+                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
                           </span>
                           <span className="text-[11px] text-[var(--color-ink-muted)] leading-tight mt-0.5">
                             {sub.description}
@@ -129,7 +129,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                   <div className="border-b border-[var(--color-border-subtle)] pb-2 flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-sm font-semibold text-[var(--color-ink-primary)] tracking-wide flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-[#C5A059]" />
+                        <Icon className="w-4 h-4 text-accent" />
                         {vertical.name}
                       </h3>
                       <p className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
@@ -142,11 +142,11 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
                       <li key={sub.title}>
                         <Link
                           href={sub.href}
-                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-[var(--color-border-subtle)] transition-all"
+                          className="group flex flex-col p-2 -mx-2 rounded-lg hover:bg-[var(--color-canvas-subtle)] border border-transparent hover:border-accent transition-all"
                         >
-                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-[var(--color-accent-gold)] flex items-center justify-between transition-colors">
+                          <span className="text-xs font-medium text-[var(--color-ink-primary)] group-hover:text-accent flex items-center justify-between transition-colors">
                             {sub.title}
-                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--color-accent-gold)]" />
+                            <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
                           </span>
                           <span className="text-[11px] text-[var(--color-ink-muted)] leading-tight mt-0.5">
                             {sub.description}
@@ -162,14 +162,14 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
 
           {/* Column 4: Studio RFQ / Tender CTA Box */}
           <div className="bg-[var(--color-canvas-subtle)] rounded-2xl p-6 border border-[var(--color-border-subtle)] flex flex-col justify-between relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-36 h-36 bg-[var(--color-accent-gold)]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-accent/10 rounded-full blur-2xl pointer-events-none" />
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-widest font-semibold px-2.5 py-0.5 bg-[#6B1C23] text-[#F4F1EA] rounded-full">
+                <span className="text-[10px] uppercase tracking-widest font-semibold px-2.5 py-0.5 bg-accent text-[var(--color-accent-contrast)] rounded-full">
                   Enterprise & Civic
                 </span>
-                <span className="text-xs text-[var(--color-accent-gold)] font-medium">GeM & Tender Ready</span>
+                <span className="text-xs text-accent font-medium">GeM & Tender Ready</span>
               </div>
 
               <div>
@@ -183,15 +183,15 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
 
               <div className="space-y-2 pt-2 border-t border-[var(--color-border-subtle)] text-xs text-[var(--color-ink-secondary)]">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+                  <Building2 className="w-3.5 h-3.5 text-accent shrink-0" />
                   <span>B2B Commercial Architecture & Signage</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Landmark className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+                  <Landmark className="w-3.5 h-3.5 text-accent shrink-0" />
                   <span>Public Sector & Municipal Tenders</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-accent shrink-0" />
                   <span>ISO 9001 & GeM Portal Registered</span>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave }: MegaMenuProps) 
               <Link
                 href="/rfq"
                 data-testid="mega-menu-rfq-btn"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[var(--color-accent-gold)] hover:bg-[#B38F48] text-[#1A1A1A] text-xs font-semibold uppercase tracking-wider shadow-sm transition-all duration-200"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-semibold uppercase tracking-wider shadow-sm transition-all duration-200"
               >
                 <span>Request Project RFP / RFQ</span>
                 <ArrowRight className="w-3.5 h-3.5" />

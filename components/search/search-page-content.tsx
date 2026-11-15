@@ -290,7 +290,7 @@ export function SearchPageContent() {
               onClick={() => handleFilterClick("all")}
               className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedFilter === "all"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -302,7 +302,7 @@ export function SearchPageContent() {
               onClick={() => handleFilterClick("verticals")}
               className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedFilter === "verticals"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -314,7 +314,7 @@ export function SearchPageContent() {
               onClick={() => handleFilterClick("products")}
               className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedFilter === "products"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -326,7 +326,7 @@ export function SearchPageContent() {
               onClick={() => handleFilterClick("materials")}
               className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedFilter === "materials"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -338,7 +338,7 @@ export function SearchPageContent() {
               onClick={() => handleFilterClick("actions")}
               className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-colors shrink-0 ${
                 selectedFilter === "actions"
-                  ? "bg-[var(--color-accent-gold)] text-black font-semibold shadow-xs"
+                  ? "bg-accent text-[var(--color-accent-contrast)] font-semibold shadow-xs"
                   : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
               }`}
             >
@@ -379,7 +379,7 @@ export function SearchPageContent() {
                     setQuery(tag);
                     updateQueryParams(tag, selectedFilter);
                   }}
-                  className="px-3.5 py-1.5 rounded-full text-xs font-mono border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-[var(--color-accent-gold)] hover:bg-[var(--color-accent-gold)] hover:text-black transition-colors"
+                  className="px-3.5 py-1.5 rounded-full text-xs font-mono border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-[var(--color-accent-gold)] hover:bg-accent hover:text-[var(--color-accent-contrast)] hover:border-accent transition-colors"
                 >
                   {tag}
                 </button>
@@ -478,7 +478,7 @@ export function SearchPageContent() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium tracking-wider bg-[var(--color-accent-gold)] text-black hover:opacity-90 transition-opacity"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium tracking-wider bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] transition-all duration-200 cursor-pointer shadow-xs"
                       >
                         <span>{item.actionText || "Consult"}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -486,7 +486,7 @@ export function SearchPageContent() {
                     ) : (
                       <Link
                         href={item.href}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium tracking-wider bg-[var(--color-accent-gold)] text-black hover:opacity-90 transition-opacity"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium tracking-wider bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] transition-all duration-200 cursor-pointer shadow-xs"
                       >
                         <span>{item.actionText || "Explore"}</span>
                         <ArrowRight className="w-3.5 h-3.5" />

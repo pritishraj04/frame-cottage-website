@@ -1,0 +1,57 @@
+{
+  "id": "TASK-34",
+  "title": "Make Button and Accent Token System 100% Variable-Driven Across All Pages",
+  "category": "design-token-robustness",
+  "description": "Per user directive ('buttons on footer and other pages does not got the new change. make it fully robust. and hence changing variables should update the website.'), engineered a 100% variable-driven button, CTA, and accent system across the entire application. Replaced all legacy hardcoded hexes (#C5A059, #B38F48, #6B1C23, text-[#1A1A1A] on buttons) with semantic CSS tokens (--color-accent, --color-accent-hover, --color-accent-contrast, --color-accent-light, --color-accent-tint). Aliased legacy --color-gold, --color-gold-hover, --color-accent-gold, and --color-gold-bright to var(--color-accent) in app/globals.css so existing components automatically update. Updated Footer, RFQ Portal, Cart, Wishlist, Login, Account, Search Modal & Page, FAQ, and Service Detail pages. Authored tests/task-34-robust-theme-variables.spec.ts verifying computed styles in dark and light modes, as well as dynamic runtime CSS variable updates across routes. Captured 12 high-resolution visual proof screenshots in .agent/screenshots/ and synced to parent brain directory.",
+  "acceptanceCriteria": [
+    "Design tokens in app/globals.css define --color-accent, --color-accent-hover, --color-accent-light, --color-accent-tint, and --color-accent-contrast across :root, .dark, and .light",
+    "Legacy tokens (--color-gold, --color-gold-hover, --color-gold-bright, --color-accent-gold) are aliased to var(--color-accent) and var(--color-accent-hover)",
+    "Footer newsletter button uses bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] with focus:ring-accent",
+    "RFQ Portal primary action buttons, step indicators, progress bars, and focus rings use semantic accent tokens with zero remaining hardcoded gold hexes",
+    "Cart page checkout CTA, counter badge, delivery toggle, and radio focus rings use semantic accent tokens",
+    "Wishlist page move-all-to-cart, discover, and add-to-cart action buttons use semantic accent tokens",
+    "Login page authentication submit button uses bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)]",
+    "Account dashboard action buttons, add-address CTAs, checkboxes, and input focus rings use semantic accent tokens",
+    "Search modal and search page category filter pills and action CTAs use semantic accent tokens",
+    "FAQ consultation button uses semantic accent tokens",
+    "Service detail hero, estimator, and CTA banner use semantic accent tokens",
+    "Dynamically changing --color-accent at runtime immediately cascades to all buttons across the entire website without code edits",
+    "All semantic data-testid hooks are strictly preserved",
+    "Zero TypeScript and build errors on npm run build across all 19 static and dynamic routes",
+    "100% pass rate across automated test suites (tests/task-34-robust-theme-variables.spec.ts 8/8 passing, tests/task-33-peacock-teal-theme.spec.ts 6/6 passing)",
+    "12 visual proof screenshots captured in .agent/screenshots/ and synced to /Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Establish robust design tokens and legacy token aliases in app/globals.css",
+      "details": "Added --color-accent-contrast: #FFFFFF and aliased --color-gold, --color-gold-hover, --color-gold-bright, --color-accent-gold to var(--color-accent) in :root, .dark, and .light. Registered in @theme inline.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Modernize buttons across Footer, RFQ, Cart, Wishlist, Login, Account, Search, FAQ, and Services",
+      "details": "Replaced hardcoded hexes with bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)], focus:ring-accent, and border-accent.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Author automated Playwright test suite tests/task-34-robust-theme-variables.spec.ts",
+      "details": "Tested computed background color rgb(7, 128, 128) across Footer, Cart, Wishlist, RFQ, Login, Account, FAQ in both Dark and Light modes, plus verified dynamic runtime variable change to Royal Indigo and Crimson Red.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Capture 12 visual proof screenshots across Dark and Light modes",
+      "details": "Generated 12 screenshots in .agent/screenshots/ and copied them to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Run Next.js production build and complete test suite verification",
+      "details": "npm run build passed with 0 errors across 19 static/dynamic routes. 14/14 theming tests passed.",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

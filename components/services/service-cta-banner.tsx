@@ -37,7 +37,7 @@ export function ServiceCtaBanner({ verticalId, verticalTitle }: ServiceCtaBanner
               <Link
                 href={`/rfq?vertical=${verticalId}`}
                 data-testid="banner-rfq-cta"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[var(--color-accent-gold)] hover:bg-[var(--color-gold-hover)] text-[#1A1A1A] font-semibold text-sm transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] font-semibold text-sm transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer group"
               >
                 <span>Initiate RFQ Specification</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

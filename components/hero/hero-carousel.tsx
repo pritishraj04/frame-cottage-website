@@ -102,7 +102,7 @@ export function HeroCarousel() {
     >
       {/* Atmospheric Studio Background with Subtle Radial Gradient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,var(--color-accent-gold)/6%,transparent_70%)] blur-3xl" />
+        <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-[radial-gradient(ellipse_at_center,var(--color-accent)/10%,transparent_70%)] blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,var(--background)_100%)] opacity-70" />
       </div>
 
@@ -141,7 +141,7 @@ export function HeroCarousel() {
         data-testid="hero-carousel-prev"
         data-test-alias="hero-prev-btn"
         aria-label="Previous slide"
-        className="absolute left-3 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/70 hover:bg-[var(--color-canvas-surface)] backdrop-blur-md flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+        className="absolute left-3 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--color-border-subtle)] hover:border-accent bg-[var(--color-canvas-surface)]/70 hover:bg-[var(--color-canvas-surface)] backdrop-blur-md flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -152,7 +152,7 @@ export function HeroCarousel() {
         data-testid="hero-carousel-next"
         data-test-alias="hero-next-btn"
         aria-label="Next slide"
-        className="absolute right-3 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--color-border-subtle)] hover:border-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/70 hover:bg-[var(--color-canvas-surface)] backdrop-blur-md flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+        className="absolute right-3 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[var(--color-border-subtle)] hover:border-accent bg-[var(--color-canvas-surface)]/70 hover:bg-[var(--color-canvas-surface)] backdrop-blur-md flex items-center justify-center text-[var(--color-ink-primary)] transition-all duration-200 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -172,8 +172,8 @@ export function HeroCarousel() {
             className={cn(
               "h-2 rounded-full transition-all duration-300 cursor-pointer",
               currentSlide === index
-                ? "w-8 bg-[var(--color-accent-gold)]"
-                : "w-2 bg-[var(--color-border-subtle)] hover:bg-[var(--color-ink-muted)]"
+                ? "w-8 bg-accent shadow-[0_0_12px_rgba(7,128,128,0.5)]"
+                : "w-2 bg-white/40 hover:bg-white/70"
             )}
           />
         ))}

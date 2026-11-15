@@ -2,13 +2,63 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 11:45
-**Tasks Completed:** 32 / 32
-**Current Task:** TASK-32 Complete (Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button)
+**Last Updated:** 2026-11-15 13:30
+**Tasks Completed:** 34 / 34
+**Current Task:** TASK-34 Complete (Make Button and Accent Token System 100% Variable-Driven Across All Pages)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-34: Make Button and Accent Token System 100% Variable-Driven Across All Pages
+- Context & Objective: Per user directive ("buttons on footer and other pages does not got the new change. make it fully robust. and hence changing variables should update the website."), modernized the entire button, CTA, and accent token system across all pages to be 100% variable-driven. Any change to `--color-accent` in `app/globals.css` now cascades automatically and immediately to every button, filter pill, badge, and input focus ring across the entire application without needing hardcoded color edits.
+- Architectural Implementations:
+  1. **Dynamic CSS Variables & Backward-Compatible Token Aliases (`app/globals.css`)**:
+     - Configured semantic tokens: `--color-accent: #078080`, `--color-accent-hover: #055C5C`, `--color-accent-contrast: #FFFFFF`, `--color-accent-light`, `--color-accent-tint` across `:root`, `.dark`, and `.light`.
+     - Aliased legacy tokens `--color-gold`, `--color-gold-hover`, `--color-gold-bright`, and `--color-accent-gold` to `var(--color-accent)` and `var(--color-accent-hover)`.
+     - Registered `--color-accent-contrast` and `--color-accent-gold` in `@theme inline`.
+  2. **Comprehensive Component Updates Across All Routes**:
+     - **Footer (`components/layout/site-footer.tsx`)**: Upgraded newsletter submit button to `bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)]`, input focus ring to `focus:border-accent focus:ring-accent`, and brand/link hovers to `hover:text-accent`.
+     - **RFQ Portal (`app/rfq/page.tsx`)**: Replaced all hardcoded gold hexes with semantic tokens on `rfq-next-btn`, `rfq-submit-btn`, consultation schedule CTAs, active/completed step badges, progress bars, tier cards, checkboxes, and input focus rings.
+     - **Cart Page (`app/cart/page.tsx`)**: Updated checkout button, cart badge, explore button, and delivery method active pill to `bg-accent text-[var(--color-accent-contrast)]`.
+     - **Wishlist Page (`app/wishlist/page.tsx`)**: Updated `wishlist-move-all-btn`, `wishlist-discover-btn`, item move-to-cart buttons, and count badge to `bg-accent text-[var(--color-accent-contrast)]`.
+     - **Login Page (`app/login/page.tsx`)**: Updated `submit-auth-btn` to `bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)]` and checkbox to `text-accent focus:ring-accent`.
+     - **Account Dashboard (`components/account/account-dashboard.tsx`)**: Updated `new-rfq-btn`, `add-address-btn`, modal spec download & address save buttons to `bg-accent text-[var(--color-accent-contrast)]`.
+     - **Search Modal & Search Page (`components/search/search-modal.tsx`, `components/search/search-page-content.tsx`)**: Updated category filter pills, trending badges, and action buttons to `bg-accent text-[var(--color-accent-contrast)]`.
+     - **FAQ Section (`components/home/faq-section.tsx`)**: Updated studio inquiries CTA to `bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)]`.
+     - **Services (`components/services/*`)**: Updated service hero CTA, service estimator transfer button & checkboxes, and service CTA banner to `bg-accent text-[var(--color-accent-contrast)]`.
+     - **Homepage Sections (`app/page.tsx`, `components/home/*`)**: Updated featured product highlight button, atelier preset buttons, customer lookbook room tabs and hotspot buttons, frame cards, and quick customise dialog.
+     - **Navigation (`components/navigation/*`)**: Updated `header-request-rfq`, mobile drawer CTA, mega-menu CTA, and cart badge text contrast.
+  3. **Strict Data-Testid Preservation**:
+     - 100% preservation of all existing `data-testid` attributes across all components.
+- Automated Test Suite & Dynamic Variable Verification:
+  - Authored `tests/task-34-robust-theme-variables.spec.ts` (8 test suites, 8/8 passing):
+    1. Verifies Footer newsletter submit button has `rgb(7, 128, 128)` in Dark and Light modes.
+    2. Verifies Cart primary checkout button has `rgb(7, 128, 128)` in Dark and Light modes.
+    3. Verifies Wishlist action button has `rgb(7, 128, 128)` in Dark and Light modes.
+    4. Verifies RFQ next step button has `rgb(7, 128, 128)` in Dark and Light modes.
+    5. Verifies Login submit button has `rgb(7, 128, 128)` in Dark and Light modes.
+    6. Verifies Account action buttons in Dark and Light modes.
+    7. Verifies FAQ consultation button has `rgb(7, 128, 128)`.
+    8. Verifies that dynamically changing `--color-accent` at runtime (e.g. to Royal Indigo `rgb(79, 70, 229)` or Crimson Red `rgb(220, 38, 38)`) immediately cascades to all buttons across pages.
+- High-Resolution Proof Screenshots (12 generated in `.agent/screenshots/` and synced to `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`):
+  - `task-34-footer-teal-dark.png`, `task-34-footer-teal-light.png`
+  - `task-34-cart-teal-dark.png`, `task-34-cart-teal-light.png`
+  - `task-34-wishlist-teal-dark.png`, `task-34-wishlist-teal-light.png`
+  - `task-34-rfq-teal-dark.png`, `task-34-rfq-teal-light.png`
+  - `task-34-login-teal-dark.png`, `task-34-login-teal-light.png`
+  - `task-34-account-teal-dark.png`, `task-34-account-teal-light.png`
+- Quality Gates:
+  - `npm run build`: 0 TypeScript and 0 build errors across all 19 routes.
+  - `npx playwright test`: 100% pass rate (14/14 tests passing across TASK-33 and TASK-34 suites).
+
+### 2026-11-15 - TASK-33: Implement Option 1: Peacock Teal ('India Circus' Classic) Vibrant Accent System
+- Context & Objective: Updated brand accent system to Option 1: Peacock Teal (`#078080`) to infuse vibrant Indian design heritage with modern museum minimalism.
+- Deliverables:
+  - Configured design tokens in `app/globals.css`.
+  - Updated header "Request RFQ" CTA, active category pills, lookbook tabs, and hero dots to `bg-accent`.
+  - Authored `tests/task-33-peacock-teal-theme.spec.ts` (6/6 tests passing).
+  - Captured proof screenshots in `.agent/screenshots/`.
 
 ### 2026-11-15 - TASK-32: Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button
 - Context & Objective: Per user request ("whatsapp button should be themed. its not changing to light theme. also the padding looks off."), the floating WhatsApp button previously hardcoded `#1A1A1A` background and borders, failing to adapt when the user switched to Light Mode (`.light`). In addition, the WhatsApp SVG icon was cramped without luxury breathing room, and the popover interior padding had an uneven divider line and compressed shortcuts.

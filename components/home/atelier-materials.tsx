@@ -173,7 +173,7 @@ export function GlassComparisonSlider() {
             className={cn(
               "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition >= 90
-                ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
+                ? "bg-accent text-[var(--color-accent-contrast)] border-accent shadow-xs"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >
@@ -186,7 +186,7 @@ export function GlassComparisonSlider() {
             className={cn(
               "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition > 20 && sliderPosition < 80
-                ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
+                ? "bg-accent text-[var(--color-accent-contrast)] border-accent shadow-xs"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >
@@ -199,7 +199,7 @@ export function GlassComparisonSlider() {
             className={cn(
               "px-2 sm:px-3 py-2 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium border transition-colors cursor-pointer text-center justify-center flex items-center min-h-[36px] sm:min-h-0",
               sliderPosition <= 10
-                ? "bg-[#6B1C23] text-[#F4F1EA] border-[#6B1C23]"
+                ? "bg-accent text-[var(--color-accent-contrast)] border-accent shadow-xs"
                 : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] border-[var(--color-border-subtle)] hover:bg-[var(--color-canvas-card-elevated)] hover:text-[var(--color-ink-primary)]"
             )}
           >

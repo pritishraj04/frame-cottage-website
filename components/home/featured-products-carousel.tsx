@@ -282,7 +282,7 @@ export function FeaturedProductsCarousel() {
               onClick={handlePrev}
               aria-label="Previous frame"
               data-testid="carousel-prev-btn"
-              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]"
+              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-accent hover:text-accent"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -291,7 +291,7 @@ export function FeaturedProductsCarousel() {
               onClick={handleNext}
               aria-label="Next frame"
               data-testid="carousel-next-btn"
-              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-[var(--color-accent-gold)]"
+              className="w-11 h-11 rounded-full bg-[var(--color-canvas-surface)] hover:bg-[var(--color-canvas-subtle)] text-[var(--color-ink-primary)] border-2 border-dashed border-[var(--color-border-strong)]/60 backdrop-blur-md flex items-center justify-center transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer hover:border-accent hover:text-accent"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -326,30 +326,30 @@ export function FeaturedProductsCarousel() {
                 >
                   <article
                     data-testid={`featured-product-card-${product.id}`}
-                    className="group relative flex flex-col h-full bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[var(--color-accent-gold)]/60"
+                    className="group relative flex flex-col h-full bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-accent/60"
                   >
                     {/* =========================================================================
                         PURE IMAGE SHOWCASE STAGE: PRODUCT PNG DROP ZONE (3:4, 600×800)
                        ========================================================================= */}
                     <div
                       data-testid="featured-product-png-dropzone"
-                      className="relative aspect-[3/4] w-full overflow-hidden border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-base)]/70 flex flex-col items-center justify-between p-5 select-none hover:border-[var(--color-accent-gold)] transition-colors group/fcard"
+                      className="relative aspect-[3/4] w-full overflow-hidden border-3 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-base)]/70 flex flex-col items-center justify-between p-5 select-none hover:border-accent group-hover:border-accent group-hover:bg-accent-light/50 transition-all duration-300 group/fcard"
                     >
                       {/* Top Bar with Floating craft pills */}
                       <div className="w-full flex items-center justify-between z-10">
                         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                           <span>{product.splineDetail}</span>
                         </div>
 
-                        <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-[var(--color-accent-gold)] border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
+                        <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wide bg-[var(--color-canvas-surface)]/90 text-accent border border-dashed border-[var(--color-border-strong)] shadow-xs backdrop-blur-md">
                           <span>{product.finishBadge}</span>
                         </div>
                       </div>
 
                       {/* Center Drop Zone Focus */}
                       <div className="my-auto py-2 flex flex-col items-center justify-center text-center">
-                        <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] mb-2.5 shadow-2xs group-hover/fcard:scale-105 transition-transform duration-300">
+                        <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-2.5 shadow-2xs group-hover/fcard:scale-105 transition-transform duration-300">
                           <UploadCloud className="w-6 h-6 stroke-[1.5]" />
                         </div>
                         <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
@@ -358,7 +358,7 @@ export function FeaturedProductsCarousel() {
                         <p className="text-[11px] text-[var(--color-ink-muted)] mt-1 max-w-[200px] leading-snug font-sans">
                           Designer to place floating transparent frame render with depth shadow
                         </p>
-                        <div className="mt-2.5 px-2.5 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono text-[var(--color-accent-gold)] bg-[var(--color-canvas-surface)]/80">
+                        <div className="mt-2.5 px-2.5 py-1 rounded-full border border-dashed border-[var(--color-border-strong)] text-[10px] font-mono text-accent bg-[var(--color-canvas-surface)]/80">
                           3:4 • Transparent PNG 300 DPI
                         </div>
                       </div>
@@ -366,7 +366,7 @@ export function FeaturedProductsCarousel() {
                       {/* Bottom Spec Footer */}
                       <div className="w-full pt-2 border-t border-dashed border-[var(--color-border-strong)]/40 flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)] z-10">
                         <span>{product.dimensions}</span>
-                        <span className="text-[var(--color-accent-gold)] font-medium">300 DPI Cutout</span>
+                        <span className="text-accent font-medium">300 DPI Cutout</span>
                       </div>
                     </div>
 
@@ -381,7 +381,7 @@ export function FeaturedProductsCarousel() {
                             {product.dimensions}
                           </span>
                         </div>
-                        <h3 className="font-serif text-lg sm:text-xl font-medium text-[var(--color-ink-primary)] group-hover:text-[var(--color-accent-gold)] transition-colors">
+                        <h3 className="font-serif text-lg sm:text-xl font-medium text-[var(--color-ink-primary)] group-hover:text-accent transition-colors">
                           {product.name}
                         </h3>
                         <p className="text-xs text-[var(--color-ink-secondary)] mt-0.5 truncate">
@@ -395,7 +395,7 @@ export function FeaturedProductsCarousel() {
                           <span className="text-[10px] uppercase tracking-wider text-[var(--color-ink-muted)] block">
                             Bespoke Atelier
                           </span>
-                          <span className="text-sm font-semibold text-[var(--color-accent-gold)]">
+                          <span className="text-sm font-semibold text-accent">
                             From ${product.price}
                           </span>
                         </div>
@@ -403,7 +403,7 @@ export function FeaturedProductsCarousel() {
                           <a
                             href="#custom-frame-studio"
                             data-testid={`featured-card-link-${product.id}`}
-                            className="text-xs text-[var(--color-ink-muted)] hover:text-[var(--color-accent-gold)] transition-colors px-2 py-1"
+                            className="text-xs text-[var(--color-ink-muted)] hover:text-accent transition-colors px-2 py-1"
                           >
                             Studio &rarr;
                           </a>
@@ -411,9 +411,9 @@ export function FeaturedProductsCarousel() {
                             type="button"
                             onClick={() => handleQuickCustomise(product)}
                             data-testid={`featured-card-customise-${product.id}`}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#6B1C23] hover:bg-[#54161C] text-[#F4F1EA] text-xs font-medium transition-all shadow-xs hover:shadow-sm cursor-pointer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent hover:bg-accent-hover text-white text-xs font-medium transition-all shadow-xs hover:shadow-sm cursor-pointer"
                           >
-                            <Sliders className="w-3 h-3 text-[#C5A059]" />
+                            <Sliders className="w-3 h-3 text-white" />
                             <span>Customise</span>
                           </button>
                         </div>
@@ -448,7 +448,7 @@ export function FeaturedProductsCarousel() {
                 className={cn(
                   "transition-all duration-300 rounded-full cursor-pointer",
                   isActive
-                    ? "w-8 h-2.5 bg-[#C5A059] shadow-xs"
+                    ? "w-7 h-2.5 bg-accent shadow-xs"
                     : "w-2.5 h-2.5 bg-[var(--color-canvas-subtle)] hover:bg-[var(--color-ink-muted)] border border-[var(--color-border-subtle)]"
                 )}
               />

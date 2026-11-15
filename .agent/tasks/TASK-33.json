@@ -1,0 +1,35 @@
+{
+  "id": "TASK-33",
+  "title": "Implement Option 1: Peacock Teal ('India Circus' Classic) Vibrant Accent System",
+  "category": "theme-accent-modernization",
+  "description": "Implemented vibrant Peacock Teal (#078080) accent system per Option 1 directive, uplifting the brand identity with high-contrast, India Circus-inspired elegance. Configured core design tokens in app/globals.css for :root, .dark, and .light themes, updated header CTA, category pills, trust accents, lookbook tabs, and verified seamless adaptability across Dark and Light modes.",
+  "acceptanceCriteria": [
+    "--color-accent resolves to #078080 (rgb(7, 128, 128)) across dark and light modes",
+    "Header Request RFQ button renders with bg-accent (rgb(7, 128, 128)) and high-contrast text",
+    "Category pills and active tab indicators use vibrant accent tokens",
+    "Authored tests/task-33-peacock-teal-theme.spec.ts passing 100%",
+    "Generated visual proof screenshots in .agent/screenshots/ and synced to parent brain directory",
+    "Zero TypeScript and build errors across all static routes"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Configure Peacock Teal design tokens in app/globals.css",
+      "details": "Defined --color-accent: #078080, --color-accent-hover: #055C5C, and accompanying tints in :root, .dark, and .light.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Update header, category navigation, and hero indicators to use accent tokens",
+      "details": "Bound header CTA, carousel dots, category active pills, and lookbook tabs to semantic accent classes.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Author automated Playwright test suite and capture screenshots",
+      "details": "Verified dark/light computed styles, contrast, and mobile responsiveness with 6/6 tests passing.",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

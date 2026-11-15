@@ -61,10 +61,10 @@ function SpatialDropZoneArt({
         {type === "frame" && (
           <div className="relative w-36 sm:w-44 h-28 sm:h-34 border-4 border-[#6B4931] shadow-xl rounded-sm p-2 bg-[#2A2A2A]/40 flex flex-col items-center justify-center">
             {/* Japanese Corner Splines */}
-            <div className="absolute -top-1 -left-1 w-2.5 h-2.5 bg-[#C5A059]" />
-            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#C5A059]" />
-            <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-[#C5A059]" />
-            <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-[#C5A059]" />
+            <div className="absolute -top-1 -left-1 w-2.5 h-2.5 bg-accent" />
+            <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent" />
+            <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-accent" />
+            <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-accent" />
             {/* Inner Mat */}
             <div className="w-full h-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 flex flex-col items-center justify-center text-center p-2">
               <span className="text-[10px] font-serif text-[var(--color-accent-gold)] italic">
@@ -78,24 +78,24 @@ function SpatialDropZoneArt({
         )}
 
         {type === "signage" && (
-          <div className="relative w-48 sm:w-56 h-20 sm:h-24 rounded-lg bg-gradient-to-r from-[#222] via-[#2D281E] to-[#222] border border-[#C5A059]/70 shadow-lg flex flex-col items-center justify-center p-2 overflow-hidden">
-            <div className="absolute inset-0 bg-[#C5A059]/5 pointer-events-none" />
-            <div className="text-[9px] font-mono tracking-[0.3em] uppercase text-[#C5A059] font-bold">
+          <div className="relative w-48 sm:w-56 h-20 sm:h-24 rounded-lg bg-gradient-to-r from-[#222] via-[#2D281E] to-[#222] border border-accent/70 shadow-lg flex flex-col items-center justify-center p-2 overflow-hidden">
+            <div className="absolute inset-0 bg-accent/5 pointer-events-none" />
+            <div className="text-[9px] font-mono tracking-[0.3em] uppercase text-accent font-bold">
               ✦ LEVEL 4 • ATELIER GALLERY ✦
             </div>
             <div className="text-[8px] font-mono text-[var(--color-ink-muted)] mt-1">
               IP67 EDGE-LIT BRASS RETURN (2700K)
             </div>
             {/* LED Beam Glow */}
-            <div className="absolute -bottom-2 inset-x-4 h-1.5 bg-[#C5A059] blur-xs opacity-60" />
+            <div className="absolute -bottom-2 inset-x-4 h-1.5 bg-accent blur-xs opacity-60" />
           </div>
         )}
 
         {type === "lattice" && (
-          <div className="relative w-32 sm:w-40 h-28 sm:h-36 border-2 border-[#C5A059]/60 rounded-sm p-1.5 bg-[var(--color-canvas-base)]/50 overflow-hidden flex items-center justify-center">
+          <div className="relative w-32 sm:w-40 h-28 sm:h-36 border-2 border-accent/60 rounded-sm p-1.5 bg-[var(--color-canvas-base)]/50 overflow-hidden flex items-center justify-center">
             {/* Geometric Lattice Grid */}
             <svg
-              className="w-full h-full opacity-70 text-[#C5A059]"
+              className="w-full h-full opacity-70 text-accent"
               viewBox="0 0 100 100"
               fill="none"
               stroke="currentColor"
@@ -108,7 +108,7 @@ function SpatialDropZoneArt({
               </pattern>
               <rect width="100" height="100" fill="url(#jaali-pat)" />
             </svg>
-            <div className="absolute px-2 py-0.5 bg-[var(--color-canvas-surface)]/90 border border-[#C5A059]/40 rounded text-[9px] font-mono text-[#C5A059]">
+            <div className="absolute px-2 py-0.5 bg-[var(--color-canvas-surface)]/90 border border-accent/40 rounded text-[9px] font-mono text-accent">
               3mm Laser Jaali
             </div>
           </div>
@@ -116,14 +116,14 @@ function SpatialDropZoneArt({
 
         {type === "shadowbox" && (
           <div className="relative w-32 sm:w-36 h-28 sm:h-32 border-4 border-[var(--color-border-strong)] rounded shadow-2xl p-2.5 bg-[#141414] flex flex-col items-center justify-center">
-            <div className="w-full h-full border border-dashed border-[#C5A059]/40 bg-[var(--color-canvas-subtle)]/70 flex flex-col items-center justify-center relative">
-              <span className="text-[10px] font-mono text-[var(--color-accent-gold)]">
+            <div className="w-full h-full border border-dashed border-accent/40 bg-[var(--color-canvas-subtle)]/70 flex flex-col items-center justify-center relative">
+              <span className="text-[10px] font-mono text-accent">
                 3.0&quot; Deep Box
               </span>
               <span className="text-[8px] font-mono text-[var(--color-ink-muted)]">
                 Linen Mount Spacers
               </span>
-              <div className="w-8 h-8 rounded-full border border-[#C5A059]/50 mt-1 flex items-center justify-center text-[9px] font-serif text-[var(--color-ink-primary)]">
+              <div className="w-8 h-8 rounded-full border border-accent/50 mt-1 flex items-center justify-center text-[9px] font-serif text-[var(--color-ink-primary)]">
                 FC
               </div>
             </div>
@@ -201,7 +201,7 @@ export default function WishlistPage() {
                 <span>Atelier Saved Commissions</span>
                 <span
                   data-testid="wishlist-counter-badge"
-                  className="ml-1 px-2 py-0.2 rounded-full bg-[var(--color-accent-gold)] text-black text-[10px] font-bold"
+                  className="ml-1 px-2 py-0.2 rounded-full bg-accent text-[var(--color-accent-contrast)] text-[10px] font-bold"
                 >
                   {wishlistCount} {wishlistCount === 1 ? "Item" : "Items"}
                 </span>
@@ -224,7 +224,7 @@ export default function WishlistPage() {
                   type="button"
                   data-testid="wishlist-move-all-btn"
                   onClick={handleMoveAllToCart}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold tracking-wider hover:opacity-90 transition-all cursor-pointer shadow-sm"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>Move All to Cart</span>
@@ -290,7 +290,7 @@ export default function WishlistPage() {
                 <Link
                   href="/"
                   data-testid="wishlist-discover-btn"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-semibold tracking-wider hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-semibold tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
                 >
                   <span>Discover Studio Verticals</span>
                   <ArrowRight className="w-4 h-4" />
@@ -376,7 +376,7 @@ export default function WishlistPage() {
                           type="button"
                           data-testid={`move-to-cart-${item.id}`}
                           onClick={() => handleMoveToCart(item.id, item.title)}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent-gold)] text-black text-xs font-mono font-medium hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-medium transition-all duration-200 cursor-pointer shadow-xs"
                         >
                           <ShoppingBag className="w-3.5 h-3.5" />
                           <span>Move to Cart</span>

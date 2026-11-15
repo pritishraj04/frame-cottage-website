@@ -20,14 +20,14 @@ export function CustomFrameStudio() {
       {/* Background Soft Museum Lighting Gradients */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-gradient-to-tr from-[#6B1C23]/10 via-[#C5A059]/10 to-transparent blur-3xl pointer-events-none -z-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-gradient-to-tr from-accent/15 via-accent/5 to-transparent blur-3xl pointer-events-none -z-10"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with PNG Spatial Dropzone Badging */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-xs font-mono font-medium uppercase tracking-[0.18em] text-[var(--color-accent-gold)] shadow-2xs backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-canvas-surface)] border border-dashed border-[var(--color-border-strong)] text-xs font-mono font-medium uppercase tracking-[0.18em] text-accent shadow-2xs backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>Interactive Frame Visualizer • PNG Spatial Canvas</span>
           </div>
 
@@ -62,9 +62,9 @@ export function CustomFrameStudio() {
         >
           <div
             data-testid="trust-item-hardwoods"
-            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-colors"
+            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-accent/60 transition-colors"
           >
-            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-2xs">
+            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent shadow-2xs">
               <TreePine className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
@@ -79,9 +79,9 @@ export function CustomFrameStudio() {
 
           <div
             data-testid="trust-item-mats"
-            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-colors"
+            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-accent/60 transition-colors"
           >
-            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-2xs">
+            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent shadow-2xs">
               <Layers className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
@@ -96,9 +96,9 @@ export function CustomFrameStudio() {
 
           <div
             data-testid="trust-item-glazing"
-            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-colors"
+            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-accent/60 transition-colors"
           >
-            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-2xs">
+            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent shadow-2xs">
               <ShieldCheck className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
@@ -113,9 +113,9 @@ export function CustomFrameStudio() {
 
           <div
             data-testid="trust-item-ready-to-hang"
-            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-[var(--color-accent-gold)]/60 transition-colors"
+            className="flex items-center gap-3 p-3.5 rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/40 hover:border-accent/60 transition-colors"
           >
-            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-[var(--color-accent-gold)] shadow-2xs">
+            <div className="shrink-0 w-9 h-9 rounded-lg border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent shadow-2xs">
               <CheckCircle2 className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
