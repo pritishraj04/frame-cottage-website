@@ -215,5 +215,12 @@
     "category": "hero-transformation",
     "specFilePath": ".agent/tasks/TASK-31.json",
     "passes": true
+  },
+  {
+    "id": "TASK-32",
+    "title": "Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button",
+    "category": "interactive-theming",
+    "specFilePath": ".agent/tasks/TASK-32.json",
+    "passes": true
   }
 ]

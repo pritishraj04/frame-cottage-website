@@ -1,0 +1,54 @@
+{
+  "id": "TASK-32",
+  "title": "Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button",
+  "category": "interactive-theming",
+  "description": "Per user directive ('whatsapp button should be themed. its not changing to light theme. also the padding looks off.'), refactored components/interactive/whatsapp-button.tsx so that the floating consultation button, active online status ring, focus offset, and popover dialog dynamically adapt between Museum Dark and Warm Light modes. Replaced hardcoded #1A1A1A values with CSS variable design tokens: bg-[var(--color-canvas-card)] (#242424 in dark, #FFFFFF in light), border-2 border-[var(--color-accent-gold)], border-[var(--color-canvas-card)] for the online presence dot, and focus:ring-offset-[var(--background)]. Enhanced drop shadows with dual-theme definitions. Fixed optical alignment of WhatsApp SVG icon inside round button with breathing room sizing (w-6.5 h-6.5 sm:w-7 sm:h-7) and speech-bubble tail counter-offset (translate-x-[0.5px] -translate-y-[0.5px]). Balanced popover interior padding: vertically centered header with pb-3.5, generous px-3.5 py-2.5 shortcut cards, balanced divider line mt-1 pt-3 pb-0.5, and p-5 sm:p-6 card padding. Authored tests/task-32-whatsapp-theming.spec.ts, captured 5 proof screenshots in .agent/screenshots/ and synced to parent brain directory.",
+  "acceptanceCriteria": [
+    "Floating WhatsApp button dynamically adapts background color between #242424 in Dark Mode and #FFFFFF in Light Mode via bg-[var(--color-canvas-card)]",
+    "Floating WhatsApp button border dynamically updates via border-2 border-[var(--color-accent-gold)]",
+    "Active online presence dot ring dynamically matches button surface in both themes via border-2 border-[var(--color-canvas-card)]",
+    "Focus ring offset dynamically adapts to page background via focus:ring-offset-[var(--background)]",
+    "Dual-theme drop shadows configured for floating action button and popover dialog card",
+    "WhatsApp SVG icon optically balanced with breathing room inside circular button (w-6.5 h-6.5 sm:w-7 sm:h-7) and speech-tail counter-balance (translate-x-[0.5px] -translate-y-[0.5px])",
+    "Active online beacon dot neatly positioned on button perimeter (top-1 right-1)",
+    "Consultation popover card internal padding harmonized: pb-3.5 items-center header, px-3.5 py-2.5 shortcuts, balanced divider mt-1 pt-3 pb-0.5, and p-5 sm:p-6 card padding",
+    "Preserved all semantic data-testids (whatsapp-floating-btn, whatsapp-popover, whatsapp-close-btn, whatsapp-chat-cta, whatsapp-shortcut-bespoke, whatsapp-shortcut-signage, whatsapp-launch-concierge)",
+    "Authored dedicated automated Playwright test suite tests/task-32-whatsapp-theming.spec.ts verifying dark and light computed styles, interaction, and mobile responsiveness",
+    "Captured 5 high-resolution proof screenshots (task-32-whatsapp-dark-closed.png, task-32-whatsapp-dark-open.png, task-32-whatsapp-light-closed.png, task-32-whatsapp-light-open.png, task-32-whatsapp-mobile.png) in .agent/screenshots/ and synced to parent brain directory",
+    "Zero TypeScript and build errors on npm run build across all 19 static routes",
+    "100% test pass rate across the full Playwright test suite (96/96 passing)"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "description": "Refactor WhatsAppButton with dynamic CSS variable tokens for Dark and Light themes",
+      "details": "Replaced hardcoded #1A1A1A background, dot border, and focus-ring-offset with var(--color-canvas-card) and var(--background). Added dual-theme luxury drop shadows for both floating button and consultation popover card.",
+      "pass": true
+    },
+    {
+      "step": 2,
+      "description": "Harmonize optical alignment, icon breathing room, and popover padding",
+      "details": "Sized WhatsApp SVG to w-6.5 h-6.5 sm:w-7 sm:h-7 with translate-x-[0.5px] -translate-y-[0.5px] counter-balance. Repositioned online beacon dot to top-1 right-1. Updated popover header to items-center pb-3.5, shortcut cards to px-3.5 py-2.5, footer divider to mt-1 pt-3 pb-0.5, and overall card padding to p-5 sm:p-6.",
+      "pass": true
+    },
+    {
+      "step": 3,
+      "description": "Author automated Playwright test suite tests/task-32-whatsapp-theming.spec.ts",
+      "details": "Created comprehensive tests verifying computed backgroundColor and borderColor in Dark Mode (rgb(36, 36, 36) and rgb(197, 160, 89)) and Light Mode (rgb(255, 255, 255) and rgb(179, 143, 72)), popover open/close interaction in both themes, and 390x844 mobile responsiveness.",
+      "pass": true
+    },
+    {
+      "step": 4,
+      "description": "Capture visual proof screenshots in dark, light, and mobile viewports",
+      "details": "Generated task-32-whatsapp-dark-closed.png, task-32-whatsapp-dark-open.png, task-32-whatsapp-light-closed.png, task-32-whatsapp-light-open.png, and task-32-whatsapp-mobile.png in .agent/screenshots/ and synced to parent brain directory.",
+      "pass": true
+    },
+    {
+      "step": 5,
+      "description": "Verify quality gates: production build and complete test suite",
+      "details": "Executed npm run build (0 errors across 19 static routes) and npx playwright test (100% pass rate across entire suite).",
+      "pass": true
+    }
+  ],
+  "passes": true
+}

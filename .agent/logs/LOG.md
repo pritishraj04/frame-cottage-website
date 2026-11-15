@@ -2,13 +2,54 @@
 
 `Current Status`
 =================
-**Last Updated:** 2026-11-15 10:30
-**Tasks Completed:** 31 / 31
-**Current Task:** TASK-31 Complete (Transform Hero Section into an All-Image Full-Width Showcase with No Text)
+**Last Updated:** 2026-11-15 11:45
+**Tasks Completed:** 32 / 32
+**Current Task:** TASK-32 Complete (Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button)
 
 ----------------------------------------------
 
 ## Session Log
+
+### 2026-11-15 - TASK-32: Implement Dynamic Light/Dark Theming and Optical Padding Alignment for Floating WhatsApp Button
+- Context & Objective: Per user request ("whatsapp button should be themed. its not changing to light theme. also the padding looks off."), the floating WhatsApp button previously hardcoded `#1A1A1A` background and borders, failing to adapt when the user switched to Light Mode (`.light`). In addition, the WhatsApp SVG icon was cramped without luxury breathing room, and the popover interior padding had an uneven divider line and compressed shortcuts.
+- Architectural Implementations (`components/interactive/whatsapp-button.tsx`):
+  1. **Dynamic CSS Variable Theming**:
+     - Updated button surface to `bg-[var(--color-canvas-card)]`, rendering `#242424` in Dark Mode and `#FFFFFF` in Light Mode.
+     - Updated button perimeter border to `border-2 border-[var(--color-accent-gold)]`, harmonizing between gold tones (`#C5A059` dark, `#B38F48` light).
+     - Bound active online status beacon ring to `border-2 border-[var(--color-canvas-card)]` so the green dot outer ring matches the button background in both modes.
+     - Bound focus ring offset to `focus:ring-offset-[var(--background)]`.
+     - Dual-theme luxury drop shadows:
+       - Floating button: `shadow-[0_8px_24px_rgba(179,143,72,0.22),0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_28px_rgba(0,0,0,0.55),0_0_15px_rgba(197,160,89,0.35)]`.
+       - Popover card: `shadow-[0_16px_40px_rgba(0,0,0,0.08),0_4px_16px_rgba(197,160,89,0.12)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(197,160,89,0.15)]`.
+     - Close state X icon styled with `text-[var(--color-accent-gold)]`.
+  2. **Optical Centering & Breathing Room**:
+     - Resized WhatsApp SVG icon from cramped `w-8 sm:w-8` to balanced `w-6.5 h-6.5 sm:w-7 sm:h-7` inside `w-14 h-14 sm:w-16 sm:h-16`, giving refined luxury margins.
+     - Added optical counter-offset `translate-x-[0.5px] -translate-y-[0.5px]` to neutralize the bottom-left visual weight of the speech bubble tail.
+     - Repositioned active online beacon dot to `top-1 right-1` to sit naturally on the gold border perimeter.
+  3. **Popover Card Internal Padding**:
+     - Header: updated to `items-center justify-between pb-3.5 border-b border-dashed border-[var(--color-border-subtle)]` for true vertical alignment of the green presence beacon and text.
+     - Shortcut cards: expanded padding to `px-3.5 py-2.5` with clean dashed borders and hover gold transitions.
+     - Footer: balanced optical divider spacing using `mt-1 pt-3 pb-0.5 border-t border-dashed border-[var(--color-border-subtle)]`.
+     - Overall card padding: standardized to `p-5 sm:p-6`.
+  4. **Preserved All Test IDs and Accessibility**:
+     - `data-testid="whatsapp-floating-btn"`, `whatsapp-popover`, `whatsapp-close-btn`, `whatsapp-chat-cta`, `whatsapp-shortcut-bespoke`, `whatsapp-shortcut-signage`, `whatsapp-launch-concierge`, `aria-label="Chat with Studio Consultant on WhatsApp"`.
+- Test Suite & Visual Verification:
+  - Authored `tests/task-32-whatsapp-theming.spec.ts` asserting:
+    1. Dark mode computed styles: button background `rgb(36, 36, 36)`, border `rgb(197, 160, 89)`.
+    2. Light mode computed styles: button background `rgb(255, 255, 255)`, border `rgb(179, 143, 72)`.
+    3. Popover open and close interactions in both themes with verified background colors.
+    4. Mobile responsiveness on 390x844 viewport with zero horizontal overflow.
+  - Captured 5 high-resolution proof screenshots:
+    - `.agent/screenshots/task-32-whatsapp-dark-closed.png`
+    - `.agent/screenshots/task-32-whatsapp-dark-open.png`
+    - `.agent/screenshots/task-32-whatsapp-light-closed.png`
+    - `.agent/screenshots/task-32-whatsapp-light-open.png`
+    - `.agent/screenshots/task-32-whatsapp-mobile.png`
+    Synced to parent brain directory `/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af/`.
+- Quality Gates Verified:
+  - `npm run build`: 0 TypeScript and 0 build errors across 19 static routes.
+  - `npx playwright test`: 100% test pass rate across the full test suite.
+
 
 ### 2026-11-15 - TASK-31: Transform Hero Section into an All-Image Full-Width Showcase with No Text
 - Context & Objective: The user explicitly requested: "hero section will be all image full width if possible. no text".
