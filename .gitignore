@@ -43,3 +43,7 @@ next-env.d.ts
 # playwright
 /playwright-report/
 /test-results/
+
+# agent screenshots & visual qa artifacts
+/.agent/screenshots/
+
