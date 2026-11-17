@@ -17,7 +17,7 @@ const clerkHandler = clerkMiddleware(async (auth, req) => {
   }
 });
 
-export default function middleware(req: NextRequest, event: NextFetchEvent) {
+export default function proxy(req: NextRequest, event: NextFetchEvent) {
   if (!req.cookies.has("__clerk_db_jwt")) {
     req.cookies.set("__clerk_db_jwt", "mock_dev_browser_jwt_token");
   }
