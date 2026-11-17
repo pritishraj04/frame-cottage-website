@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   MOULDINGS,
@@ -274,6 +274,20 @@ export function CustomizerControls({
     setEmailError("");
     setIsEmailModalOpen(true);
   };
+
+  const handleCloseEmailModal = () => {
+    setIsEmailModalOpen(false);
+    setEmailSuccess(false);
+    setEmailError("");
+  };
+
+  useEffect(() => {
+    return () => {
+      setIsEmailModalOpen(false);
+      setEmailSuccess(false);
+      setEmailError("");
+    };
+  }, []);
 
   const handleSendCustomizerEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1091,6 +1105,11 @@ export function CustomizerControls({
         {isEmailModalOpen && (
           <div
             data-testid="customizer-email-modal"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                handleCloseEmailModal();
+              }
+            }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in duration-200"
           >
             <motion.div
@@ -1101,7 +1120,7 @@ export function CustomizerControls({
             >
               <button
                 type="button"
-                onClick={() => setIsEmailModalOpen(false)}
+                onClick={handleCloseEmailModal}
                 className="absolute top-4 right-4 p-1.5 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] rounded-full transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
@@ -1172,13 +1191,15 @@ export function CustomizerControls({
                   <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
                     <Link
                       href="/"
+                      onClick={handleCloseEmailModal}
+                      data-testid="customizer-continue-browsing"
                       className="px-4 py-2.5 rounded-full bg-accent text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wide"
                     >
                       Continue Browsing
                     </Link>
                     <button
                       type="button"
-                      onClick={() => setIsEmailModalOpen(false)}
+                      onClick={handleCloseEmailModal}
                       className="px-4 py-2.5 rounded-full border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)]"
                     >
                       Return to Studio
@@ -1311,7 +1332,7 @@ export function CustomizerControls({
 
                     <button
                       type="button"
-                      onClick={() => setIsEmailModalOpen(false)}
+                      onClick={handleCloseEmailModal}
                       className="w-full py-2.5 px-4 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-xs font-mono text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)] text-center transition-colors cursor-pointer"
                     >
                       Return to Studio Customizer

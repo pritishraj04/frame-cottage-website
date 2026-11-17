@@ -311,4 +311,82 @@ test.describe("Interactive Studio Customizer Page", () => {
     await expect(emailModal).toContainText("NEFT / IMPS / RTGS");
     await expect(emailModal).toContainText("Official Atelier HTML Invoice");
   });
+
+  test("12. Modal state persistence regression: Confirming customizer order, clicking Continue Browsing, and re-navigating to customizer does NOT show stale popup", async ({
+    page,
+  }) => {
+    // 1. Visit /customizer
+    await page.goto("/customizer");
+    await page.waitForLoadState("networkidle");
+
+    // 2. Open Email Spec Sheet / Order modal, fill name/email, submit order, verify confirmation ("Spec Sheet Dispatched!")
+    const emailOrderBtn = page.getByTestId("customizer-email-order");
+    await emailOrderBtn.scrollIntoViewIfNeeded();
+    await emailOrderBtn.click();
+
+    const emailModal = page.getByTestId("customizer-email-modal");
+    await expect(emailModal).toBeVisible();
+
+    await page.getByTestId("customizer-email-name").fill("Ar. Priya Sen");
+    await page.getByTestId("customizer-email-input").fill("priya@senstudio.com");
+    await page.getByTestId("customizer-submit-email").click();
+
+    await expect(emailModal.getByText("Spec Sheet Dispatched!")).toBeVisible();
+
+    // 3. Click "Continue Browsing" link and verify navigation to /
+    const continueBrowsingBtn = page.getByTestId("customizer-continue-browsing");
+    await expect(continueBrowsingBtn).toBeVisible();
+    await continueBrowsingBtn.click();
+    await page.waitForURL("/");
+
+    // 4. Click "Customize This Frame" (cta-customize) on / (soft client-side Next.js navigation) to return to /customizer
+    const customizeCta = page.getByTestId("cta-customize");
+    await expect(customizeCta).toBeVisible();
+    await customizeCta.click();
+    await page.waitForURL(/\/customizer/);
+
+    // 5. Assert customizer-email-modal is NOT visible
+    await expect(page.getByTestId("customizer-email-modal")).not.toBeVisible();
+  });
+
+  test("13. Cart modal persistence regression: Confirming cart requisition, clicking Continue Browsing Gallery, and returning to /cart does NOT show stale checkout modal", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+
+    // 1. Visit /cart
+    await page.goto("/cart");
+    await page.waitForLoadState("networkidle");
+
+    // 2. Open checkout modal via Resend HTML Email trigger
+    const emailCheckoutBtn = page.getByTestId("email-checkout-btn");
+    await emailCheckoutBtn.scrollIntoViewIfNeeded();
+    await emailCheckoutBtn.click();
+
+    const checkoutModal = page.getByTestId("checkout-modal");
+    await expect(checkoutModal).toBeVisible();
+
+    // 3. Fill customer info and submit order
+    await page.getByTestId("checkout-customer-name").fill("Ar. Rajesh Mehra");
+    await page.getByTestId("checkout-customer-email").fill("rajesh@mehra.design");
+    await page.getByTestId("send-email-order-btn").click();
+
+    // 4. Verify confirmation
+    await expect(page.getByText("Requisition Dispatched Successfully!")).toBeVisible();
+
+    // 5. Click "Continue Browsing Gallery" (view-saved-orders-btn)
+    const continueGalleryBtn = page.getByTestId("view-saved-orders-btn");
+    await expect(continueGalleryBtn).toBeVisible();
+    await continueGalleryBtn.click();
+    await page.waitForURL("/");
+
+    // 6. Return to /cart via visible header cart button (soft client-side Next.js navigation)
+    const headerCartBtn = page.getByTestId("header-cart-btn").filter({ visible: true });
+    await expect(headerCartBtn).toBeVisible();
+    await headerCartBtn.click();
+    await page.waitForURL("**/cart");
+
+    // 7. Assert checkout-modal is NOT visible
+    await expect(page.getByTestId("checkout-modal")).not.toBeVisible();
+  });
 });

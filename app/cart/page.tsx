@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -270,6 +270,14 @@ export default function CartPage() {
     setEmailSuccess(false);
     setEmailError("");
   };
+
+  useEffect(() => {
+    return () => {
+      setIsCheckoutModalOpen(false);
+      setEmailSuccess(false);
+      setEmailError("");
+    };
+  }, []);
 
   return (
     <>
@@ -750,6 +758,11 @@ export default function CartPage() {
         {isCheckoutModalOpen && (
           <div
             data-testid="checkout-modal"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                handleCloseCheckoutModal();
+              }
+            }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in duration-200"
           >
             <motion.div
@@ -882,6 +895,7 @@ export default function CartPage() {
                     <Link
                       href="/"
                       data-testid="view-saved-orders-btn"
+                      onClick={handleCloseCheckoutModal}
                       className="px-4 py-2.5 rounded-full bg-accent text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wide"
                     >
                       Continue Browsing Gallery
