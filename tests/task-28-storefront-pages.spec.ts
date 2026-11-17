@@ -30,7 +30,7 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
   test("1. Route Verification & HTTP 200 Checks across all storefront pages", async ({
     page,
   }) => {
-    const routes = ["/wishlist", "/cart", "/account"];
+    const routes = ["/wishlist", "/cart"];
 
     for (const route of routes) {
       const response = await page.goto(route);
@@ -214,38 +214,7 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     await saveScreenshots(page, "task-28-login-dark.png");
   });
 
-  test("5. Account Dashboard: Saved Orders & Inquiries client-side viewer without auth", async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto("/account");
-    await page.waitForLoadState("networkidle");
-
-    // Force Museum Dark Mode
-    await page.evaluate(() => {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("frame-cottage-theme", "dark");
-    });
-    await page.waitForTimeout(300);
-
-    // Assert Saved Orders header
-    await expect(page.getByRole("heading", { name: "Saved Orders & Inquiries" })).toBeVisible();
-    await expect(page.getByTestId("account-tab-orders")).toBeVisible();
-    await expect(page.getByTestId("account-tab-rfqs")).toBeVisible();
-
-    // Capture account dark mode screenshot
-    await saveScreenshots(page, "task-28-account-dark.png");
-
-    // Tab 1: Orders list
-    await expect(page.getByTestId("orders-list")).toBeVisible();
-
-    // Tab 2: Switch to RFQs
-    await page.getByTestId("account-tab-rfqs").click();
-    await expect(page.getByTestId("rfqs-list")).toBeVisible();
-  });
-
-  test("6. Profile route cleanly redirects to home", async ({
+  test("5. Profile route cleanly redirects to home", async ({
     page,
   }) => {
     await page.goto("/profile");
@@ -253,12 +222,12 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     expect(page.url().endsWith("/") || page.url().includes("localhost")).toBe(true);
   });
 
-  test("7. Mobile Viewport (390×844) Responsiveness & Zero Horizontal Overflow", async ({
+  test("6. Mobile Viewport (390×844) Responsiveness & Zero Horizontal Overflow", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
-    const routes = ["/wishlist", "/cart", "/account"];
+    const routes = ["/wishlist", "/cart"];
 
     for (const route of routes) {
       await page.goto(route);
@@ -274,10 +243,5 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
         `Expected ${route} to have zero horizontal overflow at 390x844`
       ).toBe(false);
     }
-
-    // Capture mobile screenshot of account page
-    await page.goto("/account");
-    await page.waitForLoadState("networkidle");
-    await saveScreenshots(page, "task-28-account-mobile.png");
   });
 });

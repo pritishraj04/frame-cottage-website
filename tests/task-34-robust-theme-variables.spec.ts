@@ -245,41 +245,7 @@ test.describe("TASK-34: Robust 100% Variable-Driven Button & Accent Theme System
     expect(fs.existsSync(loginLightPath)).toBe(true);
   });
 
-  test("6. Verifies /account action buttons and captures account proofs", async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto("/account");
-    await page.waitForLoadState("networkidle");
-
-    // Dark Mode
-    await page.evaluate(() => {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("frame-cottage-theme", "dark");
-    });
-    await page.waitForTimeout(200);
-
-    const accountDarkPath = path.join(screenshotsDir, "task-34-account-teal-dark.png");
-    await page.screenshot({ path: accountDarkPath, fullPage: false });
-    copyScreenshot("task-34-account-teal-dark.png");
-    expect(fs.existsSync(accountDarkPath)).toBe(true);
-
-    // Light Mode
-    await page.evaluate(() => {
-      document.documentElement.classList.add("light");
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("frame-cottage-theme", "light");
-    });
-    await page.waitForTimeout(200);
-
-    const accountLightPath = path.join(screenshotsDir, "task-34-account-teal-light.png");
-    await page.screenshot({ path: accountLightPath, fullPage: false });
-    copyScreenshot("task-34-account-teal-light.png");
-    expect(fs.existsSync(accountLightPath)).toBe(true);
-  });
-
-  test("7. Verifies FAQ consultation button has rgb(224, 95, 62)", async ({
+  test("6. Verifies FAQ consultation button has rgb(224, 95, 62)", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
@@ -294,7 +260,7 @@ test.describe("TASK-34: Robust 100% Variable-Driven Button & Accent Theme System
     expect(bg).toBe("rgb(224, 95, 62)");
   });
 
-  test("8. Verifies dynamic runtime CSS variable change immediately updates buttons across the whole website", async ({
+  test("7. Verifies dynamic runtime CSS variable change immediately updates buttons across the whole website", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 900 });

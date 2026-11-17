@@ -46,6 +46,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sendOrderEmail } from "@/app/actions/send-order-email";
+import { saveGuestOrder } from "@/app/actions/save-guest-order";
 
 interface CustomizerControlsProps {
   mouldingId: MouldingId;
@@ -237,6 +238,33 @@ export function CustomizerControls({
     setTimeout(() => setToastMessage(null), 4000);
   };
 
+  const handleCustomizerWhatsAppClick = () => {
+    const bespokeRef = `FC-BESPOKE-${Math.floor(1000 + Math.random() * 9000)}`;
+    const specSummary = `${currentMoulding.name} Moulding (${currentMoulding.dimensions}), ${currentMat.name} Mat (${currentMatColor.name}), ${currentGlazing.name}`;
+    saveGuestOrder({
+      orderRef: bespokeRef,
+      customerName: "Guest Collector",
+      customerEmail: "guest@framescottage.com",
+      customerPhone: null,
+      items: [
+        {
+          name: `Bespoke Studio Frame - ${currentMoulding.name}`,
+          dimensions: `${effectiveWidth}″ × ${effectiveHeight}″`,
+          specs: specSummary,
+          quantity: 1,
+          price: pricing.total,
+        },
+      ],
+      total: pricing.total,
+      deliveryMethod: "white-glove",
+      status: "confirmed",
+      shippingAddress: "",
+      specialInstructions: "Customizer Bespoke WhatsApp Order",
+    }).catch((err) =>
+      console.warn("[Customizer] Failed to save WhatsApp guest order to Supabase:", err)
+    );
+  };
+
   const handleOpenEmailModal = () => {
     const ref = `FC-BESPOKE-${Math.floor(1000 + Math.random() * 9000)}`;
     setEmailOrderRef(ref);
@@ -277,6 +305,30 @@ export function CustomizerControls({
         specialNotes: emailCustomerNotes,
         source: "customizer",
       });
+
+      // Persist guest order directly into Supabase table public.orders in background
+      saveGuestOrder({
+        orderRef: emailOrderRef,
+        customerName: emailCustomerName || "Bespoke Framing Client",
+        customerEmail: emailCustomerEmail,
+        customerPhone: emailCustomerPhone || null,
+        items: [
+          {
+            name: `Bespoke Studio Frame - ${currentMoulding.name}`,
+            dimensions: `${effectiveWidth}″ × ${effectiveHeight}″`,
+            specs: specSummary,
+            quantity: 1,
+            price: pricing.total,
+          },
+        ],
+        total: pricing.total,
+        deliveryMethod: "white-glove",
+        status: "confirmed",
+        shippingAddress: emailCustomerNotes || "",
+        specialInstructions: emailCustomerNotes,
+      }).catch((err) =>
+        console.warn("[Customizer] Failed to save email guest order to Supabase:", err)
+      );
 
       if (res.success) {
         try {
@@ -946,6 +998,7 @@ export function CustomizerControls({
               target="_blank"
               rel="noopener noreferrer"
               data-testid="customizer-order-whatsapp"
+              onClick={handleCustomizerWhatsAppClick}
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.99] text-[#0A2612] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md cursor-pointer group"
             >
               <svg
@@ -1093,10 +1146,10 @@ export function CustomizerControls({
                   </div>
                   <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
                     <Link
-                      href="/account"
+                      href="/"
                       className="px-4 py-2.5 rounded-full bg-accent text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wide"
                     >
-                      View Saved Requisitions
+                      Continue Browsing
                     </Link>
                     <button
                       type="button"

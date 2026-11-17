@@ -33,6 +33,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { useStorefront, OrderItem } from "@/lib/store/storefront-context";
 import { createWhatsAppCartOrderUrl } from "@/lib/constants/whatsapp";
 import { sendOrderEmail } from "@/app/actions/send-order-email";
+import { saveGuestOrder } from "@/app/actions/save-guest-order";
 
 export default function CartPage() {
   const {
@@ -123,6 +124,32 @@ export default function CartPage() {
 
   const handleSendWhatsAppOrder = () => {
     saveOrderLocally(orderReferenceId, "WhatsApp");
+
+    // Persist guest order directly into Supabase table public.orders in background
+    saveGuestOrder({
+      orderRef: orderReferenceId,
+      customerName: customerName || "Guest Collector",
+      customerEmail: customerEmail || "guest@framescottage.com",
+      customerPhone: customerPhone || null,
+      items: cart.map((item) => ({
+        name: item.title,
+        dimensions: item.dimensions,
+        specs: item.specs,
+        quantity: item.quantity,
+        price: item.unitPrice,
+      })),
+      total: cartTotal,
+      subtotal: cartSubtotal,
+      shipping: cartShipping,
+      tax: cartTax,
+      discount: cartDiscount,
+      currency: "INR",
+      deliveryMethod: deliveryMethod,
+      status: "confirmed",
+      shippingAddress: customerAddress || "",
+      specialInstructions: specialInstructions,
+    }).catch((err) => console.warn("[Cart] Failed to save WhatsApp guest order:", err));
+
     const url = createWhatsAppCartOrderUrl(
       cart,
       cartTotal,
@@ -171,6 +198,31 @@ export default function CartPage() {
         specialNotes: specialInstructions,
         source: "cart",
       });
+
+      // Persist guest order directly into Supabase table public.orders in background
+      saveGuestOrder({
+        orderRef: orderReferenceId,
+        customerName: customerName || "Guest Collector",
+        customerEmail: customerEmail || "guest@framescottage.com",
+        customerPhone: customerPhone || null,
+        items: cart.map((item) => ({
+          name: item.title,
+          dimensions: item.dimensions,
+          specs: item.specs,
+          quantity: item.quantity,
+          price: item.unitPrice,
+        })),
+        total: cartTotal,
+        subtotal: cartSubtotal,
+        shipping: cartShipping,
+        tax: cartTax,
+        discount: cartDiscount,
+        currency: "INR",
+        deliveryMethod: deliveryMethod,
+        status: "confirmed",
+        shippingAddress: customerAddress || "",
+        specialInstructions: specialInstructions,
+      }).catch((err) => console.warn("[Cart] Failed to save Email guest order:", err));
 
       if (res.success) {
         saveOrderLocally(orderReferenceId, "Resend Email");
@@ -795,11 +847,11 @@ export default function CartPage() {
                   </div>
                   <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
                     <Link
-                      href="/account"
+                      href="/"
                       data-testid="view-saved-orders-btn"
                       className="px-4 py-2.5 rounded-full bg-accent text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wide"
                     >
-                      View Saved Orders
+                      Continue Browsing Gallery
                     </Link>
                     <button
                       type="button"
