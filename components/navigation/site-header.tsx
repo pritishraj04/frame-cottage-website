@@ -9,6 +9,7 @@ import { MegaMenu } from "./mega-menu";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SearchModal } from "@/components/search/search-modal";
+import { SignedIn, SignedOut, UserButton } from "@/components/auth/clerk-auth";
 
 interface SiteHeaderProps {
   showAnnouncement?: boolean;
@@ -186,9 +187,20 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 href="/account"
                 aria-label="Account"
                 data-testid="header-account-link"
-                className="hidden sm:inline-flex p-2 text-[var(--color-ink-primary)] hover:text-accent transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)]"
+                className="hidden sm:inline-flex items-center p-2 text-[var(--color-ink-primary)] hover:text-accent transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)]"
               >
-                <User className="w-5 h-5" />
+                <SignedIn>
+                  <UserButton
+                    appearance={{
+                      elements: {
+                        avatarBox: "w-5 h-5",
+                      },
+                    }}
+                  />
+                </SignedIn>
+                <SignedOut>
+                  <User className="w-5 h-5" />
+                </SignedOut>
               </Link>
 
               <Link

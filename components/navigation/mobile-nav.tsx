@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { SERVICE_VERTICALS } from "@/lib/constants/verticals";
+import { SignedIn, SignedOut, UserButton } from "@/components/auth/clerk-auth";
 
 export function MobileNav() {
   const router = useRouter();
@@ -202,8 +203,14 @@ export function MobileNav() {
                 onClick={closeMenu}
                 className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] text-[var(--color-ink-primary)] hover:border-accent transition-colors"
               >
-                <User className="w-4 h-4 text-accent" />
-                <span>Account</span>
+                <SignedIn>
+                  <UserButton appearance={{ elements: { avatarBox: "w-4 h-4" } }} />
+                  <span>Account</span>
+                </SignedIn>
+                <SignedOut>
+                  <User className="w-4 h-4 text-accent" />
+                  <span>Account</span>
+                </SignedOut>
               </Link>
             </div>
 

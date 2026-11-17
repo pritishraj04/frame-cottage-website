@@ -22,6 +22,7 @@ import {
 import { SiteHeader } from "@/components/navigation/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { useStorefront } from "@/lib/store/storefront-context";
+import { SignIn, SignUp } from "@/components/auth/clerk-auth";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function LoginPage() {
 
   const [authMode, setAuthMode] = useState<"signin" | "register">("signin");
   const [portalType, setPortalType] = useState<"collector" | "enterprise">("collector");
+  const [authMethod, setAuthMethod] = useState<"direct" | "clerk">("direct");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,6 +105,91 @@ export default function LoginPage() {
               </p>
             </div>
 
+            {/* Atelier Method Switcher: Direct Atelier vs Clerk SSO */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <button
+                type="button"
+                data-testid="method-direct-btn"
+                onClick={() => setAuthMethod("direct")}
+                className={`py-1.5 px-3.5 rounded-full text-[11px] font-mono tracking-wider transition-all cursor-pointer ${
+                  authMethod === "direct"
+                    ? "bg-[var(--color-accent-gold)] text-[#171D26] font-bold shadow-xs"
+                    : "border border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
+                }`}
+              >
+                Atelier Direct & Demo
+              </button>
+              <button
+                type="button"
+                data-testid="method-clerk-btn"
+                onClick={() => setAuthMethod("clerk")}
+                className={`py-1.5 px-3.5 rounded-full text-[11px] font-mono tracking-wider transition-all cursor-pointer ${
+                  authMethod === "clerk"
+                    ? "bg-[var(--color-accent-gold)] text-[#171D26] font-bold shadow-xs"
+                    : "border border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)]"
+                }`}
+              >
+                Clerk Secure SSO
+              </button>
+            </div>
+
+            {authMethod === "clerk" ? (
+              <div data-testid="clerk-auth-container" className="my-4 flex flex-col items-center">
+                {authMode === "signin" ? (
+                  <SignIn
+                    routing="hash"
+                    appearance={{
+                      elements: {
+                        rootBox: "w-full",
+                        card: "bg-transparent border-none shadow-none p-0 text-[var(--color-ink-primary)]",
+                        headerTitle: "font-serif text-xl text-[var(--color-ink-primary)]",
+                        headerSubtitle: "text-xs text-[var(--color-ink-muted)]",
+                        formButtonPrimary:
+                          "bg-[var(--color-accent-gold)] hover:bg-[#B08B46] text-[#171D26] font-semibold text-xs py-2.5 rounded-xl shadow-md",
+                        formFieldInput:
+                          "bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl py-2.5 text-xs text-[var(--color-ink-primary)] focus:ring-1 focus:ring-[var(--color-accent-gold)]",
+                        formFieldLabel: "text-xs font-mono text-[var(--color-ink-secondary)]",
+                        footerActionLink: "text-[var(--color-accent-gold)] hover:underline",
+                        dividerLine: "bg-[var(--color-border-strong)]",
+                        dividerText: "text-[var(--color-ink-muted)] text-[10px] font-mono",
+                      },
+                    }}
+                  />
+                ) : (
+                  <SignUp
+                    routing="hash"
+                    appearance={{
+                      elements: {
+                        rootBox: "w-full",
+                        card: "bg-transparent border-none shadow-none p-0 text-[var(--color-ink-primary)]",
+                        headerTitle: "font-serif text-xl text-[var(--color-ink-primary)]",
+                        headerSubtitle: "text-xs text-[var(--color-ink-muted)]",
+                        formButtonPrimary:
+                          "bg-[var(--color-accent-gold)] hover:bg-[#B08B46] text-[#171D26] font-semibold text-xs py-2.5 rounded-xl shadow-md",
+                        formFieldInput:
+                          "bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] rounded-xl py-2.5 text-xs text-[var(--color-ink-primary)] focus:ring-1 focus:ring-[var(--color-accent-gold)]",
+                        formFieldLabel: "text-xs font-mono text-[var(--color-ink-secondary)]",
+                        footerActionLink: "text-[var(--color-accent-gold)] hover:underline",
+                        dividerLine: "bg-[var(--color-border-strong)]",
+                        dividerText: "text-[var(--color-ink-muted)] text-[10px] font-mono",
+                      },
+                    }}
+                  />
+                )}
+                <div className="mt-4 text-center">
+                  <button
+                    type="button"
+                    onClick={() => setAuthMode(authMode === "signin" ? "register" : "signin")}
+                    className="text-xs font-mono text-[var(--color-accent-gold)] hover:underline cursor-pointer"
+                  >
+                    {authMode === "signin"
+                      ? "Don't have an account? Create Studio Account"
+                      : "Already registered? Sign In"}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
             {/* One-Click Quick Demo Credentials Buttons */}
             <div className="mb-6 p-4 rounded-2xl border border-dashed border-[var(--color-accent-gold)]/60 bg-[var(--color-canvas-subtle)]/60 space-y-2.5">
               <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-[var(--color-accent-gold)] font-bold">
@@ -428,6 +515,8 @@ export default function LoginPage() {
                 <span>Enterprise SSO (SAML / Okta)</span>
               </button>
             </div>
+            </>
+            )}
 
             {/* Atelier Security Assurance */}
             <div className="mt-8 pt-4 border-t border-dashed border-[var(--color-border-subtle)] text-center text-[10px] font-mono text-[var(--color-ink-muted)] flex items-center justify-center gap-2">

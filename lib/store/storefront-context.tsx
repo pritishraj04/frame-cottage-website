@@ -25,7 +25,7 @@ import {
   INITIAL_ADDRESSES,
 } from "./storefront-store";
 
-interface StorefrontContextType {
+export interface StorefrontContextType {
   wishlist: WishlistItem[];
   cart: CartItem[];
   user: UserProfile | null;
@@ -38,6 +38,7 @@ interface StorefrontContextType {
   promoDiscountPct: number;
   promoError: string;
   specialInstructions: string;
+  sessionId: string;
   // Calculations
   cartSubtotal: number;
   cartShipping: number;
@@ -47,11 +48,13 @@ interface StorefrontContextType {
   cartCount: number;
   wishlistCount: number;
   // Actions
+  addToWishlist: (item: WishlistItem) => void;
   removeFromWishlist: (id: string) => void;
   clearWishlist: () => void;
   restoreWishlist: () => void;
   moveWishlistItemToCart: (id: string) => void;
   moveAllWishlistToCart: () => void;
+  addToCart: (item: Omit<CartItem, "id"> | CartItem) => void;
   updateCartQuantity: (id: string, delta: number) => void;
   removeFromCart: (id: string) => void;
   clearCart: () => void;
@@ -66,6 +69,7 @@ interface StorefrontContextType {
   loginCustom: (email: string, role: "collector" | "enterprise", name?: string, company?: string) => void;
   logoutUser: () => void;
   addAddress: (address: Omit<SavedAddress, "id">) => void;
+  migrateGuestCartToUser: (userId?: string) => Promise<void>;
 }
 
 const StorefrontContext = createContext<StorefrontContextType | undefined>(undefined);
@@ -81,8 +85,20 @@ const STORAGE_KEYS = {
   ADDRESSES: "fc_user_addresses_v1",
 };
 
+function getOrCreateSessionCookie(): string {
+  if (typeof document === "undefined") return "server_session";
+  const match = document.cookie.match(/(?:^|; )fc_session_id=([^;]*)/);
+  if (match && match[1]) {
+    return decodeURIComponent(match[1]);
+  }
+  const newId = `sess_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  document.cookie = `fc_session_id=${encodeURIComponent(newId)}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax`;
+  return newId;
+}
+
 export function StorefrontProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
+  const [sessionId, setSessionId] = useState<string>("");
   const [wishlist, setWishlist] = useState<WishlistItem[]>(INITIAL_WISHLIST);
   const [cart, setCart] = useState<CartItem[]>(INITIAL_CART);
   const [user, setUser] = useState<UserProfile | null>(DEFAULT_COLLECTOR_USER);
@@ -96,9 +112,12 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
   const [promoError, setPromoError] = useState("");
   const [specialInstructions, setSpecialInstructionsState] = useState("");
 
-  // Load from localStorage on mount
+  // Load from localStorage on mount & initialize session cookie
   useEffect(() => {
     setIsMounted(true);
+    const sid = getOrCreateSessionCookie();
+    setSessionId(sid);
+
     try {
       const savedWishlist = localStorage.getItem(STORAGE_KEYS.WISHLIST);
       if (savedWishlist) {
@@ -211,12 +230,33 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
   }, [addresses, isMounted]);
 
   // Wishlist Actions
+  const addToWishlist = useCallback((item: WishlistItem) => {
+    setWishlist((prev) => {
+      const existing = prev.find((w) => w.id === item.id || w.title === item.title);
+      if (existing) return prev;
+      return [...prev, item];
+    });
+
+    // Background backend sync
+    fetch("/api/wishlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item),
+    }).catch((err) => console.warn("Background wishlist sync offline:", err));
+  }, []);
+
   const removeFromWishlist = useCallback((id: string) => {
     setWishlist((prev) => prev.filter((item) => item.id !== id));
+
+    // Background backend sync
+    fetch(`/api/wishlist?id=${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    }).catch((err) => console.warn("Background wishlist removal offline:", err));
   }, []);
 
   const clearWishlist = useCallback(() => {
     setWishlist([]);
+    fetch("/api/wishlist?clear=true", { method: "DELETE" }).catch(() => {});
   }, []);
 
   const restoreWishlist = useCallback(() => {
@@ -228,6 +268,17 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       const target = prevWish.find((w) => w.id === id);
       if (!target) return prevWish;
 
+      const newCartItem: CartItem = {
+        id: `cart-${target.id}-${Date.now()}`,
+        title: target.title,
+        category: target.category,
+        dimensions: target.dimensions,
+        specs: `${target.material} • ${target.glazing}`,
+        unitPrice: target.price,
+        quantity: 1,
+        vertical: target.vertical,
+      };
+
       setCart((prevCart) => {
         const existing = prevCart.find((c) => c.title === target.title);
         if (existing) {
@@ -235,18 +286,17 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
             c.id === existing.id ? { ...c, quantity: c.quantity + 1 } : c
           );
         }
-        const newCartItem: CartItem = {
-          id: `cart-${target.id}-${Date.now()}`,
-          title: target.title,
-          category: target.category,
-          dimensions: target.dimensions,
-          specs: `${target.material} • ${target.glazing}`,
-          unitPrice: target.price,
-          quantity: 1,
-          vertical: target.vertical,
-        };
         return [...prevCart, newCartItem];
       });
+
+      // Background sync
+      fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCartItem),
+      }).catch(() => {});
+
+      fetch(`/api/wishlist?id=${encodeURIComponent(id)}`, { method: "DELETE" }).catch(() => {});
 
       return prevWish.filter((w) => w.id !== id);
     });
@@ -263,7 +313,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
           if (existing) {
             existing.quantity += 1;
           } else {
-            updated.push({
+            const newItem: CartItem = {
               id: `cart-${item.id}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
               title: item.title,
               category: item.category,
@@ -272,17 +322,45 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
               unitPrice: item.price,
               quantity: 1,
               vertical: item.vertical,
-            });
+            };
+            updated.push(newItem);
+            fetch("/api/cart", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(newItem),
+            }).catch(() => {});
           }
         });
         return updated;
       });
 
+      fetch("/api/wishlist?clear=true", { method: "DELETE" }).catch(() => {});
       return [];
     });
   }, []);
 
   // Cart Actions
+  const addToCart = useCallback((item: Omit<CartItem, "id"> | CartItem) => {
+    const itemId = "id" in item && item.id ? item.id : `cart-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+    const fullItem: CartItem = { ...item, id: itemId };
+
+    setCart((prev) => {
+      const existing = prev.find((c) => c.title === fullItem.title);
+      if (existing) {
+        return prev.map((c) =>
+          c.id === existing.id ? { ...c, quantity: c.quantity + fullItem.quantity } : c
+        );
+      }
+      return [...prev, fullItem];
+    });
+
+    fetch("/api/cart", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(fullItem),
+    }).catch((err) => console.warn("Background cart sync offline:", err));
+  }, []);
+
   const updateCartQuantity = useCallback((id: string, delta: number) => {
     setCart((prev) =>
       prev
@@ -295,19 +373,48 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
         })
         .filter(Boolean) as CartItem[]
     );
+
+    fetch("/api/cart", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, delta }),
+    }).catch((err) => console.warn("Background cart update offline:", err));
   }, []);
 
   const removeFromCart = useCallback((id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
+
+    fetch(`/api/cart?id=${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    }).catch((err) => console.warn("Background cart removal offline:", err));
   }, []);
 
   const clearCart = useCallback(() => {
     setCart([]);
+    fetch("/api/cart?clear=true", { method: "DELETE" }).catch(() => {});
   }, []);
 
   const restoreCart = useCallback(() => {
     setCart(INITIAL_CART);
   }, []);
+
+  const migrateGuestCartToUser = useCallback(async (userId?: string) => {
+    try {
+      if (cart.length === 0) return;
+      for (const item of cart) {
+        await fetch("/api/cart", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...item,
+            userId,
+          }),
+        }).catch(() => {});
+      }
+    } catch (e) {
+      console.warn("Guest cart migration error:", e);
+    }
+  }, [cart]);
 
   const applyPromo = useCallback((code: string): boolean => {
     const clean = code.trim().toUpperCase();
@@ -353,11 +460,13 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
   // User Actions
   const loginAsCollector = useCallback(() => {
     setUser(DEFAULT_COLLECTOR_USER);
-  }, []);
+    migrateGuestCartToUser("user_collector_demo");
+  }, [migrateGuestCartToUser]);
 
   const loginAsEnterprise = useCallback(() => {
     setUser(DEFAULT_ENTERPRISE_USER);
-  }, []);
+    migrateGuestCartToUser("user_enterprise_demo");
+  }, [migrateGuestCartToUser]);
 
   const loginCustom = useCallback(
     (email: string, role: "collector" | "enterprise", name?: string, company?: string) => {
@@ -371,8 +480,9 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
         memberSince: "February 2026",
       };
       setUser(newUser);
+      migrateGuestCartToUser(`user_${email.replace(/[^a-zA-Z0-9]/g, "_")}`);
     },
-    []
+    [migrateGuestCartToUser]
   );
 
   const logoutUser = useCallback(() => {
@@ -395,7 +505,6 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
   const cartShipping = useMemo(() => {
     if (cart.length === 0) return 0;
     if (deliveryMethod === "atelier") return 0;
-    // Complimentary white-glove above ₹2,500, otherwise ₹120
     return cartSubtotal >= 2500 ? 0 : 120;
   }, [cart.length, deliveryMethod, cartSubtotal]);
 
@@ -406,7 +515,6 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
 
   const cartTax = useMemo(() => {
     if (isTaxExempt || cart.length === 0) return 0;
-    // Standard estimated tax of 8.25%
     const taxableBase = Math.max(0, cartSubtotal - cartDiscount);
     return Math.round(taxableBase * 0.0825);
   }, [isTaxExempt, cart.length, cartSubtotal, cartDiscount]);
@@ -436,6 +544,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       promoDiscountPct,
       promoError,
       specialInstructions,
+      sessionId,
       cartSubtotal,
       cartShipping,
       cartTax,
@@ -443,11 +552,13 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       cartTotal,
       cartCount,
       wishlistCount,
+      addToWishlist,
       removeFromWishlist,
       clearWishlist,
       restoreWishlist,
       moveWishlistItemToCart,
       moveAllWishlistToCart,
+      addToCart,
       updateCartQuantity,
       removeFromCart,
       clearCart,
@@ -462,6 +573,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       loginCustom,
       logoutUser,
       addAddress,
+      migrateGuestCartToUser,
     }),
     [
       wishlist,
@@ -476,6 +588,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       promoDiscountPct,
       promoError,
       specialInstructions,
+      sessionId,
       cartSubtotal,
       cartShipping,
       cartTax,
@@ -483,11 +596,13 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       cartTotal,
       cartCount,
       wishlistCount,
+      addToWishlist,
       removeFromWishlist,
       clearWishlist,
       restoreWishlist,
       moveWishlistItemToCart,
       moveAllWishlistToCart,
+      addToCart,
       updateCartQuantity,
       removeFromCart,
       clearCart,
@@ -502,6 +617,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       loginCustom,
       logoutUser,
       addAddress,
+      migrateGuestCartToUser,
     ]
   );
 
