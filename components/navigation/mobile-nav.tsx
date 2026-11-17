@@ -64,7 +64,7 @@ export function MobileNav() {
             {/* Header row with Theme Toggle and Close */}
             <div className="flex items-center justify-between pb-4 border-b border-[var(--color-border-subtle)]">
               <Dialog.Title className="font-serif tracking-[0.2em] text-lg font-semibold text-[var(--color-ink-primary)]">
-                FRAME COTTAGE
+                FRAMES COTTAGE
               </Dialog.Title>
               <div className="flex items-center gap-1.5">
                 <ThemeToggle testId="mobile-theme-toggle" />
@@ -208,7 +208,7 @@ export function MobileNav() {
             </div>
 
             <div className="text-[10px] text-center text-[var(--color-ink-muted)]">
-              © 2026 Frame Cottage • GeM Registered & ISO 9001 Certified
+              © 2026 Frames Cottage • GeM Registered & ISO 9001 Certified
             </div>
           </div>
         </Dialog.Content>

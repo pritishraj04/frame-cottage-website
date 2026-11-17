@@ -27,7 +27,7 @@ test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu"
     // Wordmark
     const wordmark = page.getByTestId("brand-wordmark");
     await expect(wordmark).toBeVisible();
-    await expect(wordmark).toHaveText("FRAME COTTAGE");
+    await expect(wordmark).toHaveText("FRAMES COTTAGE");
 
     // Desktop nav items for service verticals
     await expect(page.getByTestId("nav-service-verticals")).toBeVisible();
@@ -69,7 +69,8 @@ test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu"
     // Column 4: Prominent RFQ CTA Box
     await expect(megaMenu.getByRole("heading", { name: "Request a Project Quote (RFQ)" })).toBeVisible();
     await expect(megaMenu.getByTestId("mega-menu-rfq-btn")).toBeVisible();
-    await expect(megaMenu).toContainText("GeM & Tender Ready");
+    await expect(megaMenu).toContainText("Enterprise & Civic");
+    await expect(megaMenu).toContainText("Turnkey RFQ");
 
     // Capture screenshot of expanded mega-menu as required
     await page.screenshot({
@@ -90,7 +91,7 @@ test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu"
     // Dialog should open
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByRole("heading", { name: "FRAME COTTAGE" })).toBeVisible();
+    await expect(drawer.getByRole("heading", { name: "FRAMES COTTAGE" })).toBeVisible();
     await expect(drawer.getByText("Retail & Standard Framing")).toBeVisible();
     await expect(drawer.getByText("Bespoke Art & Custom Framing")).toBeVisible();
     await expect(drawer.getByText("Spatial Design & Signage")).toBeVisible();
@@ -218,7 +219,7 @@ test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu"
     // Verify mobile nav drawer opens cleanly
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
-    await expect(drawer.getByRole("heading", { name: "FRAME COTTAGE" })).toBeVisible();
+    await expect(drawer.getByRole("heading", { name: "FRAMES COTTAGE" })).toBeVisible();
     await expect(drawer.getByText("Retail & Standard Framing")).toBeVisible();
 
     const closeButton = page.getByRole("button", { name: "Close menu" });

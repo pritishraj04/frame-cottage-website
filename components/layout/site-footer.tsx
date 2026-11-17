@@ -142,7 +142,7 @@ export function SiteFooter() {
               href="/"
               className="font-serif tracking-[0.2em] text-xl font-semibold text-[var(--color-ink-primary)] hover:text-accent transition-colors inline-block"
             >
-              FRAME COTTAGE
+              FRAMES COTTAGE
             </Link>
 
             <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] leading-relaxed max-w-sm">
@@ -395,7 +395,7 @@ export function SiteFooter() {
 
           {/* Copyright & Legal Links */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--color-border-subtle)] text-[11px] text-[var(--color-ink-secondary)]">
-            <p>© 2026 Frame Cottage Atelier Ltd. All rights reserved. Handcrafted in the USA.</p>
+            <p>© 2026 Frames Cottage Atelier Ltd. All rights reserved. Handcrafted in the USA.</p>
 
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/privacy" className="hover:text-accent transition-colors">

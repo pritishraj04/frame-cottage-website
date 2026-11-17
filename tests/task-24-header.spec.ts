@@ -38,7 +38,7 @@ test.describe("TASK-24: Redesign Site Header Navigation to Orthodox Luxury Studi
     // Verify 1. Left (Brand Anchor)
     const wordmark = page.getByTestId("brand-wordmark");
     await expect(wordmark).toBeVisible();
-    await expect(wordmark).toHaveText("FRAME COTTAGE");
+    await expect(wordmark).toHaveText("FRAMES COTTAGE");
 
     const subTagline = page.locator("header").getByText("Design & Fabrication Studio");
     await expect(subTagline).toBeVisible();

@@ -46,7 +46,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: "faq-acrylic",
     category: "B2B Spatial Design & Signage",
-    question: "Why does Frame Cottage use TruVue® Conservation Acrylic for commercial spatial design and bespoke framing?",
+    question: "Why does Frames Cottage use TruVue® Conservation Acrylic for commercial spatial design and bespoke framing?",
     shortAnswer:
       "TruVue® Conservation Acrylic provides 99% UV protection, is optically transparent, shatter-proof in transit, and half the weight of traditional float glass.",
     fullAnswer:
@@ -80,7 +80,7 @@ export const FAQ_DATA: FAQItem[] = [
     shortAnswer:
       "If your frame arrives damaged or ever loosens, warps, or separates over its lifetime, we rebuild and replace it 100% free of charge.",
     fullAnswer:
-      "Every Frame Cottage piece travels in custom crush-proof wooden-reinforced packaging with edge-shock absorption bumpers. In the rare event of transit damage, notify our concierge within 48 hours for an immediate priority workshop rebuild. Furthermore, our joinery and hardwood frames are warranted for life against structural warping or spline separation.",
+      "Every Frames Cottage piece travels in custom crush-proof wooden-reinforced packaging with edge-shock absorption bumpers. In the rare event of transit damage, notify our concierge within 48 hours for an immediate priority workshop rebuild. Furthermore, our joinery and hardwood frames are warranted for life against structural warping or spline separation.",
     specs: [
       { label: "Transit Coverage", value: "100% Insured Priority Dispatch" },
       { label: "Damage Response", value: "Priority Rebuild within 48 hours" },

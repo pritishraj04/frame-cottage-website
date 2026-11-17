@@ -64,7 +64,7 @@ test.describe("TASK-27: Floating WhatsApp Button & Interactive Decision Concierg
     await expect(chatCta).toBeVisible();
     const ctaHref = await chatCta.getAttribute("href");
     expect(ctaHref).toContain("https://wa.me/919876543210");
-    expect(ctaHref).toContain("Hello%20Frame%20Cottage%20Studio");
+    expect(ctaHref).toContain("Hello%20Frames%20Cottage%20Studio");
 
     // Verify quick shortcuts target wa.me
     const bespokeShortcut = page.getByTestId("whatsapp-shortcut-bespoke");

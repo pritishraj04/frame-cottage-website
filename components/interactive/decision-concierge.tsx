@@ -288,7 +288,7 @@ export function DecisionConcierge() {
 
   // WhatsApp Pre-filled Summary Message
   const whatsAppText = encodeURIComponent(
-    `Hello Frame Cottage Studio,\n\nI completed the Interactive Project & Material Decision Concierge:\n• Project Scope: ${currentScope.title}\n• Recommended Vertical: ${currentScope.tagline} (${currentScope.id})\n• Environment & Lighting: ${currentEnv.title}\n• Aesthetic & Material: ${currentMaterial.title}\n• Substrate: ${currentMaterial.substrate}\n• Glazing: ${currentEnv.glazing}\n• Joinery: ${details.joinery}\n\nI would like to consult with an atelier specialist and request a quotation.`
+    `Hello Frames Cottage Studio,\n\nI completed the Interactive Project & Material Decision Concierge:\n• Project Scope: ${currentScope.title}\n• Recommended Vertical: ${currentScope.tagline} (${currentScope.id})\n• Environment & Lighting: ${currentEnv.title}\n• Aesthetic & Material: ${currentMaterial.title}\n• Substrate: ${currentMaterial.substrate}\n• Glazing: ${currentEnv.glazing}\n• Joinery: ${details.joinery}\n\nI would like to consult with an atelier specialist and request a quotation.`
   );
   const whatsAppDeepLink = `https://wa.me/919876543210?text=${whatsAppText}`;
 
@@ -303,7 +303,7 @@ export function DecisionConcierge() {
       <div className="border-2 border-dashed border-[var(--color-border-strong)]/60 rounded-3xl bg-[var(--color-canvas-subtle)]/50 p-6 sm:p-10 lg:p-12 shadow-[0_18px_36px_-10px_rgba(0,0,0,0.35)] relative overflow-hidden backdrop-blur-sm">
         {/* Subtle Watermark Decorator */}
         <div className="absolute top-4 right-6 font-mono text-[10px] tracking-widest text-[var(--color-accent-gold)]/40 uppercase hidden sm:block">
-          FRAME COTTAGE • DECISION CONCIERGE ENGINE
+          FRAMES COTTAGE • DECISION CONCIERGE ENGINE
         </div>
 
         {/* Section Header */}

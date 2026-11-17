@@ -227,7 +227,7 @@ async function generateCutouts() {
                   <!-- Typography Plate Details -->
                   <text x="210" y="420" font-family="'Times New Roman', serif" font-size="20" font-style="italic" fill="#2E241B" text-anchor="middle" letter-spacing="1.5">Ginkgo biloba L.</text>
                   <text x="210" y="442" font-family="-apple-system, sans-serif" font-size="9" font-weight="600" fill="#8C7355" text-anchor="middle" letter-spacing="3">FOLIUM ARBOREUM • TAB. XLVIII</text>
-                  <text x="210" y="460" font-family="'Courier New', monospace" font-size="8" fill="#B0A08C" text-anchor="middle" letter-spacing="1">FRAME COTTAGE ARCHIVAL REPRODUCTION • NO. 14/150</text>
+                  <text x="210" y="460" font-family="'Courier New', monospace" font-size="8" fill="#B0A08C" text-anchor="middle" letter-spacing="1">FRAMES COTTAGE ARCHIVAL REPRODUCTION • NO. 14/150</text>
 
                   <!-- Gradients -->
                   <defs>

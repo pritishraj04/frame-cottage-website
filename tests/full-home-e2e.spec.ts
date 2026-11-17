@@ -240,7 +240,7 @@ test.describe("Full Home Page End-to-End Smoke & Craft Validation", () => {
     await expect(errorAlert).toContainText("Please enter a valid email address.");
 
     // 2. Valid email format trigger
-    await emailInput.fill("collector@framecottage-atelier.com");
+    await emailInput.fill("collector@framescottage-atelier.com");
     await submitBtn.click();
 
     const successAlert = page.getByTestId("footer-newsletter-success");

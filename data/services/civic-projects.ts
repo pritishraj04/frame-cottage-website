@@ -201,7 +201,7 @@ export const civicProjectsData: ServiceVerticalData = {
   ],
   faq: [
     {
-      question: "Is Frame Cottage registered on the Government e-Marketplace (GeM)?",
+      question: "Is Frames Cottage registered on the Government e-Marketplace (GeM)?",
       answer:
         "Yes, we are a verified vendor on GeM with active product and service category listings, valid GST compliance, MSME registration, and Class 1 Local Supplier (Make in India) standing.",
     },

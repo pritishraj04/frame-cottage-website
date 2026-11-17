@@ -169,11 +169,15 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave, onClose }: MegaMe
             <div className="absolute top-0 right-0 w-36 h-36 bg-accent/10 rounded-full blur-2xl pointer-events-none" />
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-widest font-semibold px-2.5 py-0.5 bg-accent text-[var(--color-accent-contrast)] rounded-full">
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-semibold px-2.5 py-1 bg-accent/15 text-accent border border-accent/25 rounded-full">
+                  <Building2 className="w-3 h-3 text-accent" />
                   Enterprise & Civic
                 </span>
-                <span className="text-xs text-accent font-medium">GeM & Tender Ready</span>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--color-ink-muted)] shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Turnkey RFQ
+                </span>
               </div>
 
               <div>

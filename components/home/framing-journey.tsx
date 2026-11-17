@@ -254,7 +254,7 @@ export function FramingJourney() {
             </div>
             <div>
               <h4 className="font-serif text-lg font-semibold text-[var(--color-ink-primary)]">
-                The Frame Cottage Lifetime Studio Guarantee
+                The Frames Cottage Lifetime Studio Guarantee
               </h4>
               <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)]">
                 Every residential, architectural, and civic installation is warranted for structural integrity and archival longevity.

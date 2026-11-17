@@ -5,7 +5,7 @@ test.describe('Museum Dark Charcoal, Rich Burgundy & Muted Gold Design System', 
     await page.goto('/');
 
     // Verify title
-    await expect(page).toHaveTitle('Frame Cottage | Multi-Disciplinary Design, Fabrication & Framing Studio');
+    await expect(page).toHaveTitle('Frames Cottage | Multi-Disciplinary Design, Fabrication & Framing Studio');
 
     // Verify font classes and computed styles
     const styles = await page.evaluate(() => {

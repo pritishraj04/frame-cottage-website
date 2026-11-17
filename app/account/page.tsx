@@ -1,7 +1,7 @@
 import { AccountDashboard } from "@/components/account/account-dashboard";
 
 export const metadata = {
-  title: "Client Account Dashboard | Frame Cottage",
+  title: "Client Account Dashboard | Frames Cottage",
   description:
     "Manage bespoke commissions, joinery tracking, formal RFQs, and white-glove shipping addresses.",
 };

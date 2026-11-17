@@ -353,7 +353,7 @@ export default function CartPage() {
                         </span>
                       </div>
                       <p className="text-[11px] text-[var(--color-ink-muted)] leading-relaxed">
-                        Pick up directly at Frame Cottage Main Workshop with master framer consultation.
+                        Pick up directly at Frames Cottage Main Workshop with master framer consultation.
                       </p>
                     </button>
                   </div>

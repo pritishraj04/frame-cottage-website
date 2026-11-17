@@ -40,16 +40,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!service) {
     return {
-      title: "Service Not Found | Frame Cottage Studio",
+      title: "Service Not Found | Frames Cottage Studio",
       description: "The requested service vertical could not be found.",
     };
   }
 
   return {
-    title: `${service.title} | Frame Cottage Multi-Disciplinary Studio`,
+    title: `${service.title} | Frames Cottage Multi-Disciplinary Studio`,
     description: service.description,
     openGraph: {
-      title: `${service.title} - ${service.tagline} | Frame Cottage`,
+      title: `${service.title} - ${service.tagline} | Frames Cottage`,
       description: service.description,
       type: "website",
     },

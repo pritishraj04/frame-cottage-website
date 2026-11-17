@@ -81,7 +81,7 @@ export function MaterialSpecsMatrix({ materialSpecs, verticalTitle }: MaterialSp
           <div className="px-6 py-3.5 border-t border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-base)]/50 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-[var(--color-ink-muted)]">
             <span className="flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-[var(--color-accent-gold)]" />
-              <span>All substrates 100% trace-inspected at Frame Cottage Atelier</span>
+              <span>All substrates 100% trace-inspected at Frames Cottage Atelier</span>
             </span>
             <span className="text-[var(--color-accent-gold)]">ISO 9001:2015 & Archival Compliant</span>
           </div>

@@ -90,7 +90,7 @@ export function HeroCarousel() {
 
   return (
     <section
-      aria-label="Frame Cottage Studio Showcase"
+      aria-label="Frames Cottage Studio Showcase"
       data-testid="hero-carousel"
       id="hero-image-carousel"
       className="relative w-full h-[70vh] sm:h-[80vh] lg:h-[88vh] overflow-hidden bg-[var(--background)] border-b border-[var(--color-border-subtle)] touch-pan-y select-none"

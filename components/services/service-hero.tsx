@@ -153,7 +153,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               {/* Bottom Spec Footer inside Spatial Canvas */}
               <div className="pt-2 border-t border-dashed border-[var(--color-border-strong)]/50 flex items-center justify-between text-[11px] font-mono text-[var(--color-ink-secondary)]">
                 <span>Atelier Architecture Spec</span>
-                <span className="text-[var(--color-accent-gold)]">Frame Cottage Studio</span>
+                <span className="text-[var(--color-accent-gold)]">Frames Cottage Studio</span>
               </div>
             </div>
           </div>

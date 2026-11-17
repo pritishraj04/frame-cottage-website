@@ -47,7 +47,7 @@ export function WhatsAppButton() {
   }, [isOpen]);
 
   const defaultWhatsAppUrl =
-    "https://wa.me/919876543210?text=Hello%20Frame%20Cottage%20Studio%2C%20I%20would%20like%20to%20consult%20on%20a%20framing%20or%20spatial%20project.";
+    "https://wa.me/919876543210?text=Hello%20Frames%20Cottage%20Studio%2C%20I%20would%20like%20to%20consult%20on%20a%20framing%20or%20spatial%20project.";
 
   const handleLaunchConcierge = () => {
     setIsOpen(false);
@@ -111,7 +111,7 @@ export function WhatsAppButton() {
             {/* Consultant Bio & Intro */}
             <div className="text-xs text-[var(--color-ink-muted)] leading-relaxed space-y-1">
               <p className="font-sans">
-                Welcome to <span className="font-serif font-semibold text-[var(--foreground)]">Frame Cottage Atelier</span>. Connect directly with our master framers and spatial fabrication specialists for instant material advice, RFQ scoping, or bespoke commissions.
+                Welcome to <span className="font-serif font-semibold text-[var(--foreground)]">Frames Cottage Atelier</span>. Connect directly with our master framers and spatial fabrication specialists for instant material advice, RFQ scoping, or bespoke commissions.
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export function WhatsAppButton() {
 
               <div className="flex flex-col gap-1.5">
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20Frame%20Cottage%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20Bespoke%20Framing."
+                  href="https://wa.me/919876543210?text=Hello%20Frames%20Cottage%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20Bespoke%20Framing."
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="whatsapp-shortcut-bespoke"
@@ -156,7 +156,7 @@ export function WhatsAppButton() {
                 </a>
 
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20Frame%20Cottage%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20Spatial%20Signage%20%26%20CNC."
+                  href="https://wa.me/919876543210?text=Hello%20Frames%20Cottage%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20Spatial%20Signage%20%26%20CNC."
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="whatsapp-shortcut-signage"

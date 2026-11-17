@@ -96,7 +96,7 @@ export default function LoginPage() {
                 FC
               </div>
               <h1 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-ink-primary)]">
-                Frame Cottage Atelier Portal
+                Frames Cottage Atelier Portal
               </h1>
               <p className="text-xs sm:text-sm text-[var(--color-ink-muted)]">
                 Access client commissions, active joinery tracking, and verified RFQ proposals.

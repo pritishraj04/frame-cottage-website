@@ -666,7 +666,7 @@ export const STUDIO_SEARCH_INDEX: SearchResultItem[] = [
     subtitle: "Molybdenum-alloyed austenitic steel engineered for extreme exterior weather resistance",
     category: "materials",
     categoryLabel: "Metals & Alloys",
-    description: "Contains 2-3% molybdenum to resist pitting corrosion from airborne chlorides and saline atmospheres. Used exclusively for Frame Cottage exterior architectural signage and donor memorials.",
+    description: "Contains 2-3% molybdenum to resist pitting corrosion from airborne chlorides and saline atmospheres. Used exclusively for Frames Cottage exterior architectural signage and donor memorials.",
     href: "/services/spatial-signage",
     specs: ["AISI 316 / DIN 1.4401", "Tensile Strength: 580 MPa", "Brushed #4 Satin or Mirror Polish", "Corrosion Class C5-M"],
     priceOrLeadTime: "Architectural Alloy",
@@ -849,7 +849,7 @@ export const STUDIO_SEARCH_INDEX: SearchResultItem[] = [
     subtitle: "Certified vendor criteria, public procurement auditing, and verified government cataloging",
     category: "materials",
     categoryLabel: "Compliance & Standard",
-    description: "Frame Cottage operates an authorized GeM seller account compliant with public procurement regulations, GSTIN invoicing, EMD bank guarantees, and official state department specifications.",
+    description: "Frames Cottage operates an authorized GeM seller account compliant with public procurement regulations, GSTIN invoicing, EMD bank guarantees, and official state department specifications.",
     href: "/services/civic-projects",
     specs: ["Government e-Marketplace Verified", "Audited Invoicing & GSTIN", "Bank Guarantee & EMD Supported", "Civic Monument Standards"],
     priceOrLeadTime: "Public Sector Vendor",
@@ -1006,7 +1006,7 @@ export const STUDIO_SEARCH_INDEX: SearchResultItem[] = [
     category: "actions",
     categoryLabel: "Action / Direct Line",
     description: "Instant direct line to our master framers and workshop engineers. Send artwork photos, ask technical glazing questions, or request quick rough estimates via WhatsApp.",
-    href: "https://wa.me/919810000000?text=Hello%20Frame%20Cottage%20Studio%20Team%2C%20I%20am%20inquiring%20about%20a%20custom%20fabrication%20commission",
+    href: "https://wa.me/919810000000?text=Hello%20Frames%20Cottage%20Studio%20Team%2C%20I%20am%20inquiring%20about%20a%20custom%20fabrication%20commission",
     specs: ["Typical Reply < 15 Minutes", "Share Blueprints & Photos", "Direct Master Framer Line"],
     priceOrLeadTime: "Instant Live Channel",
     badge: "Live Atelier Desk",
@@ -1043,7 +1043,7 @@ export function normalizeCategoryFilter(filter?: string): string {
 }
 
 /**
- * Search the comprehensive Frame Cottage Studio archive.
+ * Search the comprehensive Frames Cottage Studio archive.
  * Performs fuzzy, case-insensitive keyword and term matching.
  */
 export function searchStudio(

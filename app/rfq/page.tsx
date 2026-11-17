@@ -268,7 +268,7 @@ export default function RFQPortalPage() {
     const summaryData = {
       referenceId: submittedReferenceId || "DRAFT-SPEC",
       generatedDate: new Date().toISOString(),
-      studio: "Frame Cottage Design, Fabrication & Framing Studio",
+      studio: "Frames Cottage Design, Fabrication & Framing Studio",
       clientTier: activeTier?.title,
       selectedVerticals: selectedVerticals.map(
         (v) => RFQ_VERTICAL_OPTIONS.find((opt) => opt.id === v)?.name
@@ -303,7 +303,7 @@ export default function RFQPortalPage() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(summaryData, null, 2));
     const downloadAnchor = document.createElement("a");
     downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `FrameCottage-Specification-${summaryData.referenceId}.json`);
+    downloadAnchor.setAttribute("download", `FramesCottage-Specification-${summaryData.referenceId}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();

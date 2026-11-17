@@ -65,7 +65,7 @@ export function ServiceCaseStudies({ caseStudies, verticalTitle }: ServiceCaseSt
                   </div>
 
                   <div className="flex items-center justify-between text-[10px] font-mono text-[var(--color-ink-muted)] pt-1 border-t border-dashed border-[var(--color-border-strong)]/40">
-                    <span>Frame Cottage Provenance</span>
+                    <span>Frames Cottage Provenance</span>
                     <span className="text-[var(--color-accent-gold)]">Verified Installation</span>
                   </div>
                 </div>

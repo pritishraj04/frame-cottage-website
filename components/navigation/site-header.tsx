@@ -70,7 +70,7 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                   data-testid="brand-wordmark"
                   className="font-serif tracking-[0.18em] sm:tracking-[0.22em] text-base sm:text-xl font-bold text-[var(--color-ink-primary)] hover:text-accent transition-colors whitespace-nowrap leading-none"
                 >
-                  FRAME COTTAGE
+                  FRAMES COTTAGE
                 </Link>
                 <span className="text-[8.5px] uppercase tracking-[0.26em] font-mono text-accent mt-1 hidden sm:block">
                   Design & Fabrication Studio

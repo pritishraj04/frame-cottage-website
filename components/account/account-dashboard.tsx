@@ -598,7 +598,7 @@ export function AccountDashboard() {
 
                   <label className="flex items-center justify-between cursor-pointer pt-2 border-t border-dashed border-[var(--color-border-subtle)]">
                     <span className="text-[var(--color-ink-secondary)]">
-                      Quarterly Frame Cottage Printed Atelier Journal
+                      Quarterly Frames Cottage Printed Atelier Journal
                     </span>
                     <input
                       type="checkbox"
