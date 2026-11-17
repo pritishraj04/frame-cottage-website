@@ -58,31 +58,31 @@ test.describe("Curated Projects & Dual-State In-Situ Product Cards", () => {
       {
         id: "highline-matte-black",
         title: "The Highline Matte Black",
-        price: "From $54",
+        price: "From ₹54",
         size: "8×10 to 24×36 in",
       },
       {
         id: "kyoto-white-oak",
         title: "The Kyoto White Oak",
-        price: "From $62",
+        price: "From ₹62",
         size: "8×10 to 24×36 in",
       },
       {
         id: "mendocino-walnut",
         title: "The Mendocino Walnut",
-        price: "From $64",
+        price: "From ₹64",
         size: "8×10 to 24×36 in",
       },
       {
         id: "tribeca-brass",
         title: "The Tribeca Brushed Brass",
-        price: "From $78",
+        price: "From ₹78",
         size: "8×10 to 24×36 in",
       },
       {
         id: "florentine-gilded",
         title: "The Florentine Gilded Heirloom",
-        price: "From $82",
+        price: "From ₹82",
         size: "8×10 to 24×36 in",
       },
     ];
@@ -236,24 +236,24 @@ test.describe("Curated Projects & Dual-State In-Situ Product Cards", () => {
     await expect(matClassic).toBeVisible();
     await expect(matGallery).toBeVisible();
 
-    // Initial state: 8x10 ($0 delta) + Mendocino default mat (gallery +$18) = Base $64 + $0 + $18 = $82
+    // Initial state: 8x10 (₹0 delta) + Mendocino default mat (gallery +₹18) = Base ₹64 + ₹0 + ₹18 = ₹82
     const priceDisplay = page.getByTestId("dialog-total-price");
-    await expect(priceDisplay).toHaveText("$82");
+    await expect(priceDisplay).toHaveText("₹82");
 
-    // Select 11x14 size option (+ $16 delta): $64 + $16 + $18 = $98
+    // Select 11x14 size option (+ ₹16 delta): ₹64 + ₹16 + ₹18 = ₹98
     await size11x14.click();
     await expect(size11x14).toHaveAttribute("aria-checked", "true");
-    await expect(priceDisplay).toHaveText("$98");
+    await expect(priceDisplay).toHaveText("₹98");
 
-    // Select "No Mat" (+ $0): $64 + $16 + $0 = $80
+    // Select "No Mat" (+ ₹0): ₹64 + ₹16 + ₹0 = ₹80
     await matNone.click();
     await expect(matNone).toHaveAttribute("aria-checked", "true");
-    await expect(priceDisplay).toHaveText("$80");
+    await expect(priceDisplay).toHaveText("₹80");
 
-    // Select 2" Classic mat (+ $12): $64 + $16 + $12 = $92
+    // Select 2" Classic mat (+ ₹12): ₹64 + ₹16 + ₹12 = ₹92
     await matClassic.click();
     await expect(matClassic).toHaveAttribute("aria-checked", "true");
-    await expect(priceDisplay).toHaveText("$92");
+    await expect(priceDisplay).toHaveText("₹92");
 
     // Verify CTA button
     const ctaButton = page.getByTestId("dialog-cta-button");

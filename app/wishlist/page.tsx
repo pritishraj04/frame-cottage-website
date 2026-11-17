@@ -341,7 +341,7 @@ export default function WishlistPage() {
                             Starting Spec
                           </span>
                           <span className="font-mono text-xl sm:text-2xl font-bold text-[var(--color-accent-gold)]">
-                            ${item.price.toLocaleString()}
+                            ₹{item.price.toLocaleString("en-IN")}
                           </span>
                         </div>
                       </div>

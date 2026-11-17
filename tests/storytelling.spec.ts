@@ -124,7 +124,7 @@ test.describe("4-Stage Turnkey Studio Workflow & Featured Products Carousel", ()
     await expect(walnutCard).toContainText("The Mendocino");
     await expect(walnutCard).toContainText("Solid Appalachian Black Walnut");
     await expect(walnutCard).toContainText("Organic Linseed Oil");
-    await expect(walnutCard).toContainText("From $64");
+    await expect(walnutCard).toContainText("From ₹64");
     await expect(walnutCard).toContainText("Mortise-Keyed Maple Spline");
 
     // Verify pagination dots

@@ -323,7 +323,7 @@ export function LiveFrameSwitcher() {
                     {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
                   </span>
                   <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5 font-normal">
-                    ${m.basePrice}
+                    ₹{m.basePrice}
                   </span>
                 </button>
               );
@@ -368,7 +368,7 @@ export function LiveFrameSwitcher() {
                 >
                   <span className="text-xs font-medium">{mat.name}</span>
                   <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
-                    {mat.price === 0 ? "Included" : `+$${mat.price}`}
+                    {mat.price === 0 ? "Included" : `+₹${mat.price}`}
                   </span>
                 </button>
               );
@@ -387,12 +387,12 @@ export function LiveFrameSwitcher() {
                 data-testid="frame-price-amount"
                 className="font-serif text-2xl sm:text-3xl font-bold text-accent"
               >
-                ${totalPrice}
+                ₹{totalPrice}
               </span>
             </div>
             <p className="text-[11px] text-[var(--color-ink-muted)]">
-              Includes {currentMoulding.name} (${currentMoulding.basePrice})
-              {currentMat.price > 0 && ` + Mat ($${currentMat.price})`} + UV
+              Includes {currentMoulding.name} (₹{currentMoulding.basePrice})
+              {currentMat.price > 0 && ` + Mat (₹${currentMat.price})`} + UV
               Acrylic
             </p>
           </div>

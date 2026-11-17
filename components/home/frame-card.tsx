@@ -318,7 +318,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
             data-testid={`frame-card-price-${product.id}`}
             className="text-sm font-semibold text-accent tracking-tight"
           >
-            From ${product.startingPrice}
+            From ₹{product.startingPrice.toLocaleString("en-IN")}
           </span>
         </div>
       </div>

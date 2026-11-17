@@ -82,14 +82,14 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     await expect(page.getByTestId("trust-item-ready-to-hang")).toContainText("Ready to Hang");
   });
 
-  test("renders initial frame switcher state with Walnut + Classic Mat ($76)", async ({ page }) => {
+  test("renders initial frame switcher state with Walnut + Classic Mat (₹76)", async ({ page }) => {
     const switcher = page.getByTestId("live-frame-switcher");
     await switcher.scrollIntoViewIfNeeded();
     await expect(switcher).toBeVisible();
 
-    // Verify initial price ($64 base + $12 mat = $76)
+    // Verify initial price (₹64 base + ₹12 mat = ₹76)
     const priceAmount = page.getByTestId("frame-price-amount");
-    await expect(priceAmount).toHaveText("$76");
+    await expect(priceAmount).toHaveText("₹76");
 
     // Verify Walnut moulding button is checked
     const walnutOption = page.getByTestId("moulding-option-walnut");
@@ -121,35 +121,35 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     const priceAmount = page.getByTestId("frame-price-amount");
     const customizeBtn = page.getByTestId("cta-customize");
 
-    // 1. Switch to Antique Brass ($78 base + $12 mat = $90)
+    // 1. Switch to Antique Brass (₹78 base + ₹12 mat = ₹90)
     await page.getByTestId("moulding-option-brass").click();
     await expect(page.getByTestId("moulding-option-brass")).toHaveAttribute("aria-checked", "true");
     await expect(page.getByTestId("moulding-option-walnut")).toHaveAttribute("aria-checked", "false");
-    await expect(priceAmount).toHaveText("$90");
+    await expect(priceAmount).toHaveText("₹90");
     await expect(customizeBtn).toHaveAttribute("href", "/customizer?moulding=brass&mat=classic");
 
-    // 2. Switch to Gallery Matte Black ($58 base + $12 mat = $70)
+    // 2. Switch to Gallery Matte Black (₹58 base + ₹12 mat = ₹70)
     await page.getByTestId("moulding-option-black").click();
     await expect(page.getByTestId("moulding-option-black")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$70");
+    await expect(priceAmount).toHaveText("₹70");
     await expect(customizeBtn).toHaveAttribute("href", "/customizer?moulding=black&mat=classic");
 
-    // 3. Switch to Nordic Natural White Oak ($62 base + $12 mat = $74)
+    // 3. Switch to Nordic Natural White Oak (₹62 base + ₹12 mat = ₹74)
     await page.getByTestId("moulding-option-oak").click();
     await expect(page.getByTestId("moulding-option-oak")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$74");
+    await expect(priceAmount).toHaveText("₹74");
     await expect(customizeBtn).toHaveAttribute("href", "/customizer?moulding=oak&mat=classic");
 
-    // 4. Switch to Vintage Florentine Gold ($82 base + $12 mat = $94)
+    // 4. Switch to Vintage Florentine Gold (₹82 base + ₹12 mat = ₹94)
     await page.getByTestId("moulding-option-gold").click();
     await expect(page.getByTestId("moulding-option-gold")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$94");
+    await expect(priceAmount).toHaveText("₹94");
     await expect(customizeBtn).toHaveAttribute("href", "/customizer?moulding=gold&mat=classic");
 
-    // 5. Switch back to American Natural Walnut ($64 base + $12 mat = $76)
+    // 5. Switch back to American Natural Walnut (₹64 base + ₹12 mat = ₹76)
     await page.getByTestId("moulding-option-walnut").click();
     await expect(page.getByTestId("moulding-option-walnut")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$76");
+    await expect(priceAmount).toHaveText("₹76");
   });
 
   test("toggles mat margins and calculates real-time price & bevel recalculation", async ({ page }) => {
@@ -158,25 +158,25 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     const priceAmount = page.getByTestId("frame-price-amount");
     const matBoard = page.getByTestId("frame-mat-board");
 
-    // Initially with Classic mat (24px padding, +$12, base $64 walnut = $76)
+    // Initially with Classic mat (24px padding, +₹12, base ₹64 walnut = ₹76)
     await expect(matBoard).toHaveCSS("padding", "24px");
-    await expect(priceAmount).toHaveText("$76");
+    await expect(priceAmount).toHaveText("₹76");
 
-    // 1. Toggle to No Mat ($0, base $64 walnut = $64)
+    // 1. Toggle to No Mat (₹0, base ₹64 walnut = ₹64)
     await page.getByTestId("mat-option-none").click();
     await expect(page.getByTestId("mat-option-none")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$64");
+    await expect(priceAmount).toHaveText("₹64");
     await expect(matBoard).toHaveCSS("padding", "0px");
 
-    // 2. Toggle to 3\" Dramatic Gallery (36px padding, +$18, base $64 walnut = $82)
+    // 2. Toggle to 3\" Dramatic Gallery (36px padding, +₹18, base ₹64 walnut = ₹82)
     await page.getByTestId("mat-option-gallery").click();
     await expect(page.getByTestId("mat-option-gallery")).toHaveAttribute("aria-checked", "true");
-    await expect(priceAmount).toHaveText("$82");
+    await expect(priceAmount).toHaveText("₹82");
     await expect(matBoard).toHaveCSS("padding", "36px");
 
-    // Combine with Gold moulding ($82 + $18 = $100)
+    // Combine with Gold moulding (₹82 + ₹18 = ₹100)
     await page.getByTestId("moulding-option-gold").click();
-    await expect(priceAmount).toHaveText("$100");
+    await expect(priceAmount).toHaveText("₹100");
   });
 
   test("toggles room context between Studio Neutral and Curated Living Room and captures screenshots", async ({ page }) => {

@@ -214,7 +214,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                         {size.label}
                       </p>
                       <p className="text-[11px] text-[var(--color-ink-muted)]">
-                        {size.id === "8x10" ? "Standard" : `+$${size.priceDelta}`}
+                        {size.id === "8x10" ? "Standard" : `+₹${size.priceDelta.toLocaleString("en-IN")}`}
                       </p>
                     </div>
                     {isSelected && (
@@ -268,7 +268,7 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                       {mat.name.split(" ")[0]} {mat.name.split(" ")[1] || ""}
                     </span>
                     <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
-                      {mat.price === 0 ? "Included" : `+$${mat.price}`}
+                      {mat.price === 0 ? "Included" : `+₹${mat.price.toLocaleString("en-IN")}`}
                     </span>
                   </button>
                 );
@@ -287,12 +287,12 @@ function QuickCustomiseContent({ product }: { product: CuratedFrameProduct }) {
                   data-testid="dialog-dynamic-price"
                   className="font-serif text-3xl font-bold text-accent"
                 >
-                  <span data-testid="dialog-total-price">${calculatedPrice}</span>
+                  <span data-testid="dialog-total-price">₹{calculatedPrice.toLocaleString("en-IN")}</span>
                 </span>
                 <span className="text-xs text-[#9E9E9E]">
-                  (Base ${product.startingPrice}
-                  {selectedSize.priceDelta > 0 && ` + Size $${selectedSize.priceDelta}`}
-                  {currentMat.price > 0 && ` + Mat $${currentMat.price}`})
+                  (Base ₹{product.startingPrice.toLocaleString("en-IN")}
+                  {selectedSize.priceDelta > 0 && ` + Size ₹${selectedSize.priceDelta.toLocaleString("en-IN")}`}
+                  {currentMat.price > 0 && ` + Mat ₹${currentMat.price.toLocaleString("en-IN")}`})
                 </span>
               </div>
             </div>

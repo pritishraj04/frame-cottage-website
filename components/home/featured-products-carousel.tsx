@@ -396,7 +396,7 @@ export function FeaturedProductsCarousel() {
                             Bespoke Atelier
                           </span>
                           <span className="text-sm font-semibold text-accent">
-                            From ${product.price}
+                            From ₹{product.price.toLocaleString("en-IN")}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">

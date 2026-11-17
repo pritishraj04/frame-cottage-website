@@ -395,7 +395,7 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
   const cartShipping = useMemo(() => {
     if (cart.length === 0) return 0;
     if (deliveryMethod === "atelier") return 0;
-    // Complimentary white-glove above $2,500, otherwise $120
+    // Complimentary white-glove above ₹2,500, otherwise ₹120
     return cartSubtotal >= 2500 ? 0 : 120;
   }, [cart.length, deliveryMethod, cartSubtotal]);
 

@@ -63,7 +63,7 @@ export const ROOM_SETTINGS: RoomSetting[] = [
         frameStyle: "heritage-walnut",
         specs: "Solid Appalachian Walnut • 4-Ply Cotton Mat",
         artTitle: "Executive Boardroom Archival Art Suite",
-        price: "$185",
+        price: "₹185",
         rating: 5,
         review:
           "The mortise corner splines and museum TruVue glass make our board suite art collection look like an auction showcase. Absolutely zero glare.",
@@ -97,7 +97,7 @@ export const ROOM_SETTINGS: RoomSetting[] = [
         frameStyle: "gallery-white-oak",
         specs: "Precision CNC Routing & Tactile Braille • ADA Compliant",
         artTitle: "Architectural Room Identification System",
-        price: "$98",
+        price: "₹98",
         rating: 5,
         review:
           "Delivered 250+ custom ADA compliant door markers on time and under budget. The wood-and-metal craftsmanship is unmatched.",
@@ -126,7 +126,7 @@ export const ROOM_SETTINGS: RoomSetting[] = [
         frameStyle: "studio-matte-black",
         specs: "Hard Rock Maple • Archival Float Mount",
         artTitle: "Abstract Ochre & Indigo Gouache",
-        price: "$210",
+        price: "₹210",
         rating: 5,
         review:
           "Floating the original gouache painting leaves the deckled edges visible in 3D relief. The construction quality is superior to custom brick-and-mortar shops.",
@@ -143,7 +143,7 @@ export const ROOM_SETTINGS: RoomSetting[] = [
         frameStyle: "natural-white-oak",
         specs: "FSC® Appalachian Oak • Warm Off-White Mat",
         artTitle: "Modernist Minimalist Line Drawing",
-        price: "$135",
+        price: "₹135",
         rating: 5,
         review:
           "Leaning frames on the dining sideboard brings relaxed warmth to the dining space. Clean grain patterns and solid weight.",
@@ -189,7 +189,7 @@ export const ROOM_SETTINGS: RoomSetting[] = [
         frameStyle: "heritage-walnut",
         specs: "Solid Black Walnut • 1.5″ Deep Shadowbox",
         artTitle: "Council Chamber Archival Mayoral Portrait",
-        price: "$115",
+        price: "₹115",
         rating: 5,
         review:
           "Every historic charter and official mayoral portrait was preserved using 100% reversible museum encapsulation and TruVue optical acrylic.",

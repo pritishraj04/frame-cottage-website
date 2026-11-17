@@ -213,7 +213,7 @@ export default function CartPage() {
                             <div className="pt-1 flex items-center gap-3 text-[11px] font-mono text-[var(--color-ink-muted)]">
                               <span>Dims: {item.dimensions}</span>
                               <span>•</span>
-                              <span>${item.unitPrice.toLocaleString()} unit</span>
+                              <span>₹{item.unitPrice.toLocaleString("en-IN")} unit</span>
                             </div>
                           </div>
                         </div>
@@ -254,7 +254,7 @@ export default function CartPage() {
                               data-testid={`line-total-${item.id}`}
                               className="font-mono text-base sm:text-lg font-bold text-[var(--color-accent-gold)]"
                             >
-                              ${(item.unitPrice * item.quantity).toLocaleString()}
+                              ₹{(item.unitPrice * item.quantity).toLocaleString("en-IN")}
                             </span>
 
                             <button
@@ -325,7 +325,7 @@ export default function CartPage() {
                           Insured White-Glove Courier
                         </span>
                         <span className="font-mono text-xs font-bold text-accent">
-                          {cartSubtotal >= 2500 ? "FREE" : "$120"}
+                          {cartSubtotal >= 2500 ? "FREE" : "₹120"}
                         </span>
                       </div>
                       <p className="text-[11px] text-[var(--color-ink-muted)] leading-relaxed">
@@ -349,7 +349,7 @@ export default function CartPage() {
                           Atelier Pick-Up / Direct Studio Delivery
                         </span>
                         <span className="font-mono text-xs font-bold text-emerald-400">
-                          Complimentary ($0)
+                          Complimentary (₹0)
                         </span>
                       </div>
                       <p className="text-[11px] text-[var(--color-ink-muted)] leading-relaxed">
@@ -380,14 +380,14 @@ export default function CartPage() {
                     <div className="flex items-center justify-between">
                       <span className="text-[var(--color-ink-muted)]">Subtotal ({cartCount} items):</span>
                       <span data-testid="cart-subtotal" className="font-bold text-[var(--color-ink-primary)]">
-                        ${cartSubtotal.toLocaleString()}
+                        ₹{cartSubtotal.toLocaleString("en-IN")}
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <span className="text-[var(--color-ink-muted)]">White-Glove Logistics:</span>
                       <span data-testid="cart-shipping" className="font-bold text-[var(--color-ink-primary)]">
-                        {cartShipping === 0 ? "Complimentary ($0)" : `$${cartShipping}`}
+                        {cartShipping === 0 ? "Complimentary (₹0)" : `₹${cartShipping.toLocaleString("en-IN")}`}
                       </span>
                     </div>
 
@@ -415,7 +415,7 @@ export default function CartPage() {
                           {isTaxExempt ? "Estimated Tax (Reverse Charge 0%):" : "Estimated Tax (Standard 8.25%):"}
                         </span>
                         <span data-testid="cart-tax" className="font-bold text-[var(--color-ink-primary)]">
-                          {isTaxExempt ? "$0" : `$${cartTax.toLocaleString()}`}
+                          {isTaxExempt ? "₹0" : `₹${cartTax.toLocaleString("en-IN")}`}
                         </span>
                       </div>
                     </div>
@@ -430,7 +430,7 @@ export default function CartPage() {
                           <Tag className="w-3 h-3" />
                           <span>Trade Discount ({promoCode} -{promoDiscountPct}%):</span>
                         </span>
-                        <span>-${cartDiscount.toLocaleString()}</span>
+                        <span>-₹{cartDiscount.toLocaleString("en-IN")}</span>
                       </div>
                     )}
 
@@ -443,7 +443,7 @@ export default function CartPage() {
                         data-testid="cart-total"
                         className="font-mono text-2xl font-bold text-[var(--color-accent-gold)]"
                       >
-                        ${cartTotal.toLocaleString()}
+                        ₹{cartTotal.toLocaleString("en-IN")}
                       </span>
                     </div>
                   </div>
@@ -576,7 +576,7 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[var(--color-ink-muted)]">Total Amount:</span>
-                  <span className="font-bold text-[var(--color-ink-primary)]">${cartTotal.toLocaleString()}</span>
+                  <span className="font-bold text-[var(--color-ink-primary)]">₹{cartTotal.toLocaleString("en-IN")}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[var(--color-ink-muted)]">Fulfillment Protocol:</span>

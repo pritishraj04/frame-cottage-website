@@ -147,13 +147,13 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     const increaseBtn1 = page.getByTestId("qty-increase-fc-cart-1");
     await increaseBtn1.click();
     await expect(qtyVal1).toHaveText("2");
-    await expect(page.getByTestId("line-total-fc-cart-1")).toHaveText("$960");
+    await expect(page.getByTestId("line-total-fc-cart-1")).toHaveText("₹960");
 
     // Test Quantity decrement back
     const decreaseBtn1 = page.getByTestId("qty-decrease-fc-cart-1");
     await decreaseBtn1.click();
     await expect(qtyVal1).toHaveText("1");
-    await expect(page.getByTestId("line-total-fc-cart-1")).toHaveText("$480");
+    await expect(page.getByTestId("line-total-fc-cart-1")).toHaveText("₹480");
 
     // Test Promo Code application
     const promoInput = page.getByTestId("promo-input");
@@ -164,9 +164,9 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
 
     // Test B2B Tax Exemption Toggle
     const taxToggle = page.getByTestId("cart-tax-toggle");
-    await expect(page.getByTestId("cart-tax")).not.toHaveText("$0");
+    await expect(page.getByTestId("cart-tax")).not.toHaveText("₹0");
     await taxToggle.click();
-    await expect(page.getByTestId("cart-tax")).toHaveText("$0");
+    await expect(page.getByTestId("cart-tax")).toHaveText("₹0");
 
     // Test Special Instructions input
     const notesInput = page.getByTestId("cart-engraving-notes");

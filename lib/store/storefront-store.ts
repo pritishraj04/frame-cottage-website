@@ -166,7 +166,7 @@ export const INITIAL_ORDERS: OrderItem[] = [
     id: "FC-2026-8841",
     title: "Appalachian Walnut Bespoke Frame (Set of 2)",
     date: "Feb 12, 2026",
-    total: "$960",
+    total: "₹960",
     status: "In Joinery",
     tracking: "WG-7782-9901",
     specs: '24" × 36" • American Black Walnut • TruVue Optium Museum Acrylic',
@@ -176,7 +176,7 @@ export const INITIAL_ORDERS: OrderItem[] = [
     id: "FC-2026-7203",
     title: "Architectural Illuminated Wayfinding Suite",
     date: "Jan 28, 2026",
-    total: "$3,750",
+    total: "₹3,750",
     status: "Shipped with White-Glove Courier",
     tracking: "WG-4412-0034",
     specs: "Multi-plate C260 Brass • IP67 LED • Site Bay 4 Delivery",
@@ -186,7 +186,7 @@ export const INITIAL_ORDERS: OrderItem[] = [
     id: "FC-2025-6119",
     title: 'CNC Brass Jaali Screen 36" × 72"',
     date: "Dec 14, 2025",
-    total: "$1,890",
+    total: "₹1,890",
     status: "Delivered & Inspected",
     tracking: "WG-1192-3389",
     specs: "3mm Solid Brass • Antiqued Patina • Structural Subframe",
@@ -203,7 +203,7 @@ export const INITIAL_RFQS: RfqItem[] = [
     date: "Feb 8, 2026",
     status: "Under Review by Master Framer",
     scope: "36 custom conservation shadowboxes for State Archive textile artifacts",
-    estimatedValue: "$18,500",
+    estimatedValue: "₹18,500",
   },
   {
     id: "RFQ-2026-039",
@@ -213,7 +213,7 @@ export const INITIAL_RFQS: RfqItem[] = [
     date: "Jan 19, 2026",
     status: "Approved • Proposal Ready",
     scope: "Exterior entrance monument + 42 floor level illuminated directional plaques",
-    estimatedValue: "$14,200",
+    estimatedValue: "₹14,200",
   },
   {
     id: "RFQ-2025-112",
@@ -223,7 +223,7 @@ export const INITIAL_RFQS: RfqItem[] = [
     date: "Nov 04, 2025",
     status: "Completed & Commissioned",
     scope: "Parametric wall cladding with NRC 0.85 sound dampening core",
-    estimatedValue: "$9,800",
+    estimatedValue: "₹9,800",
   },
 ];
 
