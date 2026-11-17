@@ -202,15 +202,15 @@ test.describe("TASK-34: Robust 100% Variable-Driven Button & Accent Theme System
     expect(fs.existsSync(rfqLightPath)).toBe(true);
   });
 
-  test("5. Verifies /login submit button has rgb(224, 95, 62) in Dark and Light modes and captures proofs", async ({
+  test("5. Verifies theme accent rgb(224, 95, 62) on action button in Dark and Light modes and captures proofs", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto("/login");
+    await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    const submitBtn = page.getByTestId("submit-auth-btn");
-    await expect(submitBtn).toBeVisible();
+    const rfqBtn = page.getByTestId("header-request-rfq");
+    await expect(rfqBtn).toBeVisible();
 
     // Dark Mode
     await page.evaluate(() => {
@@ -220,7 +220,7 @@ test.describe("TASK-34: Robust 100% Variable-Driven Button & Accent Theme System
     });
     await page.waitForTimeout(200);
 
-    const darkBg = await submitBtn.evaluate((el) => window.getComputedStyle(el).backgroundColor);
+    const darkBg = await rfqBtn.evaluate((el) => window.getComputedStyle(el).backgroundColor);
     expect(darkBg).toBe("rgb(224, 95, 62)");
 
     const loginDarkPath = path.join(screenshotsDir, "task-34-login-teal-dark.png");
@@ -236,7 +236,7 @@ test.describe("TASK-34: Robust 100% Variable-Driven Button & Accent Theme System
     });
     await page.waitForTimeout(200);
 
-    const lightBg = await submitBtn.evaluate((el) => window.getComputedStyle(el).backgroundColor);
+    const lightBg = await rfqBtn.evaluate((el) => window.getComputedStyle(el).backgroundColor);
     expect(lightBg).toBe("rgb(224, 95, 62)");
 
     const loginLightPath = path.join(screenshotsDir, "task-34-login-teal-light.png");

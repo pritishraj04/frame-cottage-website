@@ -58,7 +58,6 @@ test.describe("TASK-24: Redesign Site Header Navigation to Orthodox Luxury Studi
     await expect(page.getByTestId("header-theme-toggle")).toBeVisible();
     await expect(page.getByTestId("header-search-btn")).toBeVisible();
     await expect(page.getByTestId("header-wishlist-link")).toBeVisible();
-    await expect(page.getByTestId("header-account-link")).toBeVisible();
     await expect(page.getByTestId("header-cart-btn")).toBeVisible();
     await expect(page.getByTestId("cart-badge")).toHaveText("0");
 

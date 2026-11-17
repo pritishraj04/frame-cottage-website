@@ -39,7 +39,6 @@ test.describe("Sticky Header, Announcement Bar, and Service Verticals Mega-Menu"
     // Right actions
     await expect(page.getByTestId("header-search-btn")).toBeVisible();
     await expect(page.getByTestId("header-wishlist-link")).toBeVisible();
-    await expect(page.getByTestId("header-account-link")).toBeVisible();
     const cartBtn = page.getByTestId("header-cart-btn");
     await expect(cartBtn).toBeVisible();
     await expect(page.getByTestId("cart-badge")).toHaveText("0");

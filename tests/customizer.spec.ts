@@ -274,4 +274,27 @@ test.describe("Interactive Studio Customizer Page", () => {
     expect(href).toContain("https://wa.me/");
     expect(href).toContain("Walnut");
   });
+
+  test("11. Email Spec Sheet / Order button opens modal and dispatches Resend HTML email requisition", async ({
+    page,
+  }) => {
+    await page.goto("/customizer?moulding=walnut&mat=classic");
+    await page.waitForLoadState("networkidle");
+
+    const emailOrderBtn = page.getByTestId("customizer-email-order");
+    await emailOrderBtn.scrollIntoViewIfNeeded();
+    await expect(emailOrderBtn).toBeVisible();
+    await emailOrderBtn.click();
+
+    const emailModal = page.getByTestId("customizer-email-modal");
+    await expect(emailModal).toBeVisible();
+
+    await page.getByTestId("customizer-email-name").fill("Ar. Priya Sen");
+    await page.getByTestId("customizer-email-input").fill("priya@senstudio.com");
+    await page.getByTestId("customizer-email-phone").fill("+91 98111 22334");
+    await page.getByTestId("customizer-email-notes").fill("Deliver to Studio 4B, Hauz Khas");
+
+    await page.getByTestId("customizer-submit-email").click();
+    await expect(emailModal.getByText("Spec Sheet Dispatched!")).toBeVisible();
+  });
 });

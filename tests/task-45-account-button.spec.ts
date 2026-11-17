@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 import fs from "fs";
 
-test.describe("TASK-45: Fix Account Button Visibility & Resilience", () => {
+test.describe("TASK-45: Streamlined Studio Header (No Login/Signup/WhatsApp in Header)", () => {
   const screenshotsDir = path.resolve(process.cwd(), ".agent/screenshots");
   const parentBrainDir =
     "/Users/pritish/.gemini/antigravity/brain/91fc1fed-fc5f-495e-88c1-129ef76052af";
@@ -16,24 +16,29 @@ test.describe("TASK-45: Fix Account Button Visibility & Resilience", () => {
     }
   });
 
-  test("verifies account button on desktop (1440x900) has rendered svg icon and captures screenshot", async ({
+  test("verifies clean header on desktop (1440x900) has no account/whatsapp buttons and captures screenshot", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
+    // Verify removed account link and header whatsapp button
     const accountLink = page.getByTestId("header-account-link");
-    await expect(accountLink).toBeVisible();
+    await expect(accountLink).not.toBeVisible();
 
-    // Verify it is NOT an empty HTML tag and has an inner SVG icon
-    const svgIcon = accountLink.locator("svg");
-    await expect(svgIcon).toBeVisible();
+    const whatsappBtn = page.getByTestId("header-whatsapp-btn");
+    await expect(whatsappBtn).not.toBeVisible();
 
-    const box = await accountLink.boundingBox();
-    expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThan(15);
-    expect(box!.height).toBeGreaterThan(15);
+    // Verify required right-side actions
+    const searchBtn = page.getByTestId("header-search-btn");
+    await expect(searchBtn).toBeVisible();
+
+    const wishlistLink = page.getByTestId("header-wishlist-link");
+    await expect(wishlistLink).toBeVisible();
+
+    const cartBtn = page.getByTestId("header-cart-btn");
+    await expect(cartBtn).toBeVisible();
 
     // Capture desktop header screenshot focusing on right side actions
     const header = page.locator("header");
@@ -52,26 +57,21 @@ test.describe("TASK-45: Fix Account Button Visibility & Resilience", () => {
     expect(fs.existsSync(desktopBrainPath)).toBe(true);
   });
 
-  test("verifies account button on mobile (390x844) is visible in header with svg icon and captures screenshot", async ({
+  test("verifies clean header and mobile drawer on mobile (390x844) without account/whatsapp and captures screenshot", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
+    // Verify account and whatsapp not in header
     const accountLink = page.getByTestId("header-account-link");
-    await expect(accountLink).toBeVisible();
+    await expect(accountLink).not.toBeVisible();
 
-    // Verify it has inner SVG icon
-    const svgIcon = accountLink.locator("svg");
-    await expect(svgIcon).toBeVisible();
+    const whatsappBtn = page.getByTestId("header-whatsapp-btn");
+    await expect(whatsappBtn).not.toBeVisible();
 
-    const box = await accountLink.boundingBox();
-    expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThan(15);
-    expect(box!.height).toBeGreaterThan(15);
-
-    // Capture mobile header screenshot showing account icon visible in top nav
+    // Capture mobile header screenshot
     const header = page.locator("header");
     const mobileAgentPath = path.join(
       screenshotsDir,
@@ -87,7 +87,7 @@ test.describe("TASK-45: Fix Account Button Visibility & Resilience", () => {
     expect(fs.existsSync(mobileAgentPath)).toBe(true);
     expect(fs.existsSync(mobileBrainPath)).toBe(true);
 
-    // Also test mobile drawer account link
+    // Test mobile drawer
     const hamburger = page.getByRole("button", {
       name: "Open mobile navigation menu",
     });
@@ -97,9 +97,16 @@ test.describe("TASK-45: Fix Account Button Visibility & Resilience", () => {
     const drawer = page.getByRole("dialog");
     await expect(drawer).toBeVisible();
 
+    // Ensure account link and whatsapp are NOT in drawer
     const drawerAccountLink = drawer.locator('a[href="/account"]');
-    await expect(drawerAccountLink).toBeVisible();
-    await expect(drawerAccountLink).toContainText("Account");
-    await expect(drawerAccountLink.locator("svg")).toBeVisible();
+    await expect(drawerAccountLink).not.toBeVisible();
+
+    const drawerWhatsapp = drawer.getByTestId("mobile-whatsapp-btn");
+    await expect(drawerWhatsapp).not.toBeVisible();
+
+    // Ensure Saved Items, Cart, and RFQ exist in drawer
+    await expect(drawer.locator('a[href="/wishlist"]')).toBeVisible();
+    await expect(drawer.locator('a[href="/cart"]')).toBeVisible();
+    await expect(drawer.locator('a[href="/rfq"]')).toBeVisible();
   });
 });

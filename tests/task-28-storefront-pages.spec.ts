@@ -30,7 +30,7 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
   test("1. Route Verification & HTTP 200 Checks across all storefront pages", async ({
     page,
   }) => {
-    const routes = ["/wishlist", "/cart", "/login", "/account", "/profile"];
+    const routes = ["/wishlist", "/cart", "/account"];
 
     for (const route of routes) {
       const response = await page.goto(route);
@@ -181,6 +181,19 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     await modal.getByRole("button", { name: "Return to Studio Cart" }).click();
     await expect(modal).not.toBeVisible();
 
+    // Test Resend HTML Email checkout trigger
+    const emailCheckoutBtn = page.getByTestId("email-checkout-btn");
+    await emailCheckoutBtn.click();
+    await expect(modal).toBeVisible();
+    await page.getByTestId("checkout-customer-name").fill("Ar. Rajesh Mehra");
+    await page.getByTestId("checkout-customer-email").fill("rajesh@mehra.design");
+    await page.getByTestId("checkout-customer-phone").fill("+91 98100 12345");
+    await page.getByTestId("checkout-customer-address").fill("14 Jor Bagh, New Delhi");
+    await page.getByTestId("send-email-order-btn").click();
+    await expect(page.getByText("Requisition Dispatched Successfully!")).toBeVisible();
+    await modal.getByRole("button", { name: "Return to Studio Cart" }).click();
+    await expect(modal).not.toBeVisible();
+
     // Switch to Light Mode and capture screenshot
     await page.evaluate(() => {
       document.documentElement.classList.remove("dark");
@@ -191,50 +204,17 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     await saveScreenshots(page, "task-28-cart-light.png");
   });
 
-  test("4. Login Page: tabs switching, client portal selector, demo credentials, and clean account redirect", async ({
+  test("4. Login route redirects to home with no login/signup requirement", async ({
     page,
   }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/login");
-    await page.waitForLoadState("networkidle");
-
-    // Force Museum Dark Mode
-    await page.evaluate(() => {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("frame-cottage-theme", "dark");
-    });
-    await page.waitForTimeout(300);
-
-    // Assert form elements
-    await expect(page.getByTestId("auth-tab-signin")).toBeVisible();
-    await expect(page.getByTestId("auth-tab-register")).toBeVisible();
-    await expect(page.getByTestId("portal-collector")).toBeVisible();
-    await expect(page.getByTestId("portal-enterprise")).toBeVisible();
-    await expect(page.getByTestId("input-email")).toBeVisible();
-    await expect(page.getByTestId("input-password")).toBeVisible();
-    await expect(page.getByTestId("demo-collector-btn")).toBeVisible();
-    await expect(page.getByTestId("demo-enterprise-btn")).toBeVisible();
-
-    // Capture dark mode screenshot
+    await page.waitForURL("**/");
+    expect(page.url().endsWith("/") || page.url().includes("localhost")).toBe(true);
+    await expect(page.getByTestId("site-header")).toBeVisible();
     await saveScreenshots(page, "task-28-login-dark.png");
-
-    // Test tab switching to Register
-    await page.getByTestId("auth-tab-register").click();
-    await expect(page.getByTestId("input-name")).toBeVisible();
-
-    // Test enterprise portal switcher
-    await page.getByTestId("portal-enterprise").click();
-    await expect(page.getByTestId("input-organization")).toBeVisible();
-
-    // Test Demo Collector Login button redirects to /account
-    await page.getByTestId("demo-collector-btn").click();
-    await page.waitForURL("**/account");
-    expect(page.url()).toContain("/account");
-    await expect(page.getByTestId("account-name")).toContainText("Camilla Vance");
   });
 
-  test("5. Account Dashboard: profile identity, 4-tab navigation, spec sheet modal, address modal, and theme toggle", async ({
+  test("5. Account Dashboard: Saved Orders & Inquiries client-side viewer without auth", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
@@ -249,66 +229,28 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     });
     await page.waitForTimeout(300);
 
-    // Profile Identity checks
-    await expect(page.getByTestId("account-avatar")).toBeVisible();
-    await expect(page.getByTestId("account-name")).toBeVisible();
-    await expect(page.getByTestId("account-tier-badge")).toBeVisible();
+    // Assert Saved Orders header
+    await expect(page.getByRole("heading", { name: "Saved Orders & Inquiries" })).toBeVisible();
+    await expect(page.getByTestId("account-tab-orders")).toBeVisible();
+    await expect(page.getByTestId("account-tab-rfqs")).toBeVisible();
 
     // Capture account dark mode screenshot
     await saveScreenshots(page, "task-28-account-dark.png");
 
-    // Tab 1: Orders
-    await expect(page.getByTestId("tab-orders")).toBeVisible();
-    await expect(page.getByTestId("content-orders")).toBeVisible();
-    const specSheetBtn = page.getByTestId("spec-sheet-btn-FC-2026-8841");
-    await expect(specSheetBtn).toBeVisible();
-    await specSheetBtn.click();
-    await expect(page.getByText("In-Situ Architectural Spec Sheet")).toBeVisible();
-    await page.getByRole("button", { name: "Close" }).click();
+    // Tab 1: Orders list
+    await expect(page.getByTestId("orders-list")).toBeVisible();
 
-    // Tab 2: RFQs
-    const tabRfqs = page.getByTestId("tab-rfqs");
-    await tabRfqs.click();
-    await expect(page.getByTestId("content-rfqs")).toBeVisible();
-    const rfqDetailBtn = page.getByTestId("rfq-details-btn-RFQ-2026-041");
-    await expect(rfqDetailBtn).toBeVisible();
-    await rfqDetailBtn.click();
-    await expect(page.getByText("RFQ Architectural Dossier")).toBeVisible();
-    await page.getByRole("button", { name: "Close" }).click();
-
-    // Tab 3: Addresses
-    const tabAddresses = page.getByTestId("tab-addresses");
-    await tabAddresses.click();
-    await expect(page.getByTestId("content-addresses")).toBeVisible();
-    const addAddressBtn = page.getByTestId("add-address-btn");
-    await addAddressBtn.click();
-    const addressModal = page.getByTestId("address-modal");
-    await expect(addressModal).toBeVisible();
-    await addressModal.getByRole("button", { name: "Cancel" }).click();
-    await expect(addressModal).not.toBeVisible();
-
-    // Tab 4: Settings & Preferences
-    const tabSettings = page.getByTestId("tab-settings");
-    await tabSettings.click();
-    await expect(page.getByTestId("content-settings")).toBeVisible();
-    await expect(page.getByTestId("account-theme-toggle")).toBeVisible();
-    await expect(page.getByTestId("sign-out-btn")).toBeVisible();
-
-    // Sign out test redirects to /login
-    await page.getByTestId("sign-out-btn").click();
-    await page.waitForURL("**/login");
-    expect(page.url()).toContain("/login");
+    // Tab 2: Switch to RFQs
+    await page.getByTestId("account-tab-rfqs").click();
+    await expect(page.getByTestId("rfqs-list")).toBeVisible();
   });
 
-  test("6. Profile route re-export/render: /profile cleanly renders Account Dashboard", async ({
+  test("6. Profile route cleanly redirects to home", async ({
     page,
   }) => {
     await page.goto("/profile");
-    await page.waitForLoadState("networkidle");
-
-    await expect(page.getByTestId("account-avatar")).toBeVisible();
-    await expect(page.getByTestId("tab-orders")).toBeVisible();
-    await expect(page.getByTestId("tab-rfqs")).toBeVisible();
+    await page.waitForURL("**/");
+    expect(page.url().endsWith("/") || page.url().includes("localhost")).toBe(true);
   });
 
   test("7. Mobile Viewport (390×844) Responsiveness & Zero Horizontal Overflow", async ({
@@ -316,7 +258,7 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
-    const routes = ["/wishlist", "/cart", "/login", "/account"];
+    const routes = ["/wishlist", "/cart", "/account"];
 
     for (const route of routes) {
       await page.goto(route);

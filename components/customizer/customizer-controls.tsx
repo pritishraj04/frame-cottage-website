@@ -41,7 +41,11 @@ import {
   Maximize2,
   X,
   CheckCircle2,
+  Mail,
+  Loader2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { sendOrderEmail } from "@/app/actions/send-order-email";
 
 interface CustomizerControlsProps {
   mouldingId: MouldingId;
@@ -101,6 +105,15 @@ export function CustomizerControls({
   const { addToCart, addToWishlist } = useStorefront();
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [emailCustomerName, setEmailCustomerName] = useState("");
+  const [emailCustomerEmail, setEmailCustomerEmail] = useState("");
+  const [emailCustomerPhone, setEmailCustomerPhone] = useState("");
+  const [emailCustomerNotes, setEmailCustomerNotes] = useState("");
+  const [emailOrderRef, setEmailOrderRef] = useState("");
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
+  const [emailSuccess, setEmailSuccess] = useState(false);
+  const [emailError, setEmailError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Pricing calculation
@@ -222,6 +235,73 @@ export function CustomizerControls({
     setIsWishlisted(true);
     setToastMessage(`Saved "${currentMoulding.name} Bespoke Frame" to Wishlist`);
     setTimeout(() => setToastMessage(null), 4000);
+  };
+
+  const handleOpenEmailModal = () => {
+    const ref = `FC-BESPOKE-${Math.floor(1000 + Math.random() * 9000)}`;
+    setEmailOrderRef(ref);
+    setEmailSuccess(false);
+    setEmailError("");
+    setIsEmailModalOpen(true);
+  };
+
+  const handleSendCustomizerEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!emailCustomerEmail || !emailCustomerEmail.includes("@")) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+    setIsSendingEmail(true);
+    setEmailError("");
+    try {
+      const specSummary = `${currentMoulding.name} Moulding (${currentMoulding.dimensions}), ${currentMat.name} Mat (${currentMatColor.name}), ${currentGlazing.name}`;
+      const res = await sendOrderEmail({
+        orderRef: emailOrderRef,
+        customer: {
+          name: emailCustomerName || "Bespoke Framing Client",
+          email: emailCustomerEmail,
+          phone: emailCustomerPhone,
+          address: emailCustomerNotes,
+        },
+        items: [
+          {
+            name: `Bespoke Studio Frame - ${currentMoulding.name}`,
+            dimensions: `${effectiveWidth}″ × ${effectiveHeight}″`,
+            specifications: specSummary,
+            quantity: 1,
+            price: pricing.total,
+          },
+        ],
+        total: pricing.total,
+        deliveryMethod: "Insured White-Glove Transit",
+        specialNotes: emailCustomerNotes,
+        source: "customizer",
+      });
+
+      if (res.success) {
+        try {
+          const existing = JSON.parse(localStorage.getItem("fc_saved_orders_v1") || "[]");
+          const newOrder = {
+            id: emailOrderRef,
+            title: `Bespoke ${currentMoulding.name} Frame (${effectiveWidth}″ × ${effectiveHeight}″)`,
+            date: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
+            total: `₹${pricing.total.toLocaleString("en-IN")}`,
+            status: "In Joinery" as const,
+            tracking: `DISPATCH-${emailOrderRef}`,
+            specs: `${specSummary} • Requisition via Resend Email`,
+            stage: "Spec Sheet Transmitted",
+          };
+          localStorage.setItem("fc_saved_orders_v1", JSON.stringify([newOrder, ...existing]));
+        } catch {}
+        setEmailSuccess(true);
+      } else {
+        setEmailError(res.error || "Failed to dispatch email.");
+      }
+    } catch (err: any) {
+      setEmailError(err.message || "Failed to dispatch email.");
+    } finally {
+      setIsSendingEmail(false);
+    }
   };
 
   // Scroll to section helper
@@ -860,22 +940,34 @@ export function CustomizerControls({
 
         {/* Primary Action Buttons */}
         <div className="space-y-2.5">
-          <a
-            href={whatsAppCustomizerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="customizer-order-whatsapp"
-            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.99] text-[#0A2612] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md cursor-pointer group"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="w-4 h-4 fill-current transition-transform group-hover:scale-110"
-              aria-hidden="true"
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <a
+              href={whatsAppCustomizerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="customizer-order-whatsapp"
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.99] text-[#0A2612] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md cursor-pointer group"
             >
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.04 7.42C8.84 7.42 8.52 7.5 8.25 7.79C7.97 8.09 7.21 8.81 7.21 10.27C7.21 11.73 8.27 13.13 8.41 13.33C8.56 13.53 10.5 16.69 13.56 17.89C16.1 18.88 16.62 18.69 17.17 18.64C17.72 18.59 18.94 17.91 19.19 17.21C19.44 16.51 19.44 15.91 19.37 15.79C19.3 15.66 19.1 15.59 18.8 15.44C18.5 15.29 17.03 14.57 16.76 14.47C16.48 14.37 16.29 14.32 16.09 14.62C15.89 14.91 15.33 15.59 15.16 15.79C14.99 15.98 14.81 16.01 14.52 15.86C14.22 15.71 13.27 15.4 12.14 14.39C11.26 13.6 10.66 12.63 10.5 12.33C10.33 12.04 10.48 11.88 10.63 11.73C10.77 11.59 10.94 11.37 11.09 11.19C11.24 11.02 11.29 10.89 11.39 10.69C11.49 10.5 11.44 10.33 11.37 10.18C11.29 10.04 10.69 8.58 10.44 7.98C10.2 7.4 9.96 7.48 9.77 7.47C9.6 7.47 9.4 7.42 9.04 7.42Z" />
-            </svg>
-            <span>Order via WhatsApp (₹{pricing.total})</span>
-          </a>
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4 fill-current transition-transform group-hover:scale-110"
+                aria-hidden="true"
+              >
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.04 7.42C8.84 7.42 8.52 7.5 8.25 7.79C7.97 8.09 7.21 8.81 7.21 10.27C7.21 11.73 8.27 13.13 8.41 13.33C8.56 13.53 10.5 16.69 13.56 17.89C16.1 18.88 16.62 18.69 17.17 18.64C17.72 18.59 18.94 17.91 19.19 17.21C19.44 16.51 19.44 15.91 19.37 15.79C19.3 15.66 19.1 15.59 18.8 15.44C18.5 15.29 17.03 14.57 16.76 14.47C16.48 14.37 16.29 14.32 16.09 14.62C15.89 14.91 15.33 15.59 15.16 15.79C14.99 15.98 14.81 16.01 14.52 15.86C14.22 15.71 13.27 15.4 12.14 14.39C11.26 13.6 10.66 12.63 10.5 12.33C10.33 12.04 10.48 11.88 10.63 11.73C10.77 11.59 10.94 11.37 11.09 11.19C11.24 11.02 11.29 10.89 11.39 10.69C11.49 10.5 11.44 10.33 11.37 10.18C11.29 10.04 10.69 8.58 10.44 7.98C10.2 7.4 9.96 7.48 9.77 7.47C9.6 7.47 9.4 7.42 9.04 7.42Z" />
+              </svg>
+              <span>Order via WhatsApp (₹{pricing.total})</span>
+            </a>
+
+            <button
+              type="button"
+              data-testid="customizer-email-order"
+              onClick={handleOpenEmailModal}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-accent hover:bg-accent-hover active:scale-[0.99] text-[var(--color-accent-contrast)] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md cursor-pointer group"
+            >
+              <Mail className="w-4 h-4" />
+              <span>Email Spec Sheet / Order (₹{pricing.total})</span>
+            </button>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
@@ -921,6 +1013,181 @@ export function CustomizerControls({
           </div>
         </div>
       </div>
+
+      {/* Email Spec Sheet & Order Modal */}
+      <AnimatePresence>
+        {isEmailModalOpen && (
+          <div
+            data-testid="customizer-email-modal"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in duration-200"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="max-w-md w-full rounded-3xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-card-elevated)] p-6 sm:p-8 space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+            >
+              <button
+                type="button"
+                onClick={() => setIsEmailModalOpen(false)}
+                className="absolute top-4 right-4 p-1.5 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] rounded-full transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="w-12 h-12 rounded-2xl border-2 border-dashed border-accent bg-accent/10 flex items-center justify-center text-accent mx-auto shadow-sm">
+                <Mail className="w-6 h-6" />
+              </div>
+
+              <div className="text-center space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-accent font-bold">
+                  Resend HTML Email Dispatch
+                </span>
+                <h3 className="font-serif text-2xl font-bold text-[var(--color-ink-primary)]">
+                  Email Spec Sheet / Order
+                </h3>
+                <p className="text-xs text-[var(--color-ink-muted)] leading-relaxed">
+                  Transmit an archival framing specification sheet and order requisition directly to Frames Cottage Studio and your email address.
+                </p>
+              </div>
+
+              {/* Bespoke Frame Spec Summary */}
+              <div className="p-4 rounded-xl border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/70 space-y-2 text-xs font-mono">
+                <div className="flex justify-between">
+                  <span className="text-[var(--color-ink-muted)]">Requisition Ref:</span>
+                  <span className="font-bold text-accent">{emailOrderRef}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--color-ink-muted)]">Moulding:</span>
+                  <span className="font-bold text-[var(--color-ink-primary)]">{currentMoulding.name} ({currentMoulding.dimensions})</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--color-ink-muted)]">Mat & Color:</span>
+                  <span className="text-[var(--color-ink-primary)]">{currentMat.name} ({currentMatColor.name})</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--color-ink-muted)]">Glazing:</span>
+                  <span className="text-[var(--color-ink-primary)]">{currentGlazing.name}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[var(--color-ink-muted)]">Dimensions:</span>
+                  <span className="text-[var(--color-ink-primary)]">{effectiveWidth}″ × {effectiveHeight}″</span>
+                </div>
+                <div className="flex justify-between pt-1 border-t border-[var(--color-border-subtle)]">
+                  <span className="font-semibold text-[var(--color-ink-primary)]">Total Price:</span>
+                  <span className="font-bold text-base text-[var(--color-ink-primary)]">₹{pricing.total.toLocaleString("en-IN")}</span>
+                </div>
+              </div>
+
+              {emailSuccess ? (
+                <div className="p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-center space-y-3 animate-in fade-in">
+                  <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
+                  <div className="space-y-1">
+                    <h4 className="font-serif font-bold text-lg text-[var(--color-ink-primary)]">
+                      Spec Sheet Dispatched!
+                    </h4>
+                    <p className="text-xs text-[var(--color-ink-secondary)] leading-relaxed">
+                      Requisition <strong className="font-mono text-accent">{emailOrderRef}</strong> was transmitted via Resend. An archival copy was emailed to{" "}
+                      <strong className="text-[var(--color-ink-primary)]">{emailCustomerEmail}</strong>.
+                    </p>
+                  </div>
+                  <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
+                    <Link
+                      href="/account"
+                      className="px-4 py-2.5 rounded-full bg-accent text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wide"
+                    >
+                      View Saved Requisitions
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setIsEmailModalOpen(false)}
+                      className="px-4 py-2.5 rounded-full border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)]"
+                    >
+                      Return to Studio
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSendCustomizerEmail} className="space-y-3 pt-1 text-left">
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      data-testid="customizer-email-name"
+                      value={emailCustomerName}
+                      onChange={(e) => setEmailCustomerName(e.target.value)}
+                      placeholder="Your Name (e.g. Ar. Priya Sen)"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-accent"
+                    />
+
+                    <input
+                      type="email"
+                      required
+                      data-testid="customizer-email-input"
+                      value={emailCustomerEmail}
+                      onChange={(e) => setEmailCustomerEmail(e.target.value)}
+                      placeholder="Your Email Address * (for HTML spec sheet)"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-accent"
+                    />
+
+                    <input
+                      type="tel"
+                      data-testid="customizer-email-phone"
+                      value={emailCustomerPhone}
+                      onChange={(e) => setEmailCustomerPhone(e.target.value)}
+                      placeholder="Contact Phone (e.g. +91 98100 XXXXX)"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-accent"
+                    />
+
+                    <textarea
+                      rows={2}
+                      data-testid="customizer-email-notes"
+                      value={emailCustomerNotes}
+                      onChange={(e) => setEmailCustomerNotes(e.target.value)}
+                      placeholder="Special Instructions / Mounting Notes / Jobsite Location"
+                      className="w-full px-3 py-2 rounded-xl bg-[var(--color-canvas-subtle)] border border-[var(--color-border-strong)] text-xs font-mono text-[var(--color-ink-primary)] placeholder-[var(--color-ink-muted)] focus:outline-none focus:ring-1 focus:ring-accent resize-none"
+                    />
+                  </div>
+
+                  {emailError && (
+                    <p className="text-xs font-mono text-red-400 bg-red-400/10 p-2 rounded-lg border border-red-400/20">
+                      {emailError}
+                    </p>
+                  )}
+
+                  <div className="flex flex-col gap-2.5 pt-2">
+                    <button
+                      type="submit"
+                      data-testid="customizer-submit-email"
+                      disabled={isSendingEmail}
+                      className="w-full py-3.5 px-4 rounded-full bg-accent hover:bg-accent-hover active:scale-[0.99] text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wider text-center uppercase transition-all duration-200 cursor-pointer shadow-md flex items-center justify-center gap-2 disabled:opacity-50"
+                    >
+                      {isSendingEmail ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Transmitting Spec Sheet...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="w-4 h-4" />
+                          <span>Send Requisition Email via Resend</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsEmailModalOpen(false)}
+                      className="w-full py-2.5 px-4 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-xs font-mono text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)] text-center transition-colors cursor-pointer"
+                    >
+                      Return to Studio Customizer
+                    </button>
+                  </div>
+                </form>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
