@@ -275,7 +275,7 @@ test.describe("Interactive Studio Customizer Page", () => {
     expect(href).toContain("Walnut");
   });
 
-  test("11. Email Spec Sheet / Order button opens modal and dispatches Resend HTML email requisition", async ({
+  test("11. Email Spec Sheet / Order button opens modal, allows switching Payment Type, and dispatches Resend HTML invoice requisition", async ({
     page,
   }) => {
     await page.goto("/customizer?moulding=walnut&mat=classic");
@@ -289,6 +289,18 @@ test.describe("Interactive Studio Customizer Page", () => {
     const emailModal = page.getByTestId("customizer-email-modal");
     await expect(emailModal).toBeVisible();
 
+    // Verify Payment Type selector renders and all 4 options are present
+    const paymentSelector = page.getByTestId("payment-type-selector");
+    await expect(paymentSelector).toBeVisible();
+    await expect(page.getByTestId("payment-option-upi")).toBeVisible();
+    await expect(page.getByTestId("payment-option-bank-transfer")).toBeVisible();
+    await expect(page.getByTestId("payment-option-card-link")).toBeVisible();
+    await expect(page.getByTestId("payment-option-pay-on-delivery")).toBeVisible();
+
+    // Switch payment option from default UPI to Bank Transfer (NEFT/IMPS/RTGS)
+    await page.getByTestId("payment-option-bank-transfer").click();
+    await expect(page.getByTestId("payment-option-bank-transfer")).toContainText("NEFT / IMPS / RTGS");
+
     await page.getByTestId("customizer-email-name").fill("Ar. Priya Sen");
     await page.getByTestId("customizer-email-input").fill("priya@senstudio.com");
     await page.getByTestId("customizer-email-phone").fill("+91 98111 22334");
@@ -296,5 +308,7 @@ test.describe("Interactive Studio Customizer Page", () => {
 
     await page.getByTestId("customizer-submit-email").click();
     await expect(emailModal.getByText("Spec Sheet Dispatched!")).toBeVisible();
+    await expect(emailModal).toContainText("NEFT / IMPS / RTGS");
+    await expect(emailModal).toContainText("Official Atelier HTML Invoice");
   });
 });

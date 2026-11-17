@@ -34,6 +34,7 @@ import { useStorefront, OrderItem } from "@/lib/store/storefront-context";
 import { createWhatsAppCartOrderUrl } from "@/lib/constants/whatsapp";
 import { sendOrderEmail } from "@/app/actions/send-order-email";
 import { saveGuestOrder } from "@/app/actions/save-guest-order";
+import { PaymentTypeId, PAYMENT_OPTIONS } from "@/lib/email/invoice-template";
 
 export default function CartPage() {
   const {
@@ -64,6 +65,7 @@ export default function CartPage() {
   const [promoInput, setPromoInput] = useState("");
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [checkoutMode, setCheckoutMode] = useState<"whatsapp" | "email">("whatsapp");
+  const [paymentType, setPaymentType] = useState<PaymentTypeId>("upi");
   const [orderReferenceId, setOrderReferenceId] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
@@ -123,6 +125,9 @@ export default function CartPage() {
   };
 
   const handleSendWhatsAppOrder = () => {
+    const selectedPaymentOption =
+      PAYMENT_OPTIONS.find((p) => p.id === paymentType) || PAYMENT_OPTIONS[0];
+
     saveOrderLocally(orderReferenceId, "WhatsApp");
 
     // Persist guest order directly into Supabase table public.orders in background
@@ -146,8 +151,14 @@ export default function CartPage() {
       currency: "INR",
       deliveryMethod: deliveryMethod,
       status: "confirmed",
-      shippingAddress: customerAddress || "",
-      specialInstructions: specialInstructions,
+      shippingAddress: {
+        address: customerAddress || "",
+        paymentType,
+        paymentLabel: selectedPaymentOption.label,
+      },
+      specialInstructions: specialInstructions
+        ? `${specialInstructions} [Payment: ${selectedPaymentOption.label}]`
+        : `Payment: ${selectedPaymentOption.label}`,
     }).catch((err) => console.warn("[Cart] Failed to save WhatsApp guest order:", err));
 
     const url = createWhatsAppCartOrderUrl(
@@ -159,7 +170,8 @@ export default function CartPage() {
         name: customerName,
         phone: customerPhone,
         address: customerAddress,
-      }
+      },
+      selectedPaymentOption.label
     );
     window.open(url, "_blank", "noopener,noreferrer");
     clearCart();
@@ -174,6 +186,10 @@ export default function CartPage() {
     }
     setIsEmailSending(true);
     setEmailError("");
+
+    const selectedPaymentOption =
+      PAYMENT_OPTIONS.find((p) => p.id === paymentType) || PAYMENT_OPTIONS[0];
+
     try {
       const res = await sendOrderEmail({
         orderRef: orderReferenceId,
@@ -191,6 +207,11 @@ export default function CartPage() {
           price: item.unitPrice,
         })),
         total: cartTotal,
+        subtotal: cartSubtotal,
+        shipping: cartShipping,
+        tax: cartTax,
+        discount: cartDiscount,
+        paymentType,
         deliveryMethod:
           deliveryMethod === "white-glove"
             ? "Insured White-Glove Delivery"
@@ -220,8 +241,14 @@ export default function CartPage() {
         currency: "INR",
         deliveryMethod: deliveryMethod,
         status: "confirmed",
-        shippingAddress: customerAddress || "",
-        specialInstructions: specialInstructions,
+        shippingAddress: {
+          address: customerAddress || "",
+          paymentType,
+          paymentLabel: selectedPaymentOption.label,
+        },
+        specialInstructions: specialInstructions
+          ? `${specialInstructions} [Payment: ${selectedPaymentOption.label}]`
+          : `Payment: ${selectedPaymentOption.label}`,
       }).catch((err) => console.warn("[Cart] Failed to save Email guest order:", err));
 
       if (res.success) {
@@ -836,13 +863,19 @@ export default function CartPage() {
               {emailSuccess ? (
                 <div className="p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-center space-y-3 animate-in fade-in">
                   <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
                     <h4 className="font-serif font-bold text-lg text-[var(--color-ink-primary)]">
                       Requisition Dispatched Successfully!
                     </h4>
+                    <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-accent-gold)]/15 border border-[var(--color-accent-gold)]/40 text-[var(--color-accent-gold)] text-[11px] font-mono font-semibold">
+                      Official Atelier HTML Invoice &amp; Archival Assurance Sent
+                    </div>
                     <p className="text-xs text-[var(--color-ink-secondary)] leading-relaxed">
-                      Order reference <strong className="font-mono text-accent">{orderReferenceId}</strong> has been transmitted via Resend. A complete archival spec sheet was delivered to{" "}
+                      Order reference <strong className="font-mono text-accent">{orderReferenceId}</strong> has been transmitted via Resend. A museum-grade HTML invoice was delivered to{" "}
                       <strong className="text-[var(--color-ink-primary)]">{customerEmail}</strong>.
+                    </p>
+                    <p className="text-[11px] text-[var(--color-ink-muted)] font-mono">
+                      Payment Type: <strong className="text-[var(--color-accent-gold)]">{PAYMENT_OPTIONS.find((p) => p.id === paymentType)?.label}</strong> • 4-Point Archival Guarantee Included.
                     </p>
                   </div>
                   <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
@@ -866,12 +899,66 @@ export default function CartPage() {
                 /* Customer Details Form */
                 <form
                   onSubmit={checkoutMode === "email" ? handleSendEmailOrder : (e) => { e.preventDefault(); handleSendWhatsAppOrder(); }}
-                  className="space-y-3 pt-1 text-left"
+                  className="space-y-4 pt-1 text-left"
                 >
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-ink-muted)] block font-semibold">
-                    Client & Fulfillment Details
-                  </span>
+                  {/* Payment Method / Payment Type Selector */}
+                  <div className="space-y-2" data-testid="payment-type-selector">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-ink-muted)] block font-semibold">
+                        Payment Method &amp; Settlement
+                      </span>
+                      <span className="text-[10px] font-mono text-[var(--color-accent-gold)]">
+                        Zero Advance Risk
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {PAYMENT_OPTIONS.map((opt) => {
+                        const isSelected = paymentType === opt.id;
+                        return (
+                          <button
+                            key={opt.id}
+                            type="button"
+                            data-testid={`payment-option-${opt.id}`}
+                            onClick={() => setPaymentType(opt.id)}
+                            className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                              isSelected
+                                ? "border-[var(--color-accent-gold)] bg-[var(--color-accent-gold)]/10 ring-1 ring-[var(--color-accent-gold)]"
+                                : "border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-1 mb-1">
+                              <span
+                                className={`text-xs font-semibold ${
+                                  isSelected
+                                    ? "text-[var(--color-accent-gold)]"
+                                    : "text-[var(--color-ink-primary)]"
+                                }`}
+                              >
+                                {opt.label}
+                              </span>
+                              {isSelected && (
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-accent-gold)] shrink-0" />
+                              )}
+                            </div>
+                            <span className="text-[10px] text-[var(--color-ink-muted)] line-clamp-2 leading-tight">
+                              {opt.description}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="text-[10px] text-[var(--color-ink-muted)] font-mono flex items-center gap-1.5 px-2.5 py-1.5 bg-[var(--color-canvas-subtle)] rounded-lg border border-dashed border-[var(--color-border-subtle)]">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[var(--color-accent-gold)] shrink-0" />
+                      <span>
+                        {PAYMENT_OPTIONS.find((p) => p.id === paymentType)?.settlementNote}
+                      </span>
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-ink-muted)] block font-semibold">
+                      Client &amp; Fulfillment Coordinates
+                    </span>
                     <input
                       type="text"
                       data-testid="checkout-customer-name"

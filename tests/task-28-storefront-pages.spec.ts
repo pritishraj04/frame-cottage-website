@@ -178,6 +178,19 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     await checkoutBtn.click();
     const modal = page.getByTestId("checkout-modal");
     await expect(modal).toBeVisible();
+
+    // Verify Payment Type Selector renders with tactile options in WhatsApp tab
+    const paymentSelector = page.getByTestId("payment-type-selector");
+    await expect(paymentSelector).toBeVisible();
+    await expect(page.getByTestId("payment-option-upi")).toBeVisible();
+    await expect(page.getByTestId("payment-option-bank-transfer")).toBeVisible();
+    await expect(page.getByTestId("payment-option-card-link")).toBeVisible();
+    await expect(page.getByTestId("payment-option-pay-on-delivery")).toBeVisible();
+
+    // Switch payment option in modal
+    await page.getByTestId("payment-option-pay-on-delivery").click();
+    await expect(page.getByTestId("payment-option-pay-on-delivery")).toContainText("Pay on Delivery");
+
     await modal.getByRole("button", { name: "Return to Studio Cart" }).click();
     await expect(modal).not.toBeVisible();
 
@@ -185,12 +198,20 @@ test.describe("TASK-28: Frontend-Only Wishlist, Cart, Profile/Account, and Login
     const emailCheckoutBtn = page.getByTestId("email-checkout-btn");
     await emailCheckoutBtn.click();
     await expect(modal).toBeVisible();
+
+    // Switch to Card / Secure Payment Link for email invoice
+    await expect(page.getByTestId("payment-type-selector")).toBeVisible();
+    await page.getByTestId("payment-option-card-link").click();
+    await expect(page.getByTestId("payment-option-card-link")).toContainText("Card / Secure Payment Link");
+
     await page.getByTestId("checkout-customer-name").fill("Ar. Rajesh Mehra");
     await page.getByTestId("checkout-customer-email").fill("rajesh@mehra.design");
     await page.getByTestId("checkout-customer-phone").fill("+91 98100 12345");
     await page.getByTestId("checkout-customer-address").fill("14 Jor Bagh, New Delhi");
     await page.getByTestId("send-email-order-btn").click();
     await expect(page.getByText("Requisition Dispatched Successfully!")).toBeVisible();
+    await expect(modal).toContainText("Official Atelier HTML Invoice");
+    await expect(modal).toContainText("Card / Secure Payment Link");
     await modal.getByRole("button", { name: "Return to Studio Cart" }).click();
     await expect(modal).not.toBeVisible();
 

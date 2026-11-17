@@ -29,6 +29,7 @@ import {
 } from "@/lib/constants/customizer";
 import { createWhatsAppCustomizerUrl } from "@/lib/constants/whatsapp";
 import { useStorefront, CartItem, WishlistItem } from "@/lib/store/storefront-context";
+import { PaymentTypeId, PAYMENT_OPTIONS } from "@/lib/email/invoice-template";
 import { cn } from "@/lib/utils";
 import {
   UploadCloud,
@@ -107,6 +108,7 @@ export function CustomizerControls({
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [emailPaymentType, setEmailPaymentType] = useState<PaymentTypeId>("upi");
   const [emailCustomerName, setEmailCustomerName] = useState("");
   const [emailCustomerEmail, setEmailCustomerEmail] = useState("");
   const [emailCustomerPhone, setEmailCustomerPhone] = useState("");
@@ -282,6 +284,8 @@ export function CustomizerControls({
     setIsSendingEmail(true);
     setEmailError("");
     try {
+      const selectedPaymentOption =
+        PAYMENT_OPTIONS.find((p) => p.id === emailPaymentType) || PAYMENT_OPTIONS[0];
       const specSummary = `${currentMoulding.name} Moulding (${currentMoulding.dimensions}), ${currentMat.name} Mat (${currentMatColor.name}), ${currentGlazing.name}`;
       const res = await sendOrderEmail({
         orderRef: emailOrderRef,
@@ -301,6 +305,11 @@ export function CustomizerControls({
           },
         ],
         total: pricing.total,
+        subtotal: pricing.total,
+        shipping: 0,
+        tax: 0,
+        discount: 0,
+        paymentType: emailPaymentType,
         deliveryMethod: "Insured White-Glove Transit",
         specialNotes: emailCustomerNotes,
         source: "customizer",
@@ -322,10 +331,20 @@ export function CustomizerControls({
           },
         ],
         total: pricing.total,
+        subtotal: pricing.total,
+        shipping: 0,
+        tax: 0,
+        discount: 0,
         deliveryMethod: "white-glove",
         status: "confirmed",
-        shippingAddress: emailCustomerNotes || "",
-        specialInstructions: emailCustomerNotes,
+        shippingAddress: {
+          address: emailCustomerNotes || "",
+          paymentType: emailPaymentType,
+          paymentLabel: selectedPaymentOption.label,
+        },
+        specialInstructions: emailCustomerNotes
+          ? `${emailCustomerNotes} [Payment: ${selectedPaymentOption.label}]`
+          : `Payment: ${selectedPaymentOption.label}`,
       }).catch((err) =>
         console.warn("[Customizer] Failed to save email guest order to Supabase:", err)
       );
@@ -1135,13 +1154,19 @@ export function CustomizerControls({
               {emailSuccess ? (
                 <div className="p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-center space-y-3 animate-in fade-in">
                   <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
                     <h4 className="font-serif font-bold text-lg text-[var(--color-ink-primary)]">
                       Spec Sheet Dispatched!
                     </h4>
+                    <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-accent-gold)]/15 border border-[var(--color-accent-gold)]/40 text-[var(--color-accent-gold)] text-[11px] font-mono font-semibold">
+                      Official Atelier HTML Invoice &amp; Archival Assurance Sent
+                    </div>
                     <p className="text-xs text-[var(--color-ink-secondary)] leading-relaxed">
                       Requisition <strong className="font-mono text-accent">{emailOrderRef}</strong> was transmitted via Resend. An archival copy was emailed to{" "}
                       <strong className="text-[var(--color-ink-primary)]">{emailCustomerEmail}</strong>.
+                    </p>
+                    <p className="text-[11px] text-[var(--color-ink-muted)] font-mono">
+                      Payment Type: <strong className="text-[var(--color-accent-gold)]">{PAYMENT_OPTIONS.find((p) => p.id === emailPaymentType)?.label}</strong> • 4-Point Archival Guarantee Included.
                     </p>
                   </div>
                   <div className="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
@@ -1161,8 +1186,65 @@ export function CustomizerControls({
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSendCustomizerEmail} className="space-y-3 pt-1 text-left">
+                <form onSubmit={handleSendCustomizerEmail} className="space-y-4 pt-1 text-left">
+                  {/* Payment Method / Payment Type Selector */}
+                  <div className="space-y-2" data-testid="payment-type-selector">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-ink-muted)] block font-semibold">
+                        Payment Method &amp; Settlement
+                      </span>
+                      <span className="text-[10px] font-mono text-[var(--color-accent-gold)]">
+                        Zero Advance Risk
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {PAYMENT_OPTIONS.map((opt) => {
+                        const isSelected = emailPaymentType === opt.id;
+                        return (
+                          <button
+                            key={opt.id}
+                            type="button"
+                            data-testid={`payment-option-${opt.id}`}
+                            onClick={() => setEmailPaymentType(opt.id)}
+                            className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                              isSelected
+                                ? "border-[var(--color-accent-gold)] bg-[var(--color-accent-gold)]/10 ring-1 ring-[var(--color-accent-gold)]"
+                                : "border-[var(--color-border-strong)] bg-[var(--color-canvas-subtle)] hover:border-[var(--color-accent-gold)]/50"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-1 mb-1">
+                              <span
+                                className={`text-xs font-semibold ${
+                                  isSelected
+                                    ? "text-[var(--color-accent-gold)]"
+                                    : "text-[var(--color-ink-primary)]"
+                                }`}
+                              >
+                                {opt.label}
+                              </span>
+                              {isSelected && (
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-accent-gold)] shrink-0" />
+                              )}
+                            </div>
+                            <span className="text-[10px] text-[var(--color-ink-muted)] line-clamp-2 leading-tight">
+                              {opt.description}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="text-[10px] text-[var(--color-ink-muted)] font-mono flex items-center gap-1.5 px-2.5 py-1.5 bg-[var(--color-canvas-subtle)] rounded-lg border border-dashed border-[var(--color-border-subtle)]">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[var(--color-accent-gold)] shrink-0" />
+                      <span>
+                        {PAYMENT_OPTIONS.find((p) => p.id === emailPaymentType)?.settlementNote}
+                      </span>
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-ink-muted)] block font-semibold">
+                      Client &amp; Delivery Coordinates
+                    </span>
                     <input
                       type="text"
                       data-testid="customizer-email-name"

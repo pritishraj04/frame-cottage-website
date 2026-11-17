@@ -29,7 +29,8 @@ export function createWhatsAppCartOrderUrl(
   total: number,
   deliveryMethod: string,
   notes?: string,
-  customer?: { name?: string; phone?: string; address?: string }
+  customer?: { name?: string; phone?: string; address?: string },
+  paymentMethod?: string
 ): string {
   const phone = getWhatsAppNumber();
 
@@ -69,6 +70,10 @@ export function createWhatsAppCartOrderUrl(
     `🚚 *Fulfillment:* ${fulfillmentLabel}`,
   ];
 
+  if (paymentMethod) {
+    lines.push(`💳 *Payment Method:* ${paymentMethod}`);
+  }
+
   if (customerLines.length > 0) {
     lines.push(`👤 *Customer Details:*\n   • ${customerLines.join("\n   • ")}`);
   }
@@ -97,6 +102,7 @@ export function createWhatsAppCustomizerUrl(spec: {
   size: string;
   artworkName: string;
   price: number;
+  paymentMethod?: string;
 }): string {
   const phone = getWhatsAppNumber();
 
@@ -113,9 +119,16 @@ export function createWhatsAppCustomizerUrl(spec: {
     `   • Artwork: ${spec.artworkName}`,
     "",
     `💰 *Total Amount:* ₹${spec.price.toLocaleString("en-IN")}`,
-    "",
-    "Please confirm framing feasibility, fabrication schedule, and payment details. Thank you!",
   ];
+
+  if (spec.paymentMethod) {
+    lines.push(`💳 *Payment Method:* ${spec.paymentMethod}`);
+  }
+
+  lines.push(
+    "",
+    "Please confirm framing feasibility, fabrication schedule, and payment details. Thank you!"
+  );
 
   const message = lines.join("\n");
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
