@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
   Star,
@@ -263,27 +264,35 @@ export function CustomerLookbook() {
           {ROOM_SETTINGS.map((room) => {
             const isSelected = room.id === currentRoom.id;
             return (
-              <button
+              <motion.button
                 key={room.id}
                 type="button"
+                layout
                 data-testid={room.testId}
                 onClick={() => handleRoomSelect(room.id)}
                 aria-pressed={isSelected}
                 className={cn(
-                  "shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 border-2 cursor-pointer flex items-center gap-2 whitespace-nowrap",
+                  "relative shrink-0 snap-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200 border-2 cursor-pointer flex items-center gap-2 whitespace-nowrap",
                   isSelected
-                    ? "bg-accent text-[var(--color-accent-contrast)] border-accent shadow-md"
+                    ? "text-[var(--color-accent-contrast)] border-accent shadow-md"
                     : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] border-dashed border-[var(--color-border-strong)]/60 hover:bg-[var(--color-canvas-subtle)] hover:text-accent hover:border-accent/60"
                 )}
               >
-                <span>{room.name}</span>
+                {isSelected && (
+                  <motion.span
+                    layoutId="active-lookbook-tab"
+                    className="absolute inset-0 rounded-full bg-accent -z-0"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{room.name}</span>
                 <span
                   className={cn(
-                    "w-1.5 h-1.5 rounded-full",
+                    "relative z-10 w-1.5 h-1.5 rounded-full",
                     isSelected ? "bg-[var(--color-accent-contrast)]" : "bg-[#9E9E9E]/50"
                   )}
                 />
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -374,11 +383,13 @@ export function CustomerLookbook() {
                   />
 
                   {/* Hotspot Button */}
-                  <button
+                  <motion.button
                     type="button"
                     data-testid={`lookbook-hotspot-pin-${pin.id}`}
                     aria-label={`View details for ${pin.frameTitle}`}
                     aria-expanded={isActive}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setActivePinId(isActive ? null : pin.id);
@@ -387,12 +398,12 @@ export function CustomerLookbook() {
                       "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold shadow-lg transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent",
                       isActive
                         ? "bg-accent text-[var(--color-accent-contrast)] scale-110 border-2 border-[var(--color-accent-contrast)] ring-4 ring-accent/50"
-                        : "bg-[#1A1A1A]/90 text-[#F4F1EA] hover:bg-accent hover:text-[var(--color-accent-contrast)] border border-accent hover:scale-105"
+                        : "bg-[#1A1A1A]/90 text-[#F4F1EA] hover:bg-accent hover:text-[var(--color-accent-contrast)] border border-accent"
                     )}
                   >
                     <Eye className="w-4 h-4 text-current" />
                     <span className="sr-only">Toggle {pin.frameTitle} card</span>
-                  </button>
+                  </motion.button>
                 </div>
               );
             })}
@@ -400,23 +411,29 @@ export function CustomerLookbook() {
             {/* =================================================================
                 FLOATING CARD (ANCHORED POPOVER OVER ACTIVE HOTSPOT)
                ================================================================= */}
-            {activeHotspot && (() => {
-              const isLowerHalf = activeHotspot.y > 42;
-              const clampedX = Math.min(74, Math.max(26, activeHotspot.x));
+            <AnimatePresence>
+              {activeHotspot && (() => {
+                const isLowerHalf = activeHotspot.y > 42;
+                const clampedX = Math.min(74, Math.max(26, activeHotspot.x));
 
-              return (
-                <div
-                  data-testid={`lookbook-card-${activeHotspot.id}`}
-                  onClick={(e) => e.stopPropagation()}
-                  style={
-                    {
-                      "--pin-x": `${clampedX}%`,
-                      "--pin-y": isLowerHalf ? "auto" : `calc(${activeHotspot.y}% + 16px)`,
-                      "--pin-bottom": isLowerHalf ? `calc(${100 - activeHotspot.y}% + 16px)` : "auto",
-                    } as React.CSSProperties
-                  }
-                  className="absolute z-40 inset-x-2.5 bottom-2.5 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[170px] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
-                >
+                return (
+                  <motion.div
+                    key={activeHotspot.id}
+                    data-testid={`lookbook-card-${activeHotspot.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98, transition: { duration: 0.15, ease: "easeOut" } }}
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    style={
+                      {
+                        "--pin-x": `${clampedX}%`,
+                        "--pin-y": isLowerHalf ? "auto" : `calc(${activeHotspot.y}% + 16px)`,
+                        "--pin-bottom": isLowerHalf ? `calc(${100 - activeHotspot.y}% + 16px)` : "auto",
+                      } as React.CSSProperties
+                    }
+                    className="absolute z-40 inset-x-2.5 bottom-2.5 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[170px] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 transition-all duration-300 text-[var(--color-ink-primary)]"
+                  >
                   {/* Close Button */}
                   <button
                     type="button"
@@ -491,9 +508,10 @@ export function CustomerLookbook() {
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               );
             })()}
+            </AnimatePresence>
           </div>
 
           {/* Lookbook Stage Footer Toolbar */}

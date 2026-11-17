@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Heart, Sliders, Eye, UploadCloud, ImageIcon } from "lucide-react";
 import { CuratedFrameProduct } from "@/lib/constants/collections";
 import { MOULDINGS } from "@/lib/constants/frames";
@@ -17,8 +18,9 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
   const currentMoulding = MOULDINGS[product.mouldingId] || MOULDINGS.walnut;
 
   return (
-    <article
+    <motion.article
       data-testid={`frame-card-${product.id}`}
+      whileHover={{ y: -4, transition: { type: "spring", stiffness: 350, damping: 25 } }}
       className="group relative flex flex-col bg-[var(--color-canvas-surface)] rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-accent/60"
     >
       {/* Visual Presentation Container (Dual-State Swapper: Studio Rest -> In-Situ Room) */}
@@ -232,9 +234,10 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
               HOVER OVERLAY ACTION: Quick Customise Floating Button
              ========================================================================= */}
           <div className="absolute inset-x-0 bottom-14 z-20 flex items-center justify-center px-4 pointer-events-auto">
-            <button
+            <motion.button
               type="button"
               data-testid={`quick-customise-btn-${product.id}`}
+              whileTap={{ scale: 0.94 }}
               onClick={(e) => {
                 e.stopPropagation();
                 onQuickCustomise(product);
@@ -245,21 +248,22 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                 "text-xs font-semibold uppercase tracking-wider",
                 "shadow-xl border border-white/25 backdrop-blur-md",
                 "transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100",
-                "transition-all duration-300 ease-out cursor-pointer active:scale-95"
+                "transition-all duration-300 ease-out cursor-pointer"
               )}
             >
               <Sliders className="w-3.5 h-3.5 text-[var(--color-accent-contrast)]" />
               <span>Quick Customise</span>
-            </button>
+            </motion.button>
           </div>
         </div>
 
         {/* Wishlist Toggle Button (Top-Right Floating Overlay) */}
         <div className="absolute top-3 right-3 z-30">
-          <button
+          <motion.button
             type="button"
             data-testid={`wishlist-btn-${product.id}`}
             aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+            whileTap={{ scale: 0.94 }}
             onClick={(e) => {
               e.stopPropagation();
               setIsWishlisted((prev) => !prev);
@@ -277,7 +281,7 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
                 isWishlisted && "fill-white stroke-white scale-110"
               )}
             />
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -322,6 +326,6 @@ export function FrameCard({ product, onQuickCustomise }: FrameCardProps) {
           </span>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

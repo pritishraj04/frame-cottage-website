@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { CategorySwatch } from "./category-swatches";
 
@@ -147,7 +148,7 @@ export function CategoryPills({
           {CATEGORIES.map((category) => {
             const isSelected = selectedId === category.id;
             return (
-              <button
+              <motion.button
                 key={category.id}
                 type="button"
                 role="tab"
@@ -157,7 +158,8 @@ export function CategoryPills({
                 data-testid={`category-pill-${category.id}`}
                 data-test-alias={`pill-category-${category.id}`}
                 onClick={() => handleSelect(category.id)}
-                className={`group flex flex-col justify-between flex-shrink-0 snap-center focus:outline-none cursor-pointer aspect-[4/5] w-56 sm:w-64 p-4 sm:p-5 rounded-2xl border-2 border-dashed transition-all duration-500 text-left ${
+                whileHover={{ y: -3, transition: { type: "spring", stiffness: 350, damping: 25 } }}
+                className={`group flex flex-col justify-between flex-shrink-0 snap-center focus:outline-none cursor-pointer aspect-[4/5] w-56 sm:w-64 p-4 sm:p-5 rounded-2xl border-2 border-dashed transition-all duration-300 text-left ${
                   isSelected
                     ? "bg-accent text-white border-accent shadow-sm ring-2 ring-accent/30"
                     : "border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/50 hover:border-accent/60 hover:bg-[var(--color-canvas-subtle)]"
@@ -193,7 +195,7 @@ export function CategoryPills({
                       : "border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-base)]/50 group-hover:border-accent/50"
                   }`}
                 >
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 transition-transform duration-700 group-hover:scale-105">
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2">
                     <div className="w-full h-full rounded-full overflow-hidden shadow-inner bg-[var(--color-canvas-surface)]">
                       <CategorySwatch id={category.id} />
                     </div>
@@ -243,7 +245,7 @@ export function CategoryPills({
                     />
                   </div>
                 </div>
-              </button>
+              </motion.button>
             );
           })}
         </div>

@@ -211,7 +211,8 @@ export default function CartPage() {
                         layout
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
                         data-testid={`cart-item-${item.id}`}
                         className="p-5 sm:p-6 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 hover:border-[var(--color-accent-gold)]/50 transition-colors shadow-xs"
                       >

@@ -316,7 +316,8 @@ export default function WishlistPage() {
                     layout
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.96 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
                     data-testid={`wishlist-item-${item.id}`}
                     className="p-6 rounded-3xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] flex flex-col justify-between hover:border-[var(--color-accent-gold)]/60 transition-all duration-300 shadow-xs"
                   >

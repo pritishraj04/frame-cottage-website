@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Search, Heart, User, ShoppingBag, ChevronDown } from "lucide-react";
 import { AnnouncementBar } from "./announcement-bar";
 import { MegaMenu } from "./mega-menu";
@@ -210,12 +211,16 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 className="p-2 text-[var(--color-ink-primary)] hover:text-accent transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)] relative cursor-pointer"
               >
                 <ShoppingBag className="w-5 h-5" />
-                <span
+                <motion.span
+                  key={cartCount}
                   data-testid="cart-badge"
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 25 }}
                   className="absolute -top-0.5 right-0 sm:-right-0.5 bg-accent text-[var(--color-accent-contrast)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs"
                 >
                   {cartCount}
-                </span>
+                </motion.span>
               </Link>
             </div>
           </div>

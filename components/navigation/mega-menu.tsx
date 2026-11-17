@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Frame,
   Palette,
@@ -24,22 +25,29 @@ interface MegaMenuProps {
 }
 
 export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave, onClose }: MegaMenuProps) {
-  if (!isOpen) return null;
-
   const verticalCol1 = SERVICE_VERTICALS.slice(0, 2); // Retail & Bespoke
   const verticalCol2 = SERVICE_VERTICALS.slice(2, 4); // Spatial & Industrial CNC
   const verticalCol3 = SERVICE_VERTICALS.slice(4, 6); // Custom Gifting & Civic Projects
 
   return (
-    <div
-      role="region"
-      aria-label="Service Verticals Mega Menu"
-      data-testid="mega-menu-dropdown"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className="absolute top-full left-0 w-full bg-[var(--color-canvas-surface)] border-b border-[var(--color-border-subtle)] shadow-2xl transition-all duration-300 ease-out z-40 animate-in fade-in slide-in-from-top-2 text-[var(--color-ink-primary)]"
-    >
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <AnimatePresence>
+      {isOpen && (
+        <div
+          role="region"
+          aria-label="Service Verticals Mega Menu"
+          data-testid="mega-menu-dropdown"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className="absolute top-full left-0 w-full z-40"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="w-full bg-[var(--color-canvas-surface)] border-b border-[var(--color-border-subtle)] shadow-2xl text-[var(--color-ink-primary)]"
+          >
+            <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Retail & Bespoke Framing */}
           <div className="space-y-6">
@@ -219,6 +227,9 @@ export function MegaMenu({ isOpen, onMouseEnter, onMouseLeave, onClose }: MegaMe
           </div>
         </div>
       </div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }

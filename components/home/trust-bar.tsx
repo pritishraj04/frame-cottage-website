@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Cpu, ShieldCheck, Compass, Landmark } from "lucide-react";
 
 export interface TrustPillar {
@@ -70,16 +73,17 @@ export function TrustBar() {
             const Icon = pillar.icon;
 
             return (
-              <div
+              <motion.div
                 key={pillar.id}
                 data-testid={pillar.testId}
                 data-test-item={`trust-item-${index}`}
+                whileHover={{ y: -3, transition: { type: "spring", stiffness: 350, damping: 25 } }}
                 className="flex flex-col justify-between p-6 rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)]/80 hover:border-accent/60 hover:bg-accent-light/10 transition-all duration-300 group relative overflow-hidden shadow-2xs"
               >
                 {/* Top: Capability Badge Graphic Drop Zone */}
                 <div>
                   <div className="w-full rounded-xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]/70 p-3 mb-4 flex flex-col items-center justify-center text-center group-hover:border-accent transition-colors">
-                    <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-2 shadow-2xs group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-xl border-2 border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] flex items-center justify-center text-accent mb-2 shadow-2xs group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
                       <Icon className="w-6 h-6 stroke-[1.75]" />
                     </div>
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--color-ink-primary)]">
@@ -120,7 +124,7 @@ export function TrustBar() {
                   <span>Pillar 0{index + 1} Spec</span>
                   <span className="text-accent font-medium">Verified</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

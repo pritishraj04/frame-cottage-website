@@ -193,7 +193,7 @@ export function FAQSection() {
                       </div>
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-ink-muted)] group-hover:text-[var(--color-accent-gold)] shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180">
+                    <div className="w-8 h-8 rounded-full bg-[var(--color-canvas-subtle)] border border-dashed border-[var(--color-border-strong)] flex items-center justify-center text-[var(--color-ink-muted)] group-hover:text-[var(--color-accent-gold)] shrink-0 transition-transform duration-[250ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-data-[state=open]:rotate-180">
                       <ChevronDown className="w-4 h-4" />
                     </div>
                   </Accordion.Trigger>
@@ -201,7 +201,7 @@ export function FAQSection() {
 
                 <Accordion.Content
                   data-testid={`faq-content-${item.id}`}
-                  className="px-5 sm:px-6 pb-6 pt-2 text-sm text-[var(--color-ink-secondary)] leading-relaxed border-t border-dashed border-[var(--color-border-strong)]/40 animate-in fade-in duration-200"
+                  className="accordion-content px-5 sm:px-6 pb-6 pt-2 text-sm text-[var(--color-ink-secondary)] leading-relaxed border-t border-dashed border-[var(--color-border-strong)]/40"
                 >
                   <p className="font-medium text-[var(--color-ink-primary)] mb-3">
                     {item.shortAnswer}

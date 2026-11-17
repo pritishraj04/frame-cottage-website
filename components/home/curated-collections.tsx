@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowRight, ShieldCheck, Layers } from "lucide-react";
 import {
   CURATED_PRODUCTS,
@@ -72,7 +73,7 @@ export function CuratedCollections() {
             {COLLECTION_FILTER_TABS.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <motion.button
                   key={tab.id}
                   type="button"
                   role="tab"
@@ -80,17 +81,25 @@ export function CuratedCollections() {
                   data-testid={`collection-tab-${tab.id}`}
                   data-test-alias={`collection-filter-${tab.id}`}
                   onClick={() => setActiveTab(tab.id)}
+                  layout
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer border-2",
+                    "relative flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap cursor-pointer border-2",
                     isActive
-                      ? "bg-accent text-white border-accent shadow-sm"
+                      ? "text-white border-accent shadow-sm"
                       : "bg-[var(--color-canvas-surface)] text-[var(--color-ink-muted)] hover:text-accent hover:bg-[var(--color-canvas-subtle)] border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60"
                   )}
                 >
-                  <span>{tab.label}</span>
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-collection-tab"
+                      className="absolute inset-0 rounded-full bg-accent -z-0"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tab.label}</span>
                   <span
                     className={cn(
-                      "px-1.5 py-0.2 rounded-full text-[10px] font-semibold",
+                      "relative z-10 px-1.5 py-0.2 rounded-full text-[10px] font-semibold transition-colors",
                       isActive
                         ? "bg-accent-hover text-white"
                         : "bg-[var(--color-canvas-subtle)] text-[var(--color-ink-muted)]"
@@ -98,7 +107,7 @@ export function CuratedCollections() {
                   >
                     {tab.count}
                   </span>
-                </button>
+                </motion.button>
               );
             })}
           </div>
@@ -107,18 +116,29 @@ export function CuratedCollections() {
         {/* =========================================================================
             RESPONSIVE DUAL-STATE IN-SITU PRODUCT GRID
            ========================================================================= */}
-        <div
+        <motion.div
+          layout
           data-testid="collection-grid"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
-          {filteredProducts.map((product) => (
-            <FrameCard
-              key={product.id}
-              product={product}
-              onQuickCustomise={handleQuickCustomise}
-            />
-          ))}
-        </div>
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.25 }}
+              >
+                <FrameCard
+                  product={product}
+                  onQuickCustomise={handleQuickCustomise}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Quick Customise Modal Dialog */}
         {selectedProduct && (
