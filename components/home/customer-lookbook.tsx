@@ -209,10 +209,9 @@ export function CustomerLookbook() {
   const currentRoom =
     ROOM_SETTINGS.find((room) => room.id === selectedRoomId) || ROOM_SETTINGS[0];
 
-  const activeHotspot =
-    currentRoom.hotspots.find((pin) => pin.id === activePinId) ||
-    currentRoom.hotspots[0] ||
-    null;
+  const activeHotspot = activePinId
+    ? currentRoom.hotspots.find((pin) => pin.id === activePinId) || null
+    : null;
 
   const handleRoomSelect = (roomId: string) => {
     setSelectedRoomId(roomId);
@@ -260,7 +259,7 @@ export function CustomerLookbook() {
         {/* =====================================================================
             ROOM TABS SWITCHER
            ===================================================================== */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none snap-x -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 sm:mb-8">
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none snap-x touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 sm:mb-8">
           {ROOM_SETTINGS.map((room) => {
             const isSelected = room.id === currentRoom.id;
             return (
@@ -305,7 +304,13 @@ export function CustomerLookbook() {
         <div className="relative w-full rounded-3xl overflow-hidden border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)] shadow-xl hover:border-[var(--color-accent-gold)]/60 transition-colors">
           <div
             data-testid="lookbook-scene-dropzone"
-            className="relative w-full aspect-[16/9] min-h-[420px] sm:min-h-[520px] border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center text-center p-6 sm:p-10 overflow-hidden hover:border-[var(--color-accent-gold)] transition-colors duration-300 shadow-inner"
+            onClick={(e) => {
+              // Only close if clicking the dropzone container itself, not pins or card
+              if (e.target === e.currentTarget) {
+                setActivePinId(null);
+              }
+            }}
+            className="relative w-full aspect-[16/9] min-h-[460px] sm:min-h-[520px] border-4 border-dashed border-[var(--color-border-strong)]/70 rounded-2xl bg-[var(--color-canvas-subtle)]/60 flex flex-col items-center justify-center text-center p-6 sm:p-10 overflow-hidden hover:border-[var(--color-accent-gold)] transition-colors duration-300 shadow-inner"
           >
             {/* Architectural Grid Overlay */}
             <div
@@ -374,7 +379,10 @@ export function CustomerLookbook() {
                     data-testid={`lookbook-hotspot-pin-${pin.id}`}
                     aria-label={`View details for ${pin.frameTitle}`}
                     aria-expanded={isActive}
-                    onClick={() => setActivePinId(isActive ? null : pin.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePinId(isActive ? null : pin.id);
+                    }}
                     className={cn(
                       "relative w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold shadow-lg transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent",
                       isActive
@@ -399,6 +407,7 @@ export function CustomerLookbook() {
               return (
                 <div
                   data-testid={`lookbook-card-${activeHotspot.id}`}
+                  onClick={(e) => e.stopPropagation()}
                   style={
                     {
                       "--pin-x": `${clampedX}%`,
@@ -406,41 +415,48 @@ export function CustomerLookbook() {
                       "--pin-bottom": isLowerHalf ? `calc(${100 - activeHotspot.y}% + 16px)` : "auto",
                     } as React.CSSProperties
                   }
-                  className="absolute z-40 inset-x-3 bottom-3 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[85%] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
+                  className="absolute z-40 inset-x-2.5 bottom-2.5 sm:inset-x-auto sm:-translate-x-1/2 sm:left-[var(--pin-x)] sm:top-[var(--pin-y)] sm:bottom-[var(--pin-bottom)] w-auto sm:w-[320px] max-w-none sm:max-w-[90vw] max-h-[170px] sm:max-h-[calc(100%-24px)] overflow-y-auto bg-[var(--color-canvas-surface)] rounded-2xl p-3.5 sm:p-5 shadow-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 hover:border-accent/60 transition-all duration-300 animate-in fade-in zoom-in-95 text-[var(--color-ink-primary)]"
                 >
                   {/* Close Button */}
                   <button
                     type="button"
-                    onClick={() => setActivePinId(null)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePinId(null);
+                    }}
                     className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1 rounded-full text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] hover:bg-[var(--color-canvas-subtle)] transition-colors cursor-pointer"
                     aria-label="Close card"
+                    data-testid={`lookbook-card-close-${activeHotspot.id}`}
                   >
                     <X className="w-4 h-4" />
                   </button>
 
                   {/* Customer & Verified Badge Row */}
-                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2 pr-6">
+                  <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 pr-6 flex-wrap">
                     <div
                       data-testid={`lookbook-buyer-badge-${activeHotspot.id}`}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30"
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--color-canvas-subtle)] text-[#10B981] text-[10px] font-semibold tracking-wide border border-[#10B981]/30 shrink-0"
                     >
                       <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
                       <span>Verified Collector</span>
                     </div>
-                    <div className="flex items-center text-[#C5A059]">
+                    <div className="flex items-center text-[#C5A059] shrink-0">
                       {Array.from({ length: activeHotspot.rating }).map((_, i) => (
                         <Star key={i} className="w-3 h-3 fill-current text-[#C5A059]" />
                       ))}
                     </div>
+                    <span className="text-[10px] text-[var(--color-ink-secondary)] font-medium truncate sm:hidden">
+                      • {activeHotspot.customerName}
+                    </span>
                   </div>
 
                   {/* Customer Review Quote */}
-                  <p className="text-xs italic text-[var(--color-ink-primary)] leading-relaxed mb-2 sm:mb-3 font-serif line-clamp-2 sm:line-clamp-none">
+                  <p className="text-xs italic text-[var(--color-ink-primary)] leading-snug mb-1.5 sm:mb-3 font-serif line-clamp-1 sm:line-clamp-none">
                     {activeHotspot.review}
                   </p>
 
-                  {/* Reviewer Name and Location */}
-                  <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[var(--color-ink-secondary)] mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-[var(--color-border-subtle)]">
+                  {/* Reviewer Name and Location (Desktop) */}
+                  <div className="hidden sm:flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[var(--color-ink-secondary)] mb-2 sm:mb-3 pb-2 sm:pb-3 border-b border-[var(--color-border-subtle)]">
                     <MapPin className="w-3 h-3 text-[#C5A059]" />
                     <span className="font-semibold text-[var(--color-ink-primary)]">{activeHotspot.customerName}</span>
                     <span className="text-[var(--color-ink-muted)]">•</span>
@@ -449,7 +465,7 @@ export function CustomerLookbook() {
 
                   {/* Frame Title & Specs */}
                   <div className="mb-2 sm:mb-3">
-                    <h4 className="font-serif text-xs sm:text-sm font-semibold text-[var(--color-ink-primary)]">
+                    <h4 className="font-serif text-xs sm:text-sm font-semibold text-[var(--color-ink-primary)] truncate sm:whitespace-normal">
                       {activeHotspot.frameTitle}
                     </h4>
                     <p className="text-[10px] sm:text-[11px] text-[var(--color-ink-muted)] mt-0.5 truncate sm:whitespace-normal">{activeHotspot.specs}</p>
@@ -461,7 +477,7 @@ export function CustomerLookbook() {
                       <span className="text-[9px] sm:text-[10px] text-[var(--color-ink-muted)] uppercase tracking-wider block">
                         From
                       </span>
-                      <span className="font-serif text-sm sm:text-base font-bold text-accent">
+                      <span className="font-sans text-sm sm:text-base font-bold text-accent">
                         {activeHotspot.price}
                       </span>
                     </div>
@@ -469,7 +485,7 @@ export function CustomerLookbook() {
                     <Link
                       href={activeHotspot.shopUrl}
                       data-testid={`lookbook-shop-link-${activeHotspot.id}`}
-                      className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-[11px] sm:text-xs font-semibold tracking-wide shadow-sm transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-[11px] sm:text-xs font-semibold shadow-sm transition-colors cursor-pointer"
                     >
                       <span>Shop Frame</span>
                       <ArrowRight className="w-3 h-3" />
@@ -521,7 +537,7 @@ export function CustomerLookbook() {
                     <span className="text-[10px] uppercase font-bold tracking-wider text-accent">
                       {pin.frameStyle.replace("-", " ")}
                     </span>
-                    <span className="font-serif font-bold text-sm text-accent">
+                    <span className="font-sans font-bold text-sm text-accent">
                       {pin.price}
                     </span>
                   </div>

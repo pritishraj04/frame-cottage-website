@@ -86,14 +86,18 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
       await page.waitForTimeout(250);
 
       for (const pin of room.pins) {
-        // Click the hotspot pin
-        const pinBtn = page.getByTestId(`lookbook-hotspot-pin-${pin.id}`);
-        await expect(pinBtn).toBeVisible();
-        await pinBtn.click({ force: true });
-        await page.waitForTimeout(250);
+        const card = page.getByTestId(`lookbook-card-${pin.id}`);
+        const isCardVisible = await card.isVisible().catch(() => false);
+
+        if (!isCardVisible) {
+          // Click the hotspot pin to open card
+          const pinBtn = page.getByTestId(`lookbook-hotspot-pin-${pin.id}`);
+          await expect(pinBtn).toBeVisible();
+          await pinBtn.click();
+          await page.waitForTimeout(250);
+        }
 
         // Card must be visible
-        const card = page.getByTestId(`lookbook-card-${pin.id}`);
         await expect(card).toBeVisible();
 
         // Verify sub-elements within card
@@ -136,7 +140,7 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
     // Reselect living-room and click salon-oak-mini
     await page.getByTestId("lookbook-room-tab-living-room").click();
     await page.waitForTimeout(200);
-    await page.getByTestId("lookbook-hotspot-pin-salon-oak-mini").click({ force: true });
+    await page.getByTestId("lookbook-hotspot-pin-salon-oak-mini").click();
     await page.waitForTimeout(300);
     await saveScreenshots(
       lookbookSection,
@@ -153,7 +157,7 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
 
     await page.getByTestId("lookbook-room-tab-minimalist-bedside").click();
     await page.waitForTimeout(200);
-    await page.getByTestId("lookbook-hotspot-pin-bedside-deep-walnut").click({ force: true });
+    await page.getByTestId("lookbook-hotspot-pin-bedside-deep-walnut").click();
     await page.waitForTimeout(300);
 
     const bedsideCard = page.getByTestId("lookbook-card-bedside-deep-walnut");
@@ -166,7 +170,7 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
     // Capture Proof 3: All Rooms Verified Overview (dining-credenza, credenza-natural-oak, y:46%)
     await page.getByTestId("lookbook-room-tab-dining-credenza").click();
     await page.waitForTimeout(200);
-    await page.getByTestId("lookbook-hotspot-pin-credenza-natural-oak").click({ force: true });
+    await page.getByTestId("lookbook-hotspot-pin-credenza-natural-oak").click();
     await page.waitForTimeout(300);
 
     const credenzaCard = page.getByTestId("lookbook-card-credenza-natural-oak");
@@ -177,7 +181,7 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
     );
   });
 
-  test("verifies mobile layout docking and boundary containment (390x844)", async ({
+  test("verifies mobile layout docking, dismissal, zero overlap, and toggle (390x844)", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
@@ -191,40 +195,91 @@ test.describe("TASK-26: Customer Lookbook Card Bottom Clipping Fix Verification"
     const container = page.getByTestId("lookbook-scene-dropzone");
     await expect(container).toBeVisible();
 
-    // Verify initial active card on mobile (salon-walnut-large)
-    const card = page.getByTestId("lookbook-card-salon-walnut-large");
-    await expect(card).toBeVisible();
+    // 1. Verify initial active card on mobile (salon-walnut-large)
+    const initialCard = page.getByTestId("lookbook-card-salon-walnut-large");
+    await expect(initialCard).toBeVisible();
 
     const containerBox = await container.boundingBox();
-    const cardBox = await card.boundingBox();
+    const initialCardBox = await initialCard.boundingBox();
 
     expect(containerBox).not.toBeNull();
-    expect(cardBox).not.toBeNull();
+    expect(initialCardBox).not.toBeNull();
 
-    if (containerBox && cardBox) {
-      expect(cardBox.y + cardBox.height).toBeLessThanOrEqual(
+    if (containerBox && initialCardBox) {
+      expect(initialCardBox.y + initialCardBox.height).toBeLessThanOrEqual(
         containerBox.y + containerBox.height + 2
       );
-      expect(cardBox.y).toBeGreaterThanOrEqual(containerBox.y - 1);
-      expect(cardBox.x).toBeGreaterThanOrEqual(0);
-      expect(cardBox.x + cardBox.width).toBeLessThanOrEqual(390);
+      expect(initialCardBox.y).toBeGreaterThanOrEqual(containerBox.y - 1);
+      expect(initialCardBox.x).toBeGreaterThanOrEqual(0);
+      expect(initialCardBox.x + initialCardBox.width).toBeLessThanOrEqual(390);
     }
 
-    // Switch to another pin on mobile (e.g. salon-brass-portrait at y:26%)
-    const brassPin = page.getByTestId("lookbook-hotspot-pin-salon-brass-portrait");
-    await expect(brassPin).toBeVisible();
-    await brassPin.click({ force: true });
+    // 2. Test clicking lower pin salon-oak-mini (y: 56%) WITHOUT { force: true }
+    const oakMiniPin = page.getByTestId("lookbook-hotspot-pin-salon-oak-mini");
+    await expect(oakMiniPin).toBeVisible();
+    await oakMiniPin.click();
     await page.waitForTimeout(250);
 
-    const brassCard = page.getByTestId("lookbook-card-salon-brass-portrait");
-    await expect(brassCard).toBeVisible();
+    const oakMiniCard = page.getByTestId("lookbook-card-salon-oak-mini");
+    await expect(oakMiniCard).toBeVisible();
 
-    const brassCardBox = await brassCard.boundingBox();
-    if (containerBox && brassCardBox) {
-      expect(brassCardBox.y + brassCardBox.height).toBeLessThanOrEqual(
-        containerBox.y + containerBox.height + 2
-      );
-      expect(brassCardBox.y).toBeGreaterThanOrEqual(containerBox.y - 1);
+    // Capture screenshot with compact card open
+    await saveScreenshots(lookbookSection, "task-41-lookbook-mobile-compact.png");
+
+    // 3. Test clicking the close button ('X') closes the card completely
+    const closeBtn = page.getByLabel("Close card");
+    await expect(closeBtn).toBeVisible();
+    await closeBtn.click();
+    await page.waitForTimeout(250);
+
+    // Assert that card is completely unmounted/closed
+    await expect(page.locator('[data-testid^="lookbook-card-"]')).toHaveCount(0);
+
+    // Capture screenshot with card closed
+    await saveScreenshots(lookbookSection, "task-41-lookbook-mobile-closed.png");
+
+    // 4. Test that tapping a pin again toggles it open
+    await oakMiniPin.click();
+    await page.waitForTimeout(250);
+    await expect(oakMiniCard).toBeVisible();
+
+    // Test that tapping the active pin again toggles it off
+    await oakMiniPin.click();
+    await page.waitForTimeout(250);
+    await expect(page.locator('[data-testid^="lookbook-card-"]')).toHaveCount(0);
+
+    // 5. Test clicking background dropzone dismisses card
+    // Open a pin first
+    const brassPin = page.getByTestId("lookbook-hotspot-pin-salon-brass-portrait");
+    await expect(brassPin).toBeVisible();
+    await brassPin.click();
+    await page.waitForTimeout(250);
+    await expect(page.getByTestId("lookbook-card-salon-brass-portrait")).toBeVisible();
+
+    // Click dropzone background at top center where there is no pin
+    if (containerBox) {
+      await page.mouse.click(containerBox.x + containerBox.width / 2, containerBox.y + 15);
+      await page.waitForTimeout(250);
+      await expect(page.locator('[data-testid^="lookbook-card-"]')).toHaveCount(0);
     }
+
+    // 6. Test that switching rooms works cleanly
+    const diningTab = page.getByTestId("lookbook-room-tab-dining-credenza");
+    await expect(diningTab).toBeVisible();
+    await diningTab.click();
+    await page.waitForTimeout(250);
+
+    // Should load the first pin card for dining room
+    const credenzaCard = page.getByTestId("lookbook-card-credenza-matte-black");
+    await expect(credenzaCard).toBeVisible();
+
+    // Switch to minimalist bedside
+    const bedsideTab = page.getByTestId("lookbook-room-tab-minimalist-bedside");
+    await expect(bedsideTab).toBeVisible();
+    await bedsideTab.click();
+    await page.waitForTimeout(250);
+
+    const bedsideCard = page.getByTestId("lookbook-card-bedside-bleached-maple");
+    await expect(bedsideCard).toBeVisible();
   });
 });
