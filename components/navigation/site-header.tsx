@@ -187,7 +187,7 @@ export function SiteHeader({ showAnnouncement = true, cartCount = 0 }: SiteHeade
                 href="/account"
                 aria-label="Account"
                 data-testid="header-account-link"
-                className="hidden sm:inline-flex items-center p-2 text-[var(--color-ink-primary)] hover:text-accent transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)]"
+                className="inline-flex items-center p-1.5 sm:p-2 text-[var(--color-ink-primary)] hover:text-accent transition-colors rounded-full hover:bg-[var(--color-canvas-subtle)]"
               >
                 <SignedIn>
                   <UserButton
