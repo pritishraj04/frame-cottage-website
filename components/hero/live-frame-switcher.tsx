@@ -285,7 +285,7 @@ export function LiveFrameSwitcher() {
             role="radiogroup"
             aria-labelledby="moulding-picker-label"
             data-testid="moulding-picker"
-            className="grid grid-cols-2 sm:grid-cols-5 gap-2.5"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5"
           >
             {MOULDING_LIST.map((m) => {
               const isSelected = m.id === mouldingId;

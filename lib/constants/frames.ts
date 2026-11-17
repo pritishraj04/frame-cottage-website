@@ -1,4 +1,4 @@
-export type MouldingId = "walnut" | "brass" | "black" | "oak" | "gold";
+export type MouldingId = "walnut" | "brass" | "black" | "oak" | "gold" | "ash";
 
 export interface Moulding {
   id: MouldingId;
@@ -106,6 +106,20 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
     borderColor: "#CFA744",
     innerLipColor: "#755410",
     bevelHighlight: "rgba(255, 248, 210, 0.45)",
+  },
+  ash: {
+    id: "ash",
+    name: "Bleached Heritage Ash",
+    subtitle: "Parchment Woodgrain",
+    description: "Kiln-dried American white ash bleached to a soft parchment tone with ultra-matte architectural wax.",
+    material: "100% Solid Heritage Ash",
+    dimensions: '1.2" width × 1.0" depth',
+    basePrice: 68,
+    swatchGradient: "linear-gradient(135deg, #E6E1DA 0%, #D8D1C7 50%, #BEB7AA 100%)",
+    frameGradient: "linear-gradient(135deg, #ECE8E1 0%, #DDD7CD 30%, #C8C0B2 70%, #AFA799 100%)",
+    borderColor: "#C5BEB2",
+    innerLipColor: "#9D9587",
+    bevelHighlight: "rgba(255, 255, 255, 0.4)",
   },
 };
 
