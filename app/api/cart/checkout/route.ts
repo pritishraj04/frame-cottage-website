@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
         pincode: "110001",
       },
       specialInstructions = null,
+      clientNotes = null,
       items: bodyItems,
       discount = 0,
     } = body;
@@ -93,7 +94,7 @@ export async function POST(req: NextRequest) {
       delivery_method: deliveryMethod,
       status: "confirmed" as const,
       shipping_address: shippingAddress,
-      special_instructions: specialInstructions,
+      special_instructions: specialInstructions || clientNotes,
     };
 
     // Insert order in Supabase

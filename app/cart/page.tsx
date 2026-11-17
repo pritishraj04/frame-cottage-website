@@ -69,10 +69,42 @@ export default function CartPage() {
     }
   };
 
-  const handleCheckoutOpen = () => {
+  const handleCheckoutOpen = async () => {
     const randomRef = `FC-2026-${Math.floor(1000 + Math.random() * 9000)}`;
     setOrderReferenceId(randomRef);
     setIsCheckoutModalOpen(true);
+
+    try {
+      const instructions = specialInstructions;
+      const res = await fetch("/api/cart/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          deliveryMethod,
+          clientNotes: instructions,
+          specialInstructions: instructions,
+          items: cart,
+          discount: cartDiscount,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const capturedId = data?.order?.id || data?.orderId;
+        if (capturedId) {
+          setOrderReferenceId(capturedId);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to post order to /api/cart/checkout:", err);
+    }
+  };
+
+  const handleCloseCheckoutModal = () => {
+    setIsCheckoutModalOpen(false);
+    clearCart();
   };
 
   return (
@@ -547,7 +579,7 @@ export default function CartPage() {
             >
               <button
                 type="button"
-                onClick={() => setIsCheckoutModalOpen(false)}
+                onClick={handleCloseCheckoutModal}
                 className="absolute top-4 right-4 p-1.5 text-[var(--color-ink-muted)] hover:text-[var(--color-ink-primary)] rounded-full transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
@@ -589,7 +621,7 @@ export default function CartPage() {
               <div className="flex flex-col gap-2.5 pt-2">
                 <Link
                   href="/account"
-                  onClick={() => setIsCheckoutModalOpen(false)}
+                  onClick={handleCloseCheckoutModal}
                   className="w-full py-3 px-4 rounded-full bg-accent hover:bg-accent-hover text-[var(--color-accent-contrast)] text-xs font-mono font-bold tracking-wider text-center uppercase transition-all duration-200 cursor-pointer shadow-md"
                 >
                   View in Account Dashboard →
@@ -597,7 +629,7 @@ export default function CartPage() {
 
                 <button
                   type="button"
-                  onClick={() => setIsCheckoutModalOpen(false)}
+                  onClick={handleCloseCheckoutModal}
                   className="w-full py-2.5 px-4 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)] text-xs font-mono text-[var(--color-ink-secondary)] hover:text-[var(--color-ink-primary)] text-center transition-colors cursor-pointer"
                 >
                   Return to Studio Cart
