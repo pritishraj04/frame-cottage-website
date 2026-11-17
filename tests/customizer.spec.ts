@@ -257,4 +257,21 @@ test.describe("Interactive Studio Customizer Page", () => {
     expect(page.url()).toContain("/customizer?step=artwork");
     await expect(page.getByTestId("customizer-upload-dropzone")).toBeVisible();
   });
+
+  test("10. Order via WhatsApp button is visible with preformatted WhatsApp URL containing frame specifications", async ({
+    page,
+  }) => {
+    await page.goto("/customizer?moulding=walnut&mat=classic");
+    await page.waitForLoadState("networkidle");
+
+    const whatsappBtn = page.getByTestId("customizer-order-whatsapp");
+    await whatsappBtn.scrollIntoViewIfNeeded();
+    await expect(whatsappBtn).toBeVisible();
+    await expect(whatsappBtn).toContainText("Order via WhatsApp");
+
+    const href = await whatsappBtn.getAttribute("href");
+    expect(href).not.toBeNull();
+    expect(href).toContain("https://wa.me/");
+    expect(href).toContain("Walnut");
+  });
 });

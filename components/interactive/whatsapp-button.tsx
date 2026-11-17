@@ -12,6 +12,7 @@ import {
   Shield,
   Layers,
 } from "lucide-react";
+import { WHATSAPP_PHONE, createWhatsAppChatUrl } from "@/lib/constants/whatsapp";
 
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,8 +47,7 @@ export function WhatsAppButton() {
     };
   }, [isOpen]);
 
-  const defaultWhatsAppUrl =
-    "https://wa.me/919876543210?text=Hello%20Frames%20Cottage%20Studio%2C%20I%20would%20like%20to%20consult%20on%20a%20framing%20or%20spatial%20project.";
+  const defaultWhatsAppUrl = createWhatsAppChatUrl();
 
   const handleLaunchConcierge = () => {
     setIsOpen(false);

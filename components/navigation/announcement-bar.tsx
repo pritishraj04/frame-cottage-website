@@ -14,12 +14,12 @@ export function AnnouncementBar() {
     <div
       role="region"
       aria-label="Announcement"
-      className="relative z-50 bg-[#6B1C23] text-[#F4F1EA] text-xs py-2 px-4 border-b border-[#54161C] tracking-wide transition-all duration-300"
+      className="relative z-50 bg-[#6B1C23] text-[#F4F1EA] text-xs py-2 px-4 border-b border-[#54161C] tracking-wide transition-all duration-300 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between sm:justify-center relative pr-8 sm:pr-0">
-        <div className="flex items-center gap-2 text-center mx-auto truncate sm:overflow-visible">
+      <div className="max-w-7xl mx-auto flex items-center justify-between sm:justify-center relative pr-8 sm:pr-0 overflow-hidden">
+        <div className="flex items-center gap-2 text-center mx-auto truncate sm:overflow-visible min-w-0">
           <Sparkles className="w-3.5 h-3.5 text-[#C5A059] shrink-0 hidden sm:inline-block" aria-hidden="true" />
-          <span className="font-medium tracking-normal text-[11px] sm:text-xs text-[#F4F1EA]">
+          <span className="font-medium tracking-normal text-[11px] sm:text-xs text-[#F4F1EA] truncate">
             Multi-Disciplinary Design, Fabrication & Framing Studio <span className="text-[#C5A059] mx-1.5">•</span> Delivering End-to-End Solutions for B2C, B2B & Public Sector <span className="text-[#C5A059] mx-1.5">•</span> Request Project RFP
           </span>
         </div>

@@ -236,27 +236,14 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       if (existing) return prev;
       return [...prev, item];
     });
-
-    // Background backend sync
-    fetch("/api/wishlist", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item),
-    }).catch((err) => console.warn("Background wishlist sync offline:", err));
   }, []);
 
   const removeFromWishlist = useCallback((id: string) => {
     setWishlist((prev) => prev.filter((item) => item.id !== id));
-
-    // Background backend sync
-    fetch(`/api/wishlist?id=${encodeURIComponent(id)}`, {
-      method: "DELETE",
-    }).catch((err) => console.warn("Background wishlist removal offline:", err));
   }, []);
 
   const clearWishlist = useCallback(() => {
     setWishlist([]);
-    fetch("/api/wishlist?clear=true", { method: "DELETE" }).catch(() => {});
   }, []);
 
   const restoreWishlist = useCallback(() => {
@@ -289,15 +276,6 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
         return [...prevCart, newCartItem];
       });
 
-      // Background sync
-      fetch("/api/cart", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newCartItem),
-      }).catch(() => {});
-
-      fetch(`/api/wishlist?id=${encodeURIComponent(id)}`, { method: "DELETE" }).catch(() => {});
-
       return prevWish.filter((w) => w.id !== id);
     });
   }, []);
@@ -324,17 +302,11 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
               vertical: item.vertical,
             };
             updated.push(newItem);
-            fetch("/api/cart", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(newItem),
-            }).catch(() => {});
           }
         });
         return updated;
       });
 
-      fetch("/api/wishlist?clear=true", { method: "DELETE" }).catch(() => {});
       return [];
     });
   }, []);
@@ -353,12 +325,6 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
       }
       return [...prev, fullItem];
     });
-
-    fetch("/api/cart", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fullItem),
-    }).catch((err) => console.warn("Background cart sync offline:", err));
   }, []);
 
   const updateCartQuantity = useCallback((id: string, delta: number) => {
@@ -373,48 +339,23 @@ export function StorefrontProvider({ children }: { children: React.ReactNode }) 
         })
         .filter(Boolean) as CartItem[]
     );
-
-    fetch("/api/cart", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, delta }),
-    }).catch((err) => console.warn("Background cart update offline:", err));
   }, []);
 
   const removeFromCart = useCallback((id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
-
-    fetch(`/api/cart?id=${encodeURIComponent(id)}`, {
-      method: "DELETE",
-    }).catch((err) => console.warn("Background cart removal offline:", err));
   }, []);
 
   const clearCart = useCallback(() => {
     setCart([]);
-    fetch("/api/cart?clear=true", { method: "DELETE" }).catch(() => {});
   }, []);
 
   const restoreCart = useCallback(() => {
     setCart(INITIAL_CART);
   }, []);
 
-  const migrateGuestCartToUser = useCallback(async (userId?: string) => {
-    try {
-      if (cart.length === 0) return;
-      for (const item of cart) {
-        await fetch("/api/cart", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...item,
-            userId,
-          }),
-        }).catch(() => {});
-      }
-    } catch (e) {
-      console.warn("Guest cart migration error:", e);
-    }
-  }, [cart]);
+  const migrateGuestCartToUser = useCallback(async (_userId?: string) => {
+    // Purely client-side: cart is already persisted in localStorage
+  }, []);
 
   const applyPromo = useCallback((code: string): boolean => {
     const clean = code.trim().toUpperCase();
