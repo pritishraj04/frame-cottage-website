@@ -216,12 +216,12 @@ export function CustomizerView() {
     >
       <SiteHeader cartCount={cartCount} />
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-10 pb-24 lg:pb-16 space-y-5 sm:space-y-8">
         {/* Breadcrumb & Atelier Header */}
         <div className="space-y-2">
           <nav
             aria-label="Breadcrumbs"
-            className="flex items-center space-x-2 text-xs font-mono text-[var(--color-ink-muted)]"
+            className="flex items-center space-x-2 text-xs font-mono text-[var(--color-ink-muted)] whitespace-nowrap overflow-x-auto scrollbar-none"
           >
             <Link
               href="/"
@@ -243,14 +243,14 @@ export function CustomizerView() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pt-1">
             <div>
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[11px] font-mono border border-accent/30 bg-accent/10 text-accent mb-2">
-                <Sparkles className="w-3 h-3" />
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono border border-accent/30 bg-accent/10 text-accent mb-2 whitespace-nowrap">
+                <Sparkles className="w-3 h-3 shrink-0" />
                 <span>Interactive Frame Builder • 100% Solid Hardwoods</span>
               </div>
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink-primary)]">
+              <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink-primary)]">
                 The Customizer Studio
               </h1>
-              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] mt-1.5 max-w-2xl font-sans leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--color-ink-secondary)] mt-1.5 max-w-2xl font-sans leading-relaxed line-clamp-2 sm:line-clamp-none">
                 Configure handcrafted museum moulding, precision 4-ply rag matting, and conservation glazing. Preview your fine art in photorealistic daylight or in-situ residential context.
               </p>
             </div>

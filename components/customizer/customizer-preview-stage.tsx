@@ -141,7 +141,7 @@ export function CustomizerPreviewStage({
       <div
         data-testid="frame-display-container"
         className={cn(
-          "relative min-h-[320px] sm:min-h-[460px] lg:min-h-[540px] flex flex-col items-center justify-between px-4 py-6 sm:p-10 transition-colors duration-500 overflow-hidden",
+          "relative min-h-[280px] sm:min-h-[460px] lg:min-h-[540px] flex flex-col items-center justify-between px-4 py-4 sm:p-10 transition-colors duration-500 overflow-hidden",
           !isRoom
             ? "bg-[var(--color-canvas-base)] text-[var(--color-ink-primary)]"
             : "bg-gradient-to-b from-[#1C211D] via-[#151916] to-[#0E120F] text-[#FAF7F2]"
@@ -170,7 +170,7 @@ export function CustomizerPreviewStage({
         />
 
         {/* Canvas Top Bar: DPI / Health Status & Glazing Pill */}
-        <div className="w-full flex flex-wrap items-center justify-between gap-2 mb-4 z-20">
+        <div className="w-full flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-5 z-20">
           <div
             data-testid="customizer-dpi-badge"
             className={cn(
@@ -210,7 +210,7 @@ export function CustomizerPreviewStage({
             aspectRatio: aspectRatio,
           }}
           className={cn(
-            "relative w-full max-w-[240px] sm:max-w-[360px] lg:max-w-[440px] p-3.5 sm:p-5 rounded-xs transition-all duration-500 border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.4)] my-auto",
+            "relative w-full max-w-[210px] sm:max-w-[360px] lg:max-w-[440px] p-3.5 sm:p-5 rounded-xs transition-all duration-500 border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.4)] my-auto",
             "transform will-change-transform"
           )}
         >

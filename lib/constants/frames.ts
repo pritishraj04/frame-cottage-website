@@ -3,6 +3,7 @@ export type MouldingId = "walnut" | "brass" | "black" | "oak" | "gold" | "ash";
 export interface Moulding {
   id: MouldingId;
   name: string;
+  shortName: string;
   subtitle: string;
   description: string;
   material: string;
@@ -40,6 +41,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   walnut: {
     id: "walnut",
     name: "American Natural Walnut",
+    shortName: "Natural Walnut",
     subtitle: "Warm Timber Grain",
     description: "Sustainably harvested North American walnut with hand-rubbed natural oil finish.",
     material: "100% Solid Black Walnut",
@@ -54,6 +56,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   brass: {
     id: "brass",
     name: "Brushed Antique Brass",
+    shortName: "Antique Brass",
     subtitle: "Rich Metallic Satin",
     description: "Solid brass casing with hand-applied horizontal brushing and a soft vintage patina.",
     material: "Solid Spun Brass & Birch Core",
@@ -68,6 +71,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   black: {
     id: "black",
     name: "Gallery Matte Black",
+    shortName: "Matte Black",
     subtitle: "Deep Satin Shadowbox",
     description: "Minimalist modern shadowbox finished with museum-grade velvet matte black lacquer.",
     material: "Solid Maple Hardwood",
@@ -82,6 +86,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   oak: {
     id: "oak",
     name: "Nordic Natural White Oak",
+    shortName: "White Oak",
     subtitle: "Scandinavian Grain",
     description: "Quarter-sawn American white oak sealed with an invisible low-VOC matte botanical coat.",
     material: "100% Solid White Oak",
@@ -96,6 +101,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   gold: {
     id: "gold",
     name: "Vintage Florentine Gold",
+    shortName: "Florentine Gold",
     subtitle: "Warm Leaf Foil Bevel",
     description: "Traditional Italian-inspired profile hand-gilded with genuine 22-karat warm metal leaf.",
     material: "Gilded Hardwood Moulding",
@@ -110,6 +116,7 @@ export const MOULDINGS: Record<MouldingId, Moulding> = {
   ash: {
     id: "ash",
     name: "Bleached Heritage Ash",
+    shortName: "Heritage Ash",
     subtitle: "Parchment Woodgrain",
     description: "Kiln-dried American white ash bleached to a soft parchment tone with ultra-matte architectural wax.",
     material: "100% Solid Heritage Ash",

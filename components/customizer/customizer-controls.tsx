@@ -125,6 +125,61 @@ export function CustomizerControls({
     setMounted(true);
   }, []);
 
+  const [activeScrollStep, setActiveScrollStep] = useState<CustomizerStep>(currentStep);
+  const isClickScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    setActiveScrollStep(currentStep);
+  }, [currentStep]);
+
+  const handleStepClick = (step: CustomizerStep, sectionId: string) => {
+    setActiveScrollStep(step);
+    onStepChange(step);
+    isClickScrollingRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 1000);
+    scrollToSection(sectionId);
+  };
+
+  useEffect(() => {
+    const steps: CustomizerStep[] = ["moulding", "mat", "size", "glazing", "artwork"];
+
+    const handleScroll = () => {
+      if (isClickScrollingRef.current) return;
+
+      const offset = 220;
+      let matched: CustomizerStep = "moulding";
+
+      for (const step of steps) {
+        const el = document.getElementById(`section-${step}`);
+        if (el) {
+          const top = el.getBoundingClientRect().top;
+          if (top <= offset) {
+            matched = step;
+          }
+        }
+      }
+
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80
+      ) {
+        matched = "artwork";
+      }
+
+      setActiveScrollStep((prev) => (prev !== matched ? matched : prev));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, []);
+
   // Pricing calculation
   const pricing = calculateCustomizerPrice({
     mouldingId,
@@ -435,114 +490,104 @@ export function CustomizerControls({
       )}
 
       {/* Quick Jump Ribbon */}
-      <div className="sticky top-16 sm:top-20 lg:top-20 z-30 bg-[var(--color-canvas-surface)] border-b border-[var(--color-border-subtle)] px-3 sm:px-4 py-2.5 rounded-t-2xl shadow-xs overflow-x-auto scrollbar-none">
-        <div className="flex items-center space-x-1.5 min-w-max text-xs">
+      <div className="sticky top-16 sm:top-20 z-30 bg-[var(--color-canvas-surface)] border-b border-[var(--color-border-subtle)] shadow-sm rounded-none lg:rounded-t-2xl flex items-center">
+        {/* Left/Middle: Scrollable steps */}
+        <div className="flex-1 min-w-0 overflow-x-auto scrollbar-none flex items-center gap-1.5 py-2.5 pl-3 pr-2 text-xs">
           {/* Mobile-only Preview Anchor button */}
           <button
             type="button"
-            data-testid="customizer-quick-preview-btn"
+            data-testid="mobile-scroll-preview-btn"
             onClick={() => {
               const el = document.getElementById("customizer-preview-anchor");
               if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
               }
             }}
-            className="lg:hidden px-2.5 py-1 rounded-full font-medium transition-colors cursor-pointer bg-[var(--color-canvas-subtle)] text-accent border border-accent/30 hover:bg-accent/10 flex items-center gap-1"
+            className="lg:hidden px-2.5 py-1 rounded-full font-medium transition-colors cursor-pointer bg-[var(--color-canvas-subtle)] text-accent border border-accent/30 hover:bg-accent/10 flex items-center gap-1 shrink-0"
           >
-            <span>↑ Preview</span>
+            <span data-testid="customizer-quick-preview-btn">↑ Preview</span>
           </button>
-          <span className="lg:hidden text-[var(--color-border-strong)]">•</span>
+          <span className="lg:hidden text-[var(--color-border-strong)] shrink-0">•</span>
 
           <button
             type="button"
             data-testid="customizer-step-moulding"
-            onClick={() => {
-              onStepChange("moulding");
-              scrollToSection("section-moulding");
-            }}
+            onClick={() => handleStepClick("moulding", "section-moulding")}
             className={cn(
-              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer",
-              currentStep === "moulding"
+              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer shrink-0",
+              activeScrollStep === "moulding"
                 ? "bg-accent text-[var(--color-accent-contrast)] font-semibold"
                 : "hover:bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]"
             )}
           >
             1. Moulding
           </button>
-          <span className="text-[var(--color-border-strong)]">•</span>
+          <span className="text-[var(--color-border-strong)] shrink-0">•</span>
           <button
             type="button"
             data-testid="customizer-step-mat"
-            onClick={() => {
-              onStepChange("mat");
-              scrollToSection("section-mat");
-            }}
+            onClick={() => handleStepClick("mat", "section-mat")}
             className={cn(
-              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer",
-              currentStep === "mat"
+              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer shrink-0",
+              activeScrollStep === "mat"
                 ? "bg-accent text-[var(--color-accent-contrast)] font-semibold"
                 : "hover:bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]"
             )}
           >
             2. Matting
           </button>
-          <span className="text-[var(--color-border-strong)]">•</span>
+          <span className="text-[var(--color-border-strong)] shrink-0">•</span>
           <button
             type="button"
             data-testid="customizer-step-size"
-            onClick={() => {
-              onStepChange("size");
-              scrollToSection("section-size");
-            }}
+            onClick={() => handleStepClick("size", "section-size")}
             className={cn(
-              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer",
-              currentStep === "size"
+              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer shrink-0",
+              activeScrollStep === "size"
                 ? "bg-accent text-[var(--color-accent-contrast)] font-semibold"
                 : "hover:bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]"
             )}
           >
             3. Size
           </button>
-          <span className="text-[var(--color-border-strong)]">•</span>
+          <span className="text-[var(--color-border-strong)] shrink-0">•</span>
           <button
             type="button"
             data-testid="customizer-step-glazing"
-            onClick={() => {
-              onStepChange("glazing");
-              scrollToSection("section-glazing");
-            }}
+            onClick={() => handleStepClick("glazing", "section-glazing")}
             className={cn(
-              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer",
-              currentStep === "glazing"
+              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer shrink-0",
+              activeScrollStep === "glazing"
                 ? "bg-accent text-[var(--color-accent-contrast)] font-semibold"
                 : "hover:bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]"
             )}
           >
             4. Glazing
           </button>
-          <span className="text-[var(--color-border-strong)]">•</span>
+          <span className="text-[var(--color-border-strong)] shrink-0">•</span>
           <button
             type="button"
             data-testid="customizer-step-artwork"
-            onClick={() => {
-              onStepChange("artwork");
-              scrollToSection("section-artwork");
-            }}
+            onClick={() => handleStepClick("artwork", "section-artwork")}
             className={cn(
-              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer",
-              currentStep === "artwork"
+              "px-3 py-1 rounded-full font-medium transition-colors cursor-pointer shrink-0",
+              activeScrollStep === "artwork"
                 ? "bg-accent text-[var(--color-accent-contrast)] font-semibold"
                 : "hover:bg-[var(--color-canvas-surface)] text-[var(--color-ink-primary)]"
             )}
           >
             5. Artwork
           </button>
+        </div>
 
-          {/* Mobile Live Price Pill */}
-          <span className="lg:hidden text-[var(--color-border-strong)]">•</span>
+        {/* Right: Always-visible pinned live price chip on mobile */}
+        <div
+          data-testid="mobile-live-price"
+          className="shrink-0 flex items-center pl-2 pr-3 py-2.5 border-l border-[var(--color-border-subtle)] bg-[var(--color-canvas-surface)] lg:hidden"
+        >
           <span
             data-testid="customizer-ribbon-mobile-price"
-            className="lg:hidden inline-flex items-center px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/30 text-accent font-serif font-bold text-xs"
+            className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/30 text-accent font-serif font-bold text-xs"
           >
             ₹{pricing.total}
           </span>
@@ -600,8 +645,8 @@ export function CustomizerControls({
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between">
-                        <h4 className="text-xs font-bold text-[var(--color-ink-primary)] truncate">
-                          {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
+                        <h4 className="text-xs font-bold text-[var(--color-ink-primary)] leading-tight">
+                          {m.shortName}
                         </h4>
                         {isSelected && <Check className="w-3.5 h-3.5 text-accent shrink-0" />}
                       </div>

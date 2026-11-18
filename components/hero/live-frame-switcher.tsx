@@ -251,7 +251,7 @@ export function LiveFrameSwitcher() {
         {/* Live Selection Pill at bottom of preview */}
         <div
           className={cn(
-            "absolute bottom-3 sm:bottom-4 px-3.5 py-1.5 rounded-full text-xs font-medium backdrop-blur-md transition-all flex items-center gap-2",
+            "absolute bottom-3 sm:bottom-4 px-3.5 py-1.5 rounded-full text-xs font-medium backdrop-blur-md transition-all flex items-center gap-2 max-w-[92%] flex-wrap justify-center text-center",
             !isRoom
               ? "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)] shadow-md"
               : "bg-[#1E241F]/90 text-[#FAF7F2] border border-[#3E4A3F] shadow-md"
@@ -319,8 +319,8 @@ export function LiveFrameSwitcher() {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs font-medium text-[var(--color-ink-primary)] leading-tight line-clamp-1">
-                    {m.name.split(" ")[0]} {m.name.split(" ")[1] || ""}
+                  <span className="text-xs font-medium text-[var(--color-ink-primary)] leading-tight">
+                    {m.shortName}
                   </span>
                   <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5 font-normal">
                     ₹{m.basePrice}

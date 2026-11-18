@@ -482,4 +482,51 @@ test.describe("Interactive Studio Customizer Page", () => {
     const previewAnchor = page.locator("#customizer-preview-anchor");
     await expect(previewAnchor).toBeInViewport();
   });
+
+  test("15. 360px viewport mobile polish: Crisp shortName labels, pinned live price chip, scrollspy active highlighting, and zero overflow", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 360, height: 740 });
+    await page.goto("/customizer");
+    await page.waitForLoadState("networkidle");
+
+    // Zero horizontal overflow on 360px
+    const hasHorizontalOverflow = await page.evaluate(() => {
+      return document.documentElement.scrollWidth > document.documentElement.clientWidth;
+    });
+    expect(hasHorizontalOverflow).toBe(false);
+
+    // Breadcrumbs single-line scrollable
+    const breadcrumbs = page.locator('nav[aria-label="Breadcrumbs"]');
+    await expect(breadcrumbs).toBeVisible();
+    await expect(breadcrumbs).toHaveClass(/whitespace-nowrap/);
+
+    // Verify moulding buttons display crisp shortName without ellipsis cutoffs
+    await expect(page.getByTestId("moulding-option-walnut")).toContainText("Natural Walnut");
+    await expect(page.getByTestId("moulding-option-brass")).toContainText("Antique Brass");
+    await expect(page.getByTestId("moulding-option-black")).toContainText("Matte Black");
+    await expect(page.getByTestId("moulding-option-oak")).toContainText("White Oak");
+    await expect(page.getByTestId("moulding-option-gold")).toContainText("Florentine Gold");
+    await expect(page.getByTestId("moulding-option-ash")).toContainText("Heritage Ash");
+
+    // Verify pinned live price chip is visible on mobile
+    const pinnedPrice = page.getByTestId("mobile-live-price");
+    await expect(pinnedPrice).toBeVisible();
+    await expect(pinnedPrice).toContainText("₹76");
+
+    // Scroll to section 3 (Size) and verify active scrollspy updates active ribbon tab
+    await page.evaluate(() => {
+      document.getElementById("section-size")?.scrollIntoView({ block: "start" });
+    });
+    await page.waitForTimeout(400);
+
+    const sizeTab = page.getByTestId("customizer-step-size");
+    await expect(sizeTab).toHaveClass(/bg-accent/);
+
+    // Verify clicking moulding tab smooth-scrolls to moulding section and sets active styling
+    const mouldingTab = page.getByTestId("customizer-step-moulding");
+    await mouldingTab.click();
+    await page.waitForTimeout(400);
+    await expect(mouldingTab).toHaveClass(/bg-accent/);
+  });
 });

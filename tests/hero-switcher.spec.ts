@@ -91,9 +91,10 @@ test.describe("Hero Image Carousel & The Custom Frame Studio", () => {
     const priceAmount = page.getByTestId("frame-price-amount");
     await expect(priceAmount).toHaveText("₹76");
 
-    // Verify Walnut moulding button is checked
+    // Verify Walnut moulding button is checked with crisp shortName
     const walnutOption = page.getByTestId("moulding-option-walnut");
     await expect(walnutOption).toHaveAttribute("aria-checked", "true");
+    await expect(walnutOption).toContainText("Natural Walnut");
 
     // Verify Classic mat button is checked
     const classicOption = page.getByTestId("mat-option-classic");
