@@ -79,18 +79,13 @@ export function CustomizerPreviewStage({
     effectiveHeightInches
   );
 
-  // Dynamic mat padding
-  // Scale mat width: none = 0px, classic = 28px, gallery = 44px
-  const matPaddingPx =
-    mat.id === "none" ? 0 : mat.id === "classic" ? 28 : 44;
-
   return (
     <div
       data-testid="customizer-preview-stage"
       className="relative flex flex-col w-full rounded-2xl border-2 border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-surface)] shadow-2xl overflow-hidden"
     >
       {/* Stage Top Bar: Context Toggle & Studio Indicator */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3 border-b border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 px-3.5 py-2.5 sm:px-5 sm:py-3 border-b border-dashed border-[var(--color-border-strong)]/60 bg-[var(--color-canvas-subtle)]">
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center justify-center w-2 h-2 rounded-full bg-accent animate-pulse" />
           <span className="text-xs font-mono font-semibold tracking-wider uppercase text-accent">
@@ -146,7 +141,7 @@ export function CustomizerPreviewStage({
       <div
         data-testid="frame-display-container"
         className={cn(
-          "relative min-h-[460px] sm:min-h-[540px] lg:min-h-[600px] flex items-center justify-center p-6 sm:p-12 transition-colors duration-500 overflow-hidden",
+          "relative min-h-[320px] sm:min-h-[460px] lg:min-h-[540px] flex flex-col items-center justify-between px-4 py-6 sm:p-10 transition-colors duration-500 overflow-hidden",
           !isRoom
             ? "bg-[var(--color-canvas-base)] text-[var(--color-ink-primary)]"
             : "bg-gradient-to-b from-[#1C211D] via-[#151916] to-[#0E120F] text-[#FAF7F2]"
@@ -174,8 +169,8 @@ export function CustomizerPreviewStage({
           )}
         />
 
-        {/* Top Floating Badge: DPI / Health Status */}
-        <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-20 flex flex-wrap items-center gap-2">
+        {/* Canvas Top Bar: DPI / Health Status & Glazing Pill */}
+        <div className="w-full flex flex-wrap items-center justify-between gap-2 mb-4 z-20">
           <div
             data-testid="customizer-dpi-badge"
             className={cn(
@@ -197,7 +192,7 @@ export function CustomizerPreviewStage({
             <span>{dpiInfo.badgeText}</span>
           </div>
 
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-[var(--color-ink-muted)] backdrop-blur-sm">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono border border-dashed border-[var(--color-border-strong)] bg-[var(--color-canvas-surface)]/80 text-[var(--color-ink-muted)] backdrop-blur-sm">
             <ShieldCheck className="w-3 h-3 text-accent" />
             <span>{glazing.name.split(" ")[0]} Glaze</span>
           </div>
@@ -215,7 +210,7 @@ export function CustomizerPreviewStage({
             aspectRatio: aspectRatio,
           }}
           className={cn(
-            "relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] p-3.5 sm:p-5 rounded-xs transition-all duration-500 border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.4)]",
+            "relative w-full max-w-[240px] sm:max-w-[360px] lg:max-w-[440px] p-3.5 sm:p-5 rounded-xs transition-all duration-500 border border-t-[rgba(255,255,255,0.3)] border-b-[rgba(0,0,0,0.4)] my-auto",
             "transform will-change-transform"
           )}
         >
@@ -230,12 +225,14 @@ export function CustomizerPreviewStage({
             <div
               data-testid="customizer-mat-board"
               style={{
-                padding: `${matPaddingPx}px`,
                 backgroundColor: matColor.hex,
                 borderColor: matColor.borderColor,
               }}
               className={cn(
                 "relative w-full h-full transition-all duration-300 flex flex-col",
+                mat.id === "none" && "p-0",
+                mat.id === "classic" && "p-4 sm:p-7",
+                mat.id === "gallery" && "p-6 sm:p-11",
                 mat.id !== "none" &&
                   "shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] border"
               )}
@@ -275,26 +272,22 @@ export function CustomizerPreviewStage({
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Pill: Active Configuration Summary */}
-        <div
-          className={cn(
-            "absolute bottom-3 sm:bottom-4 px-4 py-1.5 rounded-full text-xs font-medium backdrop-blur-md transition-all flex items-center gap-2 z-20 shadow-md",
-            !isRoom
-              ? "bg-[var(--color-canvas-surface)]/90 text-[var(--color-ink-primary)] border border-[var(--color-border-subtle)]"
-              : "bg-[#1E241F]/90 text-[#FAF7F2] border border-[#3E4A3F]"
-          )}
-        >
-          <span className="font-semibold">{moulding.name}</span>
-          <span className="text-[#C5A059]">•</span>
-          <span className="text-[var(--color-ink-secondary)]">
-            {mat.name} {mat.id !== "none" ? `(${matColor.name})` : ""}
-          </span>
-          <span className="text-[#C5A059]">•</span>
-          <span className="text-[var(--color-ink-muted)]">
-            {effectiveWidthInches}×{effectiveHeightInches}″
-          </span>
-        </div>
+      {/* Dedicated Bottom Status Strip */}
+      <div
+        data-testid="customizer-preview-summary"
+        className="w-full px-4 py-2.5 border-t border-dashed border-[var(--color-border-strong)]/50 bg-[var(--color-canvas-subtle)] flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-xs text-center"
+      >
+        <span className="font-semibold text-[var(--color-ink-primary)]">{moulding.name}</span>
+        <span className="text-[#C5A059]">•</span>
+        <span className="text-[var(--color-ink-secondary)]">
+          {mat.name} {mat.id !== "none" ? `(${matColor.name})` : ""}
+        </span>
+        <span className="text-[#C5A059]">•</span>
+        <span className="text-[var(--color-ink-muted)]">
+          {effectiveWidthInches}×{effectiveHeightInches}″
+        </span>
       </div>
     </div>
   );

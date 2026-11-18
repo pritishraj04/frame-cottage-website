@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import {
   MOULDINGS,
@@ -117,7 +118,12 @@ export function CustomizerControls({
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [emailSuccess, setEmailSuccess] = useState(false);
   const [emailError, setEmailError] = useState("");
+  const [mounted, setMounted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Pricing calculation
   const pricing = calculateCustomizerPrice({
@@ -404,7 +410,7 @@ export function CustomizerControls({
   return (
     <div
       data-testid="customizer-controls-panel"
-      className="flex flex-col w-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-2xl shadow-xl overflow-hidden"
+      className="flex flex-col w-full bg-[var(--color-canvas-surface)] border border-[var(--color-border-subtle)] rounded-2xl shadow-xl overflow-x-clip"
     >
       {/* Toast Notification */}
       {toastMessage && (
@@ -429,8 +435,24 @@ export function CustomizerControls({
       )}
 
       {/* Quick Jump Ribbon */}
-      <div className="sticky top-0 z-20 bg-[var(--color-canvas-subtle)] border-b border-[var(--color-border-subtle)] px-4 py-2.5 overflow-x-auto scrollbar-none">
+      <div className="sticky top-16 sm:top-20 lg:top-20 z-30 bg-[var(--color-canvas-surface)] border-b border-[var(--color-border-subtle)] px-3 sm:px-4 py-2.5 rounded-t-2xl shadow-xs overflow-x-auto scrollbar-none">
         <div className="flex items-center space-x-1.5 min-w-max text-xs">
+          {/* Mobile-only Preview Anchor button */}
+          <button
+            type="button"
+            data-testid="customizer-quick-preview-btn"
+            onClick={() => {
+              const el = document.getElementById("customizer-preview-anchor");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
+            className="lg:hidden px-2.5 py-1 rounded-full font-medium transition-colors cursor-pointer bg-[var(--color-canvas-subtle)] text-accent border border-accent/30 hover:bg-accent/10 flex items-center gap-1"
+          >
+            <span>↑ Preview</span>
+          </button>
+          <span className="lg:hidden text-[var(--color-border-strong)]">•</span>
+
           <button
             type="button"
             data-testid="customizer-step-moulding"
@@ -515,14 +537,23 @@ export function CustomizerControls({
           >
             5. Artwork
           </button>
+
+          {/* Mobile Live Price Pill */}
+          <span className="lg:hidden text-[var(--color-border-strong)]">•</span>
+          <span
+            data-testid="customizer-ribbon-mobile-price"
+            className="lg:hidden inline-flex items-center px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/30 text-accent font-serif font-bold text-xs"
+          >
+            ₹{pricing.total}
+          </span>
         </div>
       </div>
 
       {/* Stacked Interactive Configuration Panels */}
       <div className="p-5 sm:p-7 space-y-8 divide-y divide-[var(--color-border-subtle)]">
         {/* Section 1: Solid Hardwood Moulding Profile */}
-        <section id="section-moulding" className="space-y-3.5 pt-0">
-          <div className="flex items-center justify-between">
+        <section id="section-moulding" className="space-y-3.5 pt-0 scroll-mt-32 sm:scroll-mt-36">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
             <div>
               <h3 className="font-serif text-sm sm:text-base font-bold text-[var(--color-ink-primary)]">
                 1. Solid Hardwood Moulding Profile
@@ -589,7 +620,7 @@ export function CustomizerControls({
         </section>
 
         {/* Section 2: Archival Matting Margin & Tone */}
-        <section id="section-mat" className="space-y-4 pt-6">
+        <section id="section-mat" className="space-y-4 pt-6 scroll-mt-32 sm:scroll-mt-36">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-serif text-sm sm:text-base font-bold text-[var(--color-ink-primary)]">
@@ -606,7 +637,7 @@ export function CustomizerControls({
             role="radiogroup"
             aria-label="Mat margin width"
             data-testid="mat-picker"
-            className="grid grid-cols-3 gap-2.5"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-2.5"
           >
             {MAT_OPTION_LIST.map((mat) => {
               const isSelected = mat.id === matId;
@@ -619,24 +650,29 @@ export function CustomizerControls({
                   data-testid={`mat-option-${mat.id}`}
                   onClick={() => onSelectMat(mat.id)}
                   className={cn(
-                    "flex flex-col p-3 rounded-xl border-2 text-left transition-all duration-200 cursor-pointer",
+                    "flex flex-row sm:flex-col items-center sm:items-start justify-between p-3 rounded-xl border-2 text-left transition-all duration-200 cursor-pointer gap-2",
                     isSelected
                       ? "border-accent bg-accent-light/30 shadow-xs ring-1 ring-accent"
                       : "border-[var(--color-border-subtle)] hover:border-accent/60 bg-[var(--color-canvas-subtle)]/40 hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[var(--color-ink-primary)]">
-                      {mat.name}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-[var(--color-ink-primary)]">
+                        {mat.name}
+                      </span>
+                      {isSelected && <Check className="w-3.5 h-3.5 text-accent shrink-0 hidden sm:block" />}
+                    </div>
+                    <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5 block">
+                      {mat.widthInches}
                     </span>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-accent" />}
                   </div>
-                  <span className="text-[11px] text-[var(--color-ink-muted)] mt-0.5">
-                    {mat.widthInches}
-                  </span>
-                  <span className="font-serif text-xs font-bold text-accent mt-2">
-                    {mat.price === 0 ? "Included" : `+₹${mat.price}`}
-                  </span>
+                  <div className="flex items-center gap-2 shrink-0 sm:w-full sm:justify-between sm:mt-2">
+                    <span className="font-serif text-xs font-bold text-accent">
+                      {mat.price === 0 ? "Included" : `+₹${mat.price}`}
+                    </span>
+                    {isSelected && <Check className="w-3.5 h-3.5 text-accent shrink-0 sm:hidden" />}
+                  </div>
                 </button>
               );
             })}
@@ -686,7 +722,7 @@ export function CustomizerControls({
         </section>
 
         {/* Section 3: Frame Dimensions & Aperture */}
-        <section id="section-size" className="space-y-4 pt-6">
+        <section id="section-size" className="space-y-4 pt-6 scroll-mt-32 sm:scroll-mt-36">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-serif text-sm sm:text-base font-bold text-[var(--color-ink-primary)]">
@@ -721,14 +757,16 @@ export function CustomizerControls({
                       : "border-[var(--color-border-subtle)] hover:border-accent/60 bg-[var(--color-canvas-subtle)]/40 hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
-                  {s.popular && (
-                    <span className="absolute top-2 right-2 px-1.5 py-0.2 rounded text-[8px] font-mono uppercase bg-accent text-[var(--color-accent-contrast)] font-bold">
-                      Standard
+                  <div className="flex items-center justify-between gap-1.5 w-full">
+                    <span className="text-xs font-bold text-[var(--color-ink-primary)]">
+                      {s.label}
                     </span>
-                  )}
-                  <span className="text-xs font-bold text-[var(--color-ink-primary)]">
-                    {s.label}
-                  </span>
+                    {s.popular && (
+                      <span className="px-1.5 py-0.5 rounded text-[8px] font-mono uppercase bg-accent text-[var(--color-accent-contrast)] font-bold shrink-0">
+                        Standard
+                      </span>
+                    )}
+                  </div>
                   <span className="text-[10px] text-[var(--color-ink-muted)] font-mono mt-0.5">
                     {s.dimensions}
                   </span>
@@ -802,7 +840,7 @@ export function CustomizerControls({
         </section>
 
         {/* Section 4: Conservation Glazing */}
-        <section id="section-glazing" className="space-y-3.5 pt-6">
+        <section id="section-glazing" className="space-y-3.5 pt-6 scroll-mt-32 sm:scroll-mt-36">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-serif text-sm sm:text-base font-bold text-[var(--color-ink-primary)]">
@@ -837,17 +875,17 @@ export function CustomizerControls({
                       : "border-[var(--color-border-subtle)] hover:border-accent/60 bg-[var(--color-canvas-subtle)]/40 hover:bg-[var(--color-canvas-subtle)]"
                   )}
                 >
-                  <div className="space-y-0.5">
+                  <div className="flex-1 min-w-0 space-y-0.5">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-bold text-[var(--color-ink-primary)]">
                         {g.name}
                       </span>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-accent" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-accent shrink-0" />}
                     </div>
                     <p className="text-[11px] text-[var(--color-ink-secondary)]">
                       {g.description}
                     </p>
-                    <div className="flex items-center gap-2 text-[10px] font-mono text-accent pt-1">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] font-mono text-accent pt-1">
                       <span>{g.uvProtection}</span>
                       <span>•</span>
                       <span>{g.reflection}</span>
@@ -865,7 +903,7 @@ export function CustomizerControls({
         </section>
 
         {/* Section 5: Fine Art & Archival Upload Dropzone */}
-        <section id="section-artwork" className="space-y-4 pt-6">
+        <section id="section-artwork" className="space-y-4 pt-6 scroll-mt-32 sm:scroll-mt-36">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-serif text-sm sm:text-base font-bold text-[var(--color-ink-primary)]">
@@ -996,7 +1034,7 @@ export function CustomizerControls({
             <span className="text-[10px] uppercase tracking-wider text-[var(--color-ink-muted)] font-mono">
               Itemized Atelier Total:
             </span>
-            <div className="flex items-baseline gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
               <span
                 data-testid="customizer-total-price"
                 className="font-serif text-2xl sm:text-3xl font-bold text-accent"
@@ -1101,7 +1139,9 @@ export function CustomizerControls({
       </div>
 
       {/* Email Spec Sheet & Order Modal */}
-      <AnimatePresence>
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
         {isEmailModalOpen && (
           <div
             data-testid="customizer-email-modal"
@@ -1343,7 +1383,9 @@ export function CustomizerControls({
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+    )}
     </div>
   );
 }

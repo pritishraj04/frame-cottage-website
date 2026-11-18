@@ -389,4 +389,97 @@ test.describe("Interactive Studio Customizer Page", () => {
     // 7. Assert checkout-modal is NOT visible
     await expect(page.getByTestId("checkout-modal")).not.toBeVisible();
   });
+
+  test("14. Mobile responsive layout (390x844): Zero horizontal overflow, no preview stage overlaps, and interactive options click cleanly", async ({
+    page,
+  }) => {
+    // 1. Mobile viewport 390x844 (iPhone 12/13/14 screen)
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/customizer");
+    await page.waitForLoadState("networkidle");
+
+    // 2. Zero horizontal overflow across page
+    const hasHorizontalOverflow = await page.evaluate(() => {
+      return document.documentElement.scrollWidth > document.documentElement.clientWidth;
+    });
+    expect(hasHorizontalOverflow).toBe(false);
+
+    // Quick jump ribbon shows "↑ Preview" and mobile live price pill
+    const quickPreviewBtn = page.getByTestId("customizer-quick-preview-btn");
+    await expect(quickPreviewBtn).toBeVisible();
+    const ribbonPrice = page.getByTestId("customizer-ribbon-mobile-price");
+    await expect(ribbonPrice).toBeVisible();
+    await expect(ribbonPrice).toHaveText("₹76");
+
+    // 3. Verifies preview stage is in normal document flow on mobile and does NOT overlap controls
+    const previewStage = page.getByTestId("customizer-preview-stage");
+    const controlsPanel = page.getByTestId("customizer-controls-panel");
+    await expect(previewStage).toBeVisible();
+    await expect(controlsPanel).toBeVisible();
+
+    const previewBox = await previewStage.boundingBox();
+    const controlsBox = await controlsPanel.boundingBox();
+    expect(previewBox).not.toBeNull();
+    expect(controlsBox).not.toBeNull();
+    if (previewBox && controlsBox) {
+      // In mobile normal flow, preview stage is positioned strictly above controls panel
+      expect(previewBox.y + previewBox.height).toBeLessThanOrEqual(controlsBox.y + 2);
+    }
+
+    // 4. Actually clicks moulding (brass), mat (gallery), size (16x20), and glazing (museum-glass)
+    // without { force: true } (proving zero sticky transparent layer intercepts pointer events!)
+
+    // Select Brass Moulding: ₹78 + ₹12 = ₹90
+    const brassMoulding = page.getByTestId("moulding-option-brass");
+    await brassMoulding.scrollIntoViewIfNeeded();
+    await brassMoulding.click(); // no force: true
+    await expect(brassMoulding).toHaveAttribute("aria-checked", "true");
+    await expect(ribbonPrice).toHaveText("₹90");
+
+    // Select Gallery Mat: ₹78 + ₹18 = ₹96
+    const galleryMat = page.getByTestId("mat-option-gallery");
+    await galleryMat.scrollIntoViewIfNeeded();
+    await galleryMat.click(); // no force: true
+    await expect(galleryMat).toHaveAttribute("aria-checked", "true");
+    await expect(ribbonPrice).toHaveText("₹96");
+
+    // 5. Verifies the "Standard" badge on 16x20 does not overlap the size label bounding box
+    const size16x20 = page.getByTestId("size-option-16x20");
+    await size16x20.scrollIntoViewIfNeeded();
+
+    const sizeLabel = size16x20.locator("span", { hasText: '16" × 20"' });
+    const standardBadge = size16x20.locator("span", { hasText: "Standard" });
+    await expect(sizeLabel).toBeVisible();
+    await expect(standardBadge).toBeVisible();
+    const labelBox = await sizeLabel.boundingBox();
+    const badgeBox = await standardBadge.boundingBox();
+    expect(labelBox).not.toBeNull();
+    expect(badgeBox).not.toBeNull();
+    if (labelBox && badgeBox) {
+      // Badge is to the right of the label in flex row with no overlap
+      expect(labelBox.x + labelBox.width).toBeLessThanOrEqual(badgeBox.x);
+    }
+
+    // Click 16x20 size (+₹30): ₹96 + ₹30 = ₹126
+    await size16x20.click(); // no force: true
+    await expect(size16x20).toHaveAttribute("aria-checked", "true");
+    await expect(ribbonPrice).toHaveText("₹126");
+
+    // Select Museum Glass (+₹24): ₹126 + ₹24 = ₹150
+    const museumGlass = page.getByTestId("glazing-option-museum-glass");
+    await museumGlass.scrollIntoViewIfNeeded();
+    await museumGlass.click(); // no force: true
+    await expect(museumGlass).toHaveAttribute("aria-checked", "true");
+    await expect(ribbonPrice).toHaveText("₹150");
+
+    // 6. Verifies total price updates accurately on mobile
+    const totalPrice = page.getByTestId("customizer-total-price");
+    await expect(totalPrice).toHaveText("₹150");
+
+    // Test "↑ Preview" quick jump button scrolls preview back into view
+    await quickPreviewBtn.click();
+    await page.waitForTimeout(400); // allow smooth scroll
+    const previewAnchor = page.locator("#customizer-preview-anchor");
+    await expect(previewAnchor).toBeInViewport();
+  });
 });
